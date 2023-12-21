@@ -33,15 +33,32 @@ You can start the server using this command:
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 3. Run the story books
 
-### 4. Change defaults
+You can start the server using this command:
+
+```bash
+yarn storybook
+```
+
+Open [http://localhost:6006](http://localhost:6006) with your browser to see the result.
+
+### 4. Run the prod build
+
+You can start the server using this command:
+
+```bash
+yarn lint
+yarn build
+```
+
+### 5. Change defaults
 
 its possible that we need in the future env variables that can live on our github
 and some basic configuration for all instances please
 Find all comments with !STARTERCONF, then follow the guide.
 
-### 5. Commit Message Convention
+### 6. Commit Message Convention
 
 This might be optional in the furture we can remove it but it might be good to set a standard
 
