@@ -1,5 +1,6 @@
 import { Container } from '@mui/material';
 import GlobalStyles from '@mui/material/GlobalStyles';
+import '@/styles/general.scss'; // Adjust the path accordingly
 import { Metadata } from 'next';
 import * as React from 'react';
 

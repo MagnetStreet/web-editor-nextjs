@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import Link from 'next/link';
 
-import PageFooter from '@/components/shared/PageFooter';
+import PageFooter from '@/components/shared/Footer/footer';
 import ReactHookForm from '@/components/shared/ReactHookForm';
 
 import { SITE_CONFIG } from '@/constants';

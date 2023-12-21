@@ -1,5 +1,4 @@
 import ExamplePage from '@/components/pages/ExamplePage';
-
 import { getApiResponse } from '@/utils/shared/get-api-response';
 
 import { NpmData, PageParams } from '@/types';
@@ -27,7 +26,7 @@ const loadDataFromApi = async (slug?: string) => {
   };
 };
 
-const AppHome = async ({ searchParams }: PageParams) => {
+const Home = async ({ searchParams }: PageParams) => {
   const slug = searchParams?.slug;
   const { reactNpmData, nextJsNpmData } = await loadDataFromApi(slug);
 
@@ -39,4 +38,4 @@ const AppHome = async ({ searchParams }: PageParams) => {
   );
 };
 
-export default AppHome;
+export default Home;

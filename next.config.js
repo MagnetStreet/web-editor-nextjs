@@ -14,6 +14,13 @@ const nextConfig = {
   //   ],
   // },
 
+  // Add Sass loader configuration
+  sassOptions: {
+    // Include your custom configurations here
+    // For example, you can set the includePaths to define additional directories to look for Sass files
+    includePaths: ['src/styles'],
+  },
+
   webpack(config) {
     // Grab the existing rule that handles SVG imports
     const fileLoaderRule = config.module.rules.find((rule) =>

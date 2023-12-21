@@ -5,11 +5,13 @@
 - Next.js 14.x with App Router
 - React 18.x
 - TypeScript
+- React hooks for Local state management and Zustand for global state management
 - Material UI — Ready to use Material Design components [check here for the usage](https://mui.com/material-ui/getting-started/usage/)
 - React Hook Form — Performant, flexible and extensible forms with easy-to-use validation
 - Absolute Import and Path Alias — Import components using `@/` prefix
 - ESLint — Find and fix problems in your code, also will **auto sort** your imports
 - Zod for form validations
+- StoryBooks for showcasing component Behaviours
 - Prettier — Format your code consistently
 - Husky & Lint Staged — Run scripts on your staged files before they are committed
 
@@ -72,7 +74,9 @@ BREAKING CHANGE: `extends` key in config file is now used for extending other co
 
 This starter is using [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/), for now it is mandatory to use it to commit changes.
 
-## Folder structure
+## Useful Documentation and Links
+
+### Folder structure
 
 ```bash
 root
@@ -86,7 +90,8 @@ root
 │   │
 │   ├─── components // Components directory
 │   │   ├─── Shared // Reusable components and styles foreach componets
-│   │   │     ├───  Footer.tsx 5
+│   │   │     ├───  Footer.tsx         // React reusable module
+│   │   │     ├───  Footer.module.scss // Module Specific Sass
 │   │   │     └───  ... // Add any reusable component here
 │   │   ├─── pages // Page presentation Components go here
 │   │        ├───  ExamplePage.tsx
@@ -103,4 +108,34 @@ root
 │
 └─── README.md
 └─── ... Configation files at root level
+```
+
+### Shared State Management with [Zustand](https://github.com/pmndrs/zustand)
+
+First create a store
+Your store is a hook! You can put anything in it: primitives, objects, functions. State has to be updated immutably and the set function merges state to help it.
+
+```bash
+  import { create } from 'zustand'
+
+  const useBearStore = create((set) => ({
+    bears: 0,
+    increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
+    removeAllBears: () => set({ bears: 0 }),
+  }))
+```
+
+Then bind your components, and that's it!
+Use the hook anywhere, no providers are needed. Select your state and the component will re-render on changes.
+
+```bash
+  function BearCounter() {
+    const bears = useBearStore((state) => state.bears)
+    return <h1>{bears} around here ...</h1>
+  }
+
+  function Controls() {
+    const increasePopulation = useBearStore((state) => state.increasePopulation)
+    return <button onClick={increasePopulation}>one up</button>
+  }
 ```
