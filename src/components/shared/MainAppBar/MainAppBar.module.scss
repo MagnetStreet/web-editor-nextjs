@@ -1,0 +1,17 @@
+@import '@/styles/variables';
+
+.buttonContainer {
+  display: flex;
+  gap: 35px;
+}
+
+.typoContainer {
+  display: flex;
+  width: 80%;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.AppBarContainer {
+  border: 1px solid $gray1;
+}

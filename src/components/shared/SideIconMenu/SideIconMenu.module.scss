@@ -1,0 +1,45 @@
+@import '@/styles/variables';
+
+.sideIconMenu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid $gray3;
+  border-top: none;
+  padding: 32px 16px;
+  height: calc(100vh - 64px);
+  position: absolute;
+}
+
+.sideIconMenuInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 76px;
+  gap: 32px;
+  font-size: 32px;
+}
+
+.helpContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 32px;
+  border-top: 1px solid $gray3;
+}
+
+.iconContainer {
+  cursor: pointer;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  flex-direction: column;
+}
+
+.helpContainer,
+.iconContainer {
+  svg {
+    font-size: 32px;
+    color: $grayDark;
+  }
+}

@@ -1,10 +1,14 @@
-import { Container } from '@mui/material';
-import GlobalStyles from '@mui/material/GlobalStyles';
+'use client';
+import { Container, ThemeProvider } from '@mui/material';
+import CssBaseline from '@mui/material/CssBaseline';
 import * as React from 'react';
 
 import '@/styles/general.scss'; // Adjust the path accordingly
 
-import { GLOBAL_STYLES } from '@/styles';
+import MainAppBar from '@/components/shared/MainAppBar/MainAppBar';
+import SideIconMenu from '@/components/shared/SideIconMenu/SideIconMenu';
+
+import customTheme from '@/styles/theme/customTheme';
 
 export default function RootLayout({
   children,
@@ -13,9 +17,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <GlobalStyles styles={GLOBAL_STYLES} />
+      <CssBaseline />
       <body>
-        <Container sx={{ pl: 0, pr: 0 }}>{children}</Container>
+        <ThemeProvider theme={customTheme}>
+          <MainAppBar title='Fairytale Wedding' subtitle='RSVP Card' />
+          <SideIconMenu />
+          <Container>{children}</Container>
+        </ThemeProvider>
       </body>
     </html>
   );

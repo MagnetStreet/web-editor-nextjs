@@ -1,3 +1,23 @@
-$primaryColor: #3498db;
-$secondaryColor: #2ecc71;
-$fontSize: 16px;
+/* font sizes*/
+
+$primary-color: #5471a8;
+$white: #ffffff;
+$black: #000;
+$gray1: #cccccc;
+$gray2: #d9d9d9;
+$gray3: #cccdcd;
+$grayDark: #70777f;
+$grayLight: #efefef;
+
+/* Desktop sizes */
+$size-sm: 12px;
+$size-md: 16px;
+$size-lg: 20px;
+$size-xl: 24px;
+
+/* Define your breakpoints */
+$break-point-size-xs: 0px;
+$break-point-size-sm: 640px;
+$break-point-size-md: 980px;
+$break-point-size-lg: 1024px;
+$break-point-size-xl: 1200px;

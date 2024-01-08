@@ -1,0 +1,45 @@
+@import 'variables';
+
+/* Define Sass mixins for media queries */
+@mixin small {
+  @media (max-width: $small-screen) {
+    @content;
+  }
+}
+
+@mixin medium {
+  @media (min-width: $small-screen + 1) and (max-width: $medium-screen) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media (min-width: $medium-screen + 1) and (max-width: $large-screen) {
+    @content;
+  }
+}
+
+/* Text overflow
+-------------------------*/
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Flexbox 
+-------------------------*/
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* centering 
+-------------------------*/
+@mixin center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
