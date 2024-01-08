@@ -10,6 +10,7 @@
 - React Hook Form — Performant, flexible and extensible forms with easy-to-use validation
 - Absolute Import and Path Alias — Import components using `@/` prefix
 - ESLint — Find and fix problems in your code, also will **auto sort** your imports
+- React-konva To enable reatc oriented canvas manipulation
 - Zod for form validations
 - StoryBooks for showcasing component Behaviours
 - Prettier — Format your code consistently
@@ -20,7 +21,7 @@
 ### 1. Install dependencies
 
 It is encouraged to use **yarn** so the husky hooks can work properly.
-In case need Install Globally
+In case you need to Install Globally
 
 ```bash
 npm yarn install -g
@@ -62,7 +63,7 @@ Find all comments with !STARTERCONF, then follow the guide.
 
 ### 6. Commit Message Convention
 
-This might be optional in the furture we can remove it but it might be good to set a standard
+This might be optional in the future we can remove it but it might be good to set a standard
 
 example
 
@@ -112,8 +113,7 @@ root
 
 ### Shared State Management with [Zustand](https://github.com/pmndrs/zustand)
 
-First create a store
-Your store is a hook! You can put anything in it: primitives, objects, functions. State has to be updated immutably and the set function merges state to help it.
+Your store is a hook! You can put anything in it: primitives, objects, functions. State has to be updated immutably and the set state function merges state to save the update.
 
 ```bash
   import { create } from 'zustand'
@@ -139,3 +139,7 @@ Use the hook anywhere, no providers are needed. Select your state and the compon
     return <button onClick={increasePopulation}>one up</button>
   }
 ```
+
+### Canvas manipulation Documentation [React-konva](https://konvajs.org/docs/react/Shapes.html)
+
+// TODO Add example for konva canvas manipulation
