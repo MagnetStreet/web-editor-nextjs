@@ -1,3 +1,12 @@
+'use client';
+import useSideMenuStore, { SideMenuState } from '@/stores/useSideMenuStore';
+
 export default function HomePage() {
-  return <main>Hello World</main>;
+  const { activeLayoutName, setActiveLayoutName } =
+    useSideMenuStore<SideMenuState>((state) => ({
+      activeLayoutName: state.activeLayoutName,
+      setActiveLayoutName: state.setActiveLayoutName,
+    }));
+
+  return <main>Hello World the active layout is {activeLayoutName}</main>;
 }

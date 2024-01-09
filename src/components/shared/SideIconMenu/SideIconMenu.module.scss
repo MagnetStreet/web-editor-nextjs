@@ -42,4 +42,11 @@
     font-size: 32px;
     color: $grayDark;
   }
+  &:hover,
+  &.active {
+    svg,
+    h6 {
+      color: $primary-color;
+    }
+  }
 }

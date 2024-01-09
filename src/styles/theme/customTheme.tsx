@@ -8,6 +8,7 @@ const vars = {
     xl: '24px',
   },
   colors: {
+    primaryLight: '#2496FF',
     primaryColor: '#5471A8',
     white: '#ffffff',
     black: '#000',
@@ -22,6 +23,7 @@ const vars = {
 const theme = createTheme({
   palette: {
     primary: {
+      light: vars.colors.primaryLight,
       main: vars.colors.primaryColor,
     },
     secondary: {
@@ -75,7 +77,6 @@ const customTheme = createTheme(theme, {
     MuiAppBar: {
       defaultProps: {
         color: 'secondary',
-        boxShadow: 'none',
       },
       root: {
         boxShadow: 'none',

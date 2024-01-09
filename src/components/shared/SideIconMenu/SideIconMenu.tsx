@@ -1,44 +1,71 @@
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
+import FormatColorTextIcon from '@mui/icons-material/FormatColorText';
 import GridViewIcon from '@mui/icons-material/GridView';
 import InsertPhotoOutlinedIcon from '@mui/icons-material/InsertPhotoOutlined';
 import InterestsOutlinedIcon from '@mui/icons-material/InterestsOutlined';
 import PaletteOutlinedIcon from '@mui/icons-material/PaletteOutlined';
 import PentagonOutlinedIcon from '@mui/icons-material/PentagonOutlined';
-import TextFormatOutlinedIcon from '@mui/icons-material/TextFormatOutlined';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import * as React from 'react';
 
 import styles from './SideIconMenu.module.scss';
 
+import useSideMenuStore, { SideMenuState } from '@/stores/useSideMenuStore';
+
+interface IconObj {
+  name: string;
+  icon: JSX.Element;
+}
+
 const SideIconMenu = () => {
+  const { activeLayoutName, setActiveLayoutName } =
+    useSideMenuStore<SideMenuState>((state) => ({
+      activeLayoutName: state.activeLayoutName,
+      setActiveLayoutName: state.setActiveLayoutName,
+    }));
+
+  const items: Array<IconObj> = [
+    {
+      name: 'Layout',
+      icon: <GridViewIcon />,
+    },
+    {
+      name: 'Color',
+      icon: <PaletteOutlinedIcon />,
+    },
+    {
+      name: 'Text',
+      icon: <FormatColorTextIcon />,
+    },
+    {
+      name: 'Shape',
+      icon: <PentagonOutlinedIcon />,
+    },
+    {
+      name: 'Elements',
+      icon: <InterestsOutlinedIcon />,
+    },
+    {
+      name: 'Images',
+      icon: <InsertPhotoOutlinedIcon />,
+    },
+  ];
+
   return (
     <Box className={styles.sideIconMenu}>
       <Box className={styles.sideIconMenuInner}>
-        <Box className={styles.iconContainer}>
-          <GridViewIcon />
-          <Typography variant='subtitle2'>Layout</Typography>
-        </Box>
-        <Box className={styles.iconContainer}>
-          <PaletteOutlinedIcon />
-          <Typography variant='subtitle2'>Color</Typography>
-        </Box>
-        <Box className={styles.iconContainer}>
-          <TextFormatOutlinedIcon />
-          <Typography variant='subtitle2'>Text</Typography>
-        </Box>
-        <Box className={styles.iconContainer}>
-          <PentagonOutlinedIcon />
-          <Typography variant='subtitle2'>Shape</Typography>
-        </Box>
-        <Box className={styles.iconContainer}>
-          <InterestsOutlinedIcon />
-          <Typography variant='subtitle2'>Elements</Typography>
-        </Box>
-        <Box className={styles.iconContainer}>
-          <InsertPhotoOutlinedIcon />
-          <Typography variant='subtitle2'>Images</Typography>
-        </Box>
+        {items.map((item, index) => (
+          <Box
+            key={index}
+            className={`${styles.iconContainer} ${
+              activeLayoutName === item.name ? styles.active : ''
+            }`}
+            onClick={() => setActiveLayoutName(item.name)}
+          >
+            {item.icon}
+            <Typography variant='subtitle2'>{item.name}</Typography>
+          </Box>
+        ))}
       </Box>
       <Box className={styles.helpContainer}>
         <ChatBubbleOutlineIcon />
