@@ -7,6 +7,7 @@ import '@/styles/general.scss'; // Adjust the path accordingly
 
 import MainAppBar from '@/components/shared/MainAppBar/MainAppBar';
 import SideIconMenu from '@/components/shared/SideIconMenu/SideIconMenu';
+import StyleStepper from '@/components/shared/StyleStepper/StyleStepper';
 
 import customTheme from '@/styles/theme/customTheme';
 
@@ -22,6 +23,7 @@ export default function RootLayout({
         <ThemeProvider theme={customTheme}>
           <MainAppBar title='Fairytale Wedding' subtitle='RSVP Card' />
           <SideIconMenu />
+          <StyleStepper></StyleStepper>
           <Container>{children}</Container>
         </ThemeProvider>
       </body>
