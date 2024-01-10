@@ -140,6 +140,15 @@ Use the hook anywhere, no providers are needed. Select your state and the compon
   }
 ```
 
+### Fonts - [Icons] (http://localhost:3000/fonts/font-awesome/demo.html)
+
+We are using a similar implementation of font awesome as a typography
+Simple run the project and look into this [demo](http://localhost:3000/fonts/font-awesome/demo.html) and check which icon you need to use
+
+```
+  <i className='fa-grid-2-sharp-light'></i>
+```
+
 ### Canvas manipulation Documentation [React-konva](https://konvajs.org/docs/react/Shapes.html)
 
 // TODO Add example for konva canvas manipulation

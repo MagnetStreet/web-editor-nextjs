@@ -1,0 +1,465 @@
+@font-face {
+  font-family: 'fontAwesome';
+  src: url('fonts/fontAwesome.eot?x1cap7');
+  src: url('fonts/fontAwesome.eot?x1cap7#iefix') format('embedded-opentype'),
+    url('fonts/fontAwesome.ttf?x1cap7') format('truetype'),
+    url('fonts/fontAwesome.woff?x1cap7') format('woff'),
+    url('fonts/fontAwesome.svg?x1cap7#fontAwesome') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^='fa-'],
+[class*=' fa-'] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'fontAwesome' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.fa-period-solid:before {
+  content: '\e965';
+}
+.fa-circle-small-sharp-solid:before {
+  content: '\e966';
+}
+.fa-envelope-open-sharp-light:before {
+  content: '\e964';
+}
+.fa-envelope-open-o:before {
+  content: '\e964';
+}
+.fa-gift-light:before {
+  content: '\e963';
+}
+.fa-redeem:before {
+  content: '\e963';
+}
+.fa-address-card-light:before {
+  content: '\e95f';
+}
+.fa-address-book-light:before {
+  content: '\e960';
+}
+.fa-list-ul-light:before {
+  content: '\e961';
+}
+.fa-credit-card-light:before {
+  content: '\e962';
+}
+.fa-dollar:before {
+  content: '\e95e';
+}
+.fa-comment-light:before {
+  content: '\e95d';
+}
+.fa-plus-light:before {
+  content: '\e95b';
+}
+.fa-minus-light:before {
+  content: '\e95c';
+}
+.fa-image-sharp-light:before {
+  content: '\e95a';
+}
+.fa-trash-can-light:before {
+  content: '\e959';
+}
+.fa-chevrons-left-sharp-light:before {
+  content: '\e957';
+}
+.fa-chevrons-right-sharp-light:before {
+  content: '\e958';
+}
+.fa-code-sharp-light:before {
+  content: '\e956';
+}
+.fa-bars-sharp-light:before {
+  content: '\e953';
+}
+.fa-grid-2-sharp-light:before {
+  content: '\e954';
+}
+.fa-grid-2-sharp-solid:before {
+  content: '\e955';
+}
+.fa-hand-light:before {
+  content: '\e952';
+}
+.fa-user-group-light:before {
+  content: '\e94e';
+}
+.fa-file-lines-sharp-light:before {
+  content: '\e94f';
+}
+.fa-file-pdf-sharp-light:before {
+  content: '\e949';
+}
+.fa-circle-info-solid:before {
+  content: '\e947';
+}
+.fa-circle-info-light:before {
+  content: '\e948';
+}
+.fa-circle-minus-sharp-light:before {
+  content: '\e943';
+}
+.fa-circle-minus-sharp-solid:before {
+  content: '\e946';
+}
+.fa-circle-solid:before {
+  content: '\e923';
+}
+.fa-file-circle-plus-light:before {
+  content: '\e93e';
+}
+.fa-floppy-disk-sharp-light:before {
+  content: '\e93f';
+}
+.fa-circle-question-light:before {
+  content: '\e940';
+}
+.fa-objects-column-light:before {
+  content: '\e941';
+}
+.fa-arrows-maximize-light:before {
+  content: '\e942';
+}
+.fa-magnifying-glass-minus-light:before {
+  content: '\e93d';
+}
+.fa-magnifying-glass-plus-light:before {
+  content: '\e944';
+}
+.fa-magnifying-glass-light:before {
+  content: '\e945';
+}
+.fa-text-light:before {
+  content: '\e922';
+}
+.fa-images-sharp-light:before {
+  content: '\e93b';
+}
+.fa-arrow-rotate-right-light:before {
+  content: '\f01e';
+}
+.fa-arrow-rotate-left-light:before {
+  content: '\f0e2';
+}
+.fa-circle-plus-sharp-solid:before {
+  content: '\f055';
+}
+.fa-circle-plus-sharp-light:before {
+  content: '\f067';
+}
+.fa-pen-solid:before {
+  content: '\f040';
+}
+.fa-pen-light:before {
+  content: '\e93c';
+}
+.fa-truck-fast-sharp-light:before {
+  content: '\e93a';
+}
+.fa-circle-check-solid:before {
+  content: '\e937';
+}
+.fa-circle-check-light:before {
+  content: '\e938';
+}
+.fa-check-light:before {
+  content: '\e939';
+}
+.fa-spinner-third-duotone .path1:before {
+  content: '\e935';
+  color: rgb(0, 0, 0);
+}
+.fa-spinner-third-duotone .path2:before {
+  content: '\e936';
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+  opacity: 0.4;
+}
+.fa-square-check-sharp-light:before {
+  content: '\e931';
+}
+.fa-square-check-sharp-solid:before {
+  content: '\e932';
+}
+.fa-circle-o-sharp-light:before {
+  content: '\e933';
+}
+.fa-circle-dot-sharp-solid:before {
+  content: '\e934';
+  color: #606060;
+}
+.fa-arrow-up-right-and-arrow-down-left-from-center-thin:before {
+  content: '\e930';
+}
+.fa-tiktok:before {
+  content: '\e91d';
+}
+.fa-instagram:before {
+  content: '\e91e';
+}
+.fa-pinterest:before {
+  content: '\e91f';
+}
+.fa-facebook-f:before {
+  content: '\e920';
+}
+.fa-x-twitter:before {
+  content: '\e921';
+}
+.fa-cart-shopping:before {
+  content: '\e917';
+}
+.fa-user:before {
+  content: '\e904';
+}
+.fa-brush:before {
+  content: '\e918';
+}
+.fa-box-open:before {
+  content: '\e919';
+}
+.fa-share-nodes:before {
+  content: '\e906';
+}
+.fa-question:before {
+  content: '\e907';
+}
+.fa-phone:before {
+  content: '\e908';
+}
+.fa-magnifying-glass:before {
+  content: '\e909';
+}
+.fa-star-o:before {
+  content: '\e900';
+}
+.fa-star:before {
+  content: '\e905';
+}
+.fa-heart-o:before {
+  content: '\e901';
+}
+.fa-heart:before {
+  content: '\e90a';
+}
+.fa-gear:before {
+  content: '\e90b';
+}
+.fa-filter-list:before {
+  content: '\e90c';
+}
+.fa-file-arrow-up:before {
+  content: '\e90d';
+}
+.fa-envelope:before {
+  content: '\e90e';
+}
+.fa-circle-user:before {
+  content: '\e90f';
+}
+.fa-circle-chevron-up:before {
+  content: '\e92c';
+}
+.fa-circle-chevron-right:before {
+  content: '\e92d';
+}
+.fa-circle-chevron-down:before {
+  content: '\e92e';
+}
+.fa-circle-chevron-left:before {
+  content: '\e92f';
+}
+.fa-circle-xmark-o:before {
+  content: '\e902';
+}
+.fa-circle-xmark:before {
+  content: '\e910';
+}
+.fa-circle-exclamation:before {
+  content: '\e911';
+}
+.fa-chevron-down:before {
+  content: '\e913';
+}
+.fa-chevron-left:before {
+  content: '\e914';
+}
+.fa-chevron-right:before {
+  content: '\e915';
+}
+.fa-chevron-up:before {
+  content: '\e916';
+}
+.fa-xmark-large:before {
+  content: '\e903';
+}
+.fa-check:before {
+  content: '\e912';
+}
+.fa-bars:before {
+  content: '\e91a';
+}
+.fa-arrow-left:before {
+  content: '\e91b';
+}
+.fa-arrow-right:before {
+  content: '\e91c';
+}
+.fa-text_format:before {
+  content: '\e92b';
+}
+.fa-content_cut:before {
+  content: '\e94a';
+}
+.fa-qr_code_2:before {
+  content: '\e94c';
+}
+.fa-qr_code_scanner:before {
+  content: '\e94b';
+}
+.fa-qr_code:before {
+  content: '\e94d';
+}
+.fa-rotate_90_degrees_cw:before {
+  content: '\e418';
+}
+.fa-rotate_90_degrees_ccw:before {
+  content: '\e419';
+}
+.fa-polygon:before {
+  content: '\e8ff';
+}
+.fa-layout-icon:before {
+  content: '\e92a';
+}
+.fa-case-normal:before {
+  content: '\e000';
+}
+.fa-case-uppercase:before {
+  content: '\e001';
+}
+.fa-script-normal:before {
+  content: '\e002';
+}
+.fa-script-sub:before {
+  content: '\e003';
+}
+.fa-script-super:before {
+  content: '\e004';
+}
+.fa-valign-bottom:before {
+  content: '\e005';
+}
+.fa-valign-center:before {
+  content: '\e006';
+}
+.fa-valign-justify:before {
+  content: '\e007';
+}
+.fa-valign-top:before {
+  content: '\e008';
+}
+.fa-leading:before {
+  content: '\e009';
+}
+.fa-tracking:before {
+  content: '\e00a';
+}
+.fa-truck-fast:before {
+  content: '\e950';
+}
+.fa-truck:before {
+  content: '\e951';
+}
+.fa-mycolors:before {
+  content: '\e00b';
+}
+.fa-th-list:before {
+  content: '\f00b';
+}
+.fa-question-circle-o:before {
+  content: '\f29c';
+}
+.fa-align-center:before {
+  content: '\f037';
+}
+.fa-align-right:before {
+  content: '\f038';
+}
+.fa-align-justify:before {
+  content: '\f039';
+}
+.fa-align-left:before {
+  content: '\f036';
+}
+.fa-check-square-o:before {
+  content: '\f046';
+}
+.fa-current-nav-step:before {
+  content: '\f079';
+}
+.fa-floppy-o:before {
+  content: '\f0c7';
+}
+.fa-save:before {
+  content: '\f0c7';
+}
+.fa-sort-desc:before {
+  content: '\f0dd';
+}
+.fa-sort-down:before {
+  content: '\f0dd';
+}
+.fa-sort-asc:before {
+  content: '\f0de';
+}
+.fa-sort-up:before {
+  content: '\f0de';
+}
+.fa-long-arrow-down:before {
+  content: '\f175';
+}
+.fa-long-arrow-up:before {
+  content: '\f176';
+}
+.fa-long-arrow-left:before {
+  content: '\f177';
+}
+.fa-long-arrow-right:before {
+  content: '\f178';
+}
+.fa-file-pdf-o:before {
+  content: '\f1c1';
+}
+.fa-all-fonts:before {
+  content: '\e924';
+}
+.fa-sans-serif:before {
+  content: '\e925';
+}
+.fa-script:before {
+  content: '\e926';
+}
+.fa-serif:before {
+  content: '\e927';
+}
+.fa-all-caps:before {
+  content: '\e928';
+}
+.fa-unique:before {
+  content: '\e929';
+}

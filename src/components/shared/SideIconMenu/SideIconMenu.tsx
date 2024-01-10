@@ -1,9 +1,8 @@
+import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import FormatColorTextIcon from '@mui/icons-material/FormatColorText';
-import GridViewIcon from '@mui/icons-material/GridView';
 import InsertPhotoOutlinedIcon from '@mui/icons-material/InsertPhotoOutlined';
 import InterestsOutlinedIcon from '@mui/icons-material/InterestsOutlined';
-import PaletteOutlinedIcon from '@mui/icons-material/PaletteOutlined';
 import PentagonOutlinedIcon from '@mui/icons-material/PentagonOutlined';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -14,7 +13,7 @@ import useSideMenuStore, { SideMenuState } from '@/stores/useSideMenuStore';
 
 interface IconObj {
   name: string;
-  icon: JSX.Element;
+  icon: ReactJSXElement;
 }
 
 const SideIconMenu = () => {
@@ -27,11 +26,11 @@ const SideIconMenu = () => {
   const items: Array<IconObj> = [
     {
       name: 'Layout',
-      icon: <GridViewIcon />,
+      icon: <i className='fa-grid-2-sharp-light'></i>,
     },
     {
       name: 'Color',
-      icon: <PaletteOutlinedIcon />,
+      icon: <i className='fa-grid-2-sharp-light'></i>,
     },
     {
       name: 'Text',
