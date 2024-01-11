@@ -1,7 +1,4 @@
 import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
-import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
-import InterestsOutlinedIcon from '@mui/icons-material/InterestsOutlined';
-import PentagonOutlinedIcon from '@mui/icons-material/PentagonOutlined';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
@@ -16,10 +13,7 @@ interface IconObj {
 
 const SideIconMenu = () => {
   const { activeLayoutName, setActiveLayoutName } =
-    useSideMenuStore<SideMenuState>((state) => ({
-      activeLayoutName: state.activeLayoutName,
-      setActiveLayoutName: state.setActiveLayoutName,
-    }));
+    useSideMenuStore<SideMenuState>((state) => state);
 
   const items: Array<IconObj> = [
     {
@@ -28,7 +22,7 @@ const SideIconMenu = () => {
     },
     {
       name: 'Color',
-      icon: <i className='fa-case-normal'></i>,
+      icon: <i className='fa-palette-light'></i>,
     },
     {
       name: 'Text',
@@ -36,11 +30,11 @@ const SideIconMenu = () => {
     },
     {
       name: 'Shape',
-      icon: <PentagonOutlinedIcon />,
+      icon: <i className='fa-objects-column-light'></i>,
     },
     {
       name: 'Elements',
-      icon: <InterestsOutlinedIcon />,
+      icon: <i className='fa-shapes-sharp-light'></i>,
     },
     {
       name: 'Images',
@@ -65,7 +59,7 @@ const SideIconMenu = () => {
         ))}
       </Box>
       <Box className={styles.helpContainer}>
-        <ChatBubbleOutlineIcon />
+        <i className=' fa-comment-light'></i>
         <Typography variant='subtitle2'>Help</Typography>
       </Box>
     </Box>

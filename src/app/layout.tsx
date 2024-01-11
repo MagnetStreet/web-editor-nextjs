@@ -7,7 +7,7 @@ import '@/fonts/font-awesome/style.scss';
 
 import MainAppBar from '@/components/shared/MainAppBar/MainAppBar';
 import SideIconMenu from '@/components/shared/SideIconMenu/SideIconMenu';
-import StyleStepper from '@/components/shared/StyleStepper/StyleStepper';
+import StepperWrapper from '@/components/shared/Stepper/StepperWrapper';
 
 import customTheme from '@/styles/theme/customTheme';
 
@@ -23,7 +23,7 @@ export default function RootLayout({
         <ThemeProvider theme={customTheme}>
           <MainAppBar title='Fairytale Wedding' subtitle='RSVP Card' />
           <SideIconMenu />
-          <StyleStepper></StyleStepper>
+          <StepperWrapper></StepperWrapper>
           <Container>{children}</Container>
         </ThemeProvider>
       </body>

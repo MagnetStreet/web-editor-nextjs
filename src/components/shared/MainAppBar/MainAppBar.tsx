@@ -1,4 +1,3 @@
-import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import { AppBar } from '@mui/material';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -42,7 +41,7 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
             <Button
               color='primary'
               variant='outlined'
-              startIcon={<VisibilityOutlinedIcon />}
+              startIcon={<i className='fa-eye-light'></i>}
             >
               preview
             </Button>

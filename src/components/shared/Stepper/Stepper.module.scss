@@ -1,0 +1,130 @@
+@import '@/styles/variables';
+
+.wrapper {
+  margin-left: 110px;
+  margin-bottom: 13px;
+  border-bottom: 1px solid $gray3;
+}
+
+.stepperLabel {
+  display: flex;
+  justify-content: center;
+  &.first {
+    align-items: flex-start;
+    text-align: flex-start;
+    justify-content: start;
+  }
+  &.last {
+    text-align: center;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+}
+.stepperStep {
+  flex-basis: 40%;
+  &:first-child,
+  &:last-child {
+    flex-basis: 20%;
+    padding: 0;
+  }
+}
+.stepperLabelContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.stepperSubWrapper {
+  margin-top: 0 !important;
+  padding: 10px 32px 14px;
+  border-top: 1px solid $gray3;
+}
+
+.colorlibStepIconRoot {
+  color: $gray3;
+  background-color: $white;
+  z-index: 1;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  font-size: 12px;
+  border-radius: 50%;
+  margin-top: 16px;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid $gray3;
+
+  &.completed {
+    color: $white;
+    border: none;
+    background-color: $secondaryBlue;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -6px;
+      left: -6px;
+      width: calc(100% + 12px);
+      height: calc(100% + 12px);
+      border-radius: 100%;
+      border: 4px solid rgba(97, 141, 230, 0.5);
+      box-sizing: border-box;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      width: calc(100% + 4px);
+      height: calc(100% + 4px);
+      border-radius: 100%;
+      background-color: transparent;
+      border: 2px solid $white;
+      box-sizing: border-box;
+    }
+  }
+  &.first {
+    left: 15px;
+  }
+  &.last {
+    right: 5px;
+    position: relative;
+  }
+}
+.colorlibConnector {
+  &.active {
+    &.line {
+      width: 50%;
+      position: relative;
+      background: linear-gradient(
+        90deg,
+        $secondaryBlue 55.17%,
+        $primary-color 100%
+      );
+
+      &::before {
+        content: '';
+        height: 4px;
+        width: 100%;
+        left: 100%;
+        position: absolute;
+        background-color: $gray4;
+      }
+    }
+  }
+
+  &.completed {
+    & .line {
+      background-color: $secondaryBlue;
+    }
+  }
+
+  &.line {
+    height: 4px;
+    border: 0;
+    background-color: $gray4;
+    border-radius: 1;
+  }
+}
