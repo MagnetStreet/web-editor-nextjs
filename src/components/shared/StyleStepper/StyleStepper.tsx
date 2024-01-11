@@ -1,7 +1,4 @@
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import ContentCopyOutlinedIcon from '@mui/icons-material/ContentCopyOutlined';
-import InventoryOutlinedIcon from '@mui/icons-material/InventoryOutlined';
-import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
+import { Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import Step from '@mui/material/Step';
 import StepConnector, {
@@ -13,44 +10,55 @@ import Stepper from '@mui/material/Stepper';
 import { styled } from '@mui/material/styles';
 import * as React from 'react';
 
+import styles from './StyleStepper.module.scss';
+
 const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
   [`&.${stepConnectorClasses.alternativeLabel}`]: {
-    top: 22,
+    top: 27,
   },
   [`&.${stepConnectorClasses.active}`]: {
     [`& .${stepConnectorClasses.line}`]: {
-      backgroundImage:
-        'linear-gradient( 95deg,rgb(242,113,33) 0%,rgb(233,64,87) 50%,rgb(138,35,135) 100%)',
+      width: '50%',
+      position: 'relative',
+      background: 'linear-gradient(90deg, #618DE6 55.17%, #5471A8 100%)',
+      '&::before': {
+        content: '""',
+        height: '4px',
+        width: '100%',
+        left: '100%',
+        position: 'absolute',
+        backgroundColor: '#E5EEFE',
+      },
     },
   },
   [`&.${stepConnectorClasses.completed}`]: {
     [`& .${stepConnectorClasses.line}`]: {
-      backgroundImage:
-        'linear-gradient( 95deg,rgb(242,113,33) 0%,rgb(233,64,87) 50%,rgb(138,35,135) 100%)',
+      backgroundColor: '#618DE6',
     },
   },
   [`& .${stepConnectorClasses.line}`]: {
-    height: 3,
+    height: 4,
     border: 0,
-    backgroundColor:
-      theme.palette.mode === 'dark' ? theme.palette.grey[800] : '#eaeaf0',
+    backgroundColor: '#E5EEFE',
     borderRadius: 1,
   },
 }));
 
 const ColorlibStepIconRoot = styled('div')<{
   ownerState: { completed?: boolean; active?: boolean };
-}>(({ theme, ownerState }) => ({
-  color: '#70777F',
+}>(({ ownerState }) => ({
+  color: '#CCCDCD',
   backgroundColor: '#fff',
   zIndex: 1,
-  width: 50,
-  height: 50,
+  width: 25,
+  height: 25,
   display: 'flex',
+  fontSize: '12px',
   borderRadius: '50%',
+  marginTop: '16px',
   justifyContent: 'center',
   alignItems: 'center',
-  border: '1px solid #CCCDCD',
+  border: '2px solid #CCCDCD',
   ...(ownerState.completed && {
     color: '#fff',
     border: 'none',
@@ -59,10 +67,10 @@ const ColorlibStepIconRoot = styled('div')<{
     '&::before': {
       content: '""',
       position: 'absolute',
-      top: '-4px',
-      left: '-4px',
-      width: 'calc(100% + 8px)',
-      height: 'calc(100% + 8px)',
+      top: '-6px',
+      left: '-6px',
+      width: 'calc(100% + 12px)',
+      height: 'calc(100% + 12px)',
       borderRadius: '100%',
       border: '4px solid rgba(97, 141, 230, 0.50)',
       boxSizing: 'border-box',
@@ -70,10 +78,10 @@ const ColorlibStepIconRoot = styled('div')<{
     '&::after': {
       content: '""',
       position: 'absolute',
-      top: '0px',
-      left: '0px',
-      width: 'calc(100%)',
-      height: 'calc(100%)',
+      top: '-2px',
+      left: '-2px',
+      width: 'calc(100% + 4px)',
+      height: 'calc(100% + 4px)',
       borderRadius: '100%',
       backgroundColor: 'transparent',
       border: '4px solid #fff',
@@ -86,10 +94,10 @@ function ColorlibStepIcon(props: StepIconProps) {
   const { active, completed, className } = props;
 
   const icons: { [index: string]: React.ReactElement } = {
-    1: <ContentCopyOutlinedIcon />,
-    2: <AddShoppingCartIcon />,
-    3: <LocalShippingOutlinedIcon />,
-    4: <InventoryOutlinedIcon />,
+    1: <i className='fa-cart-shopping'></i>,
+    2: <i className='fa-cart-shopping'></i>,
+    3: <i className='fa-truck-fast-sharp-light'></i>,
+    4: <i className='fa-cart-shopping'></i>,
   };
 
   return (
@@ -110,19 +118,29 @@ export default function StyleStepper() {
       sx={{ width: '100%' }}
       spacing={4}
       height={98}
-      marginTop='20px'
-      borderBottom='1px solid '
+      marginLeft='110px'
+      marginBottom='13px'
+      width='calc(100% - 110px)'
+      borderBottom='1px solid #CCCDCD'
     >
       <Stepper
+        className={styles.styles}
         alternativeLabel
-        activeStep={1}
+        activeStep={2}
         connector={<ColorlibConnector />}
       >
-        {steps.map((label) => (
+        {steps.map((label, index) => (
           <Step key={label}>
-            <StepLabel StepIconComponent={ColorlibStepIcon}>
-              <p>Step 1</p>
-              <b>{label}</b>
+            <StepLabel
+              StepIconComponent={ColorlibStepIcon}
+              sx={{
+                '& .MuiStepLabel-label': {
+                  marginTop: '9px',
+                },
+              }}
+            >
+              <Typography variant='h3'>Step {index + 1}</Typography>
+              <Typography variant='h2'>{label}</Typography>
             </StepLabel>
           </Step>
         ))}

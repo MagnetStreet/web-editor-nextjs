@@ -1,5 +1,3 @@
-import MenuIcon from '@mui/icons-material/Menu';
-import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import { AppBar } from '@mui/material';
 import Box from '@mui/material/Box';
@@ -34,7 +32,7 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
             aria-label='menu'
             sx={{ mr: 3 }}
           >
-            <MenuIcon />
+            <i className='fa-bars-sharp-light'></i>
           </IconButton>
           <Box className={styles.typoContainer}>
             <Typography variant='h2'>{subtitle}</Typography>
@@ -51,7 +49,7 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
             <Button
               color='primary'
               variant='outlined'
-              startIcon={<SaveOutlinedIcon />}
+              startIcon={<i className='fa-floppy-disk-sharp-light'></i>}
             >
               Save
             </Button>

@@ -64,8 +64,15 @@ const customTheme = createTheme(theme, {
       color: vars.colors.black,
       fontFamily: 'Lato',
       fontSize: vars.size.md,
-      fontWeight: 400,
+      fontWeight: 700,
       lineHeight: 'normal',
+    },
+    h3: {
+      color: vars.colors.grayDark,
+      fontFamily: 'Lato',
+      fontSize: vars.size.sm,
+      textTransform: 'uppercase',
+      fontWeight: 400,
     },
     subtitle2: {
       color: vars.colors.grayDark,

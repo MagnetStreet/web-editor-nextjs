@@ -38,13 +38,13 @@
 
 .helpContainer,
 .iconContainer {
-  svg {
+  i {
     font-size: 32px;
     color: $grayDark;
   }
   &:hover,
   &.active {
-    svg,
+    i,
     h6 {
       color: $primaryLight;
     }

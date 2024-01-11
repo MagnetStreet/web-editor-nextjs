@@ -1,7 +1,5 @@
 import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
-import FormatColorTextIcon from '@mui/icons-material/FormatColorText';
-import InsertPhotoOutlinedIcon from '@mui/icons-material/InsertPhotoOutlined';
 import InterestsOutlinedIcon from '@mui/icons-material/InterestsOutlined';
 import PentagonOutlinedIcon from '@mui/icons-material/PentagonOutlined';
 import Box from '@mui/material/Box';
@@ -30,11 +28,11 @@ const SideIconMenu = () => {
     },
     {
       name: 'Color',
-      icon: <i className='fa-grid-2-sharp-light'></i>,
+      icon: <i className='fa-case-normal'></i>,
     },
     {
       name: 'Text',
-      icon: <FormatColorTextIcon />,
+      icon: <i className='fa-case-normal'></i>,
     },
     {
       name: 'Shape',
@@ -46,7 +44,7 @@ const SideIconMenu = () => {
     },
     {
       name: 'Images',
-      icon: <InsertPhotoOutlinedIcon />,
+      icon: <i className='fa-image-sharp-light'></i>,
     },
   ];
 
