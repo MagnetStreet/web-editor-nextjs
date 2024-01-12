@@ -8,7 +8,6 @@ export interface SideMenuState {
 
 const useSideMenuStore = create<SideMenuState>((set) => ({
   activeLayoutName: 'Layout',
-
   setActiveLayoutName: (newLayoutName: string) =>
     set({ activeLayoutName: newLayoutName }),
 }));

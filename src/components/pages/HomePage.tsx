@@ -1,4 +1,5 @@
 'use client';
+
 import useSideMenuStore, { SideMenuState } from '@/stores/useSideMenuStore';
 
 export default function HomePage() {

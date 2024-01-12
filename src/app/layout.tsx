@@ -1,10 +1,12 @@
 'use client';
-import { Container, ThemeProvider } from '@mui/material';
+import { Box, ThemeProvider } from '@mui/material';
+import { Stack } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import * as React from 'react';
 
 import '@/fonts/font-awesome/style.scss';
 
+import FooterMenu from '@/components/shared/FooterMenu/FooterMenu';
 import MainAppBar from '@/components/shared/MainAppBar/MainAppBar';
 import SideIconMenu from '@/components/shared/SideIconMenu/SideIconMenu';
 import StepperWrapper from '@/components/shared/Stepper/StepperWrapper';
@@ -22,9 +24,22 @@ export default function RootLayout({
       <body>
         <ThemeProvider theme={customTheme}>
           <MainAppBar title='Fairytale Wedding' subtitle='RSVP Card' />
-          <SideIconMenu />
-          <StepperWrapper></StepperWrapper>
-          <Container>{children}</Container>
+          <Stack direction='row'>
+            <SideIconMenu />
+            <Stack width='100%' position='relative'>
+              <StepperWrapper />
+              <Box
+                sx={{
+                  height: '100%',
+                  //Make this grow to take all screen available
+                  backgroundColor: customTheme.palette.grey[100],
+                }}
+              >
+                {children}
+              </Box>
+              <FooterMenu />
+            </Stack>
+          </Stack>
         </ThemeProvider>
       </body>
     </html>
