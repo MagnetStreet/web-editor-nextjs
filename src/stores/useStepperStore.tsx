@@ -53,7 +53,7 @@ const useStepperStore = create<StepperState>((set) => ({
   setActiveStep: (newActive: number) => set({ activeStep: newActive }),
   setActiveSubStep: (newActive: number) => set({ activeSubStep: newActive }),
   handleNextStepClick: () => {
-    set((state) => {
+    set((state: StepperState) => {
       const { activeStep, activeSubStep, steps } = state;
       if (activeStep < steps.length) {
         if (activeSubStep < steps[activeStep - 1].substeps.length) {
@@ -67,7 +67,7 @@ const useStepperStore = create<StepperState>((set) => ({
     });
   },
   handleBackStepClick: () => {
-    set((state) => {
+    set((state: StepperState) => {
       const { activeStep, activeSubStep } = state;
 
       if (activeStep > 1) {
