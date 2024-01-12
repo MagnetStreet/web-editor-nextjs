@@ -7,5 +7,5 @@ export default function HomePage() {
     (state) => state
   );
 
-  return <main>Hello World the active layout is {activeLayoutName}</main>;
+  return <div>Hello World the active layout is {activeLayoutName}</div>;
 }

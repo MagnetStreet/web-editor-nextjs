@@ -32,13 +32,15 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const FooterMenu = () => {
   const theme = useTheme();
-  const { steps, activeStep, activeSubStep, setActiveStep } =
+  const { handleNextStepClick, handleBackStepClick } =
     useStepperStore<StepperState>((state) => state);
-  const { zoom, isNextStepEnable, setNextStepEnable, setZoom } =
-    useGeneralControlsStore<GeneralControlsState>((state) => state);
+  const { zoom, setZoom } = useGeneralControlsStore<GeneralControlsState>(
+    (state) => state
+  );
 
   return (
     <Grid
+      container
       direction='row'
       justifyContent='flex-end'
       alignItems='center'
@@ -80,6 +82,7 @@ const FooterMenu = () => {
             <Divider orientation='vertical' flexItem />
             <Typography
               sx={{
+                cursor: 'pointer',
                 color: theme.palette.primary.main,
               }}
             >
@@ -93,12 +96,14 @@ const FooterMenu = () => {
           <Button
             variant='outlined'
             startIcon={<i className='fa-arrow-left'></i>}
+            onClick={handleBackStepClick}
           >
             Back
           </Button>
           <Button
             variant='contained'
             endIcon={<i className='fa-arrow-right'></i>}
+            onClick={handleNextStepClick}
           >
             Next
           </Button>

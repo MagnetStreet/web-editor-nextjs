@@ -91,7 +91,6 @@ export const StyledStepper: React.FC<StyleadStepperProps> = ({
   const totalSubSteps = steps[activeStep - 1].substeps.length;
   const completedPercentage = ((activeSubStep - 1) / totalSubSteps) * 60 + 20;
 
-  console.log('completedPercentage', completedPercentage);
   return (
     <Stepper
       sx={{

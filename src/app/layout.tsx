@@ -1,6 +1,5 @@
 'use client';
-import { Box, ThemeProvider } from '@mui/material';
-import { Stack } from '@mui/material';
+import { Box, Stack, ThemeProvider } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import * as React from 'react';
 

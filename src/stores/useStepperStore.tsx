@@ -7,11 +7,14 @@ export interface StepperState {
   activeStep: number;
   activeSubStep: number;
   setActiveStep?: (index: number) => void;
+  setActiveSubStep?: (index: number) => void;
+  handleNextStepClick?: () => void;
+  handleBackStepClick?: () => void;
 }
 
 const useStepperStore = create<StepperState>((set) => ({
-  activeStep: 3,
-  activeSubStep: 3,
+  activeStep: 1,
+  activeSubStep: 1,
   steps: [
     {
       index: 1,
@@ -37,7 +40,7 @@ const useStepperStore = create<StepperState>((set) => ({
       substeps: [
         'Additionals Invitation',
         'Some Other steps',
-        'Some Other steps',
+        'Some Other steps2',
       ],
     },
     {
@@ -48,6 +51,41 @@ const useStepperStore = create<StepperState>((set) => ({
     },
   ],
   setActiveStep: (newActive: number) => set({ activeStep: newActive }),
+  setActiveSubStep: (newActive: number) => set({ activeSubStep: newActive }),
+  handleNextStepClick: () => {
+    set((state) => {
+      const { activeStep, activeSubStep, steps } = state;
+      if (activeStep < steps.length) {
+        if (activeSubStep < steps[activeStep - 1].substeps.length) {
+          return { activeSubStep: activeSubStep + 1 };
+        } else {
+          return { activeStep: activeStep + 1, activeSubStep: 1 };
+        }
+      }
+
+      return state;
+    });
+  },
+  handleBackStepClick: () => {
+    set((state) => {
+      const { activeStep, activeSubStep } = state;
+
+      if (activeStep > 1) {
+        if (activeSubStep > 1) {
+          return { activeSubStep: activeSubStep - 1 };
+        } else {
+          const prevStepLastSubStep =
+            state.steps[activeStep - 2].substeps.length;
+          return {
+            activeStep: activeStep - 1,
+            activeSubStep: prevStepLastSubStep,
+          };
+        }
+      }
+
+      return state;
+    });
+  },
 }));
 
 export default useStepperStore;
