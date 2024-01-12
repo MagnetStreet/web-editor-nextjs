@@ -93,38 +93,3 @@
     position: relative;
   }
 }
-.colorlibConnector {
-  &.active {
-    &.line {
-      width: 50%;
-      position: relative;
-      background: linear-gradient(
-        90deg,
-        $secondaryBlue 55.17%,
-        $primary-color 100%
-      );
-
-      &::before {
-        content: '';
-        height: 4px;
-        width: 100%;
-        left: 100%;
-        position: absolute;
-        background-color: $gray4;
-      }
-    }
-  }
-
-  &.completed {
-    & .line {
-      background-color: $secondaryBlue;
-    }
-  }
-
-  &.line {
-    height: 4px;
-    border: 0;
-    background-color: $gray4;
-    border-radius: 1;
-  }
-}

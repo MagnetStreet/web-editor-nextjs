@@ -12,40 +12,48 @@ import * as React from 'react';
 import styles from './Stepper.module.scss';
 
 import { StepperStep } from '@/types';
-const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
-  [`&.${stepConnectorClasses.root}`]: {
-    top: 27,
-    background: 'red',
-    left: 'calc(-50% + 20px)',
-    right: 'calc(0% + 20px)',
-  },
-  [`&.${stepConnectorClasses.active}`]: {
-    [`& .${stepConnectorClasses.line}`]: {
-      width: '50%',
-      position: 'relative',
-      background: 'linear-gradient(90deg, #618DE6 55.17%, #5471A8 100%)',
-      '&::before': {
-        content: '""',
-        height: '4px',
-        width: '100%',
-        left: '100%',
-        position: 'absolute',
-        backgroundColor: '#E5EEFE',
+
+interface ColorlibConnectorProps {
+  percentage: number;
+}
+
+const ColorlibConnector = styled(StepConnector)<ColorlibConnectorProps>(
+  ({ percentage }) => ({
+    [`&.${stepConnectorClasses.root}`]: {
+      top: 27,
+      left: 'calc(-50% + 20px)',
+      right: 'calc(0% + 20px)',
+      overflow: 'hidden',
+    },
+    [`&.${stepConnectorClasses.active}`]: {
+      [`& .${stepConnectorClasses.line}`]: {
+        width: `${percentage}%`,
+        position: 'relative',
+        background: `linear-gradient(90deg, #618DE6 55.17%, #5471A8 100%)`,
+        '&::before': {
+          content: '""',
+          height: '4px',
+          zIndex: -1,
+          width: `${400}%`,
+          left: `100%`,
+          position: 'absolute',
+          backgroundColor: '#E5EEFE',
+        },
       },
     },
-  },
-  [`&.${stepConnectorClasses.completed}`]: {
-    [`& .${stepConnectorClasses.line}`]: {
-      backgroundColor: '#618DE6',
+    [`&.${stepConnectorClasses.completed}`]: {
+      [`& .${stepConnectorClasses.line}`]: {
+        backgroundColor: '#618DE6',
+      },
     },
-  },
-  [`& .${stepConnectorClasses.line}`]: {
-    height: 4,
-    border: 0,
-    backgroundColor: '#E5EEFE',
-    borderRadius: 1,
-  },
-}));
+    [`& .${stepConnectorClasses.line}`]: {
+      height: 4,
+      border: 0,
+      backgroundColor: '#E5EEFE',
+      borderRadius: 1,
+    },
+  })
+);
 
 function ColorlibStepIcon(
   props: StepIconProps & { iconClass: string } & { isFirst: string } & {
@@ -79,6 +87,11 @@ export const StyledStepper: React.FC<StyleadStepperProps> = ({
   activeStep,
   activeSubStep,
 }) => {
+  // Get the percentage for the bar according to the current sub steps active value
+  const totalSubSteps = steps[activeStep - 1].substeps.length;
+  const completedPercentage = ((activeSubStep - 1) / totalSubSteps) * 60 + 20;
+
+  console.log('completedPercentage', completedPercentage);
   return (
     <Stepper
       sx={{
@@ -87,7 +100,7 @@ export const StyledStepper: React.FC<StyleadStepperProps> = ({
       }}
       alternativeLabel
       activeStep={activeStep}
-      connector={<ColorlibConnector />}
+      connector={<ColorlibConnector percentage={completedPercentage} />}
     >
       {steps.map(({ index, displayName, icon }) => {
         const isFirst = index === 1 ? styles.first : '';

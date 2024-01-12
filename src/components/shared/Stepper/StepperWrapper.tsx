@@ -14,14 +14,14 @@ export default function StepperWrapper() {
 
   return (
     <Stack className={styles.wrapper} spacing={4}>
-      {steps && activeStep && (
+      {steps && (
         <StyledStepper
           steps={steps}
           activeStep={activeStep}
           activeSubStep={activeSubStep}
         />
       )}
-      {activeStep && steps && (
+      {steps && (
         <SubProgressSteps
           activeStep={steps[activeStep - 1]}
           activeSubStep={activeSubStep}

@@ -10,8 +10,8 @@ export interface StepperState {
 }
 
 const useStepperStore = create<StepperState>((set) => ({
-  activeStep: 1,
-  activeSubStep: 2,
+  activeStep: 3,
+  activeSubStep: 3,
   steps: [
     {
       index: 1,
@@ -34,13 +34,17 @@ const useStepperStore = create<StepperState>((set) => ({
       index: 3,
       displayName: 'Shipping',
       icon: 'fa-truck-fast-sharp-light',
-      substeps: ['Additionals Invitation', 'Some Other steps'],
+      substeps: [
+        'Additionals Invitation',
+        'Some Other steps',
+        'Some Other steps',
+      ],
     },
     {
       index: 4,
       displayName: 'Review',
       icon: 'fa-clipboard-check-sharp-light',
-      substeps: ['Final Review', 'Some Other steps', 'Other Review'],
+      substeps: ['Final Review'],
     },
   ],
   setActiveStep: (newActive: number) => set({ activeStep: newActive }),
