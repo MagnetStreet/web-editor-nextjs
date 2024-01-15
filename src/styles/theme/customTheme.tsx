@@ -96,7 +96,9 @@ const customTheme = createTheme(theme, {
     MuiButton: {
       styleOverrides: {
         root: {
-          fontFamily: 'FS Sally',
+          fontFamily: {
+            sans: ['var(--font-inter)'],
+          },
           textTransform: 'capitalize',
           fontSize: '1rem',
           lineHeight: '20px',
