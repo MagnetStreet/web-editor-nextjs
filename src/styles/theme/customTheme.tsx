@@ -62,14 +62,18 @@ const customTheme = createTheme(theme, {
     },
     h2: {
       color: vars.colors.black,
-      fontFamily: 'Lato',
+      fontFamily: {
+        sans: ['var(--font-inter)'],
+      },
       fontSize: vars.size.md,
       fontWeight: 700,
       lineHeight: 'normal',
     },
     h3: {
       color: vars.colors.grayDark,
-      fontFamily: 'Lato',
+      fontFamily: {
+        sans: ['var(--font-inter)'],
+      },
       fontSize: vars.size.sm,
       textTransform: 'uppercase',
       fontWeight: 400,
