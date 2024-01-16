@@ -8,3 +8,11 @@ export interface StepperStep {
   icon: string;
   substeps: string[];
 }
+
+export interface Sizes {
+  xs?: string;
+  sm?: string;
+  md?: string;
+  lg?: string;
+  xl?: string;
+}

@@ -61,7 +61,6 @@ interface StyleadStepperProps {
 export const StyledStepper: React.FC<StyleadStepperProps> = ({
   steps,
   activeStep,
-  activeSubStep,
 }) => {
   const theme = useTheme();
   return (

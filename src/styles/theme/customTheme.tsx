@@ -34,7 +34,8 @@ const theme = createTheme({
     grey: {
       100: '#EFEFEF',
       200: '#CCCCCC',
-      300: '#70777F',
+      300: '#CCCDCD',
+      400: '#70777F',
     },
     common: {
       white: vars.colors.white,
