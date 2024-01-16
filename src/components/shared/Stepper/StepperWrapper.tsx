@@ -23,7 +23,7 @@ export default function StepperWrapper() {
       )}
       {steps && (
         <SubProgressSteps
-          activeStep={steps[activeStep - 1]}
+          activeStep={steps[activeStep]}
           activeSubStep={activeSubStep}
         />
       )}

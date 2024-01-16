@@ -13,8 +13,8 @@ export interface StepperState {
 }
 
 const useStepperStore = create<StepperState>((set) => ({
-  activeStep: 1,
-  activeSubStep: 1,
+  activeStep: 3,
+  activeSubStep: 0,
   steps: [
     {
       index: 1,
@@ -56,7 +56,7 @@ const useStepperStore = create<StepperState>((set) => ({
     set((state: StepperState) => {
       const { activeStep, activeSubStep, steps } = state;
       if (activeStep < steps.length) {
-        if (activeSubStep < steps[activeStep - 1].substeps.length) {
+        if (activeSubStep < steps[activeStep].substeps.length) {
           return { activeSubStep: activeSubStep + 1 };
         } else {
           return { activeStep: activeStep + 1, activeSubStep: 1 };
@@ -70,20 +70,15 @@ const useStepperStore = create<StepperState>((set) => ({
     set((state: StepperState) => {
       const { activeStep, activeSubStep } = state;
 
-      if (activeStep > 1) {
-        if (activeSubStep > 1) {
-          return { activeSubStep: activeSubStep - 1 };
-        } else {
-          const prevStepLastSubStep =
-            state.steps[activeStep - 2].substeps.length;
-          return {
-            activeStep: activeStep - 1,
-            activeSubStep: prevStepLastSubStep,
-          };
-        }
+      if (activeSubStep > 0) {
+        return { activeSubStep: activeSubStep };
+      } else {
+        const prevStepLastSubStep = state.steps[activeStep - 1].substeps.length;
+        return {
+          activeStep: activeStep - 1,
+          activeSubStep: prevStepLastSubStep,
+        };
       }
-
-      return state;
     });
   },
 }));

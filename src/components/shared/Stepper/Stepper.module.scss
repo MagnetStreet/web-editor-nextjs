@@ -2,30 +2,19 @@
 
 .wrapper {
   width: 100%;
+  overflow: hidden;
   border-bottom: 1px solid $gray3;
 }
 
+.stepper {
+  height: 200px;
+  width: 125%;
+  margin-left: -12.5% !important;
+}
+
 .stepperLabel {
-  display: flex;
-  justify-content: center;
-  &.first {
-    align-items: flex-start;
-    text-align: flex-start;
-    justify-content: start;
-  }
-  &.last {
-    text-align: center;
-    align-items: flex-end;
-    justify-content: flex-end;
-  }
 }
 .stepperStep {
-  flex-basis: 40%;
-  &:first-child,
-  &:last-child {
-    flex-basis: 20%;
-    padding: 0;
-  }
 }
 .stepperLabelContainer {
   display: flex;
@@ -43,10 +32,10 @@
   color: $gray3;
   background-color: $white;
   z-index: 1;
-  width: 25px;
-  height: 25px;
+  width: 32px;
+  height: 32px;
   display: flex;
-  font-size: 12px;
+  font-size: 14px;
   border-radius: 50%;
   margin-top: 16px;
   justify-content: center;
@@ -58,37 +47,22 @@
     border: none;
     background-color: $secondaryBlue;
     position: relative;
+  }
 
-    &::before {
-      content: '';
-      position: absolute;
-      top: -6px;
-      left: -6px;
-      width: calc(100% + 12px);
-      height: calc(100% + 12px);
-      border-radius: 100%;
-      border: 4px solid rgba(97, 141, 230, 0.5);
-      box-sizing: border-box;
-    }
-
+  &.active {
+    background-color: $secondaryBlue;
+    position: relative;
+    border: none;
     &::after {
       content: '';
       position: absolute;
-      top: -2px;
-      left: -2px;
-      width: calc(100% + 4px);
-      height: calc(100% + 4px);
+      top: 8px;
+      left: 8px;
+      width: 16px;
+      height: 16px;
       border-radius: 100%;
-      background-color: transparent;
-      border: 2px solid $white;
-      box-sizing: border-box;
+      background-color: $white;
+      border: none;
     }
-  }
-  &.first {
-    left: 15px;
-  }
-  &.last {
-    right: 5px;
-    position: relative;
   }
 }

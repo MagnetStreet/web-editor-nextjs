@@ -13,47 +13,30 @@ import styles from './Stepper.module.scss';
 
 import { StepperStep } from '@/types';
 
-interface ColorlibConnectorProps {
-  percentage: number;
-}
-
-const ColorlibConnector = styled(StepConnector)<ColorlibConnectorProps>(
-  ({ percentage }) => ({
-    [`&.${stepConnectorClasses.root}`]: {
-      top: 27,
-      left: 'calc(-50% + 20px)',
-      right: 'calc(0% + 20px)',
-      overflow: 'hidden',
-    },
-    [`&.${stepConnectorClasses.active}`]: {
-      [`& .${stepConnectorClasses.line}`]: {
-        width: `${percentage}%`,
-        position: 'relative',
-        background: `linear-gradient(90deg, #618DE6 55.17%, #5471A8 100%)`,
-        '&::before': {
-          content: '""',
-          height: '4px',
-          zIndex: -1,
-          width: `${400}%`,
-          left: `100%`,
-          position: 'absolute',
-          backgroundColor: '#E5EEFE',
-        },
-      },
-    },
-    [`&.${stepConnectorClasses.completed}`]: {
-      [`& .${stepConnectorClasses.line}`]: {
-        backgroundColor: '#618DE6',
-      },
-    },
+const ColorlibConnector = styled(StepConnector)(() => ({
+  [`&.${stepConnectorClasses.root}`]: {
+    top: 30,
+    left: 'calc(-50% + 16px)',
+    right: 'calc(50% + 16px)',
+    width: '100%',
+  },
+  [`&.${stepConnectorClasses.active}`]: {
     [`& .${stepConnectorClasses.line}`]: {
-      height: 4,
-      border: 0,
-      backgroundColor: '#E5EEFE',
-      borderRadius: 1,
+      background: `linear-gradient(90deg, #618DE6 55.17%, #5471A8 100%)`,
     },
-  })
-);
+  },
+  [`&.${stepConnectorClasses.completed}`]: {
+    [`& .${stepConnectorClasses.line}`]: {
+      backgroundColor: '#618DE6',
+    },
+  },
+  [`& .${stepConnectorClasses.line}`]: {
+    height: 4,
+    border: 0,
+    backgroundColor: '#E5EEFE',
+    borderRadius: 1,
+  },
+}));
 
 function ColorlibStepIcon(
   props: StepIconProps & { iconClass: string } & { isFirst: string } & {
@@ -63,6 +46,7 @@ function ColorlibStepIcon(
   const { active, completed, className, iconClass, isFirst, isLast } = props;
   const rootClass = `
   ${styles.colorlibStepIconRoot} 
+  ${active ? styles.active : ''}
   ${completed ? styles.completed : ''}
   ${isFirst ? styles.first : ''}
   ${isLast ? styles.last : ''}
@@ -70,9 +54,7 @@ function ColorlibStepIcon(
   `;
 
   return (
-    <Box className={rootClass}>
-      <i className={iconClass}></i>
-    </Box>
+    <Box className={rootClass}>{!active && <i className={iconClass}></i>}</Box>
   );
 }
 
@@ -87,10 +69,6 @@ export const StyledStepper: React.FC<StyleadStepperProps> = ({
   activeStep,
   activeSubStep,
 }) => {
-  // Get the percentage for the bar according to the current sub steps active value
-  const totalSubSteps = steps[activeStep - 1].substeps.length;
-  const completedPercentage = ((activeSubStep - 1) / totalSubSteps) * 60 + 20;
-
   return (
     <Stepper
       sx={{
@@ -99,7 +77,8 @@ export const StyledStepper: React.FC<StyleadStepperProps> = ({
       }}
       alternativeLabel
       activeStep={activeStep}
-      connector={<ColorlibConnector percentage={completedPercentage} />}
+      className={styles.stepper}
+      connector={<ColorlibConnector />}
     >
       {steps.map(({ index, displayName, icon }) => {
         const isFirst = index === 1 ? styles.first : '';

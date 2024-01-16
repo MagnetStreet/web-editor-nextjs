@@ -2,16 +2,18 @@ import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
-import styles from './SideIconMenu.module.scss';
+import styles from './LateralContextualMenu.module.scss';
 
-import useSideMenuStore, { SideMenuState } from '@/stores/useSideMenuStore';
+import useSideMenuStore, {
+  SideMenuState,
+} from '@/stores/useLateralContextualMenuStore';
 
 interface IconObj {
   name: string;
   icon: ReactJSXElement;
 }
 
-const SideIconMenu = () => {
+const LateralContextualMenu = () => {
   const { activeLayoutName, setActiveLayoutName } =
     useSideMenuStore<SideMenuState>((state) => state);
 
@@ -66,4 +68,4 @@ const SideIconMenu = () => {
   );
 };
 
-export default SideIconMenu;
+export default LateralContextualMenu;

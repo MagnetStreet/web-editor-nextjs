@@ -7,8 +7,8 @@ import * as React from 'react';
 import '@/fonts/font-awesome/style.scss';
 
 import FooterMenu from '@/components/shared/FooterMenu/FooterMenu';
+import LateralContextualMenu from '@/components/shared/LateralContextualMenu/LateralContextualMenu';
 import MainAppBar from '@/components/shared/MainAppBar/MainAppBar';
-import SideIconMenu from '@/components/shared/SideIconMenu/SideIconMenu';
 import StepperWrapper from '@/components/shared/Stepper/StepperWrapper';
 
 import customTheme from '@/styles/theme/customTheme';
@@ -33,7 +33,7 @@ export default function RootLayout({
           <main className={`${lato.variable} font-sans`}>
             <MainAppBar title='Fairytale Wedding' subtitle='RSVP Card' />
             <Stack direction='row'>
-              <SideIconMenu />
+              <LateralContextualMenu />
               <Stack width='100%' position='relative'>
                 <StepperWrapper />
                 <Box
