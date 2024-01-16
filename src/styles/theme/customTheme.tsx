@@ -10,6 +10,7 @@ const vars = {
   colors: {
     primaryLight: '#2496FF',
     primaryColor: '#5471A8',
+    secondaryLight: '#618DE6',
     white: '#ffffff',
     black: '#000',
     gray1: '#CCCCCC',
@@ -27,6 +28,7 @@ const theme = createTheme({
       main: vars.colors.primaryColor,
     },
     secondary: {
+      light: vars.colors.secondaryLight,
       main: vars.colors.white,
     },
     grey: {

@@ -13,11 +13,10 @@ export interface StepperState {
 }
 
 const useStepperStore = create<StepperState>((set) => ({
-  activeStep: 3,
+  activeStep: 0,
   activeSubStep: 0,
   steps: [
     {
-      index: 1,
       displayName: 'Products',
       icon: 'fa-cards-blank-sharp-light',
       substeps: [
@@ -28,13 +27,11 @@ const useStepperStore = create<StepperState>((set) => ({
       ],
     },
     {
-      index: 2,
       displayName: 'Additionals',
       icon: 'fa-cart-plus-sharp-light',
       substeps: ['Additionals Invitation', 'Some Other steps'],
     },
     {
-      index: 3,
       displayName: 'Shipping',
       icon: 'fa-truck-fast-sharp-light',
       substeps: [
@@ -44,7 +41,6 @@ const useStepperStore = create<StepperState>((set) => ({
       ],
     },
     {
-      index: 4,
       displayName: 'Review',
       icon: 'fa-clipboard-check-sharp-light',
       substeps: ['Final Review'],
@@ -55,11 +51,11 @@ const useStepperStore = create<StepperState>((set) => ({
   handleNextStepClick: () => {
     set((state: StepperState) => {
       const { activeStep, activeSubStep, steps } = state;
-      if (activeStep < steps.length) {
-        if (activeSubStep < steps[activeStep].substeps.length) {
+      if (activeStep < steps.length - 1) {
+        if (activeSubStep < steps[activeStep].substeps.length - 1) {
           return { activeSubStep: activeSubStep + 1 };
         } else {
-          return { activeStep: activeStep + 1, activeSubStep: 1 };
+          return { activeStep: activeStep + 1, activeSubStep: 0 };
         }
       }
 
@@ -68,15 +64,20 @@ const useStepperStore = create<StepperState>((set) => ({
   },
   handleBackStepClick: () => {
     set((state: StepperState) => {
-      const { activeStep, activeSubStep } = state;
-
-      if (activeSubStep > 0) {
-        return { activeSubStep: activeSubStep };
+      const { activeStep, activeSubStep, steps } = state;
+      if (activeSubStep === 0) {
+        if (activeStep !== 0) {
+          const prevStepLastSubStep =
+            state.steps[activeStep - 1].substeps.length - 1;
+          return {
+            activeStep: activeStep - 1,
+            activeSubStep: prevStepLastSubStep,
+          };
+        }
+        return state;
       } else {
-        const prevStepLastSubStep = state.steps[activeStep - 1].substeps.length;
         return {
-          activeStep: activeStep - 1,
-          activeSubStep: prevStepLastSubStep,
+          activeSubStep: activeSubStep - 1,
         };
       }
     });

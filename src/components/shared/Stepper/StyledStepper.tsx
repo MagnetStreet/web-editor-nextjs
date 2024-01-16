@@ -6,7 +6,7 @@ import StepConnector, {
 import { StepIconProps } from '@mui/material/StepIcon';
 import StepLabel from '@mui/material/StepLabel';
 import Stepper from '@mui/material/Stepper';
-import { styled } from '@mui/material/styles';
+import { styled, useTheme } from '@mui/material/styles';
 import * as React from 'react';
 
 import styles from './Stepper.module.scss';
@@ -38,18 +38,12 @@ const ColorlibConnector = styled(StepConnector)(() => ({
   },
 }));
 
-function ColorlibStepIcon(
-  props: StepIconProps & { iconClass: string } & { isFirst: string } & {
-    isLast: string;
-  }
-) {
-  const { active, completed, className, iconClass, isFirst, isLast } = props;
+function ColorlibStepIcon(props: StepIconProps & { iconClass: string }) {
+  const { active, completed, className, iconClass } = props;
   const rootClass = `
   ${styles.colorlibStepIconRoot} 
   ${active ? styles.active : ''}
   ${completed ? styles.completed : ''}
-  ${isFirst ? styles.first : ''}
-  ${isLast ? styles.last : ''}
   ${className || ''}
   `;
 
@@ -69,6 +63,7 @@ export const StyledStepper: React.FC<StyleadStepperProps> = ({
   activeStep,
   activeSubStep,
 }) => {
+  const theme = useTheme();
   return (
     <Stepper
       sx={{
@@ -80,35 +75,36 @@ export const StyledStepper: React.FC<StyleadStepperProps> = ({
       className={styles.stepper}
       connector={<ColorlibConnector />}
     >
-      {steps.map(({ index, displayName, icon }) => {
-        const isFirst = index === 1 ? styles.first : '';
-        const isLast = index === steps.length ? styles.last : '';
+      {steps.map(({ displayName, icon }, index) => {
+        const isActiveClass = `${
+          activeStep === index ? styles.isStepActive : ''
+        }`;
+
         return (
-          <Step key={displayName} className={styles.stepperStep}>
+          <Step key={displayName}>
             <StepLabel
-              className={`
-              ${styles.stepperLabel} 
-              ${isFirst}
-              ${isLast}
-            `}
               StepIconComponent={(props) => (
-                <ColorlibStepIcon
-                  {...props}
-                  iconClass={icon}
-                  isFirst={isFirst}
-                  isLast={isLast}
-                />
+                <ColorlibStepIcon {...props} iconClass={icon} />
               )}
             >
               <Box
                 className={`
-                ${styles.stepperLabel} 
-                ${isFirst}
-                ${isLast}
+                ${styles.stepperLabel}
+                ${isActiveClass}
               `}
               >
                 <Box className={`{styles.stepperLabelContainer} `}>
-                  <Typography variant='h3'>Step {index}</Typography>
+                  <Typography
+                    variant='h3'
+                    sx={{
+                      color:
+                        activeStep === index
+                          ? theme.palette.secondary.light
+                          : 'black',
+                    }}
+                  >
+                    Step {index}
+                  </Typography>
                   <Typography variant='h2'>{displayName}</Typography>
                 </Box>
               </Box>

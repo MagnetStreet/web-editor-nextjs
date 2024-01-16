@@ -4,7 +4,6 @@ export interface PageParams {
 }
 
 export interface StepperStep {
-  index: number;
   displayName: string;
   icon: string;
   substeps: string[];

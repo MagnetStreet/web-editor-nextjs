@@ -30,7 +30,7 @@ export const SubProgressSteps: React.FC<SubProgressStepsProps> = ({
         >
           <i
             className={
-              index <= activeSubStep - 1
+              index <= activeSubStep
                 ? 'fa-circle-check-light'
                 : 'fa-circle-minus-sharp-light'
             }
@@ -38,7 +38,7 @@ export const SubProgressSteps: React.FC<SubProgressStepsProps> = ({
           <Typography
             sx={{
               fontSize: '12px',
-              fontWeight: index <= activeSubStep - 1 ? 700 : 400,
+              fontWeight: index <= activeSubStep ? 700 : 400,
             }}
           >
             {sub}
