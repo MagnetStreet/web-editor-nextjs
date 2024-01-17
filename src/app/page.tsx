@@ -1,7 +1,7 @@
-import HomePage from '@/components/pages/HomePage';
+import EditorPage from '@/components/pages/Editor/Editor';
 
 const Home = async () => {
-  return <HomePage></HomePage>;
+  return <EditorPage></EditorPage>;
 };
 
 export default Home;

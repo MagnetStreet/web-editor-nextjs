@@ -13,8 +13,9 @@ import { ChangeEvent } from 'react';
 
 import { CustomIcon } from '@/components/shared/CustomIcon';
 
-import useGeneralControlsStore, {
+import {
   GeneralControlsState,
+  useGeneralControlsStore,
 } from '@/stores/useGeneralControlsStore';
 import useStepperStore, { StepperState } from '@/stores/useStepperStore';
 

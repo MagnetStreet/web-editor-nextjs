@@ -9,6 +9,13 @@ export interface StepperStep {
   substeps: string[];
 }
 
+export interface EditorView {
+  id: number;
+  displayName: string;
+  tumbnailSrc: string;
+  src: string;
+}
+
 export interface Sizes {
   xs?: string;
   sm?: string;

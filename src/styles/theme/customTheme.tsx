@@ -66,7 +66,7 @@ const customTheme = createTheme(theme, {
     h2: {
       color: vars.colors.black,
       fontFamily: {
-        sans: ['var(--font-inter)'],
+        sans: ['var(--font-lato)'],
       },
       fontSize: vars.size.md,
       fontWeight: 700,
@@ -75,7 +75,7 @@ const customTheme = createTheme(theme, {
     h3: {
       color: vars.colors.grayDark,
       fontFamily: {
-        sans: ['var(--font-inter)'],
+        sans: ['var(--font-lato)'],
       },
       fontSize: vars.size.sm,
       textTransform: 'uppercase',
@@ -100,7 +100,7 @@ const customTheme = createTheme(theme, {
       styleOverrides: {
         root: {
           fontFamily: {
-            sans: ['var(--font-inter)'],
+            sans: ['var(--font-lato)'],
           },
           textTransform: 'capitalize',
           fontSize: '1rem',
@@ -109,6 +109,14 @@ const customTheme = createTheme(theme, {
           padding: '8px 16px',
           borderRadius: '4px',
           borderColor: 'theme.palette.primary.main',
+        },
+      },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          borderRadius: '8px',
+          boxShadow: '0px 4px 4px 0px #CBCBCB;',
         },
       },
     },

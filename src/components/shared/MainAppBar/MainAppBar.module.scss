@@ -26,5 +26,7 @@
 }
 
 .AppBarContainer {
+  box-shadow: none;
+  border-radius: 0;
   border: 1px solid $gray1;
 }
