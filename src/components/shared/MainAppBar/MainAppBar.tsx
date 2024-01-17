@@ -8,6 +8,8 @@ import * as React from 'react';
 
 import styles from './MainAppBar.module.scss';
 
+import { CustomIcon } from '@/components/shared/CustomIcon';
+
 interface MainAppBarProps {
   title: string;
   subtitle: string;
@@ -31,7 +33,14 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
             aria-label='menu'
             sx={{ mr: 3 }}
           >
-            <i className='fa-bars-sharp-light'></i>
+            <CustomIcon iconClass='fa-bars-sharp-light' />
+            <Box className={styles.notificationContainer}>
+              <CustomIcon
+                iconClass='fa-bell-light'
+                hideTextInMobile
+                fontSizeOverWrite='12px'
+              />
+            </Box>
           </IconButton>
           <Box className={styles.typoContainer}>
             <Typography variant='h2'>{subtitle}</Typography>
@@ -41,14 +50,21 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
             <Button
               color='primary'
               variant='outlined'
-              startIcon={<i className='fa-eye-light'></i>}
+              startIcon={
+                <CustomIcon iconClass='fa-eye-light' fontSizeOverWrite='18px' />
+              }
             >
               preview
             </Button>
             <Button
               color='primary'
               variant='outlined'
-              startIcon={<i className='fa-floppy-disk-sharp-light'></i>}
+              startIcon={
+                <CustomIcon
+                  iconClass='fa-floppy-disk-sharp-light'
+                  fontSizeOverWrite='18px'
+                />
+              }
             >
               Save
             </Button>

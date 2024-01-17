@@ -3,7 +3,7 @@ import { useTheme } from '@mui/system';
 
 import useScreenSize from '@/hooks/useScreenSize';
 
-import { IconWrapper } from '@/components/shared/IconWrapper';
+import { CustomIcon } from '@/components/shared/CustomIcon';
 
 export const ChangesController: React.FC = () => {
   const { isMobile, isTablet } = useScreenSize();
@@ -24,21 +24,21 @@ export const ChangesController: React.FC = () => {
         boxShadow: '0px 4px 4px 0px #CBCBCB',
       }}
     >
-      <IconWrapper
+      <CustomIcon
         text='Undo'
         iconClass='fa-arrow-rotate-left-light'
         hideTextInMobile
       />
-      <IconWrapper
+      <CustomIcon
         text='Redo'
         iconClass='fa-arrow-rotate-right-light'
         hideTextInMobile
       />
       {isSmallScreen && (
-        <IconWrapper iconClass='fa-arrows-rotate-light' hideTextInMobile />
+        <CustomIcon iconClass='fa-arrows-rotate-light' hideTextInMobile />
       )}
       {isSmallScreen && (
-        <IconWrapper iconClass='fa-eye-light' hideTextInMobile />
+        <CustomIcon iconClass='fa-eye-light' hideTextInMobile />
       )}
       <Box
         sx={{
@@ -46,9 +46,9 @@ export const ChangesController: React.FC = () => {
         }}
       >
         {isSmallScreen ? (
-          <IconWrapper iconClass='fa-comment-light' hideTextInMobile />
+          <CustomIcon iconClass='fa-comment-light' hideTextInMobile />
         ) : (
-          <IconWrapper
+          <CustomIcon
             iconClass='fa-arrows-rotate-light'
             hideTextInMobile
             text='Reset'

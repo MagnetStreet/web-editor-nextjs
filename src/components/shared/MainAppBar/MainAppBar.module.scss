@@ -1,8 +1,21 @@
 @import '@/styles/variables';
+@import '@/styles/mixins';
 
 .buttonContainer {
   display: flex;
   gap: 35px;
+}
+
+.notificationContainer {
+  @include flex-center;
+  color: $white;
+  height: 20px;
+  width: 20px;
+  border-radius: 100%;
+  background-color: $alert-color;
+  position: absolute;
+  top: 11px;
+  right: 0px;
 }
 
 .typoContainer {

@@ -11,6 +11,8 @@ import { styled } from '@mui/material/styles';
 import { useTheme } from '@mui/system';
 import { ChangeEvent } from 'react';
 
+import { CustomIcon } from '@/components/shared/CustomIcon';
+
 import useGeneralControlsStore, {
   GeneralControlsState,
 } from '@/stores/useGeneralControlsStore';
@@ -95,14 +97,18 @@ const FooterMenu = () => {
         <Stack direction='row' spacing={2} alignItems='center'>
           <Button
             variant='outlined'
-            startIcon={<i className='fa-arrow-left'></i>}
+            startIcon={
+              <CustomIcon iconClass='fa-arrow-left' fontSizeOverWrite='18px' />
+            }
             onClick={handleBackStepClick}
           >
             Back
           </Button>
           <Button
             variant='contained'
-            endIcon={<i className='fa-arrow-right'></i>}
+            endIcon={
+              <CustomIcon iconClass='fa-arrow-right' fontSizeOverWrite='18px' />
+            }
             onClick={handleNextStepClick}
           >
             Next
