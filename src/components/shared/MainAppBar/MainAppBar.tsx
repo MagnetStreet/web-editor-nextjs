@@ -29,7 +29,11 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
         elevation={0}
         className={styles.AppBarContainer}
       >
-        <Toolbar>
+        <Toolbar
+          sx={{
+            justifyContent: 'space-between',
+          }}
+        >
           <IconButton
             size='large'
             edge='start'
@@ -45,10 +49,12 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
               />
             </Box>
           </IconButton>
-          <Box className={styles.typoContainer}>
-            <Typography variant='h2'>{subtitle}</Typography>
-            <Typography variant='h1'>{title}</Typography>
-          </Box>
+          {isDesktop && (
+            <Box className={styles.typoContainer}>
+              <Typography variant='h2'>{subtitle}</Typography>
+              <Typography variant='h1'>{title}</Typography>
+            </Box>
+          )}
           <Box className={styles.buttonContainer}>
             {isDesktop && (
               <Button
