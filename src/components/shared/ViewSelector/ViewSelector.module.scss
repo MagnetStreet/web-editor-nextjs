@@ -21,6 +21,44 @@
   }
 }
 
+.viewWrapperMobile {
+  position: relative;
+}
+
+.viewButtonMobile {
+  @include flex-center;
+  gap: 4px;
+  padding: 8px 10px;
+  border-radius: 0px 0px 8px 8px;
+  background-color: white;
+  z-index: 2;
+  position: relative;
+  box-shadow: 0px 4px 4px 0px #cbcbcb;
+}
+.viewerMobileMenu {
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  top: -10px;
+}
+.viewerMobilePaper {
+  min-width: 100%;
+  left: 0 !important;
+  z-index: -1;
+  padding: 24px 6px;
+  overflow: auto;
+}
+.viewerMobileMenulist {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+}
+
+.checkIconbtn {
+  color: $sucess-color;
+  background-color: $white;
+}
+
 .checkIcon {
   position: absolute;
   z-index: 1;

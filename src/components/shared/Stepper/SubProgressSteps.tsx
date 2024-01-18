@@ -1,4 +1,4 @@
-import { Box, Divider, Stack, Typography } from '@mui/material';
+import { Box, Divider, Stack, Typography, useTheme } from '@mui/material';
 
 import styles from './Stepper.module.scss';
 
@@ -23,6 +23,7 @@ export const SubProgressSteps: React.FC<SubProgressStepsProps> = ({
   isDesktop,
   activeScreen,
 }) => {
+  const theme = useTheme();
   return (
     <>
       {isDesktop && (
@@ -63,14 +64,9 @@ export const SubProgressSteps: React.FC<SubProgressStepsProps> = ({
         </Stack>
       )}
       {!isDesktop && (
-        <Stack
-          paddingX='16px'
-          direction='row'
-          justifyContent='space-between'
-          alignContent='center'
-        >
+        <Stack className={styles.stepperSubWrapperMobile}>
           <Stack
-            alignContent='center'
+            alignItems='center'
             justifyContent='center'
             direction='row'
             gap={1}
@@ -80,16 +76,20 @@ export const SubProgressSteps: React.FC<SubProgressStepsProps> = ({
               gap={1}
               direction='row'
               justifyContent='center'
-              alignContent='center'
+              alignItems='center'
             >
-              <Typography>STEP {activeIndex + 1}</Typography>
+              <Typography color={theme.palette.grey[400]} fontSize='12px'>
+                STEP {activeIndex + 1}
+              </Typography>
               <Typography>
                 <b>{activeStepObj.displayName}</b>
               </Typography>
             </Stack>
-            <Box>{activeIndex + 1 / total}</Box>
+            <Typography fontSize='12px'>
+              {activeIndex + 1} / {total}
+            </Typography>
           </Stack>
-          <Typography>{activeScreen}</Typography>
+          <Typography fontSize='12px'>{activeScreen}</Typography>
         </Stack>
       )}
     </>

@@ -16,6 +16,7 @@ import {
 import useLateralContextualMenuStore, {
   LateralContextualMenuState,
 } from '@/stores/useLateralContextualMenuStore';
+import useStepperStore, { StepperState } from '@/stores/useStepperStore';
 
 export default function EditorPage() {
   const { isDesktop } = useScreenSize();
@@ -23,24 +24,29 @@ export default function EditorPage() {
     useLateralContextualMenuStore<LateralContextualMenuState>((state) => state);
   const { views, openView, setOpenView } =
     useGeneralControlsStore<GeneralControlsState>((state) => state);
+  const { activeSubStep, activeStep } = useStepperStore<StepperState>(
+    (state) => state
+  );
   return (
     <Box className={styles.editor}>
       Hello World the active layout is {activeLayoutName}
+      Hello World the active Step and SubStep are {activeStep} and
+      {activeSubStep}
       <ChangesController />
       <Box
         position='absolute'
         sx={{
-          top: '20px',
-          right: '40px',
+          top: isDesktop ? '20px' : 0,
+          right: isDesktop ? '40px' : 0,
+          left: isDesktop ? 'unset' : 0,
         }}
       >
-        {isDesktop && (
-          <ViewSelector
-            views={views}
-            openView={openView}
-            setOpenView={setOpenView}
-          />
-        )}
+        <ViewSelector
+          views={views}
+          openView={openView}
+          setOpenView={setOpenView}
+          isDesktop={isDesktop}
+        />
       </Box>
     </Box>
   );

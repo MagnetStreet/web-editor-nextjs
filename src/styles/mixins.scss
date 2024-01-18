@@ -14,7 +14,7 @@
 }
 
 @mixin large {
-  @media (min-width: ($break-point-size-md + 1)) {
+  @media (min-width: ($break-point-size-lg + 1)) {
     @content;
   }
 }

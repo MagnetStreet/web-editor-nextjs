@@ -8,6 +8,7 @@ import { CustomIcon } from '@/components/shared/CustomIcon';
 export const ChangesController: React.FC = () => {
   const { isMobile, isTablet } = useScreenSize();
   const isSmallScreen = isMobile || isTablet;
+  const iconSizes = { xs: '20px', sm: '24px', md: '30px', lg: '36px' };
   const theme = useTheme();
 
   return (
@@ -16,42 +17,37 @@ export const ChangesController: React.FC = () => {
       direction='column'
       sx={{
         borderRadius: '100px',
-        padding: { sm: '12px 4px', md: '12px' },
+        padding: { xs: '12px 4px' },
         alignItems: 'center',
         color: theme.palette.primary.main,
         backgroundColor: theme.palette.secondary.main,
-        maxWidth: isSmallScreen ? '32px' : '60px',
+        maxWidth: isMobile ? '32px' : '60px',
         boxShadow: '0px 4px 4px 0px #CBCBCB',
       }}
     >
       <CustomIcon
         text='Undo'
         iconClass='fa-arrow-rotate-left-light'
-        textSizes={{ xs: '20px', sm: '24px', md: '36px' }}
+        textSizes={{ ...iconSizes }}
         hideTextInMobile
       />
       <CustomIcon
         text='Redo'
         iconClass='fa-arrow-rotate-right-light'
         hideTextInMobile
-        textSizes={{ xs: '20px', sm: '24px', md: '36px' }}
+        textSizes={{ ...iconSizes }}
       />
       {isSmallScreen && (
         <CustomIcon
           iconClass='fa-arrows-rotate-light'
-          hideTextInMobile
-          textSizes={{ xs: '20px', sm: '24px' }}
+          textSizes={{ ...iconSizes }}
         />
       )}
       {isSmallScreen && (
-        <CustomIcon
-          iconClass='fa-eye-light'
-          hideTextInMobile
-          textSizes={{ xs: '20px', sm: '24px', md: '36px' }}
-        />
+        <CustomIcon iconClass='fa-eye-light' textSizes={{ ...iconSizes }} />
       )}
       <Box
-        padding={{ sm: '6px 0px 0', md: '0px' }}
+        paddingY='6px'
         sx={{
           borderTop: `1px solid ${theme.palette.grey[300]}`,
         }}
@@ -59,15 +55,14 @@ export const ChangesController: React.FC = () => {
         {isSmallScreen ? (
           <CustomIcon
             iconClass='fa-comment-light'
-            hideTextInMobile
-            textSizes={{ xs: '20px', sm: '24px' }}
+            textSizes={{ ...iconSizes }}
           />
         ) : (
           <CustomIcon
             iconClass='fa-arrows-rotate-light'
             hideTextInMobile
             text='Reset'
-            textSizes={{ xs: '20px', sm: '24px', md: '36px' }}
+            textSizes={{ ...iconSizes }}
           />
         )}
       </Box>

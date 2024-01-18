@@ -17,6 +17,14 @@
   border-top: 1px solid $gray3;
 }
 
+.stepperSubWrapperMobile {
+  padding: 0 16px;
+  flex-direction: row;
+  margin: 6px 0 !important;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .colorlibStepIconRoot {
   color: $gray3;
   background-color: $white;
