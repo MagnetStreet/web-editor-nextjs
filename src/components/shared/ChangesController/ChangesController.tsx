@@ -27,31 +27,47 @@ export const ChangesController: React.FC = () => {
       <CustomIcon
         text='Undo'
         iconClass='fa-arrow-rotate-left-light'
+        textSizes={{ xs: '20px', sm: '24px', md: '36px' }}
         hideTextInMobile
       />
       <CustomIcon
         text='Redo'
         iconClass='fa-arrow-rotate-right-light'
         hideTextInMobile
+        textSizes={{ xs: '20px', sm: '24px', md: '36px' }}
       />
       {isSmallScreen && (
-        <CustomIcon iconClass='fa-arrows-rotate-light' hideTextInMobile />
+        <CustomIcon
+          iconClass='fa-arrows-rotate-light'
+          hideTextInMobile
+          textSizes={{ xs: '20px', sm: '24px' }}
+        />
       )}
       {isSmallScreen && (
-        <CustomIcon iconClass='fa-eye-light' hideTextInMobile />
+        <CustomIcon
+          iconClass='fa-eye-light'
+          hideTextInMobile
+          textSizes={{ xs: '20px', sm: '24px', md: '36px' }}
+        />
       )}
       <Box
+        padding={{ sm: '6px 0px 0', md: '0px' }}
         sx={{
           borderTop: `1px solid ${theme.palette.grey[300]}`,
         }}
       >
         {isSmallScreen ? (
-          <CustomIcon iconClass='fa-comment-light' hideTextInMobile />
+          <CustomIcon
+            iconClass='fa-comment-light'
+            hideTextInMobile
+            textSizes={{ xs: '20px', sm: '24px' }}
+          />
         ) : (
           <CustomIcon
             iconClass='fa-arrows-rotate-light'
             hideTextInMobile
             text='Reset'
+            textSizes={{ xs: '20px', sm: '24px', md: '36px' }}
           />
         )}
       </Box>

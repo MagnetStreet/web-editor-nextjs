@@ -2,6 +2,10 @@
 
 import { Box } from '@mui/material';
 
+import styles from './Editor.module.scss';
+
+import useScreenSize from '@/hooks/useScreenSize';
+
 import { ChangesController } from '@/components/shared/ChangesController/ChangesController';
 import { ViewSelector } from '@/components/shared/ViewSelector/ViewSelector';
 
@@ -14,12 +18,13 @@ import useLateralContextualMenuStore, {
 } from '@/stores/useLateralContextualMenuStore';
 
 export default function EditorPage() {
+  const { isDesktop } = useScreenSize();
   const { activeLayoutName } =
     useLateralContextualMenuStore<LateralContextualMenuState>((state) => state);
   const { views, openView, setOpenView } =
     useGeneralControlsStore<GeneralControlsState>((state) => state);
   return (
-    <Box position='relative'>
+    <Box className={styles.editor}>
       Hello World the active layout is {activeLayoutName}
       <ChangesController />
       <Box
@@ -29,11 +34,13 @@ export default function EditorPage() {
           right: '40px',
         }}
       >
-        <ViewSelector
-          views={views}
-          openView={openView}
-          setOpenView={setOpenView}
-        />
+        {isDesktop && (
+          <ViewSelector
+            views={views}
+            openView={openView}
+            setOpenView={setOpenView}
+          />
+        )}
       </Box>
     </Box>
   );

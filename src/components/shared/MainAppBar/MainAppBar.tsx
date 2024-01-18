@@ -8,6 +8,8 @@ import * as React from 'react';
 
 import styles from './MainAppBar.module.scss';
 
+import useScreenSize from '@/hooks/useScreenSize';
+
 import { CustomIcon } from '@/components/shared/CustomIcon';
 
 interface MainAppBarProps {
@@ -19,6 +21,7 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
   title = '',
   subtitle = '',
 }) => {
+  const { isDesktop } = useScreenSize();
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
@@ -47,15 +50,21 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
             <Typography variant='h1'>{title}</Typography>
           </Box>
           <Box className={styles.buttonContainer}>
-            <Button
-              color='primary'
-              variant='outlined'
-              startIcon={
-                <CustomIcon iconClass='fa-eye-light' fontSizeOverWrite='18px' />
-              }
-            >
-              preview
-            </Button>
+            {isDesktop && (
+              <Button
+                color='primary'
+                variant='outlined'
+                startIcon={
+                  <CustomIcon
+                    iconClass='fa-eye-light'
+                    fontSizeOverWrite='18px'
+                  />
+                }
+              >
+                preview
+              </Button>
+            )}
+
             <Button
               color='primary'
               variant='outlined'

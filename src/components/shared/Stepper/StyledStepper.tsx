@@ -56,17 +56,18 @@ interface StyleadStepperProps {
   steps: StepperStep[];
   activeStep: number;
   activeSubStep: number;
+  isDesktop: boolean;
 }
 
 export const StyledStepper: React.FC<StyleadStepperProps> = ({
   steps,
   activeStep,
+  isDesktop,
 }) => {
   const theme = useTheme();
   return (
     <Stepper
       sx={{
-        height: '98px',
         paddingX: '24px',
       }}
       alternativeLabel
@@ -86,27 +87,29 @@ export const StyledStepper: React.FC<StyleadStepperProps> = ({
                 <ColorlibStepIcon {...props} iconClass={icon} />
               )}
             >
-              <Box
-                className={`
-                ${styles.stepperLabel}
-                ${isActiveClass}
-              `}
-              >
-                <Box className={`{styles.stepperLabelContainer} `}>
-                  <Typography
-                    variant='h3'
-                    sx={{
-                      color:
-                        activeStep === index
-                          ? theme.palette.secondary.light
-                          : 'black',
-                    }}
-                  >
-                    Step {index}
-                  </Typography>
-                  <Typography variant='h2'>{displayName}</Typography>
+              {isDesktop && (
+                <Box
+                  className={`
+                  ${styles.stepperLabel}
+                  ${isActiveClass}
+                `}
+                >
+                  <Box className={`{styles.stepperLabelContainer} `}>
+                    <Typography
+                      variant='h3'
+                      sx={{
+                        color:
+                          activeStep === index
+                            ? theme.palette.secondary.light
+                            : 'black',
+                      }}
+                    >
+                      Step {index}
+                    </Typography>
+                    <Typography variant='h2'>{displayName}</Typography>
+                  </Box>
                 </Box>
-              </Box>
+              )}
             </StepLabel>
           </Step>
         );

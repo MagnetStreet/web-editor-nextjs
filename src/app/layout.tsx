@@ -1,10 +1,12 @@
 'use client';
-import { Box, Stack, ThemeProvider } from '@mui/material';
+import { Stack, ThemeProvider } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Lato } from 'next/font/google';
 import * as React from 'react';
 
 import '@/fonts/font-awesome/style.scss';
+
+import useScreenSize from '@/hooks/useScreenSize';
 
 import FooterMenu from '@/components/shared/FooterMenu/FooterMenu';
 import LateralContextualMenu from '@/components/shared/LateralContextualMenu/LateralContextualMenu';
@@ -25,6 +27,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const { isDesktop } = useScreenSize();
   return (
     <html lang='en'>
       <CssBaseline />
@@ -33,19 +36,11 @@ export default function RootLayout({
           <main className={`${lato.variable} font-sans`}>
             <MainAppBar title='Fairytale Wedding' subtitle='RSVP Card' />
             <Stack direction='row'>
-              <LateralContextualMenu />
+              {isDesktop && <LateralContextualMenu />}
               <Stack width='100%' position='relative'>
                 <StepperWrapper />
-                <Box
-                  sx={{
-                    height: '100%',
-                    //Make this grow to take all screen available
-                    backgroundColor: customTheme.palette.grey[100],
-                  }}
-                >
-                  {children}
-                </Box>
-                <FooterMenu />
+                {children}
+                {isDesktop && <FooterMenu />}
               </Stack>
             </Stack>
           </main>

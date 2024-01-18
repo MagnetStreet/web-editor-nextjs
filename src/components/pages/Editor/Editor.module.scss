@@ -1,0 +1,11 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.editor {
+  position: relative;
+  min-height: calc(
+    100vh - 295px
+  ); // The screen size - the mainAppBar - the stepper
+  background-color: $grayLight;
+  overflow: scroll;
+}
