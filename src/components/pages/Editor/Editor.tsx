@@ -6,8 +6,8 @@ import styles from './Editor.module.scss';
 
 import useScreenSize from '@/hooks/useScreenSize';
 
-import { ChangesController } from '@/components/shared/ChangesController/ChangesController';
-import { ViewSelector } from '@/components/shared/ViewSelector/ViewSelector';
+import { ChangesController } from '@/components/ChangesController/ChangesController';
+import { ViewSelector } from '@/components/ViewSelector/ViewSelector';
 
 import {
   GeneralControlsState,

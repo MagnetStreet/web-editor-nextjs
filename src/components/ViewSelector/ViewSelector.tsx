@@ -1,6 +1,6 @@
 import { Box, Menu, MenuItem, Paper, Stack, Typography } from '@mui/material';
 import Image from 'next/image';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import styles from './ViewSelector.module.scss';
 
@@ -53,6 +53,10 @@ export const ViewSelector: React.FC<ViewSelectorProps> = ({
 }) => {
   const elRef = useRef(null);
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [isDesktop]);
 
   const viewClicked = (index: number) => {
     setOpenView(views[index]);

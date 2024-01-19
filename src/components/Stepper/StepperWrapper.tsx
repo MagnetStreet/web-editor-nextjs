@@ -4,8 +4,8 @@ import styles from './Stepper.module.scss';
 
 import useScreenSize from '@/hooks/useScreenSize';
 
-import { StyledStepper } from '@/components/shared/Stepper/StyledStepper';
-import { SubProgressSteps } from '@/components/shared/Stepper/SubProgressSteps';
+import { StyledStepper } from '@/components/Stepper/StyledStepper';
+import { SubProgressSteps } from '@/components/Stepper/SubProgressSteps';
 
 import useStepperStore, { StepperState } from '@/stores/useStepperStore';
 

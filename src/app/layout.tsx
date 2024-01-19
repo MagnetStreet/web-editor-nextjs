@@ -8,10 +8,10 @@ import '@/fonts/font-awesome/style.scss';
 
 import useScreenSize from '@/hooks/useScreenSize';
 
-import FooterMenu from '@/components/shared/FooterMenu/FooterMenu';
-import LateralContextualMenu from '@/components/shared/LateralContextualMenu/LateralContextualMenu';
-import MainAppBar from '@/components/shared/MainAppBar/MainAppBar';
-import StepperWrapper from '@/components/shared/Stepper/StepperWrapper';
+import FooterMenu from '@/components/FooterMenu/FooterMenu';
+import LateralContextualMenu from '@/components/LateralContextualMenu/LateralContextualMenu';
+import MainAppBar from '@/components/MainAppBar/MainAppBar';
+import StepperWrapper from '@/components/Stepper/StepperWrapper';
 
 import customTheme from '@/styles/theme/customTheme';
 
