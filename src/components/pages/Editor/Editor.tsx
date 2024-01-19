@@ -40,46 +40,50 @@ export default function EditorPage() {
           right: '25%',
         }}
       />
-      <OptionsFrame
-        position='absolute'
-        coordinates={{
-          bottom: 20,
-          right: 175,
-        }}
-        paperProps={{
-          sx: {
-            width: '100px',
-          },
-        }}
-      >
-        <p>Interchangebale content bottom right</p>
-      </OptionsFrame>
-      <OptionsFrame
-        position='absolute'
-        coordinates={{
-          top: 12,
-          left: 16,
-        }}
-        paperProps={{
-          sx: {
-            width: '100px',
-          },
-        }}
-      >
-        <p>Interchangebale content top left</p>
-      </OptionsFrame>
-      <ViewSelector
-        position='absolute'
-        coordinates={{
-          top: isDesktop ? '20px' : 0,
-          right: isDesktop ? '40px' : 0,
-          left: isDesktop ? 'unset' : 0,
-        }}
-        views={views}
-        openView={openView}
-        setOpenView={setOpenView}
-        isDesktop={isDesktop}
-      />
+      {isDesktop && (
+        <>
+          <OptionsFrame
+            position='absolute'
+            coordinates={{
+              bottom: 20,
+              right: 175,
+            }}
+            paperProps={{
+              sx: {
+                width: '100px',
+              },
+            }}
+          >
+            <p>Interchangebale content bottom right</p>
+          </OptionsFrame>
+          <OptionsFrame
+            position='absolute'
+            coordinates={{
+              top: 12,
+              left: 16,
+            }}
+            paperProps={{
+              sx: {
+                width: '100px',
+              },
+            }}
+          >
+            <p>Interchangebale content top left</p>
+          </OptionsFrame>
+          <ViewSelector
+            position='absolute'
+            coordinates={{
+              top: isDesktop ? '20px' : 0,
+              right: isDesktop ? '40px' : 0,
+              left: isDesktop ? 'unset' : 0,
+            }}
+            views={views}
+            openView={openView}
+            setOpenView={setOpenView}
+            isDesktop={isDesktop}
+          />
+        </>
+      )}
     </Box>
   );
 }
