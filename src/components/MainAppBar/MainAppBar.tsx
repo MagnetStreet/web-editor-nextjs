@@ -229,6 +229,7 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
             </Button>
           </Box>
         </Toolbar>
+        {/* First Mobile View - Main Mobile */}
         <Drawer
           anchor='left'
           open={isMobileMenuOpen}
@@ -245,6 +246,7 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
         >
           {mobileMenu()}
         </Drawer>
+        {/* Second Mobile View - Order Summary */}
         <Drawer
           anchor='left'
           open={isOrderSummaryOpen}
@@ -261,6 +263,8 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
         >
           {mobileMenu2()}
         </Drawer>
+
+        {/* Main Desktop Menu */}
         <PositionedMenu
           anchor={anchorRef}
           isOpen={isMenuOpen}

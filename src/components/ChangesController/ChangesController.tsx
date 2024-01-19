@@ -5,26 +5,37 @@ import useScreenSize from '@/hooks/useScreenSize';
 
 import { CustomIcon } from '@/components/shared/CustomIcon';
 
-export const ChangesController: React.FC = () => {
+import { getStylePositionsHelper } from '@/utils/shared/getStylePositionsHelper';
+
+import { Coordinates } from '@/types';
+
+interface ChangesControllerProps {
+  position?: string;
+  coordinates?: Coordinates;
+}
+
+export const ChangesController: React.FC<ChangesControllerProps> = ({
+  position = 'relative',
+  coordinates,
+}) => {
   const { isMobile, isTablet } = useScreenSize();
   const isSmallScreen = isMobile || isTablet;
   const iconSizes = { xs: '20px', sm: '24px', md: '30px', lg: '36px' };
   const theme = useTheme();
 
+  const containerStyle = {
+    borderRadius: '100px',
+    padding: { xs: '12px 4px' },
+    alignItems: 'center',
+    color: theme.palette.primary.main,
+    backgroundColor: theme.palette.secondary.main,
+    maxWidth: isMobile ? '32px' : '60px',
+    boxShadow: '0px 4px 4px 0px #CBCBCB',
+    ...getStylePositionsHelper(position, coordinates),
+  };
+
   return (
-    <Stack
-      spacing='12px'
-      direction='column'
-      sx={{
-        borderRadius: '100px',
-        padding: { xs: '12px 4px' },
-        alignItems: 'center',
-        color: theme.palette.primary.main,
-        backgroundColor: theme.palette.secondary.main,
-        maxWidth: isMobile ? '32px' : '60px',
-        boxShadow: '0px 4px 4px 0px #CBCBCB',
-      }}
-    >
+    <Stack spacing='12px' direction='column' sx={containerStyle}>
       <CustomIcon
         text='Undo'
         iconClass='fa-arrow-rotate-left-light'

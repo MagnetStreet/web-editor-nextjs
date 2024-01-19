@@ -23,3 +23,10 @@ export interface Sizes {
   lg?: string;
   xl?: string;
 }
+
+export interface Coordinates {
+  top?: number | string;
+  left?: number | string;
+  right?: number | string;
+  bottom?: number | string;
+}

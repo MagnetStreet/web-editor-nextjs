@@ -6,7 +6,9 @@ import styles from './ViewSelector.module.scss';
 
 import { CustomIcon } from '@/components/shared/CustomIcon';
 
-import { EditorView } from '@/types';
+import { getStylePositionsHelper } from '@/utils/shared/getStylePositionsHelper';
+
+import { Coordinates, EditorView } from '@/types';
 
 const ViewSelectorItem: React.FC<ViewSelectorItemProps> = ({
   index,
@@ -49,6 +51,8 @@ export const ViewSelector: React.FC<ViewSelectorProps> = ({
   views,
   openView,
   isDesktop,
+  position,
+  coordinates,
   setOpenView,
 }) => {
   const elRef = useRef(null);
@@ -57,6 +61,8 @@ export const ViewSelector: React.FC<ViewSelectorProps> = ({
   useEffect(() => {
     setOpen(false);
   }, [isDesktop]);
+
+  const containerStyle = getStylePositionsHelper(position, coordinates);
 
   const viewClicked = (index: number) => {
     setOpenView(views[index]);
@@ -78,7 +84,7 @@ export const ViewSelector: React.FC<ViewSelectorProps> = ({
     };
 
   return (
-    <>
+    <Box sx={containerStyle}>
       {isDesktop ? (
         <Paper elevation={3} className={styles.viewSelector}>
           {views.map((view, index) => {
@@ -158,7 +164,7 @@ export const ViewSelector: React.FC<ViewSelectorProps> = ({
           </Menu>
         </Box>
       )}
-    </>
+    </Box>
   );
 };
 
@@ -176,6 +182,8 @@ interface ViewSelectorItemProps {
 }
 
 export interface ViewSelectorProps {
+  position: string;
+  coordinates: Coordinates;
   views: EditorView[];
   openView: EditorView;
   isDesktop: boolean;
