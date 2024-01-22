@@ -1,3 +1,4 @@
+'use client';
 import { Box, Menu, MenuItem, Paper, Stack, Typography } from '@mui/material';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';

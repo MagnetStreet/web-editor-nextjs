@@ -10,6 +10,7 @@ interface OptionsFrameProps {
   coordinates?: Coordinates;
   className?: string;
   paperProps: StackProps;
+  visible?: boolean;
   children: React.ReactNode;
 }
 
@@ -18,10 +19,12 @@ const OptionsFrame: React.FC<OptionsFrameProps> = ({
   position = 'relative',
   coordinates,
   className,
+  visible = true,
   paperProps,
 }) => {
   const containerStyle = {
     ...getStylePositionsHelper(position, coordinates),
+    display: visible ? 'block' : 'none',
   };
   return (
     <Paper className={className} elevation={0} sx={containerStyle}>

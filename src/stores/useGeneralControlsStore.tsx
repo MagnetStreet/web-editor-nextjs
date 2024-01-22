@@ -7,15 +7,18 @@ export interface GeneralControlsState {
   views: EditorView[];
   openView: EditorView;
   isNextStepEnable: boolean;
-  setOpenView: (val: EditorView) => void;
+  isBottomFrameOpen: boolean;
   setZoom: (val: number) => void;
+  setOpenView: (val: EditorView) => void;
   setNextStepEnable: (val: boolean) => void;
+  setIsBottomFrameOpen: (val: boolean) => void;
   // Other properties and functions in your state For handling general navigations or controls
 }
 
 export const useGeneralControlsStore = create<GeneralControlsState>((set) => ({
   zoom: 100,
   isNextStepEnable: false,
+  isBottomFrameOpen: false,
   openView: {
     id: 0,
     displayName: 'Front',
@@ -49,6 +52,7 @@ export const useGeneralControlsStore = create<GeneralControlsState>((set) => ({
     },
   ],
   setOpenView: (val: EditorView) => set({ openView: val }),
+  setIsBottomFrameOpen: (val: boolean) => set({ isBottomFrameOpen: val }),
   setNextStepEnable: (val: boolean) => set({ isNextStepEnable: val }),
   setZoom: (newVal: number) => set({ zoom: newVal }),
 }));

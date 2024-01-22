@@ -22,15 +22,15 @@ const PositionedMenu: React.FC<MainAppBarProps> = ({
 }) => {
   return (
     <Menu
-      id='demo-positioned-menu'
-      aria-labelledby='demo-positioned-button'
+      id='positioned-menu'
+      aria-labelledby='positioned-button'
       anchorEl={anchor.current}
       open={isOpen}
       onClose={() => toggle(false)}
       anchorOrigin={{ ...origin }}
       transformOrigin={{ ...origin }}
     >
-      {children}
+      {children}xxx
     </Menu>
   );
 };

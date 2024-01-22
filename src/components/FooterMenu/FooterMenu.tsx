@@ -9,7 +9,6 @@ import {
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { useTheme } from '@mui/system';
-import { ChangeEvent } from 'react';
 
 import { CustomIcon } from '@/components/shared/CustomIcon';
 
@@ -37,9 +36,8 @@ const FooterMenu = () => {
   const theme = useTheme();
   const { handleNextStepClick, handleBackStepClick } =
     useStepperStore<StepperState>((state) => state);
-  const { zoom, setZoom } = useGeneralControlsStore<GeneralControlsState>(
-    (state) => state
-  );
+  const { zoom, isBottomFrameOpen, setZoom, setIsBottomFrameOpen } =
+    useGeneralControlsStore<GeneralControlsState>((state) => state);
 
   return (
     <Grid
@@ -70,15 +68,21 @@ const FooterMenu = () => {
             sx={{
               width: '80%',
             }}
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setZoom(Number(e.target.value))
-            }
+            onChange={(
+              event: Event,
+              value: number | number[],
+              activeThumb: number
+            ) => setZoom(activeThumb)}
           />
           <Typography>{zoom}%</Typography>
         </Stack>
       </Grid>
       <Grid item>
-        <Item>
+        <Item
+          onClick={() => {
+            setIsBottomFrameOpen(!isBottomFrameOpen);
+          }}
+        >
           <Typography>Total</Typography>
           <Typography>$200.00</Typography>
           <Stack direction='row' spacing={1}>
