@@ -1,3 +1,5 @@
+import { Coordinates } from '@/types';
+import { getStylePositionsHelper } from '@/utils/shared/getStylePositionsHelper';
 import { PopoverOrigin } from '@mui/material';
 import Menu from '@mui/material/Menu';
 import * as React from 'react';
@@ -8,6 +10,7 @@ interface MainAppBarProps {
   children: React.ReactNode;
   toggle: (val: boolean) => void;
   origin?: PopoverOrigin;
+  coordinates?: Coordinates;
 }
 
 const PositionedMenu: React.FC<MainAppBarProps> = ({
@@ -18,8 +21,15 @@ const PositionedMenu: React.FC<MainAppBarProps> = ({
     vertical: 'bottom',
     horizontal: 'left',
   },
+  coordinates = {
+    top: 49,
+    left: -20,
+  },
   children,
 }) => {
+  const containerStyle = {
+    ...coordinates,
+  };
   return (
     <Menu
       id='positioned-menu'
@@ -29,8 +39,18 @@ const PositionedMenu: React.FC<MainAppBarProps> = ({
       onClose={() => toggle(false)}
       anchorOrigin={{ ...origin }}
       transformOrigin={{ ...origin }}
+      sx={containerStyle}
+      slotProps={{
+        paper: {
+          sx: {
+            '& .MuiList-root': {
+              paddingY: 0,
+            },
+          },
+        },
+      }}
     >
-      {children}xxx
+      {children}
     </Menu>
   );
 };

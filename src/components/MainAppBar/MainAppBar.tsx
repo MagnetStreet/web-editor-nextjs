@@ -1,6 +1,6 @@
 import MailIcon from '@mui/icons-material/Mail';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
-import { AppBar, MenuItem } from '@mui/material';
+import { AppBar } from '@mui/material';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
@@ -19,6 +19,7 @@ import styles from './MainAppBar.module.scss';
 
 import useScreenSize from '@/hooks/useScreenSize';
 
+import DesktopInnerMenu from '@/components/MainAppBar/DesktopInnerMenu';
 import PositionedMenu from '@/components/MainAppBar/PositionedMenu';
 import { CustomIcon } from '@/components/shared/CustomIcon';
 
@@ -67,6 +68,7 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
 
   const handleOpenMenuClick =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+      console.log('handleOpenMenuClick', open);
       if (isDesktop) {
         toggleDesktopMenu(open);
       } else {
@@ -88,6 +90,7 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
       onClick={toggleMobileDrawer(false)}
       onKeyDown={toggleMobileDrawer(false)}
     >
+      <CustomIcon iconClass='fa-chevron-left' fontSizeOverWrite='20px' />
       <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem key={text} disablePadding>
@@ -270,9 +273,7 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
           isOpen={isMenuOpen}
           toggle={handleOpenMenuClick}
         >
-          <MenuItem onClick={handleOpenMenuClick(false)}>Profile</MenuItem>
-          <MenuItem onClick={handleOpenMenuClick(false)}>My account</MenuItem>
-          <MenuItem onClick={handleOpenMenuClick(false)}>Logout</MenuItem>
+          <DesktopInnerMenu toggle={(val) => handleOpenMenuClick(val)} />
         </PositionedMenu>
       </AppBar>
     </Box>
