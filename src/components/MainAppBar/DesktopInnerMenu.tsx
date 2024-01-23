@@ -42,7 +42,7 @@ const DesktopInnerMenu: React.FC<DesktopInnerMenu> = ({ toggle }) => {
       <ListItem
         disablePadding
         className={styles.innerMenu__list_item}
-        onClick={() => handleOnClick()}
+        onClick={handleOnClick}
       >
         <ListItemButton>
           <ListItemIcon sx={{ minWidth: '26px' }}>
@@ -57,7 +57,7 @@ const DesktopInnerMenu: React.FC<DesktopInnerMenu> = ({ toggle }) => {
       <ListItem
         disablePadding
         className={styles.innerMenu__list_item}
-        onClick={() => handleOnClick()}
+        onClick={handleOnClick}
       >
         <ListItemButton>
           <ListItemIcon sx={{ minWidth: '26px' }}>
@@ -84,7 +84,7 @@ const DesktopInnerMenu: React.FC<DesktopInnerMenu> = ({ toggle }) => {
       <ListItem
         disablePadding
         className={styles.innerMenu__list_item}
-        onClick={() => handleOnClick()}
+        onClick={() => handleOnClick(f)}
       >
         <ListItemButton>
           <ListItemIcon sx={{ minWidth: '26px' }}>

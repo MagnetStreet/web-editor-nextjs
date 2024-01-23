@@ -66,9 +66,8 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
       setIsMobileMenuOpen(open);
     };
 
-  const handleOpenMenuClick =
+  const handleToggleMenuClick =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-      console.log('handleOpenMenuClick', open);
       if (isDesktop) {
         toggleDesktopMenu(open);
       } else {
@@ -185,7 +184,7 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
             edge='start'
             aria-label='menu'
             sx={{ mr: 3 }}
-            onClick={handleOpenMenuClick(true)}
+            onClick={handleToggleMenuClick(true)}
           >
             <CustomIcon iconClass='fa-bars-sharp-light' />
             <Box className={styles.notificationContainer}>
@@ -271,9 +270,9 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
         <PositionedMenu
           anchor={anchorRef}
           isOpen={isMenuOpen}
-          toggle={handleOpenMenuClick}
+          toggle={toggleDesktopMenu}
         >
-          <DesktopInnerMenu toggle={(val) => handleOpenMenuClick(val)} />
+          <DesktopInnerMenu toggle={toggleDesktopMenu} />
         </PositionedMenu>
       </AppBar>
     </Box>
