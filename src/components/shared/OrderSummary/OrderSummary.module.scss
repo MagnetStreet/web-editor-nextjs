@@ -1,0 +1,38 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.orderSummarPaper {
+  box-shadow: none;
+  width: 100%;
+}
+.orderSummarWrapper {
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid rgba(204, 204, 204, 0.8);
+  box-shadow: none !important;
+  border-radius: 8px;
+  font-weight: 700;
+  @include large {
+    padding: 10px;
+  }
+}
+
+.orderSummarButton {
+  cursor: pointer;
+  padding: 0;
+  min-height: 20px;
+  min-width: 0;
+  color: $primary-color;
+}
+
+.orderSummaryTotal {
+  font-weight: bold;
+}
+
+.orderSummaryStack {
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+}

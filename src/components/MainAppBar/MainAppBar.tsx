@@ -1,5 +1,5 @@
 import MailIcon from '@mui/icons-material/Mail';
-import { AppBar } from '@mui/material';
+import { AppBar, useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
@@ -36,6 +36,7 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
   subtitle = '',
   hasNotifications = true, //TODO Add logic
 }) => {
+  const theme = useTheme();
   const { isDesktop } = useScreenSize();
   const anchorRef = useRef<HTMLElement | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -57,6 +58,7 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
     {
       icon: (
         <CustomIcon
+          color={theme.palette.primary.main}
           iconClass='fa-file-arrow-down-sharp-light'
           fontSizeOverWrite='16px'
         />
@@ -68,7 +70,13 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
       },
     },
     {
-      icon: <CustomIcon iconClass='fa-share-nodes' fontSizeOverWrite='16px' />,
+      icon: (
+        <CustomIcon
+          iconClass='fa-share-nodes'
+          fontSizeOverWrite='16px'
+          color={theme.palette.primary.main}
+        />
+      ),
       label: 'Share',
       onClick: () => {
         //TODO Missing Implementation
@@ -78,6 +86,7 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
     {
       icon: (
         <CustomIcon
+          color={theme.palette.primary.main}
           iconClass='fa-folder-sharp-light'
           fontSizeOverWrite='16px'
         />

@@ -14,6 +14,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './MainAppBar.module.scss';
 import { CustomIcon } from '@/components/shared/CustomIcon';
 import { MenuItems } from '@/types';
+import OrderSummaryButton from '@/components/shared/OrderSummary/OrderSummaryButton';
 
 interface MobileInnerMenuProps {
   menuItems: MenuItems[];
@@ -74,13 +75,13 @@ const MobileInnerMenu: React.FC<MobileInnerMenuProps> = ({
           </ListItem>
           <Divider className={styles.innerMenu__divider} />
           <ListItem>
-            <Button
+            <OrderSummaryButton
+              total={'$200'}
+              isOpen={false}
               onClick={() => {
                 toggleOrderSummary(true, false);
               }}
-            >
-              A
-            </Button>
+            />
           </ListItem>
           <List>
             {filtered.map((item) => (
@@ -90,7 +91,7 @@ const MobileInnerMenu: React.FC<MobileInnerMenuProps> = ({
                 className={styles.innerMenu__list_item}
                 onClick={() => item.onClick()}
               >
-                <ListItemButton>
+                <ListItemButton sx={{ padding: '8px 4px' }}>
                   <ListItemIcon sx={{ minWidth: '26px' }}>
                     {item.icon}
                   </ListItemIcon>

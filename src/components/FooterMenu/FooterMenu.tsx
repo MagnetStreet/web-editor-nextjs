@@ -17,6 +17,7 @@ import {
   useGeneralControlsStore,
 } from '@/stores/useGeneralControlsStore';
 import useStepperStore, { StepperState } from '@/stores/useStepperStore';
+import OrderSummaryButton from '@/components/shared/OrderSummary/OrderSummaryButton';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: '#fff',
@@ -78,25 +79,11 @@ const FooterMenu = () => {
         </Stack>
       </Grid>
       <Grid item>
-        <Item
-          onClick={() => {
-            setIsBottomFrameOpen(!isBottomFrameOpen);
-          }}
-        >
-          <Typography>Total</Typography>
-          <Typography>$200.00</Typography>
-          <Stack direction='row' spacing={1}>
-            <Divider orientation='vertical' flexItem />
-            <Typography
-              sx={{
-                cursor: 'pointer',
-                color: theme.palette.primary.main,
-              }}
-            >
-              View
-            </Typography>
-          </Stack>
-        </Item>
+        <OrderSummaryButton
+          total='$2000.00'
+          isOpen={false}
+          onClick={() => setIsBottomFrameOpen(!isBottomFrameOpen)}
+        />
       </Grid>
       <Grid item>
         <Stack direction='row' spacing={2} alignItems='center'>
