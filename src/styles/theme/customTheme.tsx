@@ -56,6 +56,7 @@ const customTheme = createTheme(theme, {
   },
   typography: {
     fontSize: 16,
+    lineHeight: 'normal',
     h1: {
       color: vars.colors.black,
       fontFamily: 'FS Sally',

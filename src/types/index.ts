@@ -31,9 +31,16 @@ export interface Coordinates {
   bottom?: number | string;
 }
 
-export interface MenuItems {
+export interface MenuItem {
   icon: React.ReactNode;
   onClick: () => void;
   label: string;
   isHighlight?: boolean;
+}
+
+export interface OrderItem {
+  label: string;
+  categroy: string;
+  quantity: number;
+  value: number;
 }

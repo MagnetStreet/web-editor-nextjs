@@ -85,7 +85,7 @@ export const ViewSelector: React.FC<ViewSelectorProps> = ({
     };
 
   return (
-    <Box sx={{ ...containerStyle }}>
+    <Box sx={containerStyle}>
       {isDesktop ? (
         <Paper elevation={3} className={styles.viewSelector}>
           {views.map((view, index) => {

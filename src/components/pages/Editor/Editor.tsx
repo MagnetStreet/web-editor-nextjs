@@ -18,13 +18,19 @@ import useLateralContextualMenuStore, {
   LateralContextualMenuState,
 } from '@/stores/useLateralContextualMenuStore';
 import useStepperStore, { StepperState } from '@/stores/useStepperStore';
+import OrderSummaryList from '@/components/shared/OrderSummary/OrderSummaryList';
 
 export default function EditorPage() {
   const { isDesktop } = useScreenSize();
   const { activeLayoutName } =
     useLateralContextualMenuStore<LateralContextualMenuState>((state) => state);
-  const { views, openView, isBottomFrameOpen, setOpenView } =
-    useGeneralControlsStore<GeneralControlsState>((state) => state);
+  const {
+    views,
+    openView,
+    isBottomFrameOpen,
+    setOpenView,
+    setIsBottomFrameOpen,
+  } = useGeneralControlsStore<GeneralControlsState>((state) => state);
   const { activeSubStep, activeStep } = useStepperStore<StepperState>(
     (state) => state
   );
@@ -70,7 +76,7 @@ export default function EditorPage() {
               },
             }}
           >
-            <p>Interchangebale content bottom right</p>
+            <OrderSummaryList onClose={() => setIsBottomFrameOpen(false)} />
           </OptionsFrame>
         </>
       )}

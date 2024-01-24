@@ -12,10 +12,12 @@ export const getStylePositionsHelper = (
     position,
     ...(position === 'absolute' && coordinates
       ? {
-          top: coordinates.top ? coordinates.top : 'inherit',
-          left: coordinates.left ? coordinates.left : 'inherit',
-          right: coordinates.right ? coordinates.right : 'inherit',
-          bottom: coordinates.bottom ? coordinates.bottom : 'inherit',
+          top: coordinates.top !== undefined ? coordinates.top : 'inherit',
+          left: coordinates.left !== undefined ? coordinates.left : 'inherit',
+          right:
+            coordinates.right !== undefined ? coordinates.right : 'inherit',
+          bottom:
+            coordinates.bottom !== undefined ? coordinates.bottom : 'inherit',
         }
       : undefined),
   };

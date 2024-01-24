@@ -10,13 +10,13 @@ import {
 import * as React from 'react';
 
 import styles from './MainAppBar.module.scss';
-import { MenuItems } from '@/types';
+import { MenuItem } from '@/types';
 
-interface DesktopInnerMenu {
-  menuItems: MenuItems[];
+interface DesktopInnerMenuProps {
+  menuItems: MenuItem[];
 }
 
-const DesktopInnerMenu: React.FC<DesktopInnerMenu> = ({ menuItems }) => {
+const DesktopInnerMenu: React.FC<DesktopInnerMenuProps> = ({ menuItems }) => {
   return (
     <List
       disablePadding

@@ -13,11 +13,11 @@ import {
 import React, { useEffect, useState } from 'react';
 import styles from './MainAppBar.module.scss';
 import { CustomIcon } from '@/components/shared/CustomIcon';
-import { MenuItems } from '@/types';
+import { MenuItem } from '@/types';
 import OrderSummaryButton from '@/components/shared/OrderSummary/OrderSummaryButton';
 
 interface MobileInnerMenuProps {
-  menuItems: MenuItems[];
+  menuItems: MenuItem[];
   typeOfProduct?: string;
   productName?: string;
   toggleOrderSummary: (val: boolean, val2: boolean) => void;
@@ -31,8 +31,8 @@ const MobileInnerMenu: React.FC<MobileInnerMenuProps> = ({
   toggleOrderSummary,
   toggleMobileDrawer,
 }) => {
-  const [filtered, setFilteredItems] = useState<MenuItems[]>([]);
-  const [highlightedItem, setHighlightedItem] = useState<MenuItems>();
+  const [filtered, setFilteredItems] = useState<MenuItem[]>([]);
+  const [highlightedItem, setHighlightedItem] = useState<MenuItem>();
 
   useEffect(() => {
     // Filter menu items without isHighlight property

@@ -36,3 +36,22 @@
   flex-direction: row;
   justify-content: space-between;
 }
+
+.orderSummaryList {
+  width: 100%;
+  min-width: 315px;
+  padding: 16px;
+  &__header {
+    padding-bottom: 16px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  &__list__item {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--System-Greys-Light-Grey, #cccdcd);
+  }
+}

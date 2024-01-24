@@ -22,7 +22,8 @@ import DesktopInnerMenu from '@/components/MainAppBar/DesktopInnerMenu';
 import PositionedMenu from '@/components/MainAppBar/PositionedMenu';
 import { CustomIcon } from '@/components/shared/CustomIcon';
 import MobileInnerMenu from '@/components/MainAppBar/MobileInnerMenu';
-import { MenuItems } from '@/types';
+import { MenuItem } from '@/types';
+import OrderSummaryList from '@/components/shared/OrderSummary/OrderSummaryList';
 
 interface MainAppBarProps {
   title: string;
@@ -54,7 +55,7 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
     }
   }, [isDesktop]);
 
-  const menuItems: MenuItems[] = [
+  const menuItems: MenuItem[] = [
     {
       icon: (
         <CustomIcon
@@ -277,7 +278,7 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
             closeMobileDrawer();
           }}
         >
-          {mobileMenu2()}
+          <OrderSummaryList onClose={() => toggleOrderSummary(false)} />
         </Drawer>
 
         {/* Main Desktop Menu */}
