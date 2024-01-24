@@ -85,14 +85,10 @@ export const ViewSelector: React.FC<ViewSelectorProps> = ({
     };
 
   return (
-    <Box sx={containerStyle}>
+    <Box sx={{ ...containerStyle }}>
       {isDesktop ? (
         <Paper elevation={3} className={styles.viewSelector}>
           {views.map((view, index) => {
-            const rootClass = `
-              ${styles.viewWrapper} 
-              ${index === openView.id ? styles.active : ''}
-            `;
             return (
               <ViewSelectorItem
                 key={`view-selector-mobile-${index}`}

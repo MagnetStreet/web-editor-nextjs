@@ -34,7 +34,11 @@ export default function RootLayout({
       <body>
         <ThemeProvider theme={customTheme}>
           <main className={`${lato.variable} font-sans`}>
-            <MainAppBar title='Fairytale Wedding' subtitle='RSVP Card' />
+            <MainAppBar
+              title='Fairytale Wedding'
+              subtitle='RSVP Card'
+              hasNotifications={true}
+            />
             <Stack direction='row'>
               {isDesktop && <LateralContextualMenu />}
               <Stack width='100%' position='relative'>

@@ -10,26 +10,42 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './MainAppBar.module.scss';
 import { CustomIcon } from '@/components/shared/CustomIcon';
+import { MenuItems } from '@/types';
 
 interface MobileInnerMenuProps {
+  menuItems: MenuItems[];
+  typeOfProduct?: string;
+  productName?: string;
   toggleOrderSummary: (val: boolean, val2: boolean) => void;
   toggleMobileDrawer: (val: boolean) => void;
 }
 
 const MobileInnerMenu: React.FC<MobileInnerMenuProps> = ({
+  menuItems,
+  productName,
+  typeOfProduct,
   toggleOrderSummary,
   toggleMobileDrawer,
 }) => {
+  const [filtered, setFilteredItems] = useState<MenuItems[]>([]);
+  const [highlightedItem, setHighlightedItem] = useState<MenuItems>();
+
+  useEffect(() => {
+    // Filter menu items without isHighlight property
+    const filtered = menuItems.filter((item) => !item.isHighlight);
+    setFilteredItems(filtered);
+
+    const firstHighlightedItem = menuItems.find((item) => item.isHighlight);
+    if (firstHighlightedItem) {
+      setHighlightedItem(firstHighlightedItem);
+    }
+  }, [menuItems]);
+
   return (
-    <List
-      className={styles.innerMenu}
-      role='presentation'
-      // onClick={toggleMobileDrawer(false)}
-      // onKeyDown={toggleMobileDrawer(false)}
-    >
+    <List className={styles.innerMenu} role='presentation'>
       <Box
         className={styles.innerMenu__icon_exit}
         onClick={() => toggleMobileDrawer(false)}
@@ -45,14 +61,14 @@ const MobileInnerMenu: React.FC<MobileInnerMenuProps> = ({
                 component='h2'
                 sx={{ fontFamily: 'FS sally' }}
               >
-                Type of Product
+                {typeOfProduct}
               </Typography>
               <Typography
                 variant='h1'
                 component='h2'
                 sx={{ fontFamily: 'FS sally' }}
               >
-                Product Name
+                {productName}
               </Typography>
             </Stack>
           </ListItem>
@@ -67,76 +83,37 @@ const MobileInnerMenu: React.FC<MobileInnerMenuProps> = ({
             </Button>
           </ListItem>
           <List>
-            <ListItem
-              disablePadding
-              className={styles.innerMenu__list_item}
-              onClick={() => toggleMobileDrawer(false)}
-            >
-              <ListItemButton>
-                <ListItemIcon sx={{ minWidth: '26px' }}>
-                  <CustomIcon
-                    iconClass='fa-file-arrow-down-sharp-light'
-                    fontSizeOverWrite='16px'
-                  />
-                </ListItemIcon>
-                <ListItemText primary='Download2' />
-              </ListItemButton>
-            </ListItem>
-            <ListItem
-              disablePadding
-              className={styles.innerMenu__list_item}
-              onClick={() => toggleMobileDrawer(false)}
-            >
-              <ListItemButton>
-                <ListItemIcon sx={{ minWidth: '26px' }}>
-                  <CustomIcon
-                    iconClass='fa-share-nodes'
-                    fontSizeOverWrite='16px'
-                  />
-                </ListItemIcon>
-                <ListItemText primary='Share2' />
-              </ListItemButton>
-            </ListItem>
-            <ListItem
-              disablePadding
-              className={styles.innerMenu__list_item}
-              onClick={() => toggleMobileDrawer(false)}
-            >
-              <ListItemButton>
-                <ListItemIcon sx={{ minWidth: '26px' }}>
-                  <CustomIcon
-                    iconClass='fa-folder-sharp-light'
-                    fontSizeOverWrite='16px'
-                  />
-                </ListItemIcon>
-                <ListItemText primary='My Projects2' />
-              </ListItemButton>
-            </ListItem>
+            {filtered.map((item) => (
+              <ListItem
+                key={`menu--mobile-item-${item.label}`}
+                disablePadding
+                className={styles.innerMenu__list_item}
+                onClick={() => item.onClick()}
+              >
+                <ListItemButton>
+                  <ListItemIcon sx={{ minWidth: '26px' }}>
+                    {item.icon}
+                  </ListItemIcon>
+                  <ListItemText primary={item.label} />
+                </ListItemButton>
+              </ListItem>
+            ))}
           </List>
         </Box>
-        <ListItem
-          disablePadding
-          className={`${styles.innerMenu__list_item} ${styles.innerMenu__list_item__highlight}`}
-          onClick={() => toggleMobileDrawer(false)}
-        >
-          <ListItemButton>
-            <ListItemIcon sx={{ minWidth: '26px' }}>
-              <Box position='relative'>
-                <CustomIcon
-                  color='white'
-                  iconClass={`${styles.innerMenu__icon_exit_first} fa-square-check-sharp-light`}
-                  fontSizeOverWrite='16px'
-                />
-                <CustomIcon
-                  color='white'
-                  iconClass={`${styles.innerMenu__icon_exit_arrow} fa-arrow-right`}
-                  fontSizeOverWrite='12px'
-                />
-              </Box>
-            </ListItemIcon>
-            <ListItemText primary='Exit Design Studio2' />
-          </ListItemButton>
-        </ListItem>
+        {highlightedItem && (
+          <ListItem
+            disablePadding
+            className={`${styles.innerMenu__list_item} ${styles.innerMenu__list_item__highlight}`}
+            onClick={() => highlightedItem.onClick()}
+          >
+            <ListItemButton>
+              <ListItemIcon sx={{ minWidth: '26px' }}>
+                {highlightedItem.icon}
+              </ListItemIcon>
+              <ListItemText primary={highlightedItem.label} />
+            </ListItemButton>
+          </ListItem>
+        )}
       </Stack>
     </List>
   );

@@ -1,5 +1,4 @@
 import MailIcon from '@mui/icons-material/Mail';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import { AppBar } from '@mui/material';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -23,15 +22,19 @@ import DesktopInnerMenu from '@/components/MainAppBar/DesktopInnerMenu';
 import PositionedMenu from '@/components/MainAppBar/PositionedMenu';
 import { CustomIcon } from '@/components/shared/CustomIcon';
 import MobileInnerMenu from '@/components/MainAppBar/MobileInnerMenu';
+import { MenuItems } from '@/types';
 
 interface MainAppBarProps {
   title: string;
   subtitle: string;
+  hasNotifications: boolean;
 }
 
 const MainAppBar: React.FC<MainAppBarProps> = ({
+  //TODO move thse to a store
   title = '',
   subtitle = '',
+  hasNotifications = true, //TODO Add logic
 }) => {
   const { isDesktop } = useScreenSize();
   const anchorRef = useRef<HTMLElement | null>(null);
@@ -49,6 +52,65 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
       toggleMobileDrawer(true);
     }
   }, [isDesktop]);
+
+  const menuItems: MenuItems[] = [
+    {
+      icon: (
+        <CustomIcon
+          iconClass='fa-file-arrow-down-sharp-light'
+          fontSizeOverWrite='16px'
+        />
+      ),
+      label: 'Download',
+      onClick: () => {
+        //TODO Missing Implementation
+        handleToggleMenuClick(false);
+      },
+    },
+    {
+      icon: <CustomIcon iconClass='fa-share-nodes' fontSizeOverWrite='16px' />,
+      label: 'Share',
+      onClick: () => {
+        //TODO Missing Implementation
+        handleToggleMenuClick(false);
+      },
+    },
+    {
+      icon: (
+        <CustomIcon
+          iconClass='fa-folder-sharp-light'
+          fontSizeOverWrite='16px'
+        />
+      ),
+      label: 'My Projects',
+      onClick: () => {
+        //TODO Missing Implementation
+        handleToggleMenuClick(false);
+      },
+    },
+    {
+      icon: (
+        <Box position='relative'>
+          <CustomIcon
+            color='white'
+            iconClass={`${styles.innerMenu__icon_exit_first} fa-square-check-sharp-light`}
+            fontSizeOverWrite='16px'
+          />
+          <CustomIcon
+            color='white'
+            iconClass={`${styles.innerMenu__icon_exit_arrow} fa-arrow-right`}
+            fontSizeOverWrite='12px'
+          />
+        </Box>
+      ),
+      isHighlight: true,
+      label: 'Exit Design Studio',
+      onClick: () => {
+        //TODO Missing Implementation
+        handleToggleMenuClick(false);
+      },
+    },
+  ];
 
   const toggleDesktopMenu = (open: boolean) => {
     setIsMenuOpen(open);
@@ -185,6 +247,9 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
           }}
         >
           <MobileInnerMenu
+            menuItems={menuItems}
+            typeOfProduct={title}
+            productName={subtitle}
             toggleOrderSummary={toggleOrderSummary}
             toggleMobileDrawer={toggleMobileDrawer}
           />
@@ -212,7 +277,7 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
           isOpen={isMenuOpen}
           toggle={toggleDesktopMenu}
         >
-          <DesktopInnerMenu toggle={toggleDesktopMenu} />
+          <DesktopInnerMenu menuItems={menuItems} />
         </PositionedMenu>
       </AppBar>
     </Box>

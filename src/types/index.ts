@@ -30,3 +30,10 @@ export interface Coordinates {
   right?: number | string;
   bottom?: number | string;
 }
+
+export interface MenuItems {
+  icon: React.ReactNode;
+  onClick: () => void;
+  label: string;
+  isHighlight?: boolean;
+}

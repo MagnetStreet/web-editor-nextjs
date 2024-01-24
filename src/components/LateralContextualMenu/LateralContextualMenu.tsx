@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import styles from './LateralContextualMenu.module.scss';
 
 import useSideMenuStore, {
-  SideMenuState,
+  LateralContextualMenuState,
 } from '@/stores/useLateralContextualMenuStore';
 
 interface IconObj {
@@ -15,7 +15,7 @@ interface IconObj {
 
 const LateralContextualMenu = () => {
   const { activeLayoutName, setActiveLayoutName } =
-    useSideMenuStore<SideMenuState>((state) => state);
+    useSideMenuStore<LateralContextualMenuState>((state) => state);
 
   const items: Array<IconObj> = [
     {
