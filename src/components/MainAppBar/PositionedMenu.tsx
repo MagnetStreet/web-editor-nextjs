@@ -1,5 +1,4 @@
 import { Coordinates } from '@/types';
-import { getStylePositionsHelper } from '@/utils/shared/getStylePositionsHelper';
 import { PopoverOrigin } from '@mui/material';
 import Menu from '@mui/material/Menu';
 import * as React from 'react';
@@ -46,6 +45,7 @@ const PositionedMenu: React.FC<MainAppBarProps> = ({
             '& .MuiList-root': {
               paddingY: 0,
             },
+            ...containerStyle,
           },
         },
       }}

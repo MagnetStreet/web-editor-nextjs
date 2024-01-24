@@ -22,6 +22,7 @@ import useScreenSize from '@/hooks/useScreenSize';
 import DesktopInnerMenu from '@/components/MainAppBar/DesktopInnerMenu';
 import PositionedMenu from '@/components/MainAppBar/PositionedMenu';
 import { CustomIcon } from '@/components/shared/CustomIcon';
+import MobileInnerMenu from '@/components/MainAppBar/MobileInnerMenu';
 
 interface MainAppBarProps {
   title: string;
@@ -42,10 +43,10 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
     // All this is to keeping the Menu open
     if (isDesktop && isMobileMenuOpen) {
       toggleDesktopMenu(true);
-      toggleMobileDrawer(false)(undefined);
+      toggleMobileDrawer(false);
     } else if (!isDesktop && isMenuOpen) {
       toggleDesktopMenu(false);
-      toggleMobileDrawer(true)(undefined);
+      toggleMobileDrawer(true);
     }
   }, [isDesktop]);
 
@@ -53,79 +54,29 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
     setIsMenuOpen(open);
   };
 
-  const toggleMobileDrawer =
-    (open: boolean) => (event?: React.KeyboardEvent | React.MouseEvent) => {
-      if (
-        event &&
-        event.type === 'keydown' &&
-        ((event as React.KeyboardEvent).key === 'Tab' ||
-          (event as React.KeyboardEvent).key === 'Shift')
-      ) {
-        return;
-      }
-      setIsMobileMenuOpen(open);
-    };
+  const toggleMobileDrawer = (open: boolean) => {
+    setIsMobileMenuOpen(open);
+  };
 
-  const handleToggleMenuClick =
-    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-      if (isDesktop) {
-        toggleDesktopMenu(open);
-      } else {
-        toggleMobileDrawer(open)(event);
-      }
-    };
+  const closeMobileDrawer = () => {
+    toggleMobileDrawer(false);
+    toggleOrderSummary(false, false);
+  };
+
+  const handleToggleMenuClick = (open: boolean) => {
+    if (isDesktop) {
+      toggleDesktopMenu(open);
+    } else {
+      toggleMobileDrawer(open);
+    }
+  };
 
   const toggleOrderSummary = (open: boolean, shouldGobackIfClosed = false) => {
     if (!open && shouldGobackIfClosed) {
-      toggleMobileDrawer(true)(undefined);
+      toggleMobileDrawer(true);
     }
     setIsOrderSummaryOpen(open);
   };
-
-  const mobileMenu = () => (
-    <Box
-      className={styles.mobileMenu}
-      role='presentation'
-      onClick={toggleMobileDrawer(false)}
-      onKeyDown={toggleMobileDrawer(false)}
-    >
-      <CustomIcon iconClass='fa-chevron-left' fontSizeOverWrite='20px' />
-      <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-        <ListItem>
-          <Button
-            onClick={() => {
-              toggleOrderSummary(true, false);
-            }}
-          >
-            A
-          </Button>
-        </ListItem>
-      </List>
-    </Box>
-  );
 
   const mobileMenu2 = () => (
     <Box
@@ -138,25 +89,13 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
         toggleOrderSummary(false, true);
       }}
     >
-      <List>
-        {['The other menu', 'Starred', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
       <Divider />
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
+        {['All mail', 'Trash', 'Spam'].map((text) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                <MailIcon />
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
@@ -184,7 +123,7 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
             edge='start'
             aria-label='menu'
             sx={{ mr: 3 }}
-            onClick={handleToggleMenuClick(true)}
+            onClick={() => handleToggleMenuClick(true)}
           >
             <CustomIcon iconClass='fa-bars-sharp-light' />
             <Box className={styles.notificationContainer}>
@@ -242,11 +181,13 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
             },
           }}
           onClose={() => {
-            toggleMobileDrawer(false)(undefined);
-            toggleOrderSummary(false, false);
+            closeMobileDrawer();
           }}
         >
-          {mobileMenu()}
+          <MobileInnerMenu
+            toggleOrderSummary={toggleOrderSummary}
+            toggleMobileDrawer={toggleMobileDrawer}
+          />
         </Drawer>
         {/* Second Mobile View - Order Summary */}
         <Drawer
@@ -259,8 +200,7 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
             },
           }}
           onClose={() => {
-            toggleMobileDrawer(false)(undefined);
-            toggleOrderSummary(false, false);
+            closeMobileDrawer();
           }}
         >
           {mobileMenu2()}

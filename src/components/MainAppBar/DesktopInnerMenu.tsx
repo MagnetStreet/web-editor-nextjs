@@ -20,6 +20,7 @@ interface DesktopInnerMenu {
 
 const DesktopInnerMenu: React.FC<DesktopInnerMenu> = ({ toggle }) => {
   const handleOnClick = () => {
+    //TODO Add logic here o handle redirect
     toggle(false);
   };
 
@@ -27,7 +28,7 @@ const DesktopInnerMenu: React.FC<DesktopInnerMenu> = ({ toggle }) => {
     <List
       disablePadding
       sx={{ paddingY: 0, minWidth: '285px' }}
-      className={styles.innerMenu}
+      className={`${styles.innerMenu}`}
     >
       <ListItem disablePadding className={styles.innerMenu__list_item}>
         <Typography
@@ -38,7 +39,7 @@ const DesktopInnerMenu: React.FC<DesktopInnerMenu> = ({ toggle }) => {
           Main Menu
         </Typography>
       </ListItem>
-      <Divider sx={{ marginBottom: '32px' }} />
+      <Divider className={styles.innerMenu__divider} />
       <ListItem
         disablePadding
         className={styles.innerMenu__list_item}
@@ -83,8 +84,8 @@ const DesktopInnerMenu: React.FC<DesktopInnerMenu> = ({ toggle }) => {
       </ListItem>
       <ListItem
         disablePadding
-        className={styles.innerMenu__list_item}
-        onClick={() => handleOnClick(f)}
+        className={`${styles.innerMenu__list_item} ${styles.innerMenu__list_item__highlight}`}
+        onClick={() => handleOnClick}
       >
         <ListItemButton>
           <ListItemIcon sx={{ minWidth: '26px' }}>

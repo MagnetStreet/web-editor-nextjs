@@ -37,34 +37,44 @@
   }
 }
 
-.mobileMenu {
-  padding: 16px;
-  width: 100%;
-}
-
 .innerMenu {
   padding: 0;
-  border-radius: 0px 8px 8px 0px;
-  border: 1px solid #cccdcd;
-  background: #fff;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  position: relative;
+  width: 100%;
+  @include large {
+    border-radius: 0px 8px 8px 0px;
+    border: 1px solid #cccdcd;
+    background: #fff;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  }
+  &__wrapper {
+    height: 100vh;
+    justify-content: space-between;
+    padding: 70px 0 0;
+  }
   &__list_item {
     padding: 0 16px 0;
-    .MuiListItemButton-root {
-    }
     .MuiListItemIcon-root {
       min-width: 26;
     }
-    &:last-of-type {
-      padding: 24px 16px 16px;
+    &:hover {
+      color: $primary-color;
+    }
+    &__highlight {
+      padding: 16px;
       color: $white;
       background-color: $primary-color;
       &:hover {
         color: $white;
       }
     }
-    &:hover {
-      color: $primary-color;
+  }
+  &__divider {
+    width: 90%;
+    margin: 16px auto;
+    @include large {
+      width: 80%;
+      margin: 0 auto 32px;
     }
   }
   &__icon_exit_first {
@@ -76,5 +86,10 @@
     top: -11px;
     left: 0px;
     padding: 5px 0;
+  }
+  &__icon_exit {
+    top: 16px;
+    left: 16px;
+    position: absolute;
   }
 }
