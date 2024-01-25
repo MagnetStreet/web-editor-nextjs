@@ -67,7 +67,7 @@ export default function EditorPage() {
             position='absolute'
             visible={isBottomFrameOpen}
             coordinates={{
-              bottom: 20,
+              bottom: 100,
               right: 175,
             }}
             paperProps={{

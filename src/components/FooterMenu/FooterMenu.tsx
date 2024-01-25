@@ -81,7 +81,7 @@ const FooterMenu = () => {
       <Grid item>
         <OrderSummaryButton
           total='$2000.00'
-          isOpen={false}
+          isOpen={isBottomFrameOpen}
           onClick={() => setIsBottomFrameOpen(!isBottomFrameOpen)}
         />
       </Grid>

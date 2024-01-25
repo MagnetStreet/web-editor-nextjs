@@ -40,10 +40,10 @@ export default function RootLayout({
               hasNotifications={true}
             />
             <Stack direction='row'>
-              {isDesktop && <LateralContextualMenu />}
               <Stack width='100%' position='relative'>
                 <StepperWrapper />
                 {children}
+                <LateralContextualMenu />
                 {isDesktop && <FooterMenu />}
               </Stack>
             </Stack>

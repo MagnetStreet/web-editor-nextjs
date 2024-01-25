@@ -22,13 +22,17 @@ interface SampleProps {
 const OrderSummaryButton: React.FC<SampleProps> = ({
   total,
   onClick,
-  isOpen,
+  isOpen = false,
 }) => {
   const theme = useTheme();
   const { isDesktop } = useScreenSize();
   return (
     <Paper className={styles.orderSummarPaper}>
-      <Stack className={styles.orderSummarWrapper}>
+      <Stack
+        className={`${styles.orderSummarWrapper} ${
+          isOpen ? styles.orderSummarButton__isOpen : ''
+        }`}
+      >
         {isDesktop && (
           <>
             <Typography fontWeight='bold'>Total</Typography>

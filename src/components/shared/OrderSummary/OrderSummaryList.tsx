@@ -23,16 +23,18 @@ const OrderSummaryList: React.FC<OrderSummaryListProps> = ({ onClose }) => {
         <Typography variant='h1' fontSize={isDesktop ? '20px' : '24px'}>
           Order Summary
         </Typography>
-        <Box onClick={() => onClose()}>
-          <CustomIcon iconClass='fa-xmark-large' fontSizeOverWrite='16px' />
+        <Box
+          className={styles.orderSummaryList__back}
+          onClick={() => onClose()}
+        >
+          <CustomIcon
+            iconClass={isDesktop ? 'fa-xmark-large' : 'fa-chevron-left'}
+            fontSizeOverWrite='16px'
+          />
         </Box>
       </Box>
-      <Stack>
-        <Stack
-          direction='row'
-          justifyContent='space-between'
-          sx={{ marginTop: '16px' }}
-        >
+      <Stack className={styles.orderSummaryList__list}>
+        <Stack className={styles.orderSummaryList__list__item}>
           <Typography fontWeight='bold'>Base</Typography>
           <Stack direction='row' gap='6px'>
             <Typography color={theme.palette.grey[400]}>$</Typography>
@@ -68,7 +70,7 @@ const OrderSummaryList: React.FC<OrderSummaryListProps> = ({ onClose }) => {
           );
         })}
       </Stack>
-      <Stack gap='8px' sx={{ marginTop: '24px' }}>
+      <Stack className={styles.orderSummaryList__total_section}>
         <Stack direction='row' justifyContent='space-between'>
           <Typography fontSize='14px' color={theme.palette.grey[400]}>
             Subtotal

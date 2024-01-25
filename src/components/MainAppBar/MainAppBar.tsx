@@ -46,9 +46,9 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
 
   useEffect(() => {
     // All this is to keeping the Menu open
-    if (isDesktop && isMobileMenuOpen) {
+    if (isDesktop && (isMobileMenuOpen || isOrderSummaryOpen)) {
       toggleDesktopMenu(true);
-      toggleMobileDrawer(false);
+      closeMobileDrawer();
     } else if (!isDesktop && isMenuOpen) {
       toggleDesktopMenu(false);
       toggleMobileDrawer(true);
@@ -248,7 +248,8 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
           open={isMobileMenuOpen}
           PaperProps={{
             sx: {
-              width: '75%',
+              minWidth: '75%',
+              width: 'fit-content',
               borderRadius: '0',
             },
           }}
@@ -270,7 +271,8 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
           open={isOrderSummaryOpen}
           PaperProps={{
             sx: {
-              width: '75%',
+              minWidth: '75%',
+              width: 'fit-content',
               borderRadius: '0',
             },
           }}
