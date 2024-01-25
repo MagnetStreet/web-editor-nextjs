@@ -1,6 +1,6 @@
 'use client';
 
-import { Box } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 
 import styles from './Editor.module.scss';
 
@@ -19,6 +19,7 @@ import useLateralContextualMenuStore, {
 } from '@/stores/useLateralContextualMenuStore';
 import useStepperStore, { StepperState } from '@/stores/useStepperStore';
 import OrderSummaryList from '@/components/shared/OrderSummary/OrderSummaryList';
+import LateralContextualMenu from '@/components/LateralContextualMenu/LateralContextualMenu';
 
 export default function EditorPage() {
   const { isDesktop } = useScreenSize();
@@ -36,62 +37,65 @@ export default function EditorPage() {
   );
 
   return (
-    <Box className={styles.editor}>
-      Hello World the active layout is {activeLayoutName}
-      Hello World the active Step and SubStep are {activeStep} and
-      {activeSubStep}
-      <ChangesController
-        position='absolute'
-        coordinates={{
-          top: '20%',
-          right: '25%',
-        }}
-      />
-      {isDesktop && (
-        <>
-          <OptionsFrame
-            position='absolute'
-            coordinates={{
-              top: 12,
-              left: 16,
-            }}
-            paperProps={{
-              sx: {
-                width: 'fit-content',
-              },
-            }}
-          >
-            <p>Interchangebale content top left</p>
-          </OptionsFrame>
-          <OptionsFrame
-            position='absolute'
-            visible={isBottomFrameOpen}
-            coordinates={{
-              bottom: 100,
-              right: 175,
-            }}
-            paperProps={{
-              sx: {
-                width: 'fit-content',
-              },
-            }}
-          >
-            <OrderSummaryList onClose={() => setIsBottomFrameOpen(false)} />
-          </OptionsFrame>
-        </>
-      )}
-      <ViewSelector
-        position='absolute'
-        coordinates={{
-          top: isDesktop ? '20px' : 0,
-          right: isDesktop ? '40px' : 0,
-          left: isDesktop ? 'unset' : 0,
-        }}
-        views={views}
-        openView={openView}
-        setOpenView={setOpenView}
-        isDesktop={isDesktop}
-      />
-    </Box>
+    <Stack direction='row' position='relative'>
+      <LateralContextualMenu />
+      <Box className={styles.editor}>
+        Hello World the active layout is {activeLayoutName}
+        Hello World the active Step and SubStep are {activeStep} and
+        {activeSubStep}
+        <ChangesController
+          position='absolute'
+          coordinates={{
+            top: '20%',
+            right: '25%',
+          }}
+        />
+        {isDesktop && (
+          <>
+            <OptionsFrame
+              position='absolute'
+              coordinates={{
+                top: 12,
+                left: 16,
+              }}
+              paperProps={{
+                sx: {
+                  width: 'fit-content',
+                },
+              }}
+            >
+              <p>Interchangebale content top left</p>
+            </OptionsFrame>
+            <OptionsFrame
+              position='absolute'
+              visible={isBottomFrameOpen}
+              coordinates={{
+                bottom: 100,
+                right: 175,
+              }}
+              paperProps={{
+                sx: {
+                  width: 'fit-content',
+                },
+              }}
+            >
+              <OrderSummaryList onClose={() => setIsBottomFrameOpen(false)} />
+            </OptionsFrame>
+          </>
+        )}
+        <ViewSelector
+          position='absolute'
+          coordinates={{
+            top: isDesktop ? '20px' : 0,
+            right: isDesktop ? '40px' : 0,
+            left: isDesktop ? 'unset' : 0,
+          }}
+          views={views}
+          openView={openView}
+          setOpenView={setOpenView}
+          isDesktop={isDesktop}
+        />
+      </Box>
+    </Stack>
   );
 }

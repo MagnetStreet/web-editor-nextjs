@@ -2,6 +2,8 @@
 @import '@/styles/mixins';
 
 .sideIconMenu {
+  position: absolute;
+  bottom: 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -9,15 +11,16 @@
   border-top: none;
   z-index: 1;
   width: 100%;
+  max-width: 100vh;
   padding: 16px;
   @include large {
-    z-index: 1;
-    top: 152px;
     width: 108px;
     padding: 32px 16px;
-    position: absolute;
+    position: relative;
     flex-direction: column;
     border: 1px solid $gray3;
+    border-top: none;
+    border-left: none;
     height: calc(100vh - 298px);
   }
 }

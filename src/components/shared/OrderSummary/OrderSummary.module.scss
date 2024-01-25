@@ -47,6 +47,7 @@
   padding: 60px 16px 0;
   @include large {
     padding: 16px;
+    max-height: 550px;
   }
   &__header {
     position: relative;
@@ -72,8 +73,11 @@
   &__list__item {
     flex-direction: row;
     justify-content: space-between;
-    padding: 16px 0;
+    padding: 16px;
     border-bottom: 1px solid var(--System-Greys-Light-Grey, #cccdcd);
+    @include large {
+      padding: 16px 0;
+    }
   }
   &__total_section {
     gap: 8px;

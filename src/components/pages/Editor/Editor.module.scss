@@ -3,7 +3,13 @@
 
 .editor {
   position: relative;
-  min-height: calc(100vh - 220px); // screen size minus controls elements
+  min-height: calc(100vh - 140px); // screen size minus controls elements
   background-color: $grayLight;
   overflow: scroll;
+  display: inline-block;
+  width: 100%;
+  @include large {
+    min-height: calc(100vh - 220px); // screen size minus controls elements
+    width: calc(100% - 108px); // width of the lateral side menu
+  }
 }

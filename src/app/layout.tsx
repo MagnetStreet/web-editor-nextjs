@@ -43,7 +43,6 @@ export default function RootLayout({
               <Stack width='100%' position='relative'>
                 <StepperWrapper />
                 {children}
-                <LateralContextualMenu />
                 {isDesktop && <FooterMenu />}
               </Stack>
             </Stack>
