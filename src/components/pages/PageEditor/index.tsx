@@ -21,7 +21,8 @@ import useStepperStore, { StepperState } from '@/stores/useStepperStore';
 import OrderSummaryList from '@/components/shared/OrderSummary/OrderSummaryList';
 import LateralContextualMenu from '@/components/LateralContextualMenu/LateralContextualMenu';
 
-export default function EditorPage() {
+export default function PageEditor({ trulyValidateProducts = {} }) {
+  console.log('trulyValidateProducts', trulyValidateProducts);
   const { isDesktop } = useScreenSize();
   const { activeLayoutName } =
     useLateralContextualMenuStore<LateralContextualMenuState>((state) => state);
