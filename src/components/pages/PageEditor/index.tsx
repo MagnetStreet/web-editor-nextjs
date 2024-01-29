@@ -1,13 +1,13 @@
 'use client';
 
-import { Box, Stack } from '@mui/material';
+import { Box, Button, Stack } from '@mui/material';
 
 import styles from './Editor.module.scss';
 
 import useScreenSize from '@/hooks/useScreenSize';
 
 import { ChangesController } from '@/components/ChangesController/ChangesController';
-import OptionsFrame from '@/components/shared/OptionsFrame';
+import Frame from '@/components/shared/Frame';
 import { ViewSelector } from '@/components/ViewSelector/ViewSelector';
 
 import {
@@ -20,12 +20,13 @@ import useLateralContextualMenuStore, {
 import useStepperStore, { StepperState } from '@/stores/useStepperStore';
 import OrderSummaryList from '@/components/shared/OrderSummary/OrderSummaryList';
 import LateralContextualMenu from '@/components/LateralContextualMenu/LateralContextualMenu';
+import ZoomWrapper from '@/components/shared/ZoomWrapper';
 
-export default function PageEditor({ trulyValidateProducts = {} }) {
-  console.log('trulyValidateProducts', trulyValidateProducts);
+export default function PageEditor({ dsInfo }: any) {
   const { isDesktop } = useScreenSize();
   const { activeLayoutName } =
     useLateralContextualMenuStore<LateralContextualMenuState>((state) => state);
+
   const {
     views,
     openView,
@@ -36,6 +37,8 @@ export default function PageEditor({ trulyValidateProducts = {} }) {
   const { activeSubStep, activeStep } = useStepperStore<StepperState>(
     (state) => state
   );
+
+  console.log('dsInfo', dsInfo);
 
   return (
     <Stack direction='row' position='relative'>
@@ -53,7 +56,7 @@ export default function PageEditor({ trulyValidateProducts = {} }) {
         />
         {isDesktop && (
           <>
-            <OptionsFrame
+            <Frame
               position='absolute'
               coordinates={{
                 top: 12,
@@ -66,8 +69,8 @@ export default function PageEditor({ trulyValidateProducts = {} }) {
               }}
             >
               <p>Interchangebale content top left</p>
-            </OptionsFrame>
-            <OptionsFrame
+            </Frame>
+            <Frame
               position='absolute'
               visible={isBottomFrameOpen}
               coordinates={{
@@ -81,9 +84,10 @@ export default function PageEditor({ trulyValidateProducts = {} }) {
               }}
             >
               <OrderSummaryList onClose={() => setIsBottomFrameOpen(false)} />
-            </OptionsFrame>
+            </Frame>
           </>
         )}
+        <ZoomWrapper />
         <ViewSelector
           position='absolute'
           coordinates={{

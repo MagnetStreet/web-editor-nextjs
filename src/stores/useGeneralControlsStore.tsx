@@ -8,10 +8,14 @@ export interface GeneralControlsState {
   openView: EditorView;
   isNextStepEnable: boolean;
   isBottomFrameOpen: boolean;
+  isLoading: boolean;
+  isInitialLoad: boolean;
   setZoom: (val: number) => void;
   setOpenView: (val: EditorView) => void;
   setNextStepEnable: (val: boolean) => void;
   setIsBottomFrameOpen: (val: boolean) => void;
+  setLoading: (val: boolean) => void;
+  setInitialLoading: (val: boolean) => void;
   // Other properties and functions in your state For handling general navigations or controls
 }
 
@@ -19,6 +23,10 @@ export const useGeneralControlsStore = create<GeneralControlsState>((set) => ({
   zoom: 100,
   isNextStepEnable: false,
   isBottomFrameOpen: false,
+  isInitialModalOpen: true,
+  isInitialLoad: true,
+  isLoading: false,
+
   openView: {
     id: 0,
     displayName: 'Front',
@@ -55,4 +63,6 @@ export const useGeneralControlsStore = create<GeneralControlsState>((set) => ({
   setIsBottomFrameOpen: (val: boolean) => set({ isBottomFrameOpen: val }),
   setNextStepEnable: (val: boolean) => set({ isNextStepEnable: val }),
   setZoom: (newVal: number) => set({ zoom: newVal }),
+  setLoading: (val: boolean) => set({ isLoading: val }),
+  setInitialLoading: (val: boolean) => set({ isInitialLoad: val }),
 }));

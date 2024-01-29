@@ -6,7 +6,7 @@
   width: 100%;
 }
 .orderSummarWrapper {
-  flex-direction: row;
+  flex-direction: row !important;
   gap: 16px;
   align-items: center;
   padding: 16px;
