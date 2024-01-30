@@ -24,6 +24,7 @@ export const ChangesController: React.FC<ChangesControllerProps> = ({
   const theme = useTheme();
 
   const containerStyle = {
+    zIndex: 1,
     borderRadius: '100px',
     padding: { xs: '12px 4px' },
     alignItems: 'center',

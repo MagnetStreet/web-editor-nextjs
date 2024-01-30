@@ -3,14 +3,14 @@ import { create } from 'zustand';
 import { EditorView } from '@/types';
 
 export interface GeneralControlsState {
-  zoom: number;
+  zoom: number | number[];
   views: EditorView[];
   openView: EditorView;
   isNextStepEnable: boolean;
   isBottomFrameOpen: boolean;
   isLoading: boolean;
   isInitialLoad: boolean;
-  setZoom: (val: number) => void;
+  setZoom: (val: number | number[]) => void;
   setOpenView: (val: EditorView) => void;
   setNextStepEnable: (val: boolean) => void;
   setIsBottomFrameOpen: (val: boolean) => void;
@@ -20,7 +20,7 @@ export interface GeneralControlsState {
 }
 
 export const useGeneralControlsStore = create<GeneralControlsState>((set) => ({
-  zoom: 100,
+  zoom: 50,
   isNextStepEnable: false,
   isBottomFrameOpen: false,
   isInitialModalOpen: true,
@@ -62,7 +62,7 @@ export const useGeneralControlsStore = create<GeneralControlsState>((set) => ({
   setOpenView: (val: EditorView) => set({ openView: val }),
   setIsBottomFrameOpen: (val: boolean) => set({ isBottomFrameOpen: val }),
   setNextStepEnable: (val: boolean) => set({ isNextStepEnable: val }),
-  setZoom: (newVal: number) => set({ zoom: newVal }),
+  setZoom: (newVal: number | number[]) => set({ zoom: newVal }),
   setLoading: (val: boolean) => set({ isLoading: val }),
   setInitialLoading: (val: boolean) => set({ isInitialLoad: val }),
 }));

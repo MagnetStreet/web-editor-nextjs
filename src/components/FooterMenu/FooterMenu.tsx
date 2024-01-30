@@ -73,7 +73,7 @@ const FooterMenu = () => {
               event: Event,
               value: number | number[],
               activeThumb: number
-            ) => setZoom(activeThumb)}
+            ) => setZoom(value)}
           />
           <Typography>{zoom}%</Typography>
         </Stack>

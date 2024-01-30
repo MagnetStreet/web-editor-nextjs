@@ -1,40 +1,44 @@
-import { Box } from '@mui/material';
-import * as React from 'react';
 import {
-  TransformWrapper,
-  TransformComponent,
-  useControls,
-} from 'react-zoom-pan-pinch';
+  useGeneralControlsStore,
+  GeneralControlsState,
+} from '@/stores/useGeneralControlsStore';
+import { Box } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+const minZoom = 0;
+const maxZoom = 100;
 
-interface SampleProps {
-  img?: string;
-}
+const Component = () => {
+  const { zoom } = useGeneralControlsStore<GeneralControlsState>(
+    (state) => state
+  );
 
-const ZoomWrapper: React.FC<SampleProps> = ({ img }) => {
-  const Controls = () => {
-    const { zoomIn, zoomOut, resetTransform } = useControls();
-    return (
-      <>
-        <button onClick={() => zoomIn()}>Zoom In</button>
-        <button onClick={() => zoomOut()}>Zoom Out</button>
-        <button onClick={() => resetTransform()}>Reset</button>
-      </>
-    );
-  };
+  const [dynamicHeight, setDynamicHeight] = useState(0);
+
+  useEffect(() => {
+    const adjustedZoom = Math.max(minZoom, Math.min(maxZoom, Number(zoom)));
+    const scale = (adjustedZoom - minZoom) / (maxZoom - minZoom);
+    const newDynamicHeight = 0.3 + scale * 0.7; // Scale between 0.3 and 1.0
+    setDynamicHeight(newDynamicHeight * 100);
+  }, [zoom]);
+
   return (
-    <Box>
-      <TransformWrapper>
-        <Controls />
-        <TransformComponent>
-          <img
-            src='https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'
-            alt='test'
-            width='100%'
-          />
-        </TransformComponent>
-      </TransformWrapper>
+    <Box
+      sx={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        height: `${dynamicHeight}vh`,
+        width: '100%',
+        transform: 'translate(-50%, -50%)',
+      }}
+    >
+      <img
+        src='/images/sample_big.png'
+        alt='test'
+        style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+      />
     </Box>
   );
 };
 
-export default ZoomWrapper;
+export default Component;

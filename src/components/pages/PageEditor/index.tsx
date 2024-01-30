@@ -38,7 +38,7 @@ export default function PageEditor({ dsInfo }: any) {
     (state) => state
   );
 
-  console.log('dsInfo', dsInfo);
+  //console.log('dsInfo', dsInfo);
 
   return (
     <Stack direction='row' position='relative'>
