@@ -51,7 +51,7 @@ export default function PageEditor({ dsInfo }: any) {
           position='absolute'
           coordinates={{
             top: '20%',
-            right: '25%',
+            right: isDesktop ? '20%' : '5%',
           }}
         />
         {isDesktop && (

@@ -26,6 +26,7 @@ const Component = () => {
       sx={{
         position: 'absolute',
         top: '50%',
+        zIndex: 0,
         left: '50%',
         height: `${dynamicHeight}vh`,
         width: '100%',

@@ -25,6 +25,7 @@ const OptionsFrame: React.FC<OptionsFrameProps> = ({
   const containerStyle = {
     ...getStylePositionsHelper(position, coordinates),
     display: visible ? 'block' : 'none',
+    zIndex: 1,
   };
   return (
     <Paper className={className} elevation={0} sx={containerStyle}>
