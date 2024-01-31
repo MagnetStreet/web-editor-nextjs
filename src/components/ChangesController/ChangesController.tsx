@@ -26,7 +26,7 @@ export const ChangesController: React.FC<ChangesControllerProps> = ({
   const containerStyle = {
     zIndex: 1,
     borderRadius: '100px',
-    padding: { xs: '12px 4px' },
+    padding: { xs: '12px 4px', md: '12px' },
     alignItems: 'center',
     color: theme.palette.primary.main,
     backgroundColor: theme.palette.secondary.main,
