@@ -73,7 +73,10 @@ const MobileInnerMenu: React.FC<MobileInnerMenuProps> = ({
               </Typography>
             </Stack>
           </ListItem>
-          <Divider className={styles.innerMenu__divider} />
+          <Divider
+            className={styles.innerMenu__divider}
+            sx={{ margin: { xs: '16px auto', md: '0 auto 32px' } }}
+          />
           <ListItem>
             <OrderSummaryButton
               total={'$200'}

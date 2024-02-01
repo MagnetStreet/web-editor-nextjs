@@ -1,3 +1,6 @@
+import { AlertColor } from '@mui/material';
+import { ReactElement } from 'react';
+
 export interface PageParams {
   params?: { id?: string };
   searchParams?: { [key: string]: string | undefined };
@@ -43,4 +46,10 @@ export interface OrderItem {
   categroy: string;
   quantity: number;
   value: number;
+}
+
+export interface Notification {
+  icon: string;
+  body: React.ReactNode;
+  severity: AlertColor | undefined;
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Button, Stack } from '@mui/material';
+import { AlertColor, Box, Button, Stack } from '@mui/material';
 
 import styles from './Editor.module.scss';
 
@@ -22,6 +22,11 @@ import OrderSummaryList from '@/components/shared/OrderSummary/OrderSummaryList'
 import LateralContextualMenu from '@/components/LateralContextualMenu/LateralContextualMenu';
 import ZoomWrapper from '@/components/shared/ZoomWrapper';
 
+import {
+  useNotificationsState,
+  useNotificationStore,
+} from '@/stores/useNotificationStore';
+
 export default function PageEditor({ dsInfo }: any) {
   const { isDesktop } = useScreenSize();
   const { activeLayoutName } =
@@ -38,7 +43,12 @@ export default function PageEditor({ dsInfo }: any) {
     (state) => state
   );
 
-  //console.log('dsInfo', dsInfo);
+  //TODO delete this is just to test the notifications
+  const { addNotification } = useNotificationStore<useNotificationsState>(
+    (state) => state
+  );
+
+  console.log('dsInfo', dsInfo);
 
   return (
     <Stack direction='row' position='relative'>
@@ -47,6 +57,25 @@ export default function PageEditor({ dsInfo }: any) {
         Hello World the active layout is {activeLayoutName}
         Hello World the active Step and SubStep are {activeStep} and
         {activeSubStep}
+        {/* 
+          TODO delete this is just to test the notifications  
+        */}
+        <Button
+          onClick={() => {
+            addNotification({
+              icon: 'fa-bell-light',
+              severity: 'warning' as AlertColor,
+              body: (
+                <Box>
+                  You have added <b>Raised Foils</b> to your order{' '}
+                  <a>view summary</a>
+                </Box>
+              ),
+            });
+          }}
+        >
+          Show notification
+        </Button>
         <ChangesController
           position='absolute'
           coordinates={{

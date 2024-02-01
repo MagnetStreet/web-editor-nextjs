@@ -51,7 +51,10 @@ const OrderSummaryButton: React.FC<SampleProps> = ({
         {!isDesktop && (
           <Stack spacing={'12px'} sx={{ width: '100%' }}>
             <Button sx={{ padding: 0 }} onClick={() => onClick()}>
-              <Stack className={styles.orderSummaryStack}>
+              <Stack
+                className={styles.orderSummaryStack}
+                sx={{ flexDirection: 'row' }}
+              >
                 <Stack direction={'row'} gap='8px'>
                   <PaidIcon />
                   <Typography color='black' fontWeight='bold'>
@@ -65,7 +68,10 @@ const OrderSummaryButton: React.FC<SampleProps> = ({
               </Stack>
             </Button>
             <Divider sx={{ marginTop: '0 !important' }} />
-            <Stack className={styles.orderSummaryStack}>
+            <Stack
+              className={styles.orderSummaryStack}
+              sx={{ flexDirection: 'row' }}
+            >
               <Typography fontWeight='bold'>Total</Typography>
               <Typography fontWeight='bold'>{total}</Typography>
             </Stack>

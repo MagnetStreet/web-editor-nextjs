@@ -150,33 +150,6 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
     setIsOrderSummaryOpen(open);
   };
 
-  const mobileMenu2 = () => (
-    <Box
-      className={styles.mobileMenu}
-      role='presentation'
-      onClick={() => {
-        toggleOrderSummary(false, true);
-      }}
-      onKeyDown={() => {
-        toggleOrderSummary(false, true);
-      }}
-    >
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <MailIcon />
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
-
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar

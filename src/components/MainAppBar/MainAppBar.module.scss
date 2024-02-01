@@ -71,10 +71,8 @@
   }
   &__divider {
     width: 90%;
-    margin: 16px auto;
     @include large {
       width: 80%;
-      margin: 0 auto 32px;
     }
   }
   &__icon_exit_first {
