@@ -17,7 +17,7 @@ import {
 import useLateralContextualMenuStore, {
   LateralContextualMenuState,
 } from '@/stores/useLateralContextualMenuStore';
-import useStepperStore, { StepperState } from '@/stores/useStepperStore';
+import useNavigationStore, { StepperState } from '@/stores/useNavigationStore';
 import OrderSummaryList from '@/components/shared/OrderSummary/OrderSummaryList';
 import LateralContextualMenu from '@/components/LateralContextualMenu/LateralContextualMenu';
 import ZoomWrapper from '@/components/shared/ZoomWrapper';
@@ -39,7 +39,7 @@ export default function PageEditor({ dsInfo }: any) {
     setOpenView,
     setIsBottomFrameOpen,
   } = useGeneralControlsStore<GeneralControlsState>((state) => state);
-  const { activeSubStep, activeStep } = useStepperStore<StepperState>(
+  const { activeSubStep, activeStep } = useNavigationStore<StepperState>(
     (state) => state
   );
 
@@ -117,7 +117,7 @@ export default function PageEditor({ dsInfo }: any) {
           </>
         )}
         <ZoomWrapper />
-        <ViewSelector
+        {/* <ViewSelector
           position='absolute'
           coordinates={{
             top: isDesktop ? '20px' : 0,
@@ -128,7 +128,7 @@ export default function PageEditor({ dsInfo }: any) {
           openView={openView}
           setOpenView={setOpenView}
           isDesktop={isDesktop}
-        />
+        /> */}
       </Box>
     </Stack>
   );

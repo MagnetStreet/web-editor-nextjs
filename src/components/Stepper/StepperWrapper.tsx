@@ -7,17 +7,18 @@ import useScreenSize from '@/hooks/useScreenSize';
 import { StyledStepper } from '@/components/Stepper/StyledStepper';
 import { SubProgressSteps } from '@/components/Stepper/SubProgressSteps';
 
-import useStepperStore, { StepperState } from '@/stores/useStepperStore';
+import useNavigationStore, {
+  NavigationState,
+} from '@/stores/useNavigationStore';
 
 export default function StepperWrapper() {
   const { isDesktop } = useScreenSize();
-  const { steps, activeStep, activeSubStep } = useStepperStore<StepperState>(
-    (state) => state
-  );
+  const { steps, activeStep, activeSubStep } =
+    useNavigationStore<NavigationState>((state) => state);
 
   return (
     <Stack className={styles.wrapper} spacing={4}>
-      {steps && (
+      {/* {steps && (
         <StyledStepper
           steps={steps}
           activeStep={activeStep}
@@ -34,7 +35,7 @@ export default function StepperWrapper() {
           isDesktop={isDesktop}
           activeScreen='Pocket Invitation'
         />
-      )}
+      )} */}
     </Stack>
   );
 }

@@ -16,7 +16,9 @@ import {
   GeneralControlsState,
   useGeneralControlsStore,
 } from '@/stores/useGeneralControlsStore';
-import useStepperStore, { StepperState } from '@/stores/useStepperStore';
+import useNavigationStore, {
+  NavigationState,
+} from '@/stores/useNavigationStore';
 import OrderSummaryButton from '@/components/shared/OrderSummary/OrderSummaryButton';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -36,7 +38,7 @@ const Item = styled(Paper)(({ theme }) => ({
 const FooterMenu = () => {
   const theme = useTheme();
   const { handleNextStepClick, handleBackStepClick } =
-    useStepperStore<StepperState>((state) => state);
+    useNavigationStore<NavigationState>((state) => state);
   const { zoom, isBottomFrameOpen, setZoom, setIsBottomFrameOpen } =
     useGeneralControlsStore<GeneralControlsState>((state) => state);
 

@@ -2,7 +2,7 @@ import { create } from 'zustand';
 
 import { StepperStep } from '@/types';
 
-export interface StepperState {
+export interface NavigationState {
   steps: StepperStep[];
   activeStep: number;
   activeSubStep: number;
@@ -12,7 +12,7 @@ export interface StepperState {
   handleBackStepClick?: () => void;
 }
 
-const useStepperStore = create<StepperState>((set) => ({
+const useNavigationStore = create<NavigationState>((set) => ({
   activeStep: 0,
   activeSubStep: 0,
   steps: [
@@ -84,4 +84,4 @@ const useStepperStore = create<StepperState>((set) => ({
   },
 }));
 
-export default useStepperStore;
+export default useNavigationStore;

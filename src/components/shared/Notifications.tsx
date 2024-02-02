@@ -11,7 +11,7 @@ const Notifications: React.FC = () => {
   const { activeNotifications } = useNotificationStore<useNotificationsState>(
     (state) => state
   );
-  console.log('activeNotifications', activeNotifications);
+
   return (
     <Box
       position='absolute'

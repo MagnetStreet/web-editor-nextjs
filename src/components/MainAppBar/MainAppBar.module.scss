@@ -9,17 +9,13 @@
 .notificationContainer {
   @include flex-center;
   color: $white;
-  height: 14px;
-  width: 14px;
+  height: 20px;
+  width: 20px;
   border-radius: 100%;
   background-color: $alert-color;
   position: absolute;
   top: 11px;
   right: 0px;
-  @include large {
-    height: 20px;
-    width: 20px;
-  }
 }
 
 .typoContainer {
@@ -30,8 +26,8 @@
 }
 
 .AppBarContainer {
-  box-shadow: none;
-  border-radius: 0;
+  box-shadow: none !important;
+  border-radius: 0 !important;
   @include large {
     border: 1px solid $gray1;
   }

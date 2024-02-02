@@ -96,7 +96,7 @@ export const StyledStepper: React.FC<StyleadStepperProps> = ({
                 >
                   <Box className={`{styles.stepperLabelContainer} `}>
                     <Typography
-                      variant='h3'
+                      variant='subtitle2'
                       sx={{
                         color:
                           activeStep === index
@@ -106,7 +106,7 @@ export const StyledStepper: React.FC<StyleadStepperProps> = ({
                     >
                       Step {index}
                     </Typography>
-                    <Typography variant='h2'>{displayName}</Typography>
+                    <Typography variant='subtitle1'>{displayName}</Typography>
                   </Box>
                 </Box>
               )}

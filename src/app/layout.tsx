@@ -18,6 +18,7 @@ import { useGeneralControlsStore } from '@/stores/useGeneralControlsStore';
 import { useEffect } from 'react';
 import { postApiResponse } from '@/utils/shared/post-api-response';
 import Notifications from '@/components/shared/Notifications';
+import Navigation from '@/components/Navigation';
 
 const lato = Lato({
   subsets: ['latin'],
@@ -84,7 +85,8 @@ export default function RootLayout({
               </GenericModal> */}
               <Stack direction='row'>
                 <Stack width='100%' position='relative'>
-                  <StepperWrapper />
+                  {/* <StepperWrapper /> */}
+                  <Navigation />
                   {children}
                   {isDesktop && <FooterMenu />}
                 </Stack>

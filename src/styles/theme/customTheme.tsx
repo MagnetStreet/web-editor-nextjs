@@ -10,6 +10,8 @@ const vars = {
   colors: {
     primaryLight: '#2496FF',
     primaryColor: '#5471A8',
+    highlighBackground: '#ccd4e5',
+    highlighBackground2: '#E6EEFE',
     secondaryLight: '#618DE6',
     white: '#ffffff',
     black: '#000',
@@ -54,41 +56,64 @@ const customTheme = createTheme(theme, {
       xl: 1200,
     },
   },
-  typography: {
-    fontSize: 16,
-    lineHeight: 'normal',
-    h1: {
-      color: vars.colors.black,
-      fontFamily: 'FS Sally',
-      fontSize: vars.size.xl,
-      fontWeight: 400,
-      lineHeight: 'normal',
-    },
-    h2: {
-      color: vars.colors.black,
-      fontFamily: {
-        sans: ['var(--font-lato)'],
-      },
-      fontSize: vars.size.md,
-      fontWeight: 700,
-      lineHeight: 'normal',
-    },
-    h3: {
-      color: vars.colors.grayDark,
-      fontFamily: {
-        sans: ['var(--font-lato)'],
-      },
-      fontSize: vars.size.sm,
-      textTransform: 'uppercase',
-      fontWeight: 400,
-    },
-    subtitle2: {
-      color: vars.colors.grayDark,
-      fontSize: vars.size.sm,
-    },
-    // Define your other typography variants here...
-  },
+  typography: {},
   components: {
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          lineHeight: 'normal',
+        },
+        h1: {
+          fontFamily: 'FS Sally',
+          fontSize: '48px',
+          [`@media (max-width: ${theme.breakpoints.values.md}px)`]: {
+            fontSize: '40px',
+          },
+        },
+        h2: {
+          fontFamily: 'FS Sally',
+          fontSize: '32px',
+          [`@media (max-width: ${theme.breakpoints.values.md}px)`]: {
+            fontSize: '28px',
+          },
+        },
+        h3: {
+          fontFamily: 'FS Sally',
+          fontSize: '24px',
+          [`@media (max-width: ${theme.breakpoints.values.md}px)`]: {
+            fontSize: '16px',
+          },
+        },
+        h4: {
+          fontFamily: 'FS Sally',
+          fontSize: '20px',
+        },
+        h5: {
+          fontFamily: {
+            sans: ['var(--font-lato)'],
+          },
+          fontWeight: '700',
+          fontSize: '18px',
+        },
+        subtitle1: {
+          fontWeight: '700',
+          fontFamily: {
+            sans: ['var(--font-lato)'],
+          },
+          fontSize: '16px',
+        },
+        subtitle2: {
+          fontFamily: {
+            sans: ['var(--font-lato)'],
+          },
+          lineHeight: 'normal',
+          fontSize: '14px',
+          [`@media (max-width: ${theme.breakpoints.values.md}px)`]: {
+            fontSize: '10px',
+          },
+        },
+      },
+    },
     MuiAppBar: {
       defaultProps: {
         color: 'secondary',
@@ -118,6 +143,18 @@ const customTheme = createTheme(theme, {
         root: {
           borderRadius: '8px',
           boxShadow: '0px 4px 4px 0px #CBCBCB;',
+        },
+      },
+    },
+    MuiLinearProgress: {
+      styleOverrides: {
+        root: {
+          height: '6px',
+          borderRadius: '100px',
+          backgroundColor: vars.colors.highlighBackground2,
+        },
+        bar: {
+          backgroundColor: vars.colors.secondaryLight,
         },
       },
     },

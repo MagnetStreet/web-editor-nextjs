@@ -160,6 +160,7 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
       >
         <Toolbar
           sx={{
+            paddingX: { xs: '16px' },
             justifyContent: 'space-between',
           }}
         >
@@ -170,7 +171,10 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
             sx={{ mr: 3 }}
             onClick={() => handleToggleMenuClick(true)}
           >
-            <CustomIcon iconClass='fa-bars-sharp-light' />
+            <CustomIcon
+              iconClass='fa-bars-sharp-light'
+              fontSizeOverWrite='40px'
+            />
             <Box className={styles.notificationContainer}>
               <CustomIcon
                 iconClass='fa-bell-light'
@@ -179,12 +183,10 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
               />
             </Box>
           </IconButton>
-          {isDesktop && (
-            <Box className={styles.typoContainer}>
-              <Typography variant='h2'>{subtitle}</Typography>
-              <Typography variant='h1'>{title}</Typography>
-            </Box>
-          )}
+          <Box className={styles.typoContainer}>
+            <Typography variant='subtitle2'>{subtitle}</Typography>
+            <Typography variant='h3'>{title}</Typography>
+          </Box>
           <Box className={styles.buttonContainer}>
             {isDesktop && (
               <Button
@@ -203,16 +205,17 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
 
             <Button
               color='primary'
-              variant='outlined'
+              variant={isDesktop ? 'outlined' : 'text'}
+              sx={{ paddingX: 0, justifyContent: 'flex-end' }}
               startIcon={
                 <CustomIcon
                   iconClass='fa-floppy-disk-sharp-light'
                   fontSizeOverWrite='18px'
+                  hideTextInMobile
+                  text='Save'
                 />
               }
-            >
-              Save
-            </Button>
+            ></Button>
           </Box>
         </Toolbar>
         {/* First Mobile View - Main Mobile */}
