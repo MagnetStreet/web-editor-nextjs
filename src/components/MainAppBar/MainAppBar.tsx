@@ -206,16 +206,15 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
             <Button
               color='primary'
               variant={isDesktop ? 'outlined' : 'text'}
-              sx={{ paddingX: 0, justifyContent: 'flex-end' }}
               startIcon={
                 <CustomIcon
                   iconClass='fa-floppy-disk-sharp-light'
                   fontSizeOverWrite='18px'
-                  hideTextInMobile
-                  text='Save'
                 />
               }
-            ></Button>
+            >
+              {isDesktop ? 'Save' : ''}
+            </Button>
           </Box>
         </Toolbar>
         {/* First Mobile View - Main Mobile */}

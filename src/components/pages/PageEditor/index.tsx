@@ -23,6 +23,8 @@ import {
   useNotificationsState,
   useNotificationStore,
 } from '@/stores/useNotificationStore';
+import BottomDrawer from '@/components/shared/BottomDrawer';
+import { useState } from 'react';
 
 export default function PageEditor({ dsInfo }: any) {
   const { isDesktop } = useScreenSize();
@@ -32,15 +34,18 @@ export default function PageEditor({ dsInfo }: any) {
   const {
     views,
     openView,
+    isBottomDrawerOpen,
     isBottomFrameOpen,
     setOpenView,
-    setIsBottomFrameOpen,
+    toggleBottomDrawer,
+    toggleBottomFrame,
   } = useGeneralControlsStore<GeneralControlsState>((state) => state);
 
   //TODO delete this is just to test the notifications
   const { addNotification } = useNotificationStore<useNotificationsState>(
     (state) => state
   );
+  // TODO end
 
   console.log('dsInfo', dsInfo);
 
@@ -67,6 +72,10 @@ export default function PageEditor({ dsInfo }: any) {
         >
           Show notification
         </Button>
+        <Button onClick={() => toggleBottomDrawer(true)}>Open</Button>
+        {/* 
+          TODO delete this is just to test the notifications  
+        */}
         <ChangesController
           position='absolute'
           coordinates={{
@@ -103,9 +112,14 @@ export default function PageEditor({ dsInfo }: any) {
                 },
               }}
             >
-              <OrderSummaryList onClose={() => setIsBottomFrameOpen(false)} />
+              <OrderSummaryList onClose={() => toggleBottomFrame(false)} />
             </Frame>
           </>
+        )}
+        {!isDesktop && (
+          <BottomDrawer open={isBottomDrawerOpen} setOpen={toggleBottomDrawer}>
+            <p>HEY LISTEN</p>
+          </BottomDrawer>
         )}
         <ZoomWrapper />
         {/* <ViewSelector

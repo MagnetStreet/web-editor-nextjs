@@ -39,7 +39,7 @@ const FooterMenu = () => {
   const theme = useTheme();
   const { handleNextStepClick, handleBackStepClick } =
     useNavigationStore<NavigationState>((state) => state);
-  const { zoom, isBottomFrameOpen, setZoom, setIsBottomFrameOpen } =
+  const { zoom, isBottomFrameOpen, setZoom, toggleBottomFrame } =
     useGeneralControlsStore<GeneralControlsState>((state) => state);
 
   return (
@@ -84,7 +84,7 @@ const FooterMenu = () => {
         <OrderSummaryButton
           total='$2000.00'
           isOpen={isBottomFrameOpen}
-          onClick={() => setIsBottomFrameOpen(!isBottomFrameOpen)}
+          onClick={() => toggleBottomFrame(!isBottomFrameOpen)}
         />
       </Grid>
       <Grid item>
