@@ -7,8 +7,9 @@ import {
   Typography,
   useTheme,
 } from '@mui/material';
-import useNavigationStore, { StepperState } from '@/stores/useNavigationStore';
-import DeleteIcon from '@mui/icons-material/Delete';
+import useNavigationStore, {
+  NavigationState,
+} from '@/stores/useNavigationStore';
 import * as React from 'react';
 import { CustomIcon } from '@/components/shared/CustomIcon';
 import styles from './Navigation.module.scss';
@@ -22,7 +23,7 @@ const Navigation: React.FC = () => {
     activeSubStep,
     handleNextStepClick,
     handleBackStepClick,
-  } = useNavigationStore<StepperState>((state) => state);
+  } = useNavigationStore<NavigationState>((state) => state);
 
   const prevStepText = React.useMemo(() => {
     if (activeStep === 0 && activeSubStep === 0) {

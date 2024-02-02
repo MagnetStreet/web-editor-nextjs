@@ -8,8 +8,6 @@ import useScreenSize from '@/hooks/useScreenSize';
 
 import { ChangesController } from '@/components/ChangesController/ChangesController';
 import Frame from '@/components/shared/Frame';
-import { ViewSelector } from '@/components/ViewSelector/ViewSelector';
-
 import {
   GeneralControlsState,
   useGeneralControlsStore,
@@ -17,7 +15,6 @@ import {
 import useLateralContextualMenuStore, {
   LateralContextualMenuState,
 } from '@/stores/useLateralContextualMenuStore';
-import useNavigationStore, { StepperState } from '@/stores/useNavigationStore';
 import OrderSummaryList from '@/components/shared/OrderSummary/OrderSummaryList';
 import LateralContextualMenu from '@/components/LateralContextualMenu/LateralContextualMenu';
 import ZoomWrapper from '@/components/shared/ZoomWrapper';
@@ -39,9 +36,6 @@ export default function PageEditor({ dsInfo }: any) {
     setOpenView,
     setIsBottomFrameOpen,
   } = useGeneralControlsStore<GeneralControlsState>((state) => state);
-  const { activeSubStep, activeStep } = useNavigationStore<StepperState>(
-    (state) => state
-  );
 
   //TODO delete this is just to test the notifications
   const { addNotification } = useNotificationStore<useNotificationsState>(
@@ -54,9 +48,6 @@ export default function PageEditor({ dsInfo }: any) {
     <Stack direction='row' position='relative'>
       <LateralContextualMenu />
       <Box className={styles.editor}>
-        Hello World the active layout is {activeLayoutName}
-        Hello World the active Step and SubStep are {activeStep} and
-        {activeSubStep}
         {/* 
           TODO delete this is just to test the notifications  
         */}

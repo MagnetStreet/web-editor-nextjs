@@ -49,7 +49,7 @@ const useNavigationStore = create<NavigationState>((set) => ({
   setActiveStep: (newActive: number) => set({ activeStep: newActive }),
   setActiveSubStep: (newActive: number) => set({ activeSubStep: newActive }),
   handleNextStepClick: () => {
-    set((state: StepperState) => {
+    set((state: NavigationState) => {
       const { activeStep, activeSubStep, steps } = state;
       if (activeStep < steps.length - 1) {
         if (activeSubStep < steps[activeStep].substeps.length - 1) {
@@ -63,7 +63,7 @@ const useNavigationStore = create<NavigationState>((set) => ({
     });
   },
   handleBackStepClick: () => {
-    set((state: StepperState) => {
+    set((state: NavigationState) => {
       const { activeStep, activeSubStep } = state;
       if (activeSubStep === 0) {
         if (activeStep !== 0) {
