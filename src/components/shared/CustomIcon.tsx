@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Box, SxProps, Typography } from '@mui/material';
 
 import useScreenSize from '@/hooks/useScreenSize';
 
@@ -11,6 +11,7 @@ export interface CustomIconProps {
   fontSizeOverWrite?: string;
   gap?: Sizes;
   color?: string;
+  sx?: SxProps;
   hideTextInMobile?: boolean;
   onClick?: () => void;
 }
@@ -24,6 +25,7 @@ export const CustomIcon: React.FC<CustomIconProps> = ({
   textSizes = { xs: '24px', sm: '24px', md: '36px' },
   gap = { xs: '0px' },
   hideTextInMobile = false,
+  sx,
 }) => {
   const { isMobile, isTablet } = useScreenSize();
   const isSmallScreen = isMobile || isTablet;
@@ -37,6 +39,7 @@ export const CustomIcon: React.FC<CustomIconProps> = ({
         flexDirection: 'column',
         fontSize: { ...textSizes },
         gap: { ...gap },
+        ...sx,
       }}
       onClick={onClick}
     >

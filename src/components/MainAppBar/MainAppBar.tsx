@@ -209,7 +209,7 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
               startIcon={
                 <CustomIcon
                   iconClass='fa-floppy-disk-sharp-light'
-                  fontSizeOverWrite='18px'
+                  fontSizeOverWrite={isDesktop ? '18px' : '26px'}
                 />
               }
             >

@@ -1,5 +1,5 @@
 'use client';
-import { Button, Stack, ThemeProvider } from '@mui/material';
+import { Box, Stack, ThemeProvider } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Lato } from 'next/font/google';
 import * as React from 'react';
@@ -10,15 +10,19 @@ import useScreenSize from '@/hooks/useScreenSize';
 
 import FooterMenu from '@/components/FooterMenu/FooterMenu';
 import MainAppBar from '@/components/MainAppBar/MainAppBar';
-import StepperWrapper from '@/components/Stepper/StepperWrapper';
 
 import customTheme from '@/styles/theme/customTheme';
 import GenericModal from '@/components/shared/GenericModal';
-import { useGeneralControlsStore } from '@/stores/useGeneralControlsStore';
+import {
+  GeneralControlsState,
+  useGeneralControlsStore,
+} from '@/stores/useGeneralControlsStore';
 import { useEffect } from 'react';
 import { postApiResponse } from '@/utils/shared/post-api-response';
 import Notifications from '@/components/shared/Notifications';
 import Navigation from '@/components/Navigation';
+import BottomDrawer from '@/components/shared/BottomDrawer';
+import LoadingLogo from '@/components/shared/LoadingLogo';
 
 const lato = Lato({
   subsets: ['latin'],
@@ -27,36 +31,18 @@ const lato = Lato({
   variable: '--font-lato',
 });
 
-const LoadingLogo = () => (
-  <div
-    style={{
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      backgroundColor: 'rgba(255, 255, 255, 0.8)',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-    }}
-  >
-    <img
-      src='/images/TE_Logo_Animation-just-the-mark-loading_100.gif'
-      alt='Loading...'
-      style={{ width: '100px', height: '100px' }}
-    />
-  </div>
-);
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   const { isDesktop } = useScreenSize();
-  const { isInitialLoad, isLoading, setLoading, setInitialLoading } =
-    useGeneralControlsStore();
+  const {
+    isInitialLoad,
+    isBottomDrawerOpen,
+    setInitialLoading,
+    toggleBottomDrawer,
+  } = useGeneralControlsStore<GeneralControlsState>((state) => state);
 
   useEffect(() => {
     setInitialLoading(false);
@@ -70,7 +56,7 @@ export default function RootLayout({
           {isInitialLoad ? (
             <LoadingLogo />
           ) : (
-            <main className={`${lato.variable} font-sans`}>
+            <main className={`${lato.variable}`}>
               <MainAppBar
                 title='Fairytale Wedding'
                 subtitle='RSVP Card'
@@ -91,6 +77,14 @@ export default function RootLayout({
                   {isDesktop && <FooterMenu />}
                 </Stack>
               </Stack>
+              {!isDesktop && (
+                <BottomDrawer
+                  open={isBottomDrawerOpen}
+                  setOpen={toggleBottomDrawer}
+                >
+                  <p>HEY LISTEN</p>
+                </BottomDrawer>
+              )}
             </main>
           )}
         </ThemeProvider>

@@ -15,11 +15,14 @@ const vars = {
     secondaryLight: '#618DE6',
     white: '#ffffff',
     black: '#000',
+    primaryBlack: '#010407',
     gray1: '#CCCCCC',
     gray2: '#D9D9D9',
     gray3: '#CCCDCD',
     grayDark: '#70777F',
     grayLight: '#EFEFEF',
+    warning: `#FDF2E9`,
+    warningYellow: '#E07A1F',
   },
 };
 
@@ -32,6 +35,10 @@ const theme = createTheme({
     secondary: {
       light: vars.colors.secondaryLight,
       main: vars.colors.white,
+    },
+    warning: {
+      main: vars.colors.warning,
+      dark: vars.colors.warningYellow,
     },
     grey: {
       100: '#EFEFEF',
@@ -61,6 +68,7 @@ const customTheme = createTheme(theme, {
     MuiTypography: {
       styleOverrides: {
         root: {
+          fontFamily: 'var(--font-lato)',
           lineHeight: 'normal',
         },
         h1: {
@@ -86,26 +94,20 @@ const customTheme = createTheme(theme, {
         },
         h4: {
           fontFamily: 'FS Sally',
-          fontSize: '20px',
+          fontSize: '24px',
         },
         h5: {
-          fontFamily: {
-            sans: ['var(--font-lato)'],
-          },
+          fontFamily: 'var(--font-lato)',
           fontWeight: '700',
           fontSize: '18px',
         },
         subtitle1: {
           fontWeight: '700',
-          fontFamily: {
-            sans: ['var(--font-lato)'],
-          },
+          fontFamily: 'var(--font-lato)',
           fontSize: '16px',
         },
         subtitle2: {
-          fontFamily: {
-            sans: ['var(--font-lato)'],
-          },
+          fontFamily: 'var(--font-lato)',
           lineHeight: 'normal',
           fontSize: '14px',
           [`@media (max-width: ${theme.breakpoints.values.md}px)`]: {
@@ -135,14 +137,6 @@ const customTheme = createTheme(theme, {
           padding: '8px 16px',
           borderRadius: '4px',
           borderColor: 'theme.palette.primary.main',
-        },
-      },
-    },
-    MuiPaper: {
-      styleOverrides: {
-        root: {
-          borderRadius: '8px',
-          boxShadow: '0px 4px 4px 0px #CBCBCB;',
         },
       },
     },

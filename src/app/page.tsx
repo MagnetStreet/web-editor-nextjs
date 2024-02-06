@@ -17,7 +17,7 @@ const loadDataFromApi = async () => {
   const [dsInfo] = await Promise.all([
     postApiResponse<any>({
       apiEndpoint:
-        'http://v3019-dwww.magnetstreet.net/getDSInfoForProducts/market/517',
+        'https://v3019-dwww.magnetstreet.net/designStudio/ds4/load?pids=84906,38939&qs=100,100&m=517',
       requestData: formData.toString(),
       revalidate: 0, // no cache
     }),

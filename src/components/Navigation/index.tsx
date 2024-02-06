@@ -4,6 +4,9 @@ import {
   Button,
   LinearProgress,
   Stack,
+  Step,
+  StepLabel,
+  Stepper,
   Typography,
   useTheme,
 } from '@mui/material';
@@ -50,7 +53,29 @@ const Navigation: React.FC = () => {
   return (
     <Box>
       {isDesktop ? (
-        <Stack></Stack>
+        <Stack>
+          <Stack direction='row' gap=''>
+            {steps.map((step, index) => {
+              return (
+                <Box key={`sub-step-${step.displayName}-${index}`}>
+                  <Typography>{step.displayName}</Typography>
+                </Box>
+              );
+            })}
+          </Stack>
+          <Stack>
+            <Stepper activeStep={activeSubStep}>
+              {steps[activeStep].substeps.map((subLabel, index) => {
+                const stepProps: { completed?: boolean } = {};
+                return (
+                  <Step key={`sub-step-${subLabel}-${index}`}>
+                    <StepLabel>{subLabel}</StepLabel>
+                  </Step>
+                );
+              })}
+            </Stepper>
+          </Stack>
+        </Stack>
       ) : (
         <Stack className={styles.navigation__mobile__wrapper}>
           <Box sx={{ width: '100%' }}>
@@ -101,7 +126,7 @@ const Navigation: React.FC = () => {
                     ? steps[activeStep].substeps[activeSubStep]
                     : ''}
                 </Typography>
-                <Typography variant='subtitle2'>
+                <Typography variant='subtitle2' fontSize={{ xs: '12px' }}>
                   {activeSubStep + 1} / {steps[activeStep].substeps.length}
                 </Typography>
               </Stack>

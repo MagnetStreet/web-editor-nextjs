@@ -57,20 +57,10 @@ const MobileInnerMenu: React.FC<MobileInnerMenuProps> = ({
         <Box>
           <ListItem disablePadding className={styles.innerMenu__list_item}>
             <Stack>
-              <Typography
-                variant='h2'
-                component='h2'
-                sx={{ fontFamily: 'FS sally' }}
-              >
-                {typeOfProduct}
+              <Typography variant='h3' fontFamily='var(--font-lato)'>
+                Type of Product
               </Typography>
-              <Typography
-                variant='h1'
-                component='h2'
-                sx={{ fontFamily: 'FS sally' }}
-              >
-                {productName}
-              </Typography>
+              <Typography variant='h4'>{productName}</Typography>
             </Stack>
           </ListItem>
           <Divider

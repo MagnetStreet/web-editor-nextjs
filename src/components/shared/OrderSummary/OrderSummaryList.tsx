@@ -20,7 +20,7 @@ const OrderSummaryList: React.FC<OrderSummaryListProps> = ({ onClose }) => {
   return (
     <Stack className={styles.orderSummaryList}>
       <Box className={styles.orderSummaryList__header}>
-        <Typography variant='h1' fontSize={isDesktop ? '20px' : '24px'}>
+        <Typography variant='h4' fontSize={isDesktop ? '20px' : '24px'}>
           Order Summary
         </Typography>
         <Box
@@ -34,7 +34,7 @@ const OrderSummaryList: React.FC<OrderSummaryListProps> = ({ onClose }) => {
         </Box>
       </Box>
       <Stack className={styles.orderSummaryList__list}>
-        <Stack className={styles.orderSummaryList__list__item}>
+        <Stack className={styles.orderSummaryList__list__item} direction='row'>
           <Typography fontWeight='bold'>Base</Typography>
           <Stack direction='row' gap='6px'>
             <Typography color={theme.palette.grey[400]}>$</Typography>
@@ -46,6 +46,7 @@ const OrderSummaryList: React.FC<OrderSummaryListProps> = ({ onClose }) => {
             <Stack
               key={`order-summary-item-${item.label}-${index}`}
               className={styles.orderSummaryList__list__item}
+              direction='row'
             >
               <Stack direction='row' gap='16px'>
                 <CustomIcon

@@ -1,4 +1,4 @@
-import { Alert, Box, Fade } from '@mui/material';
+import { Alert, Box, Fade, useTheme } from '@mui/material';
 import * as React from 'react';
 import { CustomIcon } from '@/components/shared/CustomIcon';
 import { Notification } from '@/types';
@@ -8,6 +8,7 @@ import {
 } from '@/stores/useNotificationStore';
 
 const Notifications: React.FC = () => {
+  const theme = useTheme();
   const { activeNotifications } = useNotificationStore<useNotificationsState>(
     (state) => state
   );
@@ -31,15 +32,20 @@ const Notifications: React.FC = () => {
                   iconClass={notification.icon}
                   hideTextInMobile
                   fontSizeOverWrite='12px'
+                  color='white'
+                  sx={{
+                    width: '20px',
+                    borderRadius: '100px',
+                    backgroundColor: theme.palette.warning.dark,
+                  }}
                 />
               }
               severity={notification.severity}
               sx={{
+                padding: '0 16px',
                 borderRadius: '22px',
-                border:
-                  '1px solid var(--System-Messaging-900---Warning-Yellow, #E07A1F)',
-                background:
-                  'linear-gradient(0deg, rgba(255, 255, 255, 0.90) 0%, rgba(255, 255, 255, 0.90) 100%), #E07A1F',
+                border: `1px solid ${theme.palette.warning.dark}`,
+                background: theme.palette.warning.main,
               }}
             >
               {notification.body}

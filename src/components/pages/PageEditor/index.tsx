@@ -1,6 +1,13 @@
 'use client';
 
-import { AlertColor, Box, Button, Stack } from '@mui/material';
+import {
+  AlertColor,
+  Box,
+  Button,
+  Stack,
+  Typography,
+  useTheme,
+} from '@mui/material';
 
 import styles from './Editor.module.scss';
 
@@ -27,24 +34,46 @@ import BottomDrawer from '@/components/shared/BottomDrawer';
 import { useState } from 'react';
 
 export default function PageEditor({ dsInfo }: any) {
+  const theme = useTheme();
   const { isDesktop } = useScreenSize();
-  const { activeLayoutName } =
-    useLateralContextualMenuStore<LateralContextualMenuState>((state) => state);
 
-  const {
-    views,
-    openView,
-    isBottomDrawerOpen,
-    isBottomFrameOpen,
-    setOpenView,
-    toggleBottomDrawer,
-    toggleBottomFrame,
-  } = useGeneralControlsStore<GeneralControlsState>((state) => state);
+  const { isBottomFrameOpen, toggleBottomDrawer, toggleBottomFrame } =
+    useGeneralControlsStore<GeneralControlsState>((state) => state);
 
   //TODO delete this is just to test the notifications
   const { addNotification } = useNotificationStore<useNotificationsState>(
     (state) => state
   );
+
+  const notificationSample = () => {
+    return (
+      <Button
+        onClick={() => {
+          addNotification({
+            icon: 'fa-bell-light',
+            severity: 'warning' as AlertColor,
+            body: (
+              <Stack direction='row' gap='20px'>
+                <Typography>
+                  You have added <b>Raised Foils</b> to your order
+                </Typography>
+                <Typography
+                  color={theme.palette.primary.main}
+                  onClick={() => {
+                    //TODO add missing implementation
+                  }}
+                >
+                  view summary
+                </Typography>
+              </Stack>
+            ),
+          });
+        }}
+      >
+        Show notification
+      </Button>
+    );
+  };
   // TODO end
 
   console.log('dsInfo', dsInfo);
@@ -56,22 +85,7 @@ export default function PageEditor({ dsInfo }: any) {
         {/* 
           TODO delete this is just to test the notifications  
         */}
-        <Button
-          onClick={() => {
-            addNotification({
-              icon: 'fa-bell-light',
-              severity: 'warning' as AlertColor,
-              body: (
-                <Box>
-                  You have added <b>Raised Foils</b> to your order{' '}
-                  <a>view summary</a>
-                </Box>
-              ),
-            });
-          }}
-        >
-          Show notification
-        </Button>
+        {notificationSample()}
         <Button onClick={() => toggleBottomDrawer(true)}>Open</Button>
         {/* 
           TODO delete this is just to test the notifications  
@@ -115,11 +129,6 @@ export default function PageEditor({ dsInfo }: any) {
               <OrderSummaryList onClose={() => toggleBottomFrame(false)} />
             </Frame>
           </>
-        )}
-        {!isDesktop && (
-          <BottomDrawer open={isBottomDrawerOpen} setOpen={toggleBottomDrawer}>
-            <p>HEY LISTEN</p>
-          </BottomDrawer>
         )}
         <ZoomWrapper />
         {/* <ViewSelector

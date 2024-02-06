@@ -53,7 +53,7 @@ const Sample: React.FC<SampleProps> = ({ open, setOpen, children }) => {
 
 export default Sample;
 
-const drawerBleeding = 56;
+const drawerBleeding = 0;
 const StyledBox = styled('div')(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'light' ? '#fff' : grey[800],
 }));
