@@ -11,7 +11,6 @@ export const postApiResponse = async <T>({
   revalidate?: number;
 }): Promise<T | null> => {
   try {
-    const startTime = Date.now();
     const headers = new Headers({
       'Content-Type': 'application/x-www-form-urlencoded',
       Cookie:
@@ -36,14 +35,6 @@ export const postApiResponse = async <T>({
         `postApiResponse failed: ${response.status}/${response.statusText} - ${apiEndpoint}`
       );
     }
-
-    const duration = Date.now() - startTime;
-
-    consoleLog(
-      `postApiResponse: ${(duration / 1000).toFixed(2)}s ${
-        duration > 2000 ? '💔' : '-'
-      } ${apiEndpoint}`
-    );
 
     return (await response.json()) as T;
   } catch (error) {

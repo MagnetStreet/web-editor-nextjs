@@ -1,38 +1,36 @@
 import PageEditor from '@/components/pages/PageEditor';
-import { PageParams } from '@/types';
-import { getApiResponse } from '@/utils/shared/get-api-response';
-import { postApiResponse } from '@/utils/shared/post-api-response';
-
-const loadDataFromApi = async () => {
-  const formData = new URLSearchParams();
-  formData.append(
-    'productQuantityJSON',
-    JSON.stringify({
-      productsAndQuantities: [{ '88340': 100 }],
-      attributeIds: '',
-      colorPaletteId: -1,
-    })
-  );
-
-  const [dsInfo] = await Promise.all([
-    postApiResponse<any>({
-      apiEndpoint:
-        'https://v3019-dwww.magnetstreet.net/designStudio/ds4/load?pids=84906,38939&qs=100,100&m=517',
-      requestData: formData.toString(),
-      revalidate: 0, // no cache
-    }),
-  ]);
-
-  return {
-    dsInfo,
-  };
+import { NextPageContext } from 'next';
+const loadDataFromApi = async (context: NextPageContext) => {
+  try {
+    const { req, res, query } = context;
+    const LOCAL_API_BASE_URL = process.env.LOCAL_API_BASE_URL;
+    //const slug = query.slug;
+    const [visitorInfo, productInfo] = await Promise.all([
+      await fetch(`${LOCAL_API_BASE_URL}/visitorInfo/`),
+      await fetch(`${LOCAL_API_BASE_URL}/productInformation/`),
+    ]);
+    return {
+      productInfo: await productInfo?.json(),
+      visitorInfo: await visitorInfo?.json(),
+    };
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return {
+      productInfo: null,
+      visitorInfo: null,
+    };
+  }
 };
 
-const Home = async ({ searchParams }: PageParams) => {
-  const { dsInfo } = await loadDataFromApi();
-  // console.log('validate', validate);
-  console.log('dsInfo', dsInfo);
-  return <PageEditor dsInfo={dsInfo} />;
-};
+interface EditorPageServerData {
+  productInfo: any;
+  visitorInfo: any;
+}
 
+const Home = async (context: NextPageContext) => {
+  const { productInfo, visitorInfo } = await loadDataFromApi(context);
+  console.log('productInfoHome', productInfo);
+  console.log('visitorInfo', visitorInfo);
+  return <PageEditor dsInfo={productInfo} />;
+};
 export default Home;
