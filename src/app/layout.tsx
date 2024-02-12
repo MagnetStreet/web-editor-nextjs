@@ -74,7 +74,7 @@ export default function RootLayout({
                   {/* <StepperWrapper /> */}
                   <Navigation />
                   {children}
-                  {isDesktop && <FooterMenu />}
+                  {/* {isDesktop && <FooterMenu />} */}
                 </Stack>
               </Stack>
               {!isDesktop && (

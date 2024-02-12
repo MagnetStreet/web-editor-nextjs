@@ -31,6 +31,7 @@ const theme = createTheme({
     primary: {
       light: vars.colors.primaryLight,
       main: vars.colors.primaryColor,
+      contrastText: vars.colors.white,
     },
     secondary: {
       light: vars.colors.secondaryLight,
@@ -109,7 +110,7 @@ const customTheme = createTheme(theme, {
         subtitle2: {
           fontFamily: 'var(--font-lato)',
           lineHeight: 'normal',
-          fontSize: '14px',
+          fontSize: '12px',
           [`@media (max-width: ${theme.breakpoints.values.md}px)`]: {
             fontSize: '10px',
           },
