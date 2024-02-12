@@ -24,6 +24,11 @@ import { CustomIcon } from '@/components/shared/CustomIcon';
 import MobileInnerMenu from '@/components/MainAppBar/MobileInnerMenu';
 import { MenuItem } from '@/types';
 import OrderSummaryList from '@/components/shared/OrderSummary/OrderSummaryList';
+import OrderSummaryButton from '@/components/shared/OrderSummary/OrderSummaryButton';
+import {
+  GeneralControlsState,
+  useGeneralControlsStore,
+} from '@/stores/useGeneralControlsStore';
 
 interface MainAppBarProps {
   title: string;
@@ -43,6 +48,9 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [isOrderSummaryOpen, setIsOrderSummaryOpen] = useState<boolean>(false);
+  //TODO unify the isBottomFrameOpen with the isOrderSummaryOpen
+  const { zoom, isBottomFrameOpen, setZoom, toggleBottomFrame } =
+    useGeneralControlsStore<GeneralControlsState>((state) => state);
 
   useEffect(() => {
     // All this is to keeping the Menu open
@@ -189,18 +197,25 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
           </Box>
           <Box className={styles.buttonContainer}>
             {isDesktop && (
-              <Button
-                color='primary'
-                variant='outlined'
-                startIcon={
-                  <CustomIcon
-                    iconClass='fa-eye-light'
-                    fontSizeOverWrite='18px'
-                  />
-                }
-              >
-                preview
-              </Button>
+              <>
+                <OrderSummaryButton
+                  total='$2000.00'
+                  isOpen={isBottomFrameOpen}
+                  onClick={() => toggleBottomFrame(!isBottomFrameOpen)}
+                />
+                <Button
+                  color='primary'
+                  variant='outlined'
+                  startIcon={
+                    <CustomIcon
+                      iconClass='fa-eye-light'
+                      fontSizeOverWrite='18px'
+                    />
+                  }
+                >
+                  preview
+                </Button>
+              </>
             )}
 
             <Button

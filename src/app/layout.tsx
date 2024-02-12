@@ -71,10 +71,8 @@ export default function RootLayout({
               </GenericModal> */}
               <Stack direction='row'>
                 <Stack width='100%' position='relative'>
-                  {/* <StepperWrapper /> */}
                   <Navigation />
                   {children}
-                  {/* {isDesktop && <FooterMenu />} */}
                 </Stack>
               </Stack>
               {!isDesktop && (

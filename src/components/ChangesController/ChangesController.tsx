@@ -20,7 +20,7 @@ export const ChangesController: React.FC<ChangesControllerProps> = ({
 }) => {
   const { isMobile, isTablet } = useScreenSize();
   const isSmallScreen = isMobile || isTablet;
-  const iconSizes = { xs: '20px', sm: '24px', md: '30px', lg: '36px' };
+  const iconSizes = { xs: '20px', sm: '20px', md: '24px', lg: '30px' };
   const theme = useTheme();
 
   const containerStyle = {

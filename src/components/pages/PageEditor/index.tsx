@@ -32,13 +32,19 @@ import {
 } from '@/stores/useNotificationStore';
 import BottomDrawer from '@/components/shared/BottomDrawer';
 import { useState } from 'react';
+import ZoomControl from '@/components/shared/ZoomWrapper/ZoomControl';
 
 export default function PageEditor({ dsInfo }: any) {
   const theme = useTheme();
   const { isDesktop } = useScreenSize();
 
-  const { isBottomFrameOpen, toggleBottomDrawer, toggleBottomFrame } =
-    useGeneralControlsStore<GeneralControlsState>((state) => state);
+  const {
+    isBottomFrameOpen,
+    zoom,
+    toggleBottomDrawer,
+    toggleBottomFrame,
+    setZoom,
+  } = useGeneralControlsStore<GeneralControlsState>((state) => state);
 
   //TODO delete this is just to test the notifications
   const { addNotification } = useNotificationStore<useNotificationsState>(
@@ -93,12 +99,21 @@ export default function PageEditor({ dsInfo }: any) {
         <ChangesController
           position='absolute'
           coordinates={{
-            top: '20%',
-            right: isDesktop ? '20%' : '5%',
+            top: '15%',
+            right: '1%',
           }}
         />
         {isDesktop && (
           <>
+            <ZoomControl
+              position='absolute'
+              zoom={zoom as number}
+              setZoom={setZoom}
+              coordinates={{
+                top: '45%',
+                right: '1%',
+              }}
+            />
             <Frame
               position='absolute'
               coordinates={{
