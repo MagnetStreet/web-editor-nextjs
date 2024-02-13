@@ -24,6 +24,35 @@
         max-width: 40%;
       }
     }
+    &__icon {
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 100%;
+      background-color: $gray5;
+      &.is_done {
+        background-color: $secondaryBlue;
+      }
+      &__small {
+        width: 20px;
+        height: 20px;
+        background-color: $gray3;
+      }
+    }
+    &__subStep {
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 9px;
+      padding: 10px 0;
+      border-bottom: 1px solid $gray3;
+      &:last-child {
+        border-bottom: none;
+      }
+    }
   }
   &__desktop {
     gap: 8px;

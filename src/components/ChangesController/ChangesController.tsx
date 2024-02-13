@@ -14,7 +14,7 @@ interface ChangesControllerProps {
   coordinates?: Coordinates;
 }
 
-export const ChangesController: React.FC<ChangesControllerProps> = ({
+export const ChangesController: FC<ChangesControllerProps> = ({
   position = 'relative',
   coordinates,
 }) => {

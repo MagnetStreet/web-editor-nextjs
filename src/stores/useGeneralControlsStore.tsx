@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 
 import { EditorView } from '@/types';
+import Component from '@/components/shared/ZoomWrapper';
 
 export interface GeneralControlsState {
   zoom: number | number[];
@@ -11,9 +12,11 @@ export interface GeneralControlsState {
   isBottomDrawerOpen: boolean;
   isLoading: boolean;
   isInitialLoad: boolean;
+  bottomFrameComponent?: React.ReactNode;
   setZoom: (val: number | number[]) => void;
   setOpenView: (val: EditorView) => void;
   setNextStepEnable: (val: boolean) => void;
+  setBottomFrameComponent: (component: React.ReactNode) => void;
   toggleBottomFrame: (val: boolean) => void;
   toggleBottomDrawer: (val: boolean) => void;
   setLoading: (val: boolean) => void;
@@ -29,7 +32,7 @@ export const useGeneralControlsStore = create<GeneralControlsState>((set) => ({
   isInitialModalOpen: true,
   isInitialLoad: true,
   isLoading: false,
-
+  bottomFrameComponent: undefined,
   openView: {
     id: 0,
     displayName: 'Front',
@@ -63,10 +66,17 @@ export const useGeneralControlsStore = create<GeneralControlsState>((set) => ({
     },
   ],
   setOpenView: (val: EditorView) => set({ openView: val }),
-  toggleBottomDrawer: (val: boolean) => set({ isBottomDrawerOpen: val }),
+  toggleBottomDrawer: (val: boolean) => {
+    set({ isBottomDrawerOpen: val });
+    if (!val) {
+      set({ bottomFrameComponent: undefined });
+    }
+  },
   toggleBottomFrame: (val: boolean) => set({ isBottomFrameOpen: val }),
   setNextStepEnable: (val: boolean) => set({ isNextStepEnable: val }),
   setZoom: (newVal: number | number[]) => set({ zoom: newVal }),
   setLoading: (val: boolean) => set({ isLoading: val }),
+  setBottomFrameComponent: (component: React.ReactNode) =>
+    set({ bottomFrameComponent: component }),
   setInitialLoading: (val: boolean) => set({ isInitialLoad: val }),
 }));

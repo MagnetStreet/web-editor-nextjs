@@ -18,7 +18,6 @@ import {
   useGeneralControlsStore,
 } from '@/stores/useGeneralControlsStore';
 import { useEffect } from 'react';
-import { postApiResponse } from '@/utils/shared/post-api-response';
 import Notifications from '@/components/shared/Notifications';
 import Navigation from '@/components/Navigation';
 import BottomDrawer from '@/components/shared/BottomDrawer';
@@ -42,6 +41,7 @@ export default function RootLayout({
     isBottomDrawerOpen,
     setInitialLoading,
     toggleBottomDrawer,
+    bottomFrameComponent,
   } = useGeneralControlsStore<GeneralControlsState>((state) => state);
 
   useEffect(() => {
@@ -80,7 +80,7 @@ export default function RootLayout({
                   open={isBottomDrawerOpen}
                   setOpen={toggleBottomDrawer}
                 >
-                  <p>HEY LISTEN</p>
+                  {bottomFrameComponent}
                 </BottomDrawer>
               )}
             </main>

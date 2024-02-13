@@ -12,16 +12,12 @@ import {
 import styles from './Editor.module.scss';
 
 import useScreenSize from '@/hooks/useScreenSize';
-
 import { ChangesController } from '@/components/ChangesController/ChangesController';
 import Frame from '@/components/shared/Frame';
 import {
   GeneralControlsState,
   useGeneralControlsStore,
 } from '@/stores/useGeneralControlsStore';
-import useLateralContextualMenuStore, {
-  LateralContextualMenuState,
-} from '@/stores/useLateralContextualMenuStore';
 import OrderSummaryList from '@/components/shared/OrderSummary/OrderSummaryList';
 import LateralContextualMenu from '@/components/LateralContextualMenu/LateralContextualMenu';
 import ZoomWrapper from '@/components/shared/ZoomWrapper';
@@ -30,21 +26,14 @@ import {
   useNotificationsState,
   useNotificationStore,
 } from '@/stores/useNotificationStore';
-import BottomDrawer from '@/components/shared/BottomDrawer';
-import { useState } from 'react';
 import ZoomControl from '@/components/shared/ZoomWrapper/ZoomControl';
 
 export default function PageEditor({ dsInfo }: any) {
   const theme = useTheme();
   const { isDesktop } = useScreenSize();
 
-  const {
-    isBottomFrameOpen,
-    zoom,
-    toggleBottomDrawer,
-    toggleBottomFrame,
-    setZoom,
-  } = useGeneralControlsStore<GeneralControlsState>((state) => state);
+  const { isBottomFrameOpen, zoom, toggleBottomFrame, setZoom } =
+    useGeneralControlsStore<GeneralControlsState>((state) => state);
 
   //TODO delete this is just to test the notifications
   const { addNotification } = useNotificationStore<useNotificationsState>(
@@ -88,14 +77,11 @@ export default function PageEditor({ dsInfo }: any) {
     <Stack direction='row' position='relative'>
       <LateralContextualMenu />
       <Box className={styles.editor}>
-        {/* 
+        {/*
           TODO delete this is just to test the notifications  
         */}
         {notificationSample()}
-        <Button onClick={() => toggleBottomDrawer(true)}>Open</Button>
-        {/* 
-          TODO delete this is just to test the notifications  
-        */}
+
         <ChangesController
           position='absolute'
           coordinates={{
@@ -146,18 +132,6 @@ export default function PageEditor({ dsInfo }: any) {
           </>
         )}
         <ZoomWrapper />
-        {/* <ViewSelector
-          position='absolute'
-          coordinates={{
-            top: isDesktop ? '20px' : 0,
-            right: isDesktop ? '40px' : 0,
-            left: isDesktop ? 'unset' : 0,
-          }}
-          views={views}
-          openView={openView}
-          setOpenView={setOpenView}
-          isDesktop={isDesktop}
-        /> */}
       </Box>
     </Stack>
   );

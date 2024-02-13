@@ -17,12 +17,18 @@ import * as React from 'react';
 import { CustomIcon } from '@/components/shared/CustomIcon';
 import styles from './Navigation.module.scss';
 import { useEffect, useState } from 'react';
-import { StepperStep } from '@/types';
+import {
+  GeneralControlsState,
+  useGeneralControlsStore,
+} from '@/stores/useGeneralControlsStore';
+import MobileStepper from '@/components/Navigation/MobileStepper';
 
 const Navigation: React.FC = () => {
   const theme = useTheme();
   const { isDesktop } = useScreenSize();
   const [mobileTotal, setMobileTotal] = useState<number>(0);
+  const { isBottomDrawerOpen, toggleBottomDrawer, setBottomFrameComponent } =
+    useGeneralControlsStore<GeneralControlsState>((state) => state);
   const {
     steps,
     activeStep,
@@ -105,6 +111,38 @@ const Navigation: React.FC = () => {
     );
   };
 
+  const renderMobileDrawer = () => {
+    return (
+      <Button
+        className={styles.navigation__select}
+        color='inherit'
+        variant='text'
+        onClick={() => {
+          setBottomFrameComponent(
+            <MobileStepper
+              steps={steps}
+              activeStep={activeStep}
+              activeSubStep={activeSubStep}
+            />
+          );
+          toggleBottomDrawer(true);
+        }}
+        endIcon={
+          <CustomIcon
+            iconClass={isBottomDrawerOpen ? 'fa-chevron-up' : 'fa-chevron-down'}
+            hideTextInMobile
+            color={theme.palette.grey[400]}
+            fontSizeOverWrite='18px'
+          />
+        }
+      >
+        <Typography>
+          <b>{steps[activeStep].substeps[activeSubStep]}</b>
+        </Typography>
+      </Button>
+    );
+  };
+
   const renderNextBtn = () => {
     return (
       <Button
@@ -173,17 +211,7 @@ const Navigation: React.FC = () => {
         <Stack className={styles.navigation__mobile__wrapper}>
           <Stack className={styles.navigation__mobile__buttons}>
             {renderBackBtn()}
-            <Stack className={styles.navigation__mobile__select}>
-              <Typography>
-                <b>{steps[activeStep].substeps[activeSubStep]}</b>
-              </Typography>
-              <CustomIcon
-                iconClass='fa-chevron-down'
-                hideTextInMobile
-                color={theme.palette.grey[400]}
-                fontSizeOverWrite='18px'
-              />
-            </Stack>
+            {renderMobileDrawer()}
             {renderNextBtn()}
           </Stack>
           <Box sx={{ width: '100%' }}>
