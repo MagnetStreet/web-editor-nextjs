@@ -1,13 +1,15 @@
+import * as React from 'react';
 import { Box, Stack } from '@mui/material';
 import { useTheme } from '@mui/system';
-
 import useScreenSize from '@/hooks/useScreenSize';
-
 import { CustomIcon } from '@/components/shared/CustomIcon';
-
 import { getStylePositionsHelper } from '@/utils/shared/getStylePositionsHelper';
-
 import { Coordinates } from '@/types';
+import {
+  BottomDrawerState,
+  useBottomDrawerStore,
+} from '@/stores/useBottomDrawerStore';
+import HelpSection from '@/components/shared/HelpSection';
 
 interface ChangesControllerProps {
   position?: string;
@@ -18,6 +20,8 @@ export const ChangesController: FC<ChangesControllerProps> = ({
   position = 'relative',
   coordinates,
 }) => {
+  const { toggleBottomDrawer, setBottomDrawerTitle, setBottomDrawerComponent } =
+    useBottomDrawerStore<BottomDrawerState>((state) => state);
   const { isMobile, isTablet } = useScreenSize();
   const isSmallScreen = isMobile || isTablet;
   const iconSizes = { xs: '20px', sm: '20px', md: '24px', lg: '30px' };
@@ -68,6 +72,11 @@ export const ChangesController: FC<ChangesControllerProps> = ({
           <CustomIcon
             iconClass='fa-comment-light'
             textSizes={{ ...iconSizes }}
+            onClick={() => {
+              setBottomDrawerTitle('Help');
+              setBottomDrawerComponent(<HelpSection />);
+              toggleBottomDrawer(true);
+            }}
           />
         ) : (
           <CustomIcon

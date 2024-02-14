@@ -4,9 +4,6 @@ import {
   Button,
   LinearProgress,
   Stack,
-  Step,
-  StepLabel,
-  Stepper,
   Typography,
   useTheme,
 } from '@mui/material';
@@ -17,18 +14,18 @@ import * as React from 'react';
 import { CustomIcon } from '@/components/shared/CustomIcon';
 import styles from './Navigation.module.scss';
 import { useEffect, useState } from 'react';
-import {
-  GeneralControlsState,
-  useGeneralControlsStore,
-} from '@/stores/useGeneralControlsStore';
 import MobileStepper from '@/components/Navigation/MobileStepper';
+import {
+  BottomDrawerState,
+  useBottomDrawerStore,
+} from '@/stores/useBottomDrawerStore';
 
 const Navigation: React.FC = () => {
   const theme = useTheme();
   const { isDesktop } = useScreenSize();
   const [mobileTotal, setMobileTotal] = useState<number>(0);
-  const { isBottomDrawerOpen, toggleBottomDrawer, setBottomFrameComponent } =
-    useGeneralControlsStore<GeneralControlsState>((state) => state);
+  const { isBottomDrawerOpen, setBottomDrawerComponent, toggleBottomDrawer } =
+    useBottomDrawerStore<BottomDrawerState>((state) => state);
   const {
     steps,
     activeStep,
@@ -118,7 +115,7 @@ const Navigation: React.FC = () => {
         color='inherit'
         variant='text'
         onClick={() => {
-          setBottomFrameComponent(
+          setBottomDrawerComponent(
             <MobileStepper
               steps={steps}
               activeStep={activeStep}

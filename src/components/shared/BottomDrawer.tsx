@@ -1,15 +1,23 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
+import { styled, useTheme } from '@mui/material/styles';
 import { grey } from '@mui/material/colors';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import { Typography } from '@mui/material';
 
-interface SampleProps {
+interface BottomDrawerProps {
   open: boolean;
   setOpen: (val: boolean) => void;
   children: React.ReactNode;
+  title?: string;
 }
 
-const Sample: React.FC<SampleProps> = ({ open, setOpen, children }) => {
+const BottomDrawer: React.FC<BottomDrawerProps> = ({
+  open,
+  setOpen,
+  children,
+  title,
+}) => {
+  const theme = useTheme();
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
   };
@@ -30,6 +38,7 @@ const Sample: React.FC<SampleProps> = ({ open, setOpen, children }) => {
           height: 'fit-content',
           maxHeight: `calc(50% - ${drawerBleeding}px)`,
           overflow: 'scroll',
+          borderRadius: `16px 16px 0px 0px`,
           paddingTop: '16px',
         },
       }}
@@ -45,13 +54,24 @@ const Sample: React.FC<SampleProps> = ({ open, setOpen, children }) => {
         }}
       >
         <Puller />
+        {title && (
+          <Typography
+            color={theme.palette.primary.main}
+            sx={{
+              marginTop: '8px',
+              textAlign: 'center',
+            }}
+          >
+            <b>{title}</b>
+          </Typography>
+        )}
         {children}
       </StyledBox>
     </SwipeableDrawer>
   );
 };
 
-export default Sample;
+export default BottomDrawer;
 
 const drawerBleeding = 0;
 const StyledBox = styled('div')(({ theme }) => ({

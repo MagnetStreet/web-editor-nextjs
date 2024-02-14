@@ -15,6 +15,7 @@ import styles from './MainAppBar.module.scss';
 import { CustomIcon } from '@/components/shared/CustomIcon';
 import { MenuItem } from '@/types';
 import OrderSummaryButton from '@/components/shared/OrderSummary/OrderSummaryButton';
+import ListItemWithIcon from '@/components/shared/ListItemWithIcon';
 
 interface MobileInnerMenuProps {
   menuItems: MenuItem[];
@@ -78,35 +79,23 @@ const MobileInnerMenu: React.FC<MobileInnerMenuProps> = ({
           </ListItem>
           <List>
             {filtered.map((item) => (
-              <ListItem
+              <ListItemWithIcon
                 key={`menu--mobile-item-${item.label}`}
-                disablePadding
                 className={styles.innerMenu__list_item}
+                label={item.label}
+                icon={item.icon}
                 onClick={() => item.onClick()}
-              >
-                <ListItemButton sx={{ padding: '8px 4px' }}>
-                  <ListItemIcon sx={{ minWidth: '26px' }}>
-                    {item.icon}
-                  </ListItemIcon>
-                  <ListItemText primary={item.label} />
-                </ListItemButton>
-              </ListItem>
+              />
             ))}
           </List>
         </Box>
         {highlightedItem && (
-          <ListItem
-            disablePadding
+          <ListItemWithIcon
             className={`${styles.innerMenu__list_item} ${styles.innerMenu__list_item__highlight}`}
+            label={highlightedItem.label}
+            icon={highlightedItem.icon}
             onClick={() => highlightedItem.onClick()}
-          >
-            <ListItemButton>
-              <ListItemIcon sx={{ minWidth: '26px' }}>
-                {highlightedItem.icon}
-              </ListItemIcon>
-              <ListItemText primary={highlightedItem.label} />
-            </ListItemButton>
-          </ListItem>
+          />
         )}
       </Stack>
     </List>

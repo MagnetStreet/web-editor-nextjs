@@ -12,7 +12,6 @@ import {
   useTheme,
 } from '@mui/material';
 import * as React from 'react';
-import { useEffect } from 'react';
 import styles from './Navigation.module.scss';
 
 interface MobileStepperProps {
@@ -27,9 +26,6 @@ const MobileStepper: React.FC<MobileStepperProps> = ({
   activeSubStep,
 }) => {
   const theme = useTheme();
-  useEffect(() => {
-    console.log('HEY LISTEN IM RENDERING THE MOBILE STEPPER');
-  }, [steps, activeStep, activeSubStep]);
 
   const renderSubSteps = (label: string, isDone: boolean) => {
     return (

@@ -1,23 +1,13 @@
-import MailIcon from '@mui/icons-material/Mail';
 import { AppBar, useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import React, { useEffect, useRef, useState } from 'react';
-
 import styles from './MainAppBar.module.scss';
-
 import useScreenSize from '@/hooks/useScreenSize';
-
 import DesktopInnerMenu from '@/components/MainAppBar/DesktopInnerMenu';
 import PositionedMenu from '@/components/MainAppBar/PositionedMenu';
 import { CustomIcon } from '@/components/shared/CustomIcon';
@@ -49,7 +39,7 @@ const MainAppBar: React.FC<MainAppBarProps> = ({
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [isOrderSummaryOpen, setIsOrderSummaryOpen] = useState<boolean>(false);
   //TODO unify the isBottomFrameOpen with the isOrderSummaryOpen
-  const { zoom, isBottomFrameOpen, setZoom, toggleBottomFrame } =
+  const { isBottomFrameOpen, toggleBottomFrame } =
     useGeneralControlsStore<GeneralControlsState>((state) => state);
 
   useEffect(() => {

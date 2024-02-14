@@ -22,6 +22,10 @@ import Notifications from '@/components/shared/Notifications';
 import Navigation from '@/components/Navigation';
 import BottomDrawer from '@/components/shared/BottomDrawer';
 import LoadingLogo from '@/components/shared/LoadingLogo';
+import {
+  BottomDrawerState,
+  useBottomDrawerStore,
+} from '@/stores/useBottomDrawerStore';
 
 const lato = Lato({
   subsets: ['latin'],
@@ -36,13 +40,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const { isDesktop } = useScreenSize();
+  const { isInitialLoad, setInitialLoading } =
+    useGeneralControlsStore<GeneralControlsState>((state) => state);
   const {
-    isInitialLoad,
     isBottomDrawerOpen,
-    setInitialLoading,
+    bottomDrawerTitle,
     toggleBottomDrawer,
-    bottomFrameComponent,
-  } = useGeneralControlsStore<GeneralControlsState>((state) => state);
+    bottomDrawerComponent,
+  } = useBottomDrawerStore<BottomDrawerState>((state) => state);
 
   useEffect(() => {
     setInitialLoading(false);
@@ -79,8 +84,9 @@ export default function RootLayout({
                 <BottomDrawer
                   open={isBottomDrawerOpen}
                   setOpen={toggleBottomDrawer}
+                  title={bottomDrawerTitle}
                 >
-                  {bottomFrameComponent}
+                  {bottomDrawerComponent}
                 </BottomDrawer>
               )}
             </main>
