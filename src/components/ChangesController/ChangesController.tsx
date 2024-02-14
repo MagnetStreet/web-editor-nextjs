@@ -10,6 +10,7 @@ import {
   useBottomDrawerStore,
 } from '@/stores/useBottomDrawerStore';
 import HelpSection from '@/components/shared/HelpSection';
+import { FC } from 'react';
 
 interface ChangesControllerProps {
   position?: string;

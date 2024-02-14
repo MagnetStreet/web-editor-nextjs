@@ -1,8 +1,7 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
-export async function GET(req: NextApiRequest, res: NextApiResponse) {
+export async function GET(req: NextRequest, res: NextResponse) {
   try {
     const API_BASE_URL = process.env.API_BASE_URL;
     if (!API_BASE_URL) {
@@ -10,10 +9,10 @@ export async function GET(req: NextApiRequest, res: NextApiResponse) {
         message: 'API_BASE_URL not defined in .env file',
       });
     }
-    const visitorCookie = req.headers.cookie;
+    const visitorCookies = req.cookies;
     const response = await axios.get(`${API_BASE_URL}/auth/getVisitorInfo/`, {
       headers: {
-        Cookie: visitorCookie || '',
+        //Cookie: visitorCookies,
       },
     });
 

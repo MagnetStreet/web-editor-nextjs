@@ -7,7 +7,6 @@ import {
 import * as React from 'react';
 
 interface ListItemWithIconProps {
-  key?: string;
   label?: string;
   className?: string;
   icon?: React.ReactNode;
@@ -15,19 +14,13 @@ interface ListItemWithIconProps {
 }
 
 const ListItemWithIcon: React.FC<ListItemWithIconProps> = ({
-  key,
   icon,
   label,
   className,
   onClick,
 }) => {
   return (
-    <ListItem
-      key={key}
-      disablePadding
-      className={className}
-      onClick={() => onClick()}
-    >
+    <ListItem disablePadding className={className} onClick={() => onClick()}>
       <ListItemButton sx={{ padding: '8px 4px' }}>
         <ListItemIcon sx={{ minWidth: '26px' }}>{icon}</ListItemIcon>
         <ListItemText primary={label} />

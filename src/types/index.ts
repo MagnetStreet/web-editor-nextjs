@@ -1,5 +1,4 @@
 import { AlertColor } from '@mui/material';
-import { ReactElement } from 'react';
 
 export interface PageParams {
   params?: { id?: string };

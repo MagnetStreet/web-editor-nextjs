@@ -1,8 +1,7 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { postApiResponse } from '@/utils/shared/post-api-response';
 
-export async function GET(req: NextApiRequest, res: NextApiResponse) {
+export async function GET(req: NextRequest, res: NextResponse) {
   try {
     //const { pids, qs, m } = req.query;
     const API_BASE_URL = process.env.API_BASE_URL;

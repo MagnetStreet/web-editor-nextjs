@@ -1,5 +1,5 @@
 'use client';
-import { Box, Stack, ThemeProvider } from '@mui/material';
+import { Stack, ThemeProvider } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Lato } from 'next/font/google';
 import * as React from 'react';
@@ -8,11 +8,8 @@ import '@/fonts/font-awesome/style.scss';
 
 import useScreenSize from '@/hooks/useScreenSize';
 
-import FooterMenu from '@/components/FooterMenu/FooterMenu';
 import MainAppBar from '@/components/MainAppBar/MainAppBar';
-
 import customTheme from '@/styles/theme/customTheme';
-import GenericModal from '@/components/shared/GenericModal';
 import {
   GeneralControlsState,
   useGeneralControlsStore,
