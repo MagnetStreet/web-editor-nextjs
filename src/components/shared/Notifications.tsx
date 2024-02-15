@@ -1,11 +1,14 @@
 import { Alert, Box, Fade, useTheme } from '@mui/material';
 import * as React from 'react';
+
 import { CustomIcon } from '@/components/shared/CustomIcon';
-import { Notification } from '@/types';
+
 import {
-  useNotificationStore,
   useNotificationsState,
+  useNotificationStore,
 } from '@/stores/useNotificationStore';
+
+import { Notification } from '@/types';
 
 const Notifications: React.FC = () => {
   const theme = useTheme();

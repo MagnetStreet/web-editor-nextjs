@@ -32,13 +32,13 @@ export const postApiResponse = async <T>({
       consoleLog('🚀 Debug getApiResponse requestData:', requestData);
 
       throw new Error(
-        `postApiResponse failed: ${response.status}/${response.statusText} - ${apiEndpoint}`
+        `${response.status}/${response.statusText} - ${apiEndpoint}`
       );
     }
 
     return (await response.json()) as T;
   } catch (error) {
-    consoleLog('getApiResponse error:', error);
+    consoleLog('postApiResponse error:', error);
   }
 
   return null;

@@ -6,19 +6,24 @@ import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import React, { useEffect, useRef, useState } from 'react';
+
 import styles from './MainAppBar.module.scss';
+
 import useScreenSize from '@/hooks/useScreenSize';
+
 import DesktopInnerMenu from '@/components/MainAppBar/DesktopInnerMenu';
+import MobileInnerMenu from '@/components/MainAppBar/MobileInnerMenu';
 import PositionedMenu from '@/components/MainAppBar/PositionedMenu';
 import { CustomIcon } from '@/components/shared/CustomIcon';
-import MobileInnerMenu from '@/components/MainAppBar/MobileInnerMenu';
-import { MenuItem } from '@/types';
-import OrderSummaryList from '@/components/shared/OrderSummary/OrderSummaryList';
 import OrderSummaryButton from '@/components/shared/OrderSummary/OrderSummaryButton';
+import OrderSummaryList from '@/components/shared/OrderSummary/OrderSummaryList';
+
 import {
   GeneralControlsState,
   useGeneralControlsStore,
 } from '@/stores/useGeneralControlsStore';
+
+import { MenuItem } from '@/types';
 
 interface MainAppBarProps {
   title: string;

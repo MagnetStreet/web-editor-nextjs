@@ -1,21 +1,13 @@
-import {
-  Box,
-  Button,
-  Divider,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Stack,
-  Typography,
-} from '@mui/material';
+import { Box, Divider, List, ListItem, Stack, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
+
 import styles from './MainAppBar.module.scss';
+
 import { CustomIcon } from '@/components/shared/CustomIcon';
-import { MenuItem } from '@/types';
-import OrderSummaryButton from '@/components/shared/OrderSummary/OrderSummaryButton';
 import ListItemWithIcon from '@/components/shared/ListItemWithIcon';
+import OrderSummaryButton from '@/components/shared/OrderSummary/OrderSummaryButton';
+
+import { MenuItem } from '@/types';
 
 interface MobileInnerMenuProps {
   menuItems: MenuItem[];
@@ -70,7 +62,7 @@ const MobileInnerMenu: React.FC<MobileInnerMenuProps> = ({
           />
           <ListItem>
             <OrderSummaryButton
-              total={'$200'}
+              total='$200'
               isOpen={false}
               onClick={() => {
                 toggleOrderSummary(true, false);

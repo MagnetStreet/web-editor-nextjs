@@ -1,5 +1,5 @@
 import PageEditor from '@/components/pages/PageEditor';
-import { NextPageContext } from 'next';
+import { PageParams } from '@/types';
 
 const loadDataFromApi = async () => {
   try {
@@ -25,15 +25,12 @@ const loadDataFromApi = async () => {
   }
 };
 
-interface EditorPageServerData {
-  productInfo: any;
-  visitorInfo: any;
-}
+const Home = async ({ searchParams }: PageParams) => {
+  const pids = searchParams?.pids;
+  const qs = searchParams?.qs;
+  const m = searchParams?.qs;
 
-const Home = async () => {
   const { productInfo, visitorInfo } = await loadDataFromApi();
-  console.log('productInfoHome', productInfo);
-  console.log('visitorInfo', visitorInfo);
-  return <PageEditor dsInfo={productInfo} />;
+  return <PageEditor visitorInfo={visitorInfo} productInfo={productInfo} />;
 };
 export default Home;

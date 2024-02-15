@@ -10,6 +10,7 @@ import {
 import * as React from 'react';
 
 import styles from './MainAppBar.module.scss';
+
 import { MenuItem } from '@/types';
 
 interface DesktopInnerMenuProps {

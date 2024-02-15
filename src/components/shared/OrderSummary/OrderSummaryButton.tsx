@@ -1,5 +1,5 @@
+import PaidIcon from '@mui/icons-material/Paid';
 import {
-  Box,
   Button,
   Divider,
   Paper,
@@ -7,10 +7,12 @@ import {
   Typography,
   useTheme,
 } from '@mui/material';
-import PaidIcon from '@mui/icons-material/Paid';
 import * as React from 'react';
+
 import styles from './orderSummary.module.scss';
+
 import useScreenSize from '@/hooks/useScreenSize';
+
 import { CustomIcon } from '@/components/shared/CustomIcon';
 
 interface SampleProps {
@@ -49,13 +51,13 @@ const OrderSummaryButton: React.FC<SampleProps> = ({
           </>
         )}
         {!isDesktop && (
-          <Stack spacing={'12px'} sx={{ width: '100%' }}>
+          <Stack spacing='12px' sx={{ width: '100%' }}>
             <Button sx={{ padding: 0 }} onClick={() => onClick()}>
               <Stack
                 className={styles.orderSummaryStack}
                 sx={{ flexDirection: 'row' }}
               >
-                <Stack direction={'row'} gap='8px'>
+                <Stack direction='row' gap='8px'>
                   <PaidIcon />
                   <Typography color='black' fontWeight='bold'>
                     Project Summary

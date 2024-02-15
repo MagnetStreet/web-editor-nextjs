@@ -1,5 +1,3 @@
-import { CustomIcon } from '@/components/shared/CustomIcon';
-import { StepperStep } from '@/types';
 import {
   Box,
   Stack,
@@ -12,7 +10,12 @@ import {
   useTheme,
 } from '@mui/material';
 import * as React from 'react';
+
 import styles from './Navigation.module.scss';
+
+import { CustomIcon } from '@/components/shared/CustomIcon';
+
+import { StepperStep } from '@/types';
 
 interface MobileStepperProps {
   steps: StepperStep[];

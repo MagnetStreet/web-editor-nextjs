@@ -1,10 +1,9 @@
-import * as React from 'react';
+import { SxProps } from '@mui/material';
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
-import Button from '@mui/material/Button';
-import { SxProps } from '@mui/material';
+import Modal from '@mui/material/Modal';
+import * as React from 'react';
 
 const DefaultStyle = {
   position: 'absolute' as const,
@@ -17,7 +16,7 @@ const DefaultStyle = {
 };
 
 interface GenericModalProps {
-  handleClose: () => void;
+  handleClose?: () => void;
   children: React.ReactNode;
   styleProp?: SxProps;
   isOpen: boolean;

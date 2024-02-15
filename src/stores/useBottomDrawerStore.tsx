@@ -1,8 +1,5 @@
 import { create } from 'zustand';
 
-import { EditorView } from '@/types';
-import Component from '@/components/shared/ZoomWrapper';
-
 export interface BottomDrawerState {
   bottomDrawerTitle: string;
   isBottomDrawerOpen: boolean;

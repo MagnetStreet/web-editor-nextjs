@@ -1,5 +1,6 @@
-import { OrderItem } from '@/types';
 import { create } from 'zustand';
+
+import { OrderItem } from '@/types';
 
 export interface OrderSummaryState {
   orderItems: OrderItem[];

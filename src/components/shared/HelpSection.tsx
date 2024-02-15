@@ -1,7 +1,8 @@
-import { CustomIcon } from '@/components/shared/CustomIcon';
-import ListItemWithIcon from '@/components/shared/ListItemWithIcon';
 import { List, useTheme } from '@mui/material';
 import * as React from 'react';
+
+import { CustomIcon } from '@/components/shared/CustomIcon';
+import ListItemWithIcon from '@/components/shared/ListItemWithIcon';
 
 const HelpSection: React.FC = () => {
   const theme = useTheme();

@@ -1,4 +1,3 @@
-import useScreenSize from '@/hooks/useScreenSize';
 import {
   Box,
   Button,
@@ -7,18 +6,23 @@ import {
   Typography,
   useTheme,
 } from '@mui/material';
-import useNavigationStore, {
-  NavigationState,
-} from '@/stores/useNavigationStore';
 import * as React from 'react';
-import { CustomIcon } from '@/components/shared/CustomIcon';
-import styles from './Navigation.module.scss';
 import { useEffect, useState } from 'react';
+
+import styles from './Navigation.module.scss';
+
+import useScreenSize from '@/hooks/useScreenSize';
+
 import MobileStepper from '@/components/Navigation/MobileStepper';
+import { CustomIcon } from '@/components/shared/CustomIcon';
+
 import {
   BottomDrawerState,
   useBottomDrawerStore,
 } from '@/stores/useBottomDrawerStore';
+import useNavigationStore, {
+  NavigationState,
+} from '@/stores/useNavigationStore';
 
 const Navigation: React.FC = () => {
   const theme = useTheme();

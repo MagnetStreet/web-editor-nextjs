@@ -1,7 +1,9 @@
-import { Box, Slider, Stack, Typography, useTheme } from '@mui/material';
-import { Coordinates } from '@/types';
+import { Slider, Stack, Typography, useTheme } from '@mui/material';
 import * as React from 'react';
+
 import { getStylePositionsHelper } from '@/utils/shared/getStylePositionsHelper';
+
+import { Coordinates } from '@/types';
 
 interface ZoomControlProps {
   zoom: number;

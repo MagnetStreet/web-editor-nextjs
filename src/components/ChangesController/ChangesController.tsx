@@ -1,16 +1,21 @@
-import * as React from 'react';
 import { Box, Stack } from '@mui/material';
 import { useTheme } from '@mui/system';
+import * as React from 'react';
+import { FC } from 'react';
+
 import useScreenSize from '@/hooks/useScreenSize';
+
 import { CustomIcon } from '@/components/shared/CustomIcon';
-import { getStylePositionsHelper } from '@/utils/shared/getStylePositionsHelper';
-import { Coordinates } from '@/types';
+import HelpSection from '@/components/shared/HelpSection';
+
 import {
   BottomDrawerState,
   useBottomDrawerStore,
 } from '@/stores/useBottomDrawerStore';
-import HelpSection from '@/components/shared/HelpSection';
-import { FC } from 'react';
+
+import { getStylePositionsHelper } from '@/utils/shared/getStylePositionsHelper';
+
+import { Coordinates } from '@/types';
 
 interface ChangesControllerProps {
   position?: string;

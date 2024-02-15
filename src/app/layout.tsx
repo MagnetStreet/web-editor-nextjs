@@ -3,26 +3,29 @@ import { Stack, ThemeProvider } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Lato } from 'next/font/google';
 import * as React from 'react';
+import { useEffect } from 'react';
 
 import '@/fonts/font-awesome/style.scss';
 
 import useScreenSize from '@/hooks/useScreenSize';
 
 import MainAppBar from '@/components/MainAppBar/MainAppBar';
-import customTheme from '@/styles/theme/customTheme';
-import {
-  GeneralControlsState,
-  useGeneralControlsStore,
-} from '@/stores/useGeneralControlsStore';
-import { useEffect } from 'react';
-import Notifications from '@/components/shared/Notifications';
 import Navigation from '@/components/Navigation';
 import BottomDrawer from '@/components/shared/BottomDrawer';
+import GenericModal from '@/components/shared/GenericModal';
 import LoadingLogo from '@/components/shared/LoadingLogo';
+import Notifications from '@/components/shared/Notifications';
+
 import {
   BottomDrawerState,
   useBottomDrawerStore,
 } from '@/stores/useBottomDrawerStore';
+import {
+  GeneralControlsState,
+  useGeneralControlsStore,
+} from '@/stores/useGeneralControlsStore';
+
+import customTheme from '@/styles/theme/customTheme';
 
 const lato = Lato({
   subsets: ['latin'],
@@ -37,7 +40,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const { isDesktop } = useScreenSize();
-  const { isInitialLoad, setInitialLoading } =
+  const { isInitialLoad, isLoading, setInitialLoading } =
     useGeneralControlsStore<GeneralControlsState>((state) => state);
   const {
     isBottomDrawerOpen,
@@ -65,12 +68,9 @@ export default function RootLayout({
                 hasNotifications={true}
               />
               <Notifications />
-              {/* <GenericModal
-                handleClose={() => setLoading(false)}
-                isOpen={isLoading}
-              >
+              <GenericModal isOpen={isLoading}>
                 <p>IS LOADING</p>
-              </GenericModal> */}
+              </GenericModal>
               <Stack direction='row'>
                 <Stack width='100%' position='relative'>
                   <Navigation />

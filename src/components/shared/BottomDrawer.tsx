@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { styled, useTheme } from '@mui/material/styles';
-import { grey } from '@mui/material/colors';
-import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import { Typography } from '@mui/material';
+import { grey } from '@mui/material/colors';
+import { styled, useTheme } from '@mui/material/styles';
+import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import * as React from 'react';
 
 interface BottomDrawerProps {
   open: boolean;

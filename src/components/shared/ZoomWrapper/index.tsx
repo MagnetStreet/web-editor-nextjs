@@ -1,17 +1,22 @@
-import {
-  useGeneralControlsStore,
-  GeneralControlsState,
-} from '@/stores/useGeneralControlsStore';
 import { Box } from '@mui/material';
 import React, { useEffect, useState } from 'react';
+
+import {
+  GeneralControlsState,
+  useGeneralControlsStore,
+} from '@/stores/useGeneralControlsStore';
 const minZoom = 0;
 const maxZoom = 100;
 
-const Component = () => {
+interface ZoomWrapperProps {
+  imageBlob: string;
+}
+
+const ZoomWrapper: React.FC<ZoomWrapperProps> = ({ imageBlob }) => {
   const { zoom } = useGeneralControlsStore<GeneralControlsState>(
     (state) => state
   );
-
+  const [imageSrc, setImageSrc] = useState<string>('');
   const [dynamicHeight, setDynamicHeight] = useState(0);
 
   useEffect(() => {
@@ -20,6 +25,26 @@ const Component = () => {
     const newDynamicHeight = 0.3 + scale * 0.7; // Scale between 0.3 and 1.0
     setDynamicHeight(newDynamicHeight * 100);
   }, [zoom]);
+
+  useEffect(() => {
+    //TODO fIX this logic
+    // if (imageBlob) {
+    //   if (typeof imageBlob === 'string') {
+    //     fetch(imageBlob) // Fetch the Blob data if imageBlob is a URL
+    //       .then((response) => response.blob())
+    //       .then((blob) => {
+    //         const reader = new FileReader();
+    //         reader.onload = () => {
+    //           setImageSrc(reader.result as string);
+    //         };
+    //         reader.readAsDataURL(blob);
+    //       })
+    //       .catch((error) => console.error('Failed to fetch image:', error));
+    //   } else {
+    //     console.error('imageBlob is not a valid Blob:', imageBlob);
+    //   }
+    // }
+  }, [imageBlob]);
 
   return (
     <Box
@@ -34,7 +59,7 @@ const Component = () => {
       }}
     >
       <img
-        src='/images/sample_big.png'
+        src={imageSrc}
         alt='test'
         style={{ width: '100%', height: '100%', objectFit: 'contain' }}
       />
@@ -42,4 +67,4 @@ const Component = () => {
   );
 };
 
-export default Component;
+export default ZoomWrapper;

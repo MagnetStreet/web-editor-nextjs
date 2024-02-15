@@ -8,31 +8,40 @@ import {
   Typography,
   useTheme,
 } from '@mui/material';
+import { useEffect, useState } from 'react';
 
 import styles from './Editor.module.scss';
 
 import useScreenSize from '@/hooks/useScreenSize';
+
 import { ChangesController } from '@/components/ChangesController/ChangesController';
+import LateralContextualMenu from '@/components/LateralContextualMenu/LateralContextualMenu';
 import Frame from '@/components/shared/Frame';
+import OrderSummaryList from '@/components/shared/OrderSummary/OrderSummaryList';
+import ZoomWrapper from '@/components/shared/ZoomWrapper';
+import ZoomControl from '@/components/shared/ZoomWrapper/ZoomControl';
+
 import {
   GeneralControlsState,
   useGeneralControlsStore,
 } from '@/stores/useGeneralControlsStore';
-import OrderSummaryList from '@/components/shared/OrderSummary/OrderSummaryList';
-import LateralContextualMenu from '@/components/LateralContextualMenu/LateralContextualMenu';
-import ZoomWrapper from '@/components/shared/ZoomWrapper';
-
 import {
   useNotificationsState,
   useNotificationStore,
 } from '@/stores/useNotificationStore';
-import ZoomControl from '@/components/shared/ZoomWrapper/ZoomControl';
 
-export default function PageEditor({ dsInfo }: any) {
+import { getSessionData } from '@/utils/getSessionData';
+
+import { EditorPageServerData } from '@/types/pageData';
+
+const PageEditor: React.FC<EditorPageServerData> = ({
+  visitorInfo,
+  productInfo,
+}) => {
   const theme = useTheme();
   const { isDesktop } = useScreenSize();
-
-  const { isBottomFrameOpen, zoom, toggleBottomFrame, setZoom } =
+  const [imageBlob, setImageBlob] = useState<string>('');
+  const { zoom, isBottomFrameOpen, setIsLoading, toggleBottomFrame, setZoom } =
     useGeneralControlsStore<GeneralControlsState>((state) => state);
 
   //TODO delete this is just to test the notifications
@@ -71,7 +80,33 @@ export default function PageEditor({ dsInfo }: any) {
   };
   // TODO end
 
-  console.log('dsInfo', dsInfo);
+  useEffect(() => {
+    if (visitorInfo && productInfo) {
+      const fetchData = async () => {
+        setIsLoading(true);
+        try {
+          const { viewURL, getDocumentResponse } = await getSessionData(
+            visitorInfo,
+            productInfo
+          );
+          // TODO Working on the Loader Modal
+          //TODO SAVE THIS RESPONSE TO THE STATE
+          console.log('getDocumentResponse', getDocumentResponse);
+          //setData(jsonData);
+          setImageBlob(viewURL);
+        } catch (error) {
+          if (error instanceof Error) {
+            //setError(error.message);
+          } else {
+            //setError('An unknown error occurred');
+          }
+        } finally {
+          setIsLoading(false);
+        }
+      };
+      fetchData();
+    }
+  }, [visitorInfo, productInfo]);
 
   return (
     <Stack direction='row' position='relative'>
@@ -131,8 +166,10 @@ export default function PageEditor({ dsInfo }: any) {
             </Frame>
           </>
         )}
-        <ZoomWrapper />
+        <ZoomWrapper imageBlob={imageBlob} />
       </Box>
     </Stack>
   );
-}
+};
+
+export default PageEditor;

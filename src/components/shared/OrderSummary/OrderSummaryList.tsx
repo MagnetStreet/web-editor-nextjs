@@ -1,11 +1,15 @@
+import { Box, Stack, Typography, useTheme } from '@mui/material';
+import * as React from 'react';
+
+import styles from './orderSummary.module.scss';
+
+import useScreenSize from '@/hooks/useScreenSize';
+
 import { CustomIcon } from '@/components/shared/CustomIcon';
+
 import useOrderSummaryStore, {
   OrderSummaryState,
 } from '@/stores/useOrderStore';
-import { Box, Stack, Typography, useTheme } from '@mui/material';
-import styles from './orderSummary.module.scss';
-import * as React from 'react';
-import useScreenSize from '@/hooks/useScreenSize';
 
 interface OrderSummaryListProps {
   onClose: () => void;

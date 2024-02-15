@@ -15,7 +15,6 @@ export const getApiResponse = async <T>({
   headers?: HeadersInit;
 }) => {
   try {
-    const startTime = Date.now();
     const response = await fetch(apiEndpoint, {
       method,
       body: requestData,
@@ -28,16 +27,15 @@ export const getApiResponse = async <T>({
       consoleLog('🚀 Debug getApiResponse requestData:', requestData);
 
       throw new Error(
-        `getApiResponse failed: ${response.status}/${response.statusText} - ${apiEndpoint}`
+        `${response.status}/${response.statusText} - ${apiEndpoint}`
       );
     }
-    const duration = Date.now() - startTime;
 
-    consoleLog(
-      `getApiResponse: ${(duration / 1000).toFixed(2)}s ${
-        duration > 2000 ? '💔' : '-'
-      } ${apiEndpoint}`
-    );
+    // Check if the response is an image
+    const contentType = response.headers.get('Content-Type');
+    if (contentType && contentType.startsWith('image')) {
+      return (await response.blob()) as unknown as T; // Cast to T, assuming T is compatible with Blob
+    }
 
     return (await response.json()) as T;
   } catch (error) {

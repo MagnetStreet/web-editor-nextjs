@@ -1,7 +1,8 @@
-import { Coordinates } from '@/types';
 import { PopoverOrigin } from '@mui/material';
 import Menu from '@mui/material/Menu';
 import * as React from 'react';
+
+import { Coordinates } from '@/types';
 
 interface MainAppBarProps {
   anchor: React.MutableRefObject<HTMLElement | null>;
