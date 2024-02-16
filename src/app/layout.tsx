@@ -69,7 +69,7 @@ export default function RootLayout({
               />
               <Notifications />
               <GenericModal isOpen={isLoading}>
-                <p>IS LOADING</p>
+                <LoadingLogo />
               </GenericModal>
               <Stack direction='row'>
                 <Stack width='100%' position='relative'>
