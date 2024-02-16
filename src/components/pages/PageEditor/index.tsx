@@ -40,7 +40,7 @@ const PageEditor: React.FC<EditorPageServerData> = ({
 }) => {
   const theme = useTheme();
   const { isDesktop } = useScreenSize();
-  const [imageBlob, setImageBlob] = useState<string>('');
+  const [imageBlob, setImageBlob] = useState<Blob>('');
   const { zoom, isBottomFrameOpen, setIsLoading, toggleBottomFrame, setZoom } =
     useGeneralControlsStore<GeneralControlsState>((state) => state);
 
@@ -85,21 +85,18 @@ const PageEditor: React.FC<EditorPageServerData> = ({
       const fetchData = async () => {
         setIsLoading(true);
         try {
-          const { viewURL, getDocumentResponse } = await getSessionData(
+          const { viewBlob, documentInfo } = await getSessionData(
             visitorInfo,
             productInfo
           );
           // TODO Working on the Loader Modal
           //TODO SAVE THIS RESPONSE TO THE STATE
-          console.log('getDocumentResponse', getDocumentResponse);
-          //setData(jsonData);
-          setImageBlob(viewURL);
-        } catch (error) {
-          if (error instanceof Error) {
-            //setError(error.message);
-          } else {
-            //setError('An unknown error occurred');
+          //console.log('documentInfo', documentInfo);
+          if (viewBlob instanceof Blob) {
+            setImageBlob(viewBlob);
           }
+        } catch (error) {
+          console.log('error:', error);
         } finally {
           setIsLoading(false);
         }

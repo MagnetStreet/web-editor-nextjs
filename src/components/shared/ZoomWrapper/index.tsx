@@ -9,14 +9,14 @@ const minZoom = 0;
 const maxZoom = 100;
 
 interface ZoomWrapperProps {
-  imageBlob: string;
+  imageBlob: Blob;
 }
 
 const ZoomWrapper: React.FC<ZoomWrapperProps> = ({ imageBlob }) => {
   const { zoom } = useGeneralControlsStore<GeneralControlsState>(
     (state) => state
   );
-  const [imageSrc, setImageSrc] = useState<string>('');
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [dynamicHeight, setDynamicHeight] = useState(0);
 
   useEffect(() => {
@@ -27,23 +27,26 @@ const ZoomWrapper: React.FC<ZoomWrapperProps> = ({ imageBlob }) => {
   }, [zoom]);
 
   useEffect(() => {
-    //TODO fIX this logic
-    // if (imageBlob) {
-    //   if (typeof imageBlob === 'string') {
-    //     fetch(imageBlob) // Fetch the Blob data if imageBlob is a URL
-    //       .then((response) => response.blob())
-    //       .then((blob) => {
-    //         const reader = new FileReader();
-    //         reader.onload = () => {
-    //           setImageSrc(reader.result as string);
-    //         };
-    //         reader.readAsDataURL(blob);
-    //       })
-    //       .catch((error) => console.error('Failed to fetch image:', error));
-    //   } else {
-    //     console.error('imageBlob is not a valid Blob:', imageBlob);
-    //   }
-    // }
+    const createUrl = async () => {
+      try {
+        const url = URL.createObjectURL(imageBlob);
+        setImageUrl(url);
+      } catch (error) {
+        console.error('Error creating URL for image blob:', error);
+      }
+    };
+
+    if (imageBlob instanceof Blob) {
+      createUrl();
+    } else {
+      console.error('Invalid image blob:', imageBlob);
+    }
+
+    return () => {
+      if (imageUrl) {
+        URL.revokeObjectURL(imageUrl);
+      }
+    };
   }, [imageBlob]);
 
   return (
@@ -59,7 +62,7 @@ const ZoomWrapper: React.FC<ZoomWrapperProps> = ({ imageBlob }) => {
       }}
     >
       <img
-        src={imageSrc}
+        src={imageUrl}
         alt='test'
         style={{ width: '100%', height: '100%', objectFit: 'contain' }}
       />
