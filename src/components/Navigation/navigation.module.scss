@@ -68,10 +68,15 @@
     &__btn {
       cursor: pointer;
       padding: 4px 12px !important;
-      max-width: fit-content;
-      flex-grow: 1;
+      width: 120px;
       @include small {
         max-width: 25%;
+      }
+      &__text {
+        max-width: 90px;
+        overflow: hidden;
+        text-wrap: nowrap;
+        text-overflow: ellipsis;
       }
       &:first-child {
         justify-content: flex-start;

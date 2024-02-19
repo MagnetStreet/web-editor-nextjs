@@ -13,7 +13,7 @@ import {
   useBottomDrawerStore,
 } from '@/stores/useBottomDrawerStore';
 
-import { getStylePositionsHelper } from '@/utils/shared/getStylePositionsHelper';
+import { getStylePositionsHelper } from '@/utils/getStylePositionsHelper';
 
 import { Coordinates } from '@/types';
 

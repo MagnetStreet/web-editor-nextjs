@@ -2,7 +2,7 @@ import { Attribute } from '@/types/Attribute';
 import ProductViewSet from '@/types/ProductViewSet';
 import SubState from '@/types/Substate';
 
-export default interface DocumentListItem {
+export default interface DSItemJSON {
   isSample: boolean;
   isWrapper: boolean;
   productSize: string;

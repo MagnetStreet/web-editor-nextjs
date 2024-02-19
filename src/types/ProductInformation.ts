@@ -1,5 +1,5 @@
 import Discounts from '@/types/Discounts';
-import DocumentListItem from '@/types/DocumentListItem';
+import DSItemJSON from '@/types/DSItemJSON';
 
 export default interface ProductInformation {
   gmaps_apiKey_listBuilder?: string;
@@ -13,6 +13,6 @@ export default interface ProductInformation {
   userSignIn: boolean;
   discounts: Discounts[];
   discountForDisplayCode?: string;
-  documentList: DocumentListItem[];
+  documentList: DSItemJSON[];
   showImprintForm: boolean;
 }

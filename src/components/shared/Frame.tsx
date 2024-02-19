@@ -1,7 +1,7 @@
 import { Paper, Stack, StackProps } from '@mui/material';
 import * as React from 'react';
 
-import { getStylePositionsHelper } from '@/utils/shared/getStylePositionsHelper';
+import { getStylePositionsHelper } from '@/utils/getStylePositionsHelper';
 
 import { Coordinates } from '@/types';
 

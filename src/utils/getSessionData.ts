@@ -1,6 +1,6 @@
 import { getViewListSceneValue } from '@/utils/getViewListSceneValue';
 
-import DocumentListItem from '@/types/DocumentListItem';
+import DSItemJSON from '@/types/DSItemJSON';
 import ProductInformation from '@/types/ProductInformation';
 import SessionData from '@/types/SessionData';
 import { VisitorInfo } from '@/types/VisitorInfo';
@@ -26,7 +26,7 @@ export const getSessionData = async (
     // Get the TempalteIds
     const templateIdFirst = documentList[0].productStylecode;
     const templateId: string = documentList.reduce(
-      (acc: string, item: DocumentListItem, index: number) => {
+      (acc: string, item: DSItemJSON, index: number) => {
         // we Need to remove the stock items from this lists
         if (item.itemType === 'STOCK') {
           return acc;

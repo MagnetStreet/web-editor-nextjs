@@ -40,7 +40,7 @@ const PageEditor: React.FC<EditorPageServerData> = ({
 }) => {
   const theme = useTheme();
   const { isDesktop } = useScreenSize();
-  const [imageBlob, setImageBlob] = useState<Blob>('');
+  const [imageBlob, setImageBlob] = useState<Blob | null>(null);
   const { zoom, isBottomFrameOpen, setIsLoading, toggleBottomFrame, setZoom } =
     useGeneralControlsStore<GeneralControlsState>((state) => state);
 
@@ -81,6 +81,7 @@ const PageEditor: React.FC<EditorPageServerData> = ({
   // TODO end
 
   useEffect(() => {
+    console.log('documentInfo', productInfo);
     if (visitorInfo && productInfo) {
       const fetchData = async () => {
         setIsLoading(true);
@@ -91,7 +92,7 @@ const PageEditor: React.FC<EditorPageServerData> = ({
           );
           // TODO Working on the Loader Modal
           //TODO SAVE THIS RESPONSE TO THE STATE
-          //console.log('documentInfo', documentInfo);
+          console.log('documentInfo', documentInfo);
           if (viewBlob instanceof Blob) {
             setImageBlob(viewBlob);
           }

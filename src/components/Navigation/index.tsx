@@ -106,7 +106,13 @@ const Navigation: React.FC = () => {
           <Typography>
             <b>Back</b>
           </Typography>
-          <Typography variant='subtitle2'>{prevStepText}</Typography>
+          <Typography
+            className={styles.navigation__buttons__btn__text}
+            variant='subtitle2'
+            noWrap
+          >
+            {prevStepText}
+          </Typography>
         </Stack>
       </Button>
     );
@@ -168,7 +174,13 @@ const Navigation: React.FC = () => {
           <Typography>
             <b>Next</b>
           </Typography>
-          <Typography variant='subtitle2'>{nextStepText}</Typography>
+          <Typography
+            className={styles.navigation__buttons__btn__text}
+            variant='subtitle2'
+            noWrap
+          >
+            {nextStepText}
+          </Typography>
         </Stack>
       </Button>
     );
