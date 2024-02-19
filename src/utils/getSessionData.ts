@@ -1,6 +1,6 @@
 import { getViewListSceneValue } from '@/utils/getViewListSceneValue';
 
-import DSItemJSON from '@/types/DSItemJSON';
+import DSItemJSON from '@/types/dsItemJSON';
 import ProductInformation from '@/types/ProductInformation';
 import SessionData from '@/types/SessionData';
 import { VisitorInfo } from '@/types/VisitorInfo';

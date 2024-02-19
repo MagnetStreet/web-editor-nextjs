@@ -1,23 +1,25 @@
 import PageEditor from '@/components/pages/PageEditor';
+
 import { PageParams } from '@/types';
 
 const loadDataFromApi = async () => {
   try {
     const LOCAL_API_BASE_URL = process.env.LOCAL_API_BASE_URL;
     //const slug = query.slug;
-    const [visitorInfo, productInfo] = await Promise.all([
-      await fetch(`${LOCAL_API_BASE_URL}/visitorInfo/`),
-      await fetch(`${LOCAL_API_BASE_URL}/productInformation/`),
+    let [visitorInfo, productInfo] = await Promise.all([
+      await fetch(`${LOCAL_API_BASE_URL}/visitorInfo`),
+      await fetch(`${LOCAL_API_BASE_URL}/productInformation`),
     ]);
 
     // call the next request here with
-
+    productInfo = await productInfo?.json();
+    visitorInfo = await visitorInfo?.json();
     return {
-      productInfo: await productInfo?.json(),
-      visitorInfo: await visitorInfo?.json(),
+      productInfo,
+      visitorInfo,
     };
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.log('Error fetching data:', error);
     return {
       productInfo: null,
       visitorInfo: null,
