@@ -1,16 +1,18 @@
 import DSItemJSON from '@/types/DSItemJSON';
+import { DSItemViewData } from '@/types/DSItemViewData';
+import View from '@/types/View';
 
 export class DesignStudioItem implements DesignStudioItem {
   user: any; // Update with the actual type
-  productId: string;
+  productId: number;
   productType: string;
-  typeId: string;
+  typeId: number;
   productWebDescription: string;
   typeCode: string;
   productSize: string;
   productStylecode: string;
   collectionTypeCategoryId: string;
-  designFamilyCategoryId: string;
+  designFamilyCategoryId: number;
   productDSViewSet: any[]; // Update with the actual type
   productViewSet: any[]; // Update with the actual type
   productAnimatedViewSet: any[]; // Update with the actual type
@@ -33,31 +35,31 @@ export class DesignStudioItem implements DesignStudioItem {
   originalQuantity: number;
   itemsPerBox: number;
   substrateId: string;
-  parentId: string | null;
+  parentId: number | null;
   isParent: boolean;
-  unitPrice: string; // Update with the actual type
+  unitPrice: number;
   discountPercentage: number;
   discountedUnitPrice: number;
-  price: string; // Update with the actual type
+  price: number;
   orderItemId: string;
   itemErrors: any; // Update with the actual type
   isShippingService: boolean;
   canHaveShippingService: boolean;
   canHaveMailingList: boolean;
-  groupId: string | null;
+  groupId: number;
   approved: boolean;
   mailWithoutEnvelope: boolean;
   extraShippedQuantity: number;
   selectedAttributes: any; // Update with the actual type
   availableAttributes: any; // Update with the actual type
   substrateAttribute: any; // Update with the actual type
-  compositeEnvelopes: any[]; // Update with the actual type
+  compositeEnvelopes?: any[]; // Update with the actual type
   envelopeAttribute: any; // Update with the actual type
   inkColorAttribute: any; // Update with the actual type
   topLevelItem: boolean;
   originalTemplateStylecode: string;
-  productRequiredWithTypeIds: any[]; // Update with the actual type
-  productNotAllowedWithTypeIds: any[]; // Update with the actual type
+  productRequiredWithTypeIds?: string[]; // Update with the actual type
+  productNotAllowedWithTypeIds?: string[]; // Update with the actual type
   isMultidocument: boolean;
   isSample: boolean;
   mailingServiceKey: string | null;
@@ -66,7 +68,7 @@ export class DesignStudioItem implements DesignStudioItem {
   selectedMailingListIds: string | null;
   selectedMailingLists: any[]; // Update with the actual type
   viewDimensions: any[]; // Update with the actual type
-  views: any[]; // Update with the actual type
+  views: View[];
   proofingViews: any[]; // Update with the actual type
   isSaved: boolean;
   proofImageGenerated: boolean;
@@ -140,7 +142,6 @@ export class DesignStudioItem implements DesignStudioItem {
     this.isShippingService = dsItemJSON.isShippingService || false;
     this.canHaveShippingService = dsItemJSON.canHaveShippingService || false;
     this.canHaveMailingList = dsItemJSON.canHaveMailingList || false;
-    this.groupId;
     this.approved =
       dsItemJSON.approved || dsItemJSON.userApprovalInitials == 'yes' || false;
     this.mailWithoutEnvelope = dsItemJSON.mailWithoutEnvelope || false;
@@ -174,27 +175,29 @@ export class DesignStudioItem implements DesignStudioItem {
 
     this.isSample = dsItemJSON.isSample;
 
-    if (dsItemJSON.groupId) {
-      this.groupId = dsItemJSON.groupId;
-      if (!designStudio.groupId) {
-        designStudio.groupId = dsItemJSON.groupId;
-      }
-    } else if (designStudio.groupId) {
-      this.groupId = designStudio.groupId;
-    } else {
-      designStudio.generateGroupId();
-      this.groupId = designStudio.groupId;
-    }
+    //TODO Figure out later
+    // if (dsItemJSON.groupId) {
+    //   this.groupId = dsItemJSON.groupId;
+    //   if (!designStudio.groupId) {
+    //     designStudio.groupId = dsItemJSON.groupId;
+    //   }
+    // } else if (designStudio.groupId) {
+    //   this.groupId = designStudio.groupId;
+    // } else {
+    //   designStudio.generateGroupId();
+    //   this.groupId = designStudio.groupId;
+    // }
 
     const customerDoApplyImprintsPreference = true;
-    this.isLockedForImprintEditing =
-      (dsItemJSON.allowImprints &&
-        designStudio.dsJSON.showImprintForm &&
-        customerDoApplyImprintsPreference) ||
-      false;
-    if (this.isParent && designStudio.defaultQuantity < 1) {
-      designStudio.defaultQuantity = this.originalQuantity;
-    }
+    //TODO Figure out later
+    // this.isLockedForImprintEditing =
+    //   (dsItemJSON.allowImprints &&
+    //     designStudio.dsJSON.showImprintForm &&
+    //     customerDoApplyImprintsPreference) ||
+    //   false;
+    // if (this.isParent && designStudio.defaultQuantity < 1) {
+    //   designStudio.defaultQuantity = this.originalQuantity;
+    // }
 
     this.viewDimensions = [];
     this.views = [];
@@ -206,12 +209,13 @@ export class DesignStudioItem implements DesignStudioItem {
 
     this.mailingServiceKey = null;
     this.mailingListInfo = null;
-    this.selectedMailingListServiceKey =
-      dsItemJSON.mailingListServiceKey || null;
-    this.selectedMailingListIds = dsItemJSON.mailingListId || null;
-    this.selectedMailingLists = dsItemJSON.mailingListArray || null;
+    //TODO Figure out later
+    // this.selectedMailingListServiceKey =
+    //   dsItemJSON.mailingListServiceKey || null;
+    // this.selectedMailingListIds = dsItemJSON.mailingListId || null;
+    // this.selectedMailingLists = dsItemJSON.mailingListArray || null;
 
-    this.envelopeAttribute = this.getSelectedEnvelopeDesign();
+    // this.envelopeAttribute = this.getSelectedEnvelopeDesign();
 
     this.IDSObject = {};
     this.templateVariations = [];
@@ -235,5 +239,58 @@ export class DesignStudioItem implements DesignStudioItem {
     this.generateAnimatedImage = true;
     this.waitingCount = 0;
     this.generateWaitingCount = 0;
+  }
+
+  getFrontView(): View | null {
+    const views = this.productViewSet;
+    if (!views) return null;
+
+    for (const view of views) {
+      if (view.scene.includes('front')) {
+        return view;
+      }
+    }
+    return null;
+  }
+
+  getBackView(): View | null {
+    const views = this.productViewSet;
+    if (!views) return null;
+
+    for (const view of views) {
+      if (view.scene.includes('back')) {
+        return view;
+      }
+    }
+    return null;
+  }
+
+  getViewDataByName(
+    name: string,
+    limitToCurrentView: boolean,
+    currentViewIndex: number
+  ): DSItemViewData | null {
+    let dsItemViewData = null;
+    limitToCurrentView = limitToCurrentView || false;
+
+    for (let i = 0, x = this.views.length; i < x; i++) {
+      const tempDSItemViewData = this.views[i].viewData;
+
+      if (dsItemViewData === null) {
+        for (let j = 0, y = tempDSItemViewData.length; j < y; j++) {
+          if (
+            (!limitToCurrentView && tempDSItemViewData[j].name === name) ||
+            (limitToCurrentView &&
+              i === currentViewIndex &&
+              tempDSItemViewData[j].name === name)
+          ) {
+            dsItemViewData = tempDSItemViewData[j];
+            break;
+          }
+        }
+      }
+    }
+
+    return dsItemViewData;
   }
 }

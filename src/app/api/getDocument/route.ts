@@ -25,15 +25,13 @@ export async function POST(req: Request) {
     });
 
     if (!getDocumentResponse) {
-      throw new Error('Server ERROR: getDocument Request');
+      throw new Error('getDocument Request null');
     }
-
     return NextResponse.json<{ documentInfo: DocumentInformation }>({
       documentInfo: getDocumentResponse,
     });
   } catch (error) {
-    return NextResponse.json({
-      message: 'Get Document: Internal server error',
-    });
+    console.log('Server error', error);
+    throw new Error('Get Document: Internal server error');
   }
 }

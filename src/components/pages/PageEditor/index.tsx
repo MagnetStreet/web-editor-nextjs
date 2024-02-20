@@ -8,6 +8,7 @@ import {
   Typography,
   useTheme,
 } from '@mui/material';
+import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 
 import styles from './Editor.module.scss';
@@ -16,10 +17,9 @@ import useScreenSize from '@/hooks/useScreenSize';
 
 import { ChangesController } from '@/components/ChangesController/ChangesController';
 import LateralContextualMenu from '@/components/LateralContextualMenu/LateralContextualMenu';
+import ZoomControl from '@/components/shared/CanvasWrapper/ZoomControl';
 import Frame from '@/components/shared/Frame';
 import OrderSummaryList from '@/components/shared/OrderSummary/OrderSummaryList';
-import ZoomWrapper from '@/components/shared/ZoomWrapper';
-import ZoomControl from '@/components/shared/ZoomWrapper/ZoomControl';
 
 import {
   GeneralControlsState,
@@ -33,6 +33,10 @@ import {
 import { getSessionData } from '@/utils/getSessionData';
 
 import { EditorPageServerData } from '@/types/pageData';
+
+const Canvas = dynamic(() => import('@/components/shared/CanvasWrapper'), {
+  ssr: false,
+});
 
 const PageEditor: React.FC<EditorPageServerData> = ({
   visitorInfo,
@@ -81,7 +85,10 @@ const PageEditor: React.FC<EditorPageServerData> = ({
   // TODO end
 
   useEffect(() => {
-    console.log('documentInfo', productInfo);
+    console.log('RequestData Start ====');
+    console.log('visitorInfo', visitorInfo);
+    console.log('productInfo', productInfo);
+    console.log('RequestData END ====');
     if (visitorInfo && productInfo) {
       const fetchData = async () => {
         setIsLoading(true);
@@ -102,7 +109,7 @@ const PageEditor: React.FC<EditorPageServerData> = ({
           setIsLoading(false);
         }
       };
-      fetchData();
+      //fetchData();
     }
   }, [visitorInfo, productInfo]);
 
@@ -164,7 +171,7 @@ const PageEditor: React.FC<EditorPageServerData> = ({
             </Frame>
           </>
         )}
-        <ZoomWrapper imageBlob={imageBlob} />
+        <Canvas imageBlob={imageBlob!} />
       </Box>
     </Stack>
   );

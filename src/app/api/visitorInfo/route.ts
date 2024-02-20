@@ -1,6 +1,7 @@
-import axios from 'axios';
 import { NextApiRequest } from 'next';
 import { NextResponse } from 'next/server';
+
+import { getApiResponse } from '@/utils/shared/get-api-response';
 
 export async function GET(req: NextApiRequest, res: NextResponse) {
   try {
@@ -9,12 +10,14 @@ export async function GET(req: NextApiRequest, res: NextResponse) {
       throw Error('API_BASE_URL not defined in .env file');
     }
     //TODO Actually load cookies
-    const response = await axios.get(`${API_BASE_URL}/auth/getVisitorInfo/`, {
+    const response = await getApiResponse<any>({
+      apiEndpoint: `${API_BASE_URL}/auth/getVisitorInfo/`,
       headers: {
         visitorCookie: '3f0606fb-1576-4480-8d75-040c29fee2f2' || '',
         Expires: 'Wed, 30-Jul-2081 20:44:27 GMT',
         Path: '/',
       },
+      revalidate: 0, // no cache
     });
 
     // Extract the visitor information from the response

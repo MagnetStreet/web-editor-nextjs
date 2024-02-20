@@ -29,6 +29,7 @@ export async function POST(req: Request) {
       headers,
     });
   } catch (error) {
-    return NextResponse.json({ message: 'Get View: Internal server error' });
+    console.log('Server error', error);
+    throw new Error('Get View: Internal server error');
   }
 }

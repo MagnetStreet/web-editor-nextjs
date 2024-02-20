@@ -1,19 +1,7 @@
-interface PointCoordinates {
-  x: number;
-  y: number;
-}
+import DSItemViewData from '@/types/DSItemViewData';
 
 export default interface View {
-  viewData: {
-    viewBounds: PointCoordinates[];
-    documentCenterPoint: PointCoordinates;
-    perspectiveTransformRotationAngle: number;
-    name: string;
-    unclippedViewBounds: PointCoordinates[];
-    page: number;
-    place: number;
-    centerPoint: PointCoordinates;
-  }[];
+  viewData: DSItemViewData[];
   sceneName: string;
   sceneCanvasWidth: number;
   sceneCanvasHeight: number;

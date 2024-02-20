@@ -45,6 +45,15 @@ export default interface DSItemJSON {
   itemsPerBox: number;
   orderItemId: string;
   sessionId: string;
+  approved?: boolean;
+  viewed?: boolean;
+  groupId?: number;
+  extraShippedQuantity?: number;
+  productRequiredWithTypeIds?: string[];
+  productNotAllowedWithTypeIds?: string[];
+  itemErrors?: any; // Update with the actual type
+  originalColors?: any[]; // Update with the actual type
+  compositeEnvelopes?: any[]; // Update with the actual type
   availableAttributes: {
     other: Attribute[];
     substrates: SubState[];

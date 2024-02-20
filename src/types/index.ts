@@ -11,6 +11,11 @@ export interface StepperStep {
   substeps: string[];
 }
 
+export interface PointCoordinates {
+  x: number;
+  y: number;
+}
+
 export interface Sizes {
   xs?: string;
   sm?: string;
