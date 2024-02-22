@@ -56,11 +56,6 @@ const ZoomControl: React.FC<ZoomControlProps> = ({
           height: '165px',
         }}
         onChange={handleZoomChange}
-        // onChange={(
-        //   event: Event,
-        //   value: number | number[],
-        //   activeThumb: number
-        // ) => setZoom(value as number)}
       />
       <Typography>Zoom</Typography>
     </Stack>
