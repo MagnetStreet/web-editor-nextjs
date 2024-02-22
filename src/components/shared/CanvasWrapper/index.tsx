@@ -1,11 +1,15 @@
 import { Box } from '@mui/material';
 import Konva from 'konva';
+import { KonvaEventObject } from 'konva/lib/Node';
 import React, { useEffect, useState } from 'react';
 import { Image, Layer, Rect, Stage } from 'react-konva';
 import useImage from 'use-image';
 
+import { getScaledCoordinates } from '@/utils/getScaledCoordinates';
+
 import { PointCoordinates } from '@/types';
 import DesignStudioItem from '@/types/DesignStudioItem';
+import TextBox from '@/types/TextBox';
 import View from '@/types/View';
 const minZoom = 0;
 const maxZoom = 100;
@@ -88,8 +92,8 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
     //Each time the Active view updates we need to update the click boxes
   }, [activeView]);
 
-  const handleClick = (e) => {
-    console.log(e.target); //I can get the attributes from the attrs{x,y, width, height}
+  const handleClick = (e: KonvaEventObject<MouseEvent>, textBox: TextBox) => {
+    console.log(e.target, textBox); // I can get the attributes from the attrs{x,y, width, height}
   };
 
   const handleHover = (enter = false) => {
@@ -99,20 +103,13 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
     }
   };
 
-  const updateCoordinatesWithScale = (
-    coordinates: PointCoordinates[],
-    scale: number
-  ): PointCoordinates[] => {
-    return coordinates.map((coord) => ({
-      x: coord.x * scale,
-      y: coord.y * scale,
-    }));
-  };
-
-  const createRectFromPoints = (originalCoordinates: PointCoordinates[]) => {
+  const createRectFromPoints = (
+    originalCoordinates: PointCoordinates[],
+    textBox: TextBox
+  ) => {
     if (originalCoordinates.length === 0) return null;
     const scale = 0.3 + ((zoom as number) / 100) * 0.7;
-    const coordinates = updateCoordinatesWithScale(originalCoordinates, scale);
+    const coordinates = getScaledCoordinates(originalCoordinates, scale);
     const minX = Math.min(...coordinates.map((coord) => coord.x));
     const minY = Math.min(...coordinates.map((coord) => coord.y));
     const maxX = Math.max(...coordinates.map((coord) => coord.x));
@@ -128,7 +125,7 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
         width={width}
         height={height}
         fill='rgba(0, 0, 0, 0.3)'
-        onClick={handleClick}
+        onClick={(e) => handleClick(e, textBox)}
         onMouseEnter={() => handleHover(true)}
         onMouseLeave={() => handleHover(false)}
       />
@@ -145,7 +142,7 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
         if (!viewData) {
           return null;
         }
-        return createRectFromPoints(viewData.viewBounds);
+        return createRectFromPoints(viewData.viewBounds, textbox);
       })
       .filter((x) => x);
   };
