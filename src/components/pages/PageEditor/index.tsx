@@ -9,7 +9,7 @@ import {
   useTheme,
 } from '@mui/material';
 import dynamic from 'next/dynamic';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import styles from './Editor.module.scss';
 
@@ -21,6 +21,10 @@ import ZoomControl from '@/components/shared/CanvasWrapper/ZoomControl';
 import Frame from '@/components/shared/Frame';
 import OrderSummaryList from '@/components/shared/OrderSummary/OrderSummaryList';
 
+import {
+  DesignStudioState,
+  useDesignStudioStore,
+} from '@/stores/useDesignStudioStore';
 import {
   GeneralControlsState,
   useGeneralControlsStore,
@@ -44,9 +48,16 @@ const PageEditor: React.FC<EditorPageServerData> = ({
 }) => {
   const theme = useTheme();
   const { isDesktop } = useScreenSize();
-  const [imageBlob, setImageBlob] = useState<Blob | null>(null);
   const { zoom, isBottomFrameOpen, setIsLoading, toggleBottomFrame, setZoom } =
     useGeneralControlsStore<GeneralControlsState>((state) => state);
+  const {
+    documentInfo,
+    activeView,
+    viewBlob,
+    setDocumentInfo,
+    setActiveView,
+    setViewBlob,
+  } = useDesignStudioStore<DesignStudioState>((state) => state);
 
   //TODO delete this is just to test the notifications
   const { addNotification } = useNotificationStore<useNotificationsState>(
@@ -85,10 +96,6 @@ const PageEditor: React.FC<EditorPageServerData> = ({
   // TODO end
 
   useEffect(() => {
-    console.log('RequestData Start ====');
-    console.log('visitorInfo', visitorInfo);
-    console.log('productInfo', productInfo);
-    console.log('RequestData END ====');
     if (visitorInfo && productInfo) {
       const fetchData = async () => {
         setIsLoading(true);
@@ -97,11 +104,14 @@ const PageEditor: React.FC<EditorPageServerData> = ({
             visitorInfo,
             productInfo
           );
-          // TODO Working on the Loader Modal
-          //TODO SAVE THIS RESPONSE TO THE STATE
           console.log('documentInfo', documentInfo);
+          console.log('viewBlob', viewBlob);
+          if (documentInfo) {
+            setDocumentInfo(documentInfo);
+            setActiveView(documentInfo?.views[0]);
+          }
           if (viewBlob instanceof Blob) {
-            setImageBlob(viewBlob);
+            setViewBlob(viewBlob);
           }
         } catch (error) {
           console.log('error:', error);
@@ -109,7 +119,7 @@ const PageEditor: React.FC<EditorPageServerData> = ({
           setIsLoading(false);
         }
       };
-      //fetchData();
+      fetchData();
     }
   }, [visitorInfo, productInfo]);
 
@@ -171,7 +181,12 @@ const PageEditor: React.FC<EditorPageServerData> = ({
             </Frame>
           </>
         )}
-        <Canvas imageBlob={imageBlob!} />
+        <Canvas
+          zoom={zoom}
+          viewBlob={viewBlob}
+          documentInfo={documentInfo}
+          activeView={activeView}
+        />
       </Box>
     </Stack>
   );

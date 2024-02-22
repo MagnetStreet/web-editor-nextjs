@@ -1,6 +1,6 @@
 import { PointCoordinates } from '@/types';
 
-export interface ViewData {
+export default interface DSItemViewData {
   viewBounds: PointCoordinates[];
   documentCenterPoint: PointCoordinates;
   perspectiveTransformRotationAngle: number;

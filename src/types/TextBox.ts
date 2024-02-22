@@ -20,9 +20,34 @@ interface TextStyleRange {
   fillColorG: number;
 }
 
-export default interface TextBox {
+export default interface TextBoxContentFormat {
   textStyleRanges: TextStyleRange[];
   rawContents: string;
   clearContents: string;
   justification: string;
+}
+
+export default interface TextBox {
+  bottom: number;
+  contentFormatted: TextBoxContentFormat[];
+  contentType: string;
+  foilable: boolean;
+  id: number;
+  left: number;
+  lockColor: boolean;
+  lockEditing: boolean;
+  lockFontFace: boolean;
+  lockFontSize: boolean;
+  lockLeading: boolean;
+  lockVerticalAlignment: boolean;
+  minFontSize: string;
+  modified: boolean;
+  name: string;
+  page: number;
+  place: number;
+  right: number;
+  rotationAngle: number;
+  tagName: string;
+  top: number;
+  verticalAlignment: string;
 }

@@ -1,4 +1,4 @@
-export interface Attribute {
+export default interface Attribute {
   template: string;
   webDescription: string;
   groupWebDescription: string;

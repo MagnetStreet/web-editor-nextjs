@@ -18,7 +18,7 @@ const LoadingLogo = () => (
     <img
       src='/images/TE_Logo_Animation-just-the-mark-loading_100.gif'
       alt='Loading...'
-      style={{ width: '100px', height: '100px' }}
+      style={{ width: '100px', height: '100px', borderRadius: '100%' }}
     />
   </Box>
 );

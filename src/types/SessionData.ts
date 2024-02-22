@@ -1,4 +1,4 @@
-import DocumentInformation from '@/types/DocumentInformation';
+import DocumentInformation from '@/types/DesignStudioItem';
 
 export default interface SessionData {
   viewBlob?: Blob;
