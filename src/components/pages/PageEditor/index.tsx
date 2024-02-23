@@ -160,7 +160,7 @@ const PageEditor: React.FC<EditorPageServerData> = ({
   return (
     <Stack direction='row' position='relative'>
       <LateralContextualMenu />
-      <Box className={styles.editor}>
+      <Box className={`${styles.editor} ${styles.editor__isolated_active}`}>
         {/*
           TODO delete this is just to test the notifications 
            {notificationSample()} 

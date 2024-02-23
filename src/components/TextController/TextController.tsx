@@ -5,15 +5,22 @@ import { TextBox } from '@/types/TextBox';
 
 interface TextControllerProps {
   activeTextBox: TextBox;
+  handleSave: () => void;
+  handleBack: () => void;
 }
 
-const TextController: React.FC<TextControllerProps> = ({ activeTextBox }) => {
+const TextController: React.FC<TextControllerProps> = ({
+  activeTextBox,
+  handleSave,
+  handleBack,
+}) => {
   console.log('activeTextBox', activeTextBox);
+
   return (
     <Box>
       In here we render the text options
-      <Button> Cancel</Button>
-      <Button> Apply Changes</Button>
+      <Button onClick={handleBack}> Cancel</Button>
+      <Button onClick={handleSave}> Apply Changes</Button>
     </Box>
   );
 };

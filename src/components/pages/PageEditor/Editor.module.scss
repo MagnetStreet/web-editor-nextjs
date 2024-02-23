@@ -12,4 +12,7 @@
     min-height: calc(100vh - 220px); // screen size minus controls elements
     width: calc(100% - 108px); // width of the lateral side menu
   }
+  &__isolated_active {
+    width: 100%;
+  }
 }
