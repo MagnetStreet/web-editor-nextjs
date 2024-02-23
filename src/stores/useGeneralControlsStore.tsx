@@ -1,17 +1,24 @@
 import { create } from 'zustand';
 
+import TextBox from '@/types/TextBox';
+
 export interface GeneralControlsState {
   zoom: number | number[];
   isNextStepEnable: boolean;
   isBottomFrameOpen: boolean;
   isLoading: boolean;
   isInitialLoad: boolean;
+  isIsolatedModeActive: boolean;
   bottomFrameComponent?: React.ReactNode;
+  topFrameComponent?: React.ReactNode;
+  activeTextBox?: TextBox;
   setZoom: (val: number | number[]) => void;
   setNextStepEnable: (val: boolean) => void;
   toggleBottomFrame: (val: boolean) => void;
   setIsLoading: (val: boolean) => void;
   setInitialLoading: (val: boolean) => void;
+  setIsolatedMode: (val: boolean) => void;
+  setActiveTextBox: (val: TextBox, component?: React.ReactNode) => void;
   // Other properties and functions in your state For handling general navigations or controls
 }
 
@@ -22,9 +29,13 @@ export const useGeneralControlsStore = create<GeneralControlsState>((set) => ({
   isInitialModalOpen: true,
   isInitialLoad: true,
   isLoading: false,
+  isIsolatedModeActive: false,
   toggleBottomFrame: (val: boolean) => set({ isBottomFrameOpen: val }),
   setNextStepEnable: (val: boolean) => set({ isNextStepEnable: val }),
   setZoom: (newVal: number | number[]) => set({ zoom: newVal }),
   setIsLoading: (val: boolean) => set({ isLoading: val }),
   setInitialLoading: (val: boolean) => set({ isInitialLoad: val }),
+  setIsolatedMode: (val: boolean) => set({ isIsolatedModeActive: val }),
+  setActiveTextBox: (val: TextBox, component?: React.ReactNode) =>
+    set({ activeTextBox: val, topFrameComponent: component }),
 }));

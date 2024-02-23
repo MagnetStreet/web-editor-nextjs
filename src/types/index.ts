@@ -38,6 +38,11 @@ export interface MenuItem {
   isHighlight?: boolean;
 }
 
+export interface IconObj {
+  name: string;
+  icon: React.ReactNode;
+}
+
 export interface OrderItem {
   label: string;
   categroy: string;

@@ -1,5 +1,5 @@
 import SwatchColor from '@/types/SwatchColor';
-import TextBox from '@/types/TextBox';
+import { TextBox } from '@/types/TextBox';
 import TextTag from '@/types/TextTag';
 import View from '@/types/View';
 

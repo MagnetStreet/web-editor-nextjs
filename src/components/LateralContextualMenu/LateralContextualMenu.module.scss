@@ -21,6 +21,12 @@
     border: 1px solid #cccdcd;
     border-left: none;
     height: calc(100vh - 141px);
+    transition: width 0.3s, padding 0.3s;
+  }
+  &__isActive {
+    width: 0;
+    padding: 0;
+    transition: width 0.3s, padding 0.3s;
   }
 }
 
@@ -34,7 +40,7 @@
   gap: 32px;
   font-size: 32px;
   @include large {
-    width: 76px;
+    width: auto;
     flex-direction: column;
   }
 }

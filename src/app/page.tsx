@@ -1,8 +1,12 @@
-import PageEditor from '@/components/pages/PageEditor';
+import PageEditor, {
+  EditorPageServerData,
+} from '@/components/pages/PageEditor';
+
+import documentInfoMock from '@/mocks/documentInfoMock';
 
 import { PageParams } from '@/types';
 
-const loadDataFromApi = async () => {
+const loadDataFromApi = async (): Promise<EditorPageServerData> => {
   try {
     const LOCAL_API_BASE_URL = process.env.LOCAL_API_BASE_URL;
     //const slug = query.slug;
@@ -17,22 +21,31 @@ const loadDataFromApi = async () => {
     return {
       productInfo,
       visitorInfo,
+      documentInformationMock: documentInfoMock,
     };
   } catch (error) {
     console.log('Error fetching data:', error);
     return {
-      productInfo: null,
-      visitorInfo: null,
+      documentInformationMock: documentInfoMock,
     };
   }
 };
 
 const Home = async ({ searchParams }: PageParams) => {
   const pids = searchParams?.pids;
+  const isTest = searchParams?.isTest;
   const qs = searchParams?.qs;
   const m = searchParams?.qs;
 
-  const { productInfo, visitorInfo } = await loadDataFromApi();
-  return <PageEditor visitorInfo={visitorInfo} productInfo={productInfo} />;
+  const { productInfo, visitorInfo, documentInformationMock } =
+    await loadDataFromApi();
+  return (
+    <PageEditor
+      visitorInfo={visitorInfo}
+      productInfo={productInfo}
+      isTest={!!isTest || false}
+      documentInformationMock={documentInformationMock} //TODO remove
+    />
+  );
 };
 export default Home;

@@ -1,4 +1,4 @@
-interface TextStyleRange {
+export interface TextStyleRange {
   otf: string;
   fillColorY: number;
   leading: string;
@@ -20,14 +20,14 @@ interface TextStyleRange {
   fillColorG: number;
 }
 
-export default interface TextBoxContentFormat {
+export interface TextBoxContentFormat {
   textStyleRanges: TextStyleRange[];
   rawContents: string;
   clearContents: string;
   justification: string;
 }
 
-export default interface TextBox {
+export interface TextBox {
   bottom: number;
   contentFormatted: TextBoxContentFormat[];
   contentType: string;

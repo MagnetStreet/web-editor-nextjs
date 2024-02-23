@@ -9,7 +9,7 @@ import { getScaledCoordinates } from '@/utils/getScaledCoordinates';
 
 import { PointCoordinates } from '@/types';
 import DesignStudioItem from '@/types/DesignStudioItem';
-import TextBox from '@/types/TextBox';
+import { TextBox } from '@/types/TextBox';
 import View from '@/types/View';
 const minZoom = 0;
 const maxZoom = 100;
@@ -19,6 +19,7 @@ interface CanvasWrapperProps {
   activeView?: View;
   viewBlob?: Blob;
   zoom: number | number[];
+  handleClickFontItem: (val: TextBox) => void;
 }
 
 const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
@@ -26,6 +27,7 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
   activeView,
   documentInfo,
   zoom,
+  handleClickFontItem,
 }) => {
   const stageRef = React.createRef<Konva.Stage>(); //I can get the attributes from the attrs{x,y, width, height} useRef
   const [imageUrl, setImageUrl] = useState<string | null>(null);
@@ -92,10 +94,6 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
     //Each time the Active view updates we need to update the click boxes
   }, [activeView]);
 
-  const handleClick = (e: KonvaEventObject<MouseEvent>, textBox: TextBox) => {
-    console.log(e.target, textBox); // I can get the attributes from the attrs{x,y, width, height}
-  };
-
   const handleHover = (enter = false) => {
     //Necessary to add custom styling like hover cursor over the figures
     if (stageRef.current) {
@@ -125,7 +123,10 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
         width={width}
         height={height}
         fill='rgba(0, 0, 0, 0.3)'
-        onClick={(e) => handleClick(e, textBox)}
+        onClick={(e: KonvaEventObject<MouseEvent>) => {
+          console.log(e.target, textBox);
+          handleClickFontItem(textBox);
+        }}
         onMouseEnter={() => handleHover(true)}
         onMouseLeave={() => handleHover(false)}
       />

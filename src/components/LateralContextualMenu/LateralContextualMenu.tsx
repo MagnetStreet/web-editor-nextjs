@@ -1,51 +1,30 @@
-import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import * as React from 'react';
 
 import styles from './LateralContextualMenu.module.scss';
 
-import useSideMenuStore, {
-  LateralContextualMenuState,
-} from '@/stores/useLateralContextualMenuStore';
+import { IconObj } from '@/types';
 
-interface IconObj {
-  name: string;
-  icon: ReactJSXElement;
+interface LateralContextualMenuProps {
+  items: Array<IconObj>;
+  activeLayoutName: string;
+  isIsolatedModeActive: boolean;
+  setActiveLayoutName: (val: string) => void;
 }
 
-const LateralContextualMenu = () => {
-  const { activeLayoutName, setActiveLayoutName } =
-    useSideMenuStore<LateralContextualMenuState>((state) => state);
-
-  const items: Array<IconObj> = [
-    {
-      name: 'Layout',
-      icon: <i className='fa-grid-2-sharp-light'></i>,
-    },
-    {
-      name: 'Color',
-      icon: <i className='fa-palette-light'></i>,
-    },
-    {
-      name: 'Text',
-      icon: <i className='fa-case-normal'></i>,
-    },
-    {
-      name: 'Shape',
-      icon: <i className='fa-objects-column-light'></i>,
-    },
-    {
-      name: 'Elements',
-      icon: <i className='fa-shapes-sharp-light'></i>,
-    },
-    {
-      name: 'Images',
-      icon: <i className='fa-image-sharp-light'></i>,
-    },
-  ];
-
+const LateralContextualMenu: React.FC<LateralContextualMenuProps> = ({
+  items,
+  activeLayoutName,
+  isIsolatedModeActive,
+  setActiveLayoutName,
+}) => {
   return (
-    <Box className={styles.sideIconMenu}>
+    <Box
+      className={`${styles.sideIconMenu} ${
+        isIsolatedModeActive ? styles.sideIconMenu__isActive : ''
+      }`}
+    >
       <Box className={styles.sideIconMenuInner}>
         {items.map((item, index) => (
           <Box
