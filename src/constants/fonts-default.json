@@ -1,0 +1,3393 @@
+{
+  "fonts": [
+    {
+      "cssFontFamily": "Aboreto - Regular",
+      "displayName": "Aboreto",
+      "faceName": "Aboreto\tRegular",
+      "minFoilPointSize": 12,
+      "minPointSize": 8,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "All Caps"
+    },
+    {
+      "cssFontFamily": "Abramo Script - Regular",
+      "displayName": "Abramo Script",
+      "faceName": "Abramo Script\tRegular",
+      "minFoilPointSize": 40,
+      "minPointSize": 24,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Abramo Serif - Regular",
+      "displayName": "Abramo Serif",
+      "faceName": "Abramo Serif\tRegular",
+      "minFoilPointSize": 24,
+      "minPointSize": 14,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Abril Fatface",
+      "displayName": "Abril Fatface",
+      "faceName": "Abril Fatface\tRegular",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Adora Bella - Regular",
+      "displayName": "Adora Bella",
+      "faceName": "Adora Bella\tRegular",
+      "minFoilPointSize": 40,
+      "minPointSize": 20,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Adora Bouton - Regular",
+      "displayName": "Adora Bouton",
+      "faceName": "AdoraBouton\tRegular",
+      "minFoilPointSize": 36,
+      "minPointSize": 24,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Adorn Story Serif - Regular",
+      "displayName": "Adorn Story Serif",
+      "faceName": "Adorn Story Serif\tRegular",
+      "minFoilPointSize": 22,
+      "minPointSize": 14,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Adorn Story Script - Regular",
+      "displayName": "Adorn Story Script",
+      "faceName": "AdornStoryScript\tRegular",
+      "minFoilPointSize": 48,
+      "minPointSize": 34,
+      "otFeature": "",
+      "range": "34-64",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Agatha Bergman - Regular",
+      "displayName": "Agatha Bergman",
+      "faceName": "Agatha Bergman\tRegular",
+      "minFoilPointSize": 50,
+      "minPointSize": 32,
+      "otFeature": "",
+      "range": "30-58",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Allura - Regular",
+      "displayName": "Allura",
+      "faceName": "Allura\tRegular",
+      "minFoilPointSize": 22,
+      "minPointSize": 14,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Almeria - Bold",
+      "displayName": "Almeria Bold",
+      "faceName": "Almeria\tBold",
+      "minFoilPointSize": 12,
+      "minPointSize": 8,
+      "otFeature": "",
+      "source": "Creative Market",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Almeria - Extra Bold",
+      "displayName": "Almeria Extra Bold",
+      "faceName": "Almeria\tExtra Bold",
+      "minFoilPointSize": 16,
+      "minPointSize": 9,
+      "otFeature": "",
+      "source": "Creative Market",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Almeria - Italic",
+      "displayName": "Almeria Italic",
+      "faceName": "Almeria\tItalic",
+      "minFoilPointSize": 12,
+      "minPointSize": 8,
+      "otFeature": "",
+      "source": "Creative Market",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Almeria - Regular",
+      "displayName": "Almeria Regular",
+      "faceName": "Almeria\tRegular",
+      "minFoilPointSize": 12,
+      "minPointSize": 8,
+      "otFeature": "",
+      "source": "Creative Market",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Amatic SC - Regular",
+      "displayName": "Amatic SC - Regular",
+      "faceName": "Amatic SC\tRegular",
+      "minFoilPointSize": 24,
+      "minPointSize": 14,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "Amiri Bold",
+      "displayName": "Amiri Bold",
+      "faceName": "Amiri\tBold",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Amiri Bold Italic",
+      "displayName": "Amiri Bold Italic",
+      "faceName": "Amiri\tBold Italic",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Amiri Italic",
+      "displayName": "Amiri Italic",
+      "faceName": "Amiri\tItalic",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Amiri Regular",
+      "displayName": "Amiri Regular",
+      "faceName": "Amiri\tRegular",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Antoinetta - Regular",
+      "displayName": "Antoinetta",
+      "faceName": "Antoinetta\tRegular",
+      "minFoilPointSize": 36,
+      "minPointSize": 26,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Arapey Italic",
+      "displayName": "Arapey Italic",
+      "faceName": "Arapey\tItalic",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Arapey Regular",
+      "displayName": "Arapey Regular",
+      "faceName": "Arapey\tRegular",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Arsenal Bold",
+      "displayName": "Arsenal Bold",
+      "faceName": "Arsenal\tBold",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Arsenal Bold Italic",
+      "displayName": "Arsenal Bold Italic",
+      "faceName": "Arsenal\tBold Italic",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Arsenal Italic",
+      "displayName": "Arsenal Italic",
+      "faceName": "Arsenal\tItalic",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Arsenal Regular",
+      "displayName": "Arsenal Regular",
+      "faceName": "Arsenal\tRegular",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Asterland - Regular",
+      "displayName": "Asterland",
+      "faceName": "Asterland\tRegular",
+      "minFoilPointSize": 50,
+      "minPointSize": 32,
+      "otFeature": "",
+      "range": "30-60",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Astrud",
+      "displayName": "Astrud",
+      "faceName": "Astrud",
+      "minFoilPointSize": 24,
+      "minPointSize": 12,
+      "otFeature": "discretionary",
+      "source": "Open Source",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "Atelier Femme Script - Regular",
+      "displayName": "Atelier Femme Script",
+      "faceName": "Atelier Femme Script\tRegular",
+      "minFoilPointSize": 38,
+      "minPointSize": 18,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "August Roma Script - Regular",
+      "displayName": "August Roma Script",
+      "faceName": "August Roma Script\tRegular",
+      "minFoilPointSize": 26,
+      "minPointSize": 18,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "August Roma Serif - Regular",
+      "displayName": "August Roma Serif",
+      "faceName": "August Roma Serif\tRegular",
+      "minFoilPointSize": 24,
+      "minPointSize": 12,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Autumn Melody - Regular",
+      "displayName": "Autumn Melody",
+      "faceName": "Autumn Melody\tRegular",
+      "minFoilPointSize": 64,
+      "minPointSize": 38,
+      "otFeature": "",
+      "range": "34-60",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Averia Serif Libre - Italic",
+      "displayName": "Averia Serif Libre Italic",
+      "faceName": "Averia Serif Libre\tItalic",
+      "minFoilPointSize": 18,
+      "minPointSize": 10,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Averia Serif Libre - Regular",
+      "displayName": "Averia Serif Libre",
+      "faceName": "Averia Serif Libre\tRegular",
+      "minFoilPointSize": 18,
+      "minPointSize": 10,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Balthazar - Regular",
+      "displayName": "Balthazar",
+      "faceName": "Balthazar\tRegular",
+      "minFoilPointSize": 14,
+      "minPointSize": 8,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Balzak - Regular",
+      "displayName": "Balzak",
+      "faceName": "Balzak\tRegular",
+      "minFoilPointSize": 46,
+      "minPointSize": 34,
+      "otFeature": "",
+      "range": "28-66",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Baumans - Regular",
+      "displayName": "Baumans",
+      "faceName": "Baumans\tRegular",
+      "minFoilPointSize": 24,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "Bebas Neue - Regular",
+      "displayName": "Bebas Neue",
+      "faceName": "Bebas Neue\tRegular",
+      "minFoilPointSize": 20,
+      "minPointSize": 12,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "All Caps"
+    },
+    {
+      "cssFontFamily": "Bellota - Light",
+      "displayName": "Bellota Light",
+      "faceName": "Bellota\tLight",
+      "minFoilPointSize": 16,
+      "minPointSize": 10,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "Bellota - Regular",
+      "displayName": "Bellota Regular",
+      "faceName": "Bellota\tRegular",
+      "minFoilPointSize": 16,
+      "minPointSize": 10,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "Beloved Gray - Regular",
+      "displayName": "Beloved Gray",
+      "faceName": "Beloved Gray\tRegular",
+      "minFoilPointSize": 32,
+      "minPointSize": 20,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Blackberry Macarons Display - Regular",
+      "displayName": "Blackberry Macarons Display",
+      "faceName": "Blackberry Macarons Display \tRegular",
+      "minFoilPointSize": 26,
+      "minPointSize": 12,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "Blackberry Macarons Sans - Regular",
+      "displayName": "Blackberry Macarons Sans",
+      "faceName": "Blackberry Macarons Sans\tRegular",
+      "minFoilPointSize": 30,
+      "minPointSize": 14,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "Blackberry Macarons Script - Regular",
+      "displayName": "Blackberry Macarons Script",
+      "faceName": "Blackberry Macarons Script\tRegular",
+      "minFoilPointSize": 32,
+      "minPointSize": 16,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Blackstone - Regular",
+      "displayName": "Blackstone",
+      "faceName": "Blackstone\tRegular",
+      "minFoilPointSize": 32,
+      "minPointSize": 16,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "BloomWinter-Regular",
+      "displayName": "Bloom Winter Regular",
+      "faceName": "Bloom Winter\tRegular",
+      "minFoilPointSize": 30,
+      "minPointSize": 18,
+      "otFeature": "",
+      "source": "Sands and Sons Fonts",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Bloom Pretty - Regular",
+      "displayName": "Bloom Pretty",
+      "faceName": "BloomPretty\tRegular",
+      "minFoilPointSize": 34,
+      "minPointSize": 16,
+      "otFeature": "",
+      "range": "30-40",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Bonjour - Regular",
+      "displayName": "Bonjour",
+      "faceName": "Bonjour\tRegular",
+      "minFoilPointSize": 44,
+      "minPointSize": 28,
+      "otFeature": "",
+      "range": "30-60",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Branch-Regular",
+      "displayName": "Branch Regular",
+      "faceName": "Branch\tRegular",
+      "minFoilPointSize": 20,
+      "minPointSize": 10,
+      "otFeature": "",
+      "source": "Sands and Sons Fonts",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Brand Stylist Display - Regular",
+      "displayName": "Brand Stylist Display",
+      "faceName": "Brand Stylist Display\tRegular",
+      "minFoilPointSize": 24,
+      "minPointSize": 16,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Brand Stylist Script - Regular",
+      "displayName": "Brand Stylist Script",
+      "faceName": "Brand Stylist Script\tRegular",
+      "minFoilPointSize": 32,
+      "minPointSize": 16,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Bulgari-Regular",
+      "displayName": "Bulgari Regular",
+      "faceName": "Bulgari\tRegular",
+      "minFoilPointSize": 24,
+      "minPointSize": 10,
+      "otFeature": "",
+      "source": "Sands and Sons Fonts",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Bungee - Regular",
+      "displayName": "Bungee",
+      "faceName": "Bungee\tRegular",
+      "minFoilPointSize": 18,
+      "minPointSize": 8,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "Bungee Outline - Regular",
+      "displayName": "Bungee Outline",
+      "faceName": "Bungee Outline\tRegular",
+      "minFoilPointSize": 20,
+      "minPointSize": 20,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "Cardo - Italic",
+      "displayName": "Cardo Italic",
+      "faceName": "Cardo\tItalic",
+      "minFoilPointSize": 16,
+      "minPointSize": 9,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Cardo - Regular",
+      "displayName": "Cardo",
+      "faceName": "Cardo\tRegular",
+      "minFoilPointSize": 16,
+      "minPointSize": 9,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Carphe",
+      "displayName": "Carphe",
+      "faceName": "Carphe\tRegular",
+      "minFoilPointSize": 26,
+      "minPointSize": 10,
+      "otFeature": "",
+      "source": "Sands and Sons Fonts",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "CarpheScript",
+      "displayName": "Carphe Script",
+      "faceName": "Carphe Script\tRegular",
+      "minFoilPointSize": 30,
+      "minPointSize": 20,
+      "otFeature": "",
+      "source": "Sands and Sons Fonts",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Chalmers",
+      "displayName": "Chalmers",
+      "faceName": "Chalmers\tRegular",
+      "minFoilPointSize": 18,
+      "minPointSize": 8,
+      "otFeature": "",
+      "source": "Sands and Sons Fonts",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Chelsie Hilton - Regular",
+      "displayName": "Chelsie Hilton",
+      "faceName": "Chelsie Hilton\tRegular",
+      "minFoilPointSize": 32,
+      "minPointSize": 18,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Chic Societe Sans - Regular",
+      "displayName": "Chic Societe Sans",
+      "faceName": "Chic Societe Sans Serif\tRegular",
+      "minFoilPointSize": 16,
+      "minPointSize": 12,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Chic Societe Script - Regular",
+      "displayName": "Chic Societe Script",
+      "faceName": "Chic Societe Script\tScript",
+      "minFoilPointSize": 34,
+      "minPointSize": 20,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Chocolate Peaches - Regular",
+      "displayName": "Chocolate Peaches",
+      "faceName": "Chocolate Peaches\tRegular",
+      "minFoilPointSize": 40,
+      "minPointSize": 24,
+      "otFeature": "",
+      "range": "30-60",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Cinzel - Regular",
+      "displayName": "Cinzel",
+      "faceName": "Cinzel\tRegular",
+      "minFoilPointSize": 13,
+      "minPointSize": 8,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "All Caps"
+    },
+    {
+      "cssFontFamily": "Coellack-Regular",
+      "displayName": "Coellack Regular",
+      "faceName": "Coellack\tRegular",
+      "minFoilPointSize": 22,
+      "minPointSize": 8,
+      "otFeature": "",
+      "source": "Sands and Sons Fonts",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "Coellack-Bold",
+      "displayName": "Coellack Bold ",
+      "faceName": "Coellack Bold\tBold",
+      "minFoilPointSize": 24,
+      "minPointSize": 8,
+      "otFeature": "",
+      "source": "Sands and Sons Fonts",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "CoellackRad-Regular",
+      "displayName": "Coellack Rad Regular",
+      "faceName": "Coellack Rad\tRegular",
+      "minFoilPointSize": 24,
+      "minPointSize": 12,
+      "otFeature": "",
+      "source": "Sands and Sons Fonts",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "Cookie - Regular",
+      "displayName": "Cookie",
+      "faceName": "Cookie\tRegular",
+      "minFoilPointSize": 26,
+      "minPointSize": 14,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Cormorant - Bold",
+      "displayName": "Cormorant - Bold",
+      "faceName": "Cormorant\tBold",
+      "minFoilPointSize": 16,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Cormorant - Bold Italic",
+      "displayName": "Cormorant - Bold Italic",
+      "faceName": "Cormorant\tBold Italic",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Cormorant Garamond - Italic",
+      "displayName": "Cormorant Garamond - Italic",
+      "faceName": "Cormorant Garamond\tItalic",
+      "minFoilPointSize": 16,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Cormorant Garamond - Light",
+      "displayName": "Cormorant Garamond - Light",
+      "faceName": "Cormorant Garamond\tLight",
+      "minFoilPointSize": 24,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Cormorant Garamond - Light Italic",
+      "displayName": "Cormorant Garamond - Light Italic",
+      "faceName": "Cormorant Garamond\tLight Italic",
+      "minFoilPointSize": 24,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Cormorant Garamond - Regular",
+      "displayName": "Cormorant Garamond - Regular",
+      "faceName": "Cormorant Garamond\tRegular",
+      "minFoilPointSize": 16,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Covered By Your Grace",
+      "displayName": "Covered By Your Grace",
+      "faceName": "Covered By Your Grace",
+      "minFoilPointSize": 24,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "Dancing Script - Regular",
+      "displayName": "Dancing Script",
+      "faceName": "Dancing Script\tRegular",
+      "minFoilPointSize": 22,
+      "minPointSize": 12,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Darling Modern - Regular",
+      "displayName": "Darling Modern",
+      "faceName": "Darling Modern\tRegular",
+      "minFoilPointSize": 28,
+      "minPointSize": 22,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Diplomata - Regular",
+      "displayName": "Diplomata",
+      "faceName": "Diplomata\tRegular",
+      "minFoilPointSize": 24,
+      "minPointSize": 12,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "Domine Regular",
+      "displayName": "Domine Bold",
+      "faceName": "Domine\tBold",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Domine Regular",
+      "displayName": "Domine Regular",
+      "faceName": "Domine\tRegular",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Dostoevsky - Regular",
+      "displayName": "Dostoevsky",
+      "faceName": "Dostoevsky\tDostoevksy",
+      "minFoilPointSize": 56,
+      "minPointSize": 36,
+      "otFeature": "",
+      "range": "30-70",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "EB Garamond - Bold",
+      "displayName": "EB Garamond Bold",
+      "faceName": "EB Garamond\tBold",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "EB Garamond - Bold Italic",
+      "displayName": "EB Garamond Bold Italic",
+      "faceName": "EB Garamond\tBold Italic",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "EB Garamond - Italic",
+      "displayName": "EB Garamond Italic",
+      "faceName": "EB Garamond\tItalic",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "EB Garamond - Regular",
+      "displayName": "EB Garamond Regular",
+      "faceName": "EB Garamond\tRegular",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "EB Garamond - Semibold",
+      "displayName": "EB Garamond Semibold",
+      "faceName": "EB Garamond\tSemiBold",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "EB Garamond - Semibold Italic",
+      "displayName": "EB Garamond Semibold Italic",
+      "faceName": "EB Garamond\tSemiBold Italic",
+      "minFoilPointSize": 16,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Elsie Swash Caps - Regular",
+      "displayName": "Elsie Swash Caps",
+      "faceName": "Elsie Swash Caps\tRegular",
+      "minFoilPointSize": 20,
+      "minPointSize": 12,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "Faustine - Regular",
+      "displayName": "Faustine",
+      "faceName": "Faustine\tRegular",
+      "minFoilPointSize": 50,
+      "minPointSize": 28,
+      "otFeature": "",
+      "range": "30-60",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Flamenco - Light",
+      "displayName": "Flamenco",
+      "faceName": "Flamenco\tLight",
+      "minFoilPointSize": 18,
+      "minPointSize": 10,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "FloralHearts - Regular",
+      "displayName": "Floral Hearts",
+      "faceName": "Floral Hearts\tRegular",
+      "minFoilPointSize": 34,
+      "minPointSize": 26,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Floral Theory - Regular",
+      "displayName": "Floral Theory",
+      "faceName": "FloralTheory\tRegular",
+      "minFoilPointSize": 32,
+      "minPointSize": 20,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Forest Hill - Regular",
+      "displayName": "Forest Hill",
+      "faceName": "Forest Hill\tRegular",
+      "minFoilPointSize": 24,
+      "minPointSize": 18,
+      "otFeature": "",
+      "range": "16-60",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Forum - Regular",
+      "displayName": "Forum",
+      "faceName": "Forum\tRegular",
+      "minFoilPointSize": 20,
+      "minPointSize": 9,
+      "otFeature": "",
+      "source": "Open Source",
+      "specialHanding": "AllCAPS",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Frank Ruhl Libre Bold",
+      "displayName": "Frank Ruhl Libre Bold",
+      "faceName": "Frank Ruhl Libre\tBold",
+      "minFoilPointSize": 16,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Frank Ruhl Libre Medium",
+      "displayName": "Frank Ruhl Libre Medium",
+      "faceName": "Frank Ruhl Libre\tMedium",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Frank Ruhl Libre Regular",
+      "displayName": "Frank Ruhl Libre Regular",
+      "faceName": "Frank Ruhl Libre\tRegular",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "French Flair - Italic",
+      "displayName": "French Flair Italic",
+      "faceName": "French Flair Italic\tRegular",
+      "minFoilPointSize": 26,
+      "minPointSize": 18,
+      "otFeature": "",
+      "range": "22-40",
+      "source": "PeachCream",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "French Flair Serif - Regular",
+      "displayName": "French Flair",
+      "faceName": "French Flair Serif\tRegular",
+      "minFoilPointSize": 26,
+      "minPointSize": 16,
+      "otFeature": "",
+      "range": "22-40",
+      "source": "PeachCream",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "Gotu - Regular",
+      "displayName": "Gotu",
+      "faceName": "Gotu\tRegular",
+      "minFoilPointSize": 14,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "GourmetLeFrench",
+      "displayName": "Gourmet Le French",
+      "faceName": "Gourmet Le French\tRegular",
+      "minFoilPointSize": 16,
+      "minPointSize": 10,
+      "otFeature": "",
+      "source": "Sands and Sons Fonts",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "GourmetLeFrenchScript",
+      "displayName": "Gourmet Le French Script",
+      "faceName": "Gourmet Le French Script\tRegular",
+      "minFoilPointSize": 30,
+      "minPointSize": 18,
+      "otFeature": "",
+      "source": "Sands and Sons Fonts",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Graduate - Regular",
+      "displayName": "Graduate",
+      "faceName": "Graduate\tRegular",
+      "minFoilPointSize": 14,
+      "minPointSize": 8,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "Grand Hotel - Regular",
+      "displayName": "Grand Hotel",
+      "faceName": "Grand Hotel\tRegular",
+      "minFoilPointSize": 28,
+      "minPointSize": 14,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Great Vibes",
+      "displayName": "Great Vibes",
+      "faceName": "Great Vibes\tRegular",
+      "minFoilPointSize": 24,
+      "minPointSize": 14,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Hello Paris Sans - Regular",
+      "displayName": "Hello Paris Sans Regular",
+      "faceName": "Hello Paris Sans\tRegular",
+      "minFoilPointSize": 22,
+      "minPointSize": 10,
+      "otFeature": "",
+      "source": "Sands and Sons Fonts",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Hello Paris Script - Regular",
+      "displayName": "Hello Paris Script",
+      "faceName": "Hello Paris Script\tRegular",
+      "minFoilPointSize": 30,
+      "minPointSize": 22,
+      "otFeature": "",
+      "source": "Sands and Sons Fonts",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Hello Paris Serif - Extra Light",
+      "displayName": "Hello Paris Serif ExtraLight",
+      "faceName": "Hello Paris Serif\tExtraLight",
+      "minFoilPointSize": 22,
+      "minPointSize": 10,
+      "otFeature": "",
+      "source": "Sands and Sons Fonts",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Hepta Slab - Black",
+      "displayName": "Hepta Slab Black",
+      "faceName": "Hepta Slab\tBlack",
+      "minFoilPointSize": 24,
+      "minPointSize": 18,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Slab Serif"
+    },
+    {
+      "cssFontFamily": "Hepta Slab - Bold",
+      "displayName": "Hepta Slab Bold",
+      "faceName": "Hepta Slab\tBold",
+      "minFoilPointSize": 20,
+      "minPointSize": 8,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Slab Serif"
+    },
+    {
+      "cssFontFamily": "Hepta Slab - Light",
+      "displayName": "Hepta Slab Light",
+      "faceName": "Hepta Slab\tLight",
+      "minFoilPointSize": 14,
+      "minPointSize": 8,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Slab Serif"
+    },
+    {
+      "cssFontFamily": "Hepta Slab - Medium",
+      "displayName": "Hepta Slab Medium",
+      "faceName": "Hepta Slab\tMedium",
+      "minFoilPointSize": 14,
+      "minPointSize": 8,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Slab Serif"
+    },
+    {
+      "cssFontFamily": "Hepta Slab - Regular",
+      "displayName": "Hepta Slab Regular",
+      "faceName": "Hepta Slab\tRegular",
+      "minFoilPointSize": 14,
+      "minPointSize": 8,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Slab Serif"
+    },
+    {
+      "cssFontFamily": "Hermitage - Regular",
+      "displayName": "Hermitage",
+      "faceName": "Hermitage\tRegular",
+      "minFoilPointSize": 38,
+      "minPointSize": 28,
+      "otFeature": "",
+      "range": "28-58",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Herr Von Muellerhoff",
+      "displayName": "Herr Von Muellerhoff",
+      "faceName": "Herr Von Muellerhoff\tRegular",
+      "minFoilPointSize": 32,
+      "minPointSize": 18,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Honey Vineyard - Regular",
+      "displayName": "Honey Vineyard",
+      "faceName": "Honey Vineyard\tRegular",
+      "minFoilPointSize": 40,
+      "minPointSize": 22,
+      "otFeature": "",
+      "range": "30-60",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Hopeless Romantic Society - Regular",
+      "displayName": "Hopeless Romantic Society",
+      "faceName": "HopelessRomanticSociety\tRegular",
+      "minFoilPointSize": 20,
+      "minPointSize": 14,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Imperial Script - Regular",
+      "displayName": "Imperial Script",
+      "faceName": "Imperial Script\tRegular",
+      "minFoilPointSize": 30,
+      "minPointSize": 16,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Italianno - Regular",
+      "displayName": "Italianno",
+      "faceName": "Italianno\tRegular",
+      "minFoilPointSize": 24,
+      "minPointSize": 16,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Its Marison Brieny",
+      "displayName": "Its Marison Brieny",
+      "faceName": "Its Marison Brieny\tRegular",
+      "minFoilPointSize": 30,
+      "minPointSize": 18,
+      "otFeature": "",
+      "source": "Sands and Sons Fonts",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Josefin Sans - Light",
+      "displayName": "Josefin Sans",
+      "faceName": "Josefin Sans\tLight",
+      "minFoilPointSize": 16,
+      "minPointSize": 8,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Julie Edgar - Regular",
+      "displayName": "Julie Edgar",
+      "faceName": "Julie Edgar\tRegular",
+      "minFoilPointSize": 58,
+      "minPointSize": 42,
+      "otFeature": "",
+      "range": "40-70",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Kindness Power - Regular",
+      "displayName": "Kindness Power Regular",
+      "faceName": "Kindness Power\tRegular",
+      "minFoilPointSize": 24,
+      "minPointSize": 12,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "Kindness Power Bold Contour - Regular",
+      "displayName": "Kindness Power Bold Contour",
+      "faceName": "Kindness Power Bold Contour\tRegular",
+      "minFoilPointSize": 24,
+      "minPointSize": 18,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "Kindness Power Outline - Regular",
+      "displayName": "Kindness Power Outline",
+      "faceName": "Kindness Power Outline\tRegular",
+      "minFoilPointSize": 24,
+      "minPointSize": 18,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "Kindness Power Shadow - Regular",
+      "displayName": "Kindness Power Shadow",
+      "faceName": "Kindness Power Shadow\tRegular",
+      "minFoilPointSize": 24,
+      "minPointSize": 18,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "La Bohemia - Regular",
+      "displayName": "La Bohemia",
+      "faceName": "La Bohemia\tRegular",
+      "minFoilPointSize": 28,
+      "minPointSize": 18,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Lato - Regular",
+      "displayName": "Lato Regular",
+      "faceName": "Lato\tRegular",
+      "minFoilPointSize": null,
+      "minPointSize": null,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Leyla Mark - Regular",
+      "displayName": "Leyla Mark",
+      "faceName": "Leyla Mark\tRegular",
+      "minFoilPointSize": 46,
+      "minPointSize": 24,
+      "otFeature": "",
+      "range": "30-60",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Libre Baskerville - Bold",
+      "displayName": "Libre Baskerville - Bold",
+      "faceName": "Libre Baskerville\tBold",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Libre Baskerville - Regular Italic",
+      "displayName": "Libre Baskerville - Regular Italic",
+      "faceName": "Libre Baskerville\tItalic",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Libre Baskerville - Regular",
+      "displayName": "Libre Baskerville - Regular",
+      "faceName": "Libre Baskerville\tRegular",
+      "minFoilPointSize": 10,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Libre Bodoni - Bold",
+      "displayName": "Libre Bodoni - Bold",
+      "faceName": "Libre Bodoni\tBold",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Libre Bodoni - Bold Italic",
+      "displayName": "Libre Bodoni - Bold Italic",
+      "faceName": "Libre Bodoni\tBold Italic",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Libre Bodoni - Italic",
+      "displayName": "Libre Bodoni - Italic",
+      "faceName": "Libre Bodoni\tItalic",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Libre Bodoni - Regular",
+      "displayName": "Libre Bodoni - Regular",
+      "faceName": "Libre Bodoni\tRegular",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Libre Franklin Black",
+      "displayName": "Libre Franklin Black",
+      "faceName": "Libre Franklin\tBlack",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Libre Franklin Italic",
+      "displayName": "Libre Franklin Italic",
+      "faceName": "Libre Franklin\tItalic",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Libre Franklin Regular",
+      "displayName": "Libre Franklin Regular",
+      "faceName": "Libre Franklin\tRegular",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Libre Franklin Bold",
+      "displayName": "Libre Franklin Bold",
+      "faceName": "Libre Franklin Bold",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Limelight - Regular",
+      "displayName": "Limelight",
+      "faceName": "Limelight\tRegular",
+      "minFoilPointSize": 18,
+      "minPointSize": 14,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "Lolita - Regular",
+      "displayName": "Lolita",
+      "faceName": "Lolita\tRegular",
+      "minFoilPointSize": 24,
+      "minPointSize": 14,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Lora - Bold",
+      "displayName": "Lora - Bold",
+      "faceName": "Lora\tBold",
+      "minFoilPointSize": 16,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Lora - Italic",
+      "displayName": "Lora - Italic",
+      "faceName": "Lora\tItalic",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Lora - Regular",
+      "displayName": "Lora - Regular",
+      "faceName": "Lora\tRegular",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Love Rose",
+      "displayName": "Love Rose Regular",
+      "faceName": "Love Rose\tRegular",
+      "minFoilPointSize": 30,
+      "minPointSize": 16,
+      "otFeature": "",
+      "source": "Sands and Sons Fonts",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Lustria",
+      "displayName": "Lustria Regular",
+      "faceName": "Lustria\tRegular",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Luxurious Script - Regular",
+      "displayName": "Luxurious Script",
+      "faceName": "Luxurious Script\tRegular",
+      "minFoilPointSize": 24,
+      "minPointSize": 16,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Maison DeFleur - Regular",
+      "displayName": "Maison de Fleur",
+      "faceName": "Maison de fleur\tRegular",
+      "minFoilPointSize": 22,
+      "minPointSize": 14,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Mango-Regular",
+      "displayName": "Mango Regular",
+      "faceName": "Mango\tRegular",
+      "minFoilPointSize": 24,
+      "minPointSize": 10,
+      "otFeature": "",
+      "source": "Sands and Sons Fonts",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Maribon Script - Regular",
+      "displayName": "Maribon Script",
+      "faceName": "Maribon Script\tRegular",
+      "minFoilPointSize": 60,
+      "minPointSize": 46,
+      "otFeature": "",
+      "range": "40-80",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Maribon Serif - Regular",
+      "displayName": "Maribon Serif",
+      "faceName": "Maribon Serif\tSerif",
+      "minFoilPointSize": 20,
+      "minPointSize": 12,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Martel Bold",
+      "displayName": "Martel Bold",
+      "faceName": "Martel\tBold",
+      "minFoilPointSize": 10,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Martel SemiBold",
+      "displayName": "Martel DemiBold",
+      "faceName": "Martel\tDemiBold",
+      "minFoilPointSize": 10,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Martel ExtraBold",
+      "displayName": "Martel ExtraBold",
+      "faceName": "Martel\tExtraBold",
+      "minFoilPointSize": 10,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Martel Regular",
+      "displayName": "Martel Regular",
+      "faceName": "Martel\tRegular",
+      "minFoilPointSize": 10,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Mea Culpa - Regular",
+      "displayName": "Mea Culpa",
+      "faceName": "Mea Culpa\tRegular",
+      "minFoilPointSize": 32,
+      "minPointSize": 16,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Meow Script - Regular",
+      "displayName": "Meow Script",
+      "faceName": "Meow Script\tRegular",
+      "minFoilPointSize": 24,
+      "minPointSize": 14,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Milk Tea Recipe Contoured - Regular",
+      "displayName": "Milk Tea Recipe Contoured",
+      "faceName": "Milk Tea Recipe Contoured\tRegular",
+      "minFoilPointSize": 26,
+      "minPointSize": 14,
+      "otFeature": "",
+      "range": "36-50",
+      "source": "PeachCream",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "Milk Tea Recipe Script - Regular",
+      "displayName": "Milk Tea Recipe Script",
+      "faceName": "Milk Tea Recipe Script\tRegular",
+      "minFoilPointSize": 26,
+      "minPointSize": 14,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Milk Tea Recipe Serif - Regular",
+      "displayName": "Milk Tea Recipe Serif",
+      "faceName": "Milk Tea Recipe Serif\tRegular",
+      "minFoilPointSize": 24,
+      "minPointSize": 16,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "Miss Amber",
+      "displayName": "Miss Amber",
+      "faceName": "Miss Amber\tRegular",
+      "minFoilPointSize": 24,
+      "minPointSize": 12,
+      "otFeature": "",
+      "source": "Sands and Sons Fonts",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "MissSummer-Script",
+      "displayName": "Miss Summer Script",
+      "faceName": "Miss Summer\tScript",
+      "minFoilPointSize": 24,
+      "minPointSize": 12,
+      "otFeature": "",
+      "source": "Sands and Sons Fonts",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "MissSummerSans-Regular",
+      "displayName": "Miss Summer Sans",
+      "faceName": "Miss Summer Sans\tRegular",
+      "minFoilPointSize": 20,
+      "minPointSize": 10,
+      "otFeature": "",
+      "source": "Sands and Sons Fonts",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "MissWiely-Regular",
+      "displayName": "Miss Wiely Regular",
+      "faceName": "Miss Wiely\tRegular",
+      "minFoilPointSize": 24,
+      "minPointSize": 12,
+      "otFeature": "",
+      "source": "Sands and Sons Fonts",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Modern Society - Regular",
+      "displayName": "Modern Society",
+      "faceName": "Modern Society\tRegular",
+      "minFoilPointSize": 30,
+      "minPointSize": 18,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Monsieur LaDoulaise - Regular",
+      "displayName": "Monsieur La Doulaise",
+      "faceName": "Monsieur La Doulaise\tRegular",
+      "minFoilPointSize": 28,
+      "minPointSize": 20,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Monte Carlo - Regular",
+      "displayName": "MonteCarlo",
+      "faceName": "MonteCarlo\tRegular",
+      "minFoilPointSize": 32,
+      "minPointSize": 16,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Montserrat ExtraBold",
+      "displayName": "Montserrat ExtraBold",
+      "faceName": "Montserrat\tExtraBold",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Montserrat Italic",
+      "displayName": "Montserrat Italic",
+      "faceName": "Montserrat\tItalic",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Montserrat Regular",
+      "displayName": "Montserrat Regular",
+      "faceName": "Montserrat\tRegular",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Montserrat SemiBold",
+      "displayName": "Montserrat SemiBold",
+      "faceName": "Montserrat\tSemiBold",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Mr Dafoe - Regular",
+      "displayName": "Mr Dafoe",
+      "faceName": "Mr Dafoe\tRegular",
+      "minFoilPointSize": 32,
+      "minPointSize": 16,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "NanumGothic Bold",
+      "displayName": "NanumGothic Bold",
+      "faceName": "NanumGothic\tBold",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "NanumGothic ExtraBold",
+      "displayName": "NanumGothic ExtraBold",
+      "faceName": "NanumGothic\tExtraBold",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "NanumGothic Regular",
+      "displayName": "NanumGothic Regular",
+      "faceName": "NanumGothic\tRegular",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "NanumMyeongjo Bold",
+      "displayName": "NanumMyeongjo Bold",
+      "faceName": "NanumMyeongjo\tBold",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "NanumMyeongjo ExtraBold",
+      "displayName": "NanumMyeongjo ExtraBold",
+      "faceName": "NanumMyeongjo\tExtraBold",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "NanumMyeongjo Regular",
+      "displayName": "NanumMyeongjo Regular",
+      "faceName": "NanumMyeongjo\tRegular",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Nostalgia PeachCreme - Regular",
+      "displayName": "Nostalgia",
+      "faceName": "Nostalgia PeachCreme\tRegular",
+      "minFoilPointSize": 26,
+      "minPointSize": 18,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Noto Sans Bold",
+      "displayName": "Noto Sans Bold",
+      "faceName": "Noto Sans\tBold",
+      "minFoilPointSize": 10,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Noto Sans Bold Italic",
+      "displayName": "Noto Sans Bold Italic",
+      "faceName": "Noto Sans\tBold Italic",
+      "minFoilPointSize": 16,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Noto Sans Italic",
+      "displayName": "Noto Sans Italic",
+      "faceName": "Noto Sans\tItalic",
+      "minFoilPointSize": 16,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Noto Sans Regular",
+      "displayName": "Noto Sans Regular",
+      "faceName": "Noto Sans\tRegular",
+      "minFoilPointSize": 10,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Noto Sans TC - Regular",
+      "displayName": "Noto Sans TC",
+      "faceName": "Noto Sans TC\tRegular",
+      "minFoilPointSize": 14,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Noto Serif Hebrew - Regular",
+      "displayName": "Noto Serif Hebrew Regular",
+      "faceName": "Noto Serif Hebrew\tRegular",
+      "minFoilPointSize": 14,
+      "minPointSize": 8,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Noto Serif JP Bold",
+      "displayName": "Noto Serif JP Bold",
+      "faceName": "Noto Serif JP\tBold",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Noto Serif JP Medium",
+      "displayName": "Noto Serif JP Medium",
+      "faceName": "Noto Serif JP\tMedium",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Noto Serif JP Regular",
+      "displayName": "Noto Serif JP Regular",
+      "faceName": "Noto Serif JP\tRegular",
+      "minFoilPointSize": 10,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Noto Serif JP SemiBold",
+      "displayName": "Noto Serif JP SemiBold",
+      "faceName": "Noto Serif JP\tSemiBold",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "OhDarling - Regular",
+      "displayName": "Oh Darling",
+      "faceName": "OhDarling\tRegular",
+      "minFoilPointSize": 34,
+      "minPointSize": 22,
+      "otFeature": "",
+      "range": "16-48",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Old Standard TT Bold",
+      "displayName": "Old Standard TT Bold",
+      "faceName": "Old Standard TT\tBold",
+      "minFoilPointSize": 24,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Old Standard TT Italic",
+      "displayName": "Old Standard TT Italic",
+      "faceName": "Old Standard TT\tItalic",
+      "minFoilPointSize": 16,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Old Standard TT Regular",
+      "displayName": "Old Standard TT Regular",
+      "faceName": "Old Standard TT\tRegular",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "OliviaJames-Regular",
+      "displayName": "Olivia James",
+      "faceName": "Olivia James\tRegular",
+      "minFoilPointSize": 30,
+      "minPointSize": 18,
+      "otFeature": "",
+      "source": "Sands and Sons Fonts",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Open Sans - Bold",
+      "displayName": "Open Sans - Bold",
+      "faceName": "Open Sans\tBold",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Open Sans - Bold",
+      "displayName": "Open Sans - Bold",
+      "faceName": "Open Sans\tBold",
+      "minFoilPointSize": 10,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Open Sans - Italic",
+      "displayName": "Open Sans - Italic",
+      "faceName": "Open Sans\tItalic",
+      "minFoilPointSize": 10,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Open Sans - Light",
+      "displayName": "Open Sans - Light",
+      "faceName": "Open Sans\tLight",
+      "minFoilPointSize": 24,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Open Sans - Light Italic",
+      "displayName": "Open Sans - Light Italic",
+      "faceName": "Open Sans\tLight Italic",
+      "minFoilPointSize": 24,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Open Sans - Regular",
+      "displayName": "Open Sans - Regular",
+      "faceName": "Open Sans\tRegular",
+      "minFoilPointSize": 10,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Open Sans - SemiBold",
+      "displayName": "Open Sans - SemiBold",
+      "faceName": "Open Sans\tSemiBold",
+      "minFoilPointSize": 10,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Open Sans - SemiBold Italic",
+      "displayName": "Open Sans - SemiBold Italic",
+      "faceName": "Open Sans\tSemiBold Italic",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Orelega One - Regular",
+      "displayName": "Orelega One",
+      "faceName": "Orelega One\tRegular",
+      "minFoilPointSize": 24,
+      "minPointSize": 10,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "Oswald - Bold",
+      "displayName": "Oswald - Bold",
+      "faceName": "Oswald\tBold",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Ovo",
+      "displayName": "Ovo Regular",
+      "faceName": "Ovo\tRegular",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Pacifico - Regular",
+      "displayName": "Pacifico",
+      "faceName": "Pacifico\tRegular",
+      "minFoilPointSize": 24,
+      "minPointSize": 12,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Palm Honey - Regular",
+      "displayName": "Palm Honey",
+      "faceName": "Palm Honey\tRegular",
+      "minFoilPointSize": 56,
+      "minPointSize": 38,
+      "otFeature": "",
+      "range": "40-90",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Palm Honey Heart - Regular",
+      "displayName": "Palm Honey Heart",
+      "faceName": "Palm Honey Heart\tRegular",
+      "minFoilPointSize": 56,
+      "minPointSize": 38,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Palm Honey Swashes - Regular",
+      "displayName": "Palm Honey Swashes",
+      "faceName": "Palm Honey Swashes\tRegular",
+      "minFoilPointSize": 56,
+      "minPointSize": 38,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Parisienne - Regular",
+      "displayName": "Parisienne",
+      "faceName": "Parisienne\tRegular",
+      "minFoilPointSize": 22,
+      "minPointSize": 14,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Peach-Regular",
+      "displayName": "Peach Regular",
+      "faceName": "Peach\tRegular",
+      "minFoilPointSize": 28,
+      "minPointSize": 12,
+      "otFeature": "",
+      "source": "Sands and Sons Fonts",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "Peach-Outline",
+      "displayName": "Peach Outline",
+      "faceName": "Peach Outline\tOutline",
+      "minFoilPointSize": 30,
+      "minPointSize": 18,
+      "otFeature": "",
+      "source": "Sands and Sons Fonts",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "Petit Formal Script - Regular",
+      "displayName": "Petit Formal Script",
+      "faceName": "Petit Formal Script\tRegular",
+      "minFoilPointSize": 18,
+      "minPointSize": 12,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Petite Kisses - Regular",
+      "displayName": "Petite Kisses",
+      "faceName": "Petite Kisses\tRegular",
+      "minFoilPointSize": 44,
+      "minPointSize": 24,
+      "otFeature": "",
+      "range": "30-60",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Pinyon Script - Regular",
+      "displayName": "Pinyon Script",
+      "faceName": "Pinyon Script\tRegular",
+      "minFoilPointSize": 22,
+      "minPointSize": 14,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Playfair Display - Bold",
+      "displayName": "Playfair Display Bold",
+      "faceName": "Playfair Display\tBold",
+      "minFoilPointSize": 16,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Playfair Display - Bold Italic",
+      "displayName": "Playfair Display Bold Italic",
+      "faceName": "Playfair Display\tBold Italic",
+      "minFoilPointSize": 24,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Playfair Display - Italic",
+      "displayName": "Playfair Display Italic",
+      "faceName": "Playfair Display\tItalic",
+      "minFoilPointSize": 16,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Playfair Display - Regular",
+      "displayName": "Playfair Display Regular",
+      "faceName": "Playfair Display\tRegular",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Poiret One - Regular",
+      "displayName": "Poiret One",
+      "faceName": "Poiret One\tRegular",
+      "minFoilPointSize": 16,
+      "minPointSize": 10,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Poly Italic",
+      "displayName": "Poly Italic",
+      "faceName": "Poly\tItalic",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Poly Regular",
+      "displayName": "Poly Regular",
+      "faceName": "Poly\tRegular",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Poppins - Bold",
+      "displayName": "Poppins - Bold",
+      "faceName": "Poppins\tBold",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Poppins - Medium",
+      "displayName": "Poppins - Medium",
+      "faceName": "Poppins\tMedium",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Poppins - Medium Italic",
+      "displayName": "Poppins - Medium Italic",
+      "faceName": "Poppins\tMedium Italic",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Poppins - Thin",
+      "displayName": "Poppins - Thin",
+      "faceName": "Poppins\tThin",
+      "minFoilPointSize": 24,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Poppit and Finch Sans",
+      "displayName": "Poppit and Finch Sans",
+      "faceName": "Poppit and Finch Sans\tRegular",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Creative Market",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Poppit and Finch Script",
+      "displayName": "Poppit and Finch Script",
+      "faceName": "Poppit and Finch Script\tRegular",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Creative Market",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Public Sans - Black",
+      "displayName": "Public Sans Black",
+      "faceName": "Public Sans\tBlack",
+      "minFoilPointSize": 24,
+      "minPointSize": 9,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Public Sans - Bold",
+      "displayName": "Public Sans Bold",
+      "faceName": "Public Sans\tBold",
+      "minFoilPointSize": 16,
+      "minPointSize": 8,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Public Sans - Bold Italic",
+      "displayName": "Public Sans Bold Italic",
+      "faceName": "Public Sans\tBold Italic",
+      "minFoilPointSize": 16,
+      "minPointSize": 8,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Public Sans - Italic",
+      "displayName": "Public Sans Italic",
+      "faceName": "Public Sans\tItalic",
+      "minFoilPointSize": 14,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Public Sans - Light",
+      "displayName": "Public Sans Light",
+      "faceName": "Public Sans\tLight",
+      "minFoilPointSize": 14,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Public Sans - Light Italic",
+      "displayName": "Public Sans Light Italic",
+      "faceName": "Public Sans\tLight Italic",
+      "minFoilPointSize": 14,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Public Sans - Regular",
+      "displayName": "Public Sans Regular",
+      "faceName": "Public Sans\tRegular",
+      "minFoilPointSize": 14,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Public Sans - Thin",
+      "displayName": "Public Sans Thin",
+      "faceName": "Public Sans\tThin",
+      "minFoilPointSize": 14,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Quicksand Bold",
+      "displayName": "Quicksand Bold",
+      "faceName": "Quicksand\tBold",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Quicksand Light",
+      "displayName": "Quicksand Light",
+      "faceName": "Quicksand\tLight",
+      "minFoilPointSize": 24,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Quicksand Medium",
+      "displayName": "Quicksand Medium",
+      "faceName": "Quicksand\tMedium",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Quicksand Regular",
+      "displayName": "Quicksand Regular",
+      "faceName": "Quicksand\tRegular",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Raks - Regular",
+      "displayName": "Raks",
+      "faceName": "Raks\tRegular",
+      "minFoilPointSize": 22,
+      "minPointSize": 10,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "Raleway Bold",
+      "displayName": "Raleway Bold",
+      "faceName": "Raleway\tBold",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Raleway - Bold Italic",
+      "displayName": "Raleway Bold Italic",
+      "faceName": "Raleway\tBold Italic",
+      "minFoilPointSize": 16,
+      "minPointSize": 8,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Raleway Light",
+      "displayName": "Raleway Light",
+      "faceName": "Raleway\tLight",
+      "minFoilPointSize": 24,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Raleway - Light Italic",
+      "displayName": "Raleway Light Italic",
+      "faceName": "Raleway\tLight Italic",
+      "minFoilPointSize": 24,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Raleway - Medium Italic",
+      "displayName": "Raleway Medium Italic",
+      "faceName": "Raleway\tMedium Italic",
+      "minFoilPointSize": 14,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Raleway Regular",
+      "displayName": "Raleway Regular",
+      "faceName": "Raleway\tRegular",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Raleway SemiBold",
+      "displayName": "Raleway SemiBold",
+      "faceName": "Raleway\tSemiBold",
+      "minFoilPointSize": 10,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Raleway - Semibold Italic",
+      "displayName": "Raleway SemiBold Italic",
+      "faceName": "Raleway\tSemiBold Italic",
+      "minFoilPointSize": 16,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Rampart One - Regular",
+      "displayName": "Rampart One",
+      "faceName": "Rampart One\tRegular",
+      "minFoilPointSize": 20,
+      "minPointSize": 14,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "Redressed - Regular",
+      "displayName": "Redressed",
+      "faceName": "Redressed\tRegular",
+      "minFoilPointSize": 20,
+      "minPointSize": 12,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Renner* - Black",
+      "displayName": "Renner* - Black",
+      "faceName": "Renner*\tBlack",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Renner* - Bold",
+      "displayName": "Renner* - Bold",
+      "faceName": "Renner*\tBold",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Renner* - Book",
+      "displayName": "Renner* - Book",
+      "faceName": "Renner*\tBook",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Renner* - Light",
+      "displayName": "Renner* - Light",
+      "faceName": "Renner*\tLight",
+      "minFoilPointSize": 24,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Roboto Bold",
+      "displayName": "Roboto Bold",
+      "faceName": "Roboto\tBold",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Roboto Bold Italic",
+      "displayName": "Roboto Bold Italic",
+      "faceName": "Roboto\tBold Italic",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Roboto Italic",
+      "displayName": "Roboto Italic",
+      "faceName": "Roboto\tItalic",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Roboto Regular",
+      "displayName": "Roboto Regular",
+      "faceName": "Roboto\tItalic",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Roboto Condensed - Bold",
+      "displayName": "Roboto Condensed Bold",
+      "faceName": "Roboto Condensed\tBold",
+      "minFoilPointSize": 18,
+      "minPointSize": 9,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Roboto Condensed - Bold Italic",
+      "displayName": "Roboto Condensed Bold Italic",
+      "faceName": "Roboto Condensed\tBold Italic",
+      "minFoilPointSize": 18,
+      "minPointSize": 9,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Roboto Condensed - Italic",
+      "displayName": "Roboto Condensed Italic",
+      "faceName": "Roboto Condensed\tItalic",
+      "minFoilPointSize": 14,
+      "minPointSize": 9,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Roboto Condensed - Light",
+      "displayName": "Roboto Condensed Light",
+      "faceName": "Roboto Condensed\tLight",
+      "minFoilPointSize": 14,
+      "minPointSize": 9,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Roboto Condensed - Regular",
+      "displayName": "Roboto Condensed",
+      "faceName": "Roboto Condensed\tRegular",
+      "minFoilPointSize": 14,
+      "minPointSize": 9,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Roboto Slab - Bold",
+      "displayName": "Roboto Slab - Bold",
+      "faceName": "Roboto Slab\tBold",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Slab Serif"
+    },
+    {
+      "cssFontFamily": "Roboto Slab - Light",
+      "displayName": "Roboto Slab - Light",
+      "faceName": "Roboto Slab\tLight",
+      "minFoilPointSize": 24,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Slab Serif"
+    },
+    {
+      "cssFontFamily": "Roboto Slab - Regular",
+      "displayName": "Roboto Slab - Regular",
+      "faceName": "Roboto Slab\tRegular",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Slab Serif"
+    },
+    {
+      "cssFontFamily": "Roboto Slab - Thin",
+      "displayName": "Roboto Slab - Thin",
+      "faceName": "Roboto Slab\tThin",
+      "minFoilPointSize": 24,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Slab Serif"
+    },
+    {
+      "cssFontFamily": "Rochester - Regular",
+      "displayName": "Rochester",
+      "faceName": "Rochester\tRegular",
+      "minFoilPointSize": 26,
+      "minPointSize": 14,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Romes - Regular",
+      "displayName": "Romes",
+      "faceName": "Romes\tRegular",
+      "minFoilPointSize": 18,
+      "minPointSize": 10,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Romes Script - Regular",
+      "displayName": "Romes Script",
+      "faceName": "Romes Script\tRegular",
+      "minFoilPointSize": 26,
+      "minPointSize": 16,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Rufina Bold",
+      "displayName": "Rufina Bold",
+      "faceName": "Rufina\tBold",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Rufina Regular",
+      "displayName": "Rufina Regular",
+      "faceName": "Rufina\tRegular",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Sacramento - Regular",
+      "displayName": "Sacramento",
+      "faceName": "Sacramento\tRegular",
+      "minFoilPointSize": 26,
+      "minPointSize": 14,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Sail - Regular",
+      "displayName": "Sail",
+      "faceName": "Sail\tRegular",
+      "minFoilPointSize": 24,
+      "minPointSize": 16,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "SaltyFeathers-Regular",
+      "displayName": "Salty Feathers Regular",
+      "faceName": "Salty Feathers\tRegular",
+      "minFoilPointSize": 30,
+      "minPointSize": 16,
+      "otFeature": "",
+      "source": "Sands and Sons Fonts",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Santorini - Regular",
+      "displayName": "Santorini",
+      "faceName": "Santorini\tRegular",
+      "minFoilPointSize": 20,
+      "minPointSize": 12,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Scarlet - Regular",
+      "displayName": "Scarlet",
+      "faceName": "Scarlet\tRegular",
+      "minFoilPointSize": 18,
+      "minPointSize": 12,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Small Business Club Display - Regular",
+      "displayName": "Small Business Club Display",
+      "faceName": "Small Business Club Display\tRegular",
+      "minFoilPointSize": 30,
+      "minPointSize": 24,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "Small Business Club Script - Regular",
+      "displayName": "Small Business Club Script",
+      "faceName": "Small Business Club Script\tRegular",
+      "minFoilPointSize": 28,
+      "minPointSize": 14,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Sofia - Regular",
+      "displayName": "Sofia",
+      "faceName": "Sofia\tRegular",
+      "minFoilPointSize": 22,
+      "minPointSize": 12,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Sofia Sans Extra Condensed - Bold",
+      "displayName": "Sofia Sans Extra Condensed Bold",
+      "faceName": "Sofia Sans Extra Condensed\tBold",
+      "minFoilPointSize": 22,
+      "minPointSize": 10,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Sofia Sans Extra Condensed - Extra Light",
+      "displayName": "Sofia Sans Extra Condensed ExtraLight",
+      "faceName": "Sofia Sans Extra Condensed\tExtraLight",
+      "minFoilPointSize": 18,
+      "minPointSize": 10,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Sofia Sans Extra Condensed - Italic",
+      "displayName": "Sofia Sans Extra Condensed Italic",
+      "faceName": "Sofia Sans Extra Condensed\tItalic",
+      "minFoilPointSize": 18,
+      "minPointSize": 10,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Sofia Sans Extra Condensed - Regular",
+      "displayName": "Sofia Sans Extra Condensed Regular",
+      "faceName": "Sofia Sans Extra Condensed\tRegular",
+      "minFoilPointSize": 18,
+      "minPointSize": 10,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Sophia Ronald - Regular",
+      "displayName": "Sophia Ronald",
+      "faceName": "Sophia Ronald\tRegular",
+      "minFoilPointSize": 40,
+      "minPointSize": 32,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "SortdecaiBrushScript",
+      "displayName": "Sortdecai Brush Script",
+      "faceName": "Sortdecai Brush Script\tBrush Scipt",
+      "minFoilPointSize": 30,
+      "minPointSize": 12,
+      "otFeature": "",
+      "source": "Sands and Sons Fonts",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Southern Margarita - Regular",
+      "displayName": "Southern Margarita",
+      "faceName": "Southern Margarita\tRegular",
+      "minFoilPointSize": 38,
+      "minPointSize": 32,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Special Elite - Regular",
+      "displayName": "Special Elite - Regular",
+      "faceName": "Special Elite\tRegular",
+      "minFoilPointSize": 16,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "Stay Golden - Regular",
+      "displayName": "Stay Golden",
+      "faceName": "Stay Golden\tRegular",
+      "minFoilPointSize": 20,
+      "minPointSize": 14,
+      "otFeature": "",
+      "source": "Creative Market",
+      "type": "Display"
+    },
+    {
+      "cssFontFamily": "Tangelo-Regular",
+      "displayName": "Tangelo Regular",
+      "faceName": "Tangelo\tRegular",
+      "minFoilPointSize": 24,
+      "minPointSize": 10,
+      "otFeature": "",
+      "source": "Sands and Sons Fonts",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "TeXGyreBonum - Bold",
+      "displayName": "TeXGyreBonum - Bold",
+      "faceName": "TeX Gyre Bonum\tBold",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "TeXGyreBonum - Bold Italic",
+      "displayName": "TeXGyreBonum - Bold Italic",
+      "faceName": "TeX Gyre Bonum\tBold Italic",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "TeXGyreBonum - Italic",
+      "displayName": "TeXGyreBonum - Italic",
+      "faceName": "TeX Gyre Bonum\tItalic",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "TeXGyreBonum - Regular",
+      "displayName": "TeXGyreBonum - Regular",
+      "faceName": "TeX Gyre Bonum\tRegular",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "TeXGyreBonum - Regular",
+      "displayName": "TeXGyreBonum - Regular",
+      "faceName": "TeX Gyre Bonum\tRegular",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "The Styled Edit - Regular",
+      "displayName": "The Styled Edit",
+      "faceName": "The Styled Edit\tRegular",
+      "minFoilPointSize": 30,
+      "minPointSize": 14,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "The Stylish Babes - Regular",
+      "displayName": "The Stylish Babes",
+      "faceName": "The Stylish Babes\tRegular",
+      "minFoilPointSize": 22,
+      "minPointSize": 16,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "The Secret Library - Regular",
+      "displayName": "The Secret Library",
+      "faceName": "TheSecretLibrary\tRegular",
+      "minFoilPointSize": 14,
+      "minPointSize": 12,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "Tourney - Light",
+      "displayName": "Tourney",
+      "faceName": "Tourney\tLight",
+      "minFoilPointSize": 24,
+      "minPointSize": 14,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "Twinkle Star - Regular",
+      "displayName": "Twinkle Star",
+      "faceName": "Twinkle Star\tRegular",
+      "minFoilPointSize": 20,
+      "minPointSize": 10,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "URW Classico - Bold",
+      "displayName": "URW Classico - Bold",
+      "faceName": "URWClassico\tBold",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "URW Classico - Italic",
+      "displayName": "URW Classico - Italic",
+      "faceName": "URWClassico\tItalic",
+      "minFoilPointSize": 16,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "URW Classico - Regular",
+      "displayName": "URW Classico - Regular",
+      "faceName": "URWClassico\tRegular",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Unbounded - Light",
+      "displayName": "Unbounded",
+      "faceName": "Unbounded\tLight",
+      "minFoilPointSize": 14,
+      "minPointSize": 8,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "Unna Bold",
+      "displayName": "Unna Bold",
+      "faceName": "Unna\tBold",
+      "minFoilPointSize": 16,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Unna Bold Italic",
+      "displayName": "Unna Bold Italic",
+      "faceName": "Unna\tBold Italic",
+      "minFoilPointSize": 16,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Unna Italic",
+      "displayName": "Unna Italic",
+      "faceName": "Unna\tItalic",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Unna Regular",
+      "displayName": "Unna Regular",
+      "faceName": "Unna\tRegular",
+      "minFoilPointSize": 12,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Serif"
+    },
+    {
+      "cssFontFamily": "Urbanist - Bold",
+      "displayName": "Urbanist Bold",
+      "faceName": "Urbanist\tBold",
+      "minFoilPointSize": 16,
+      "minPointSize": 10,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Urbanist - Light",
+      "displayName": "Urbanist Light",
+      "faceName": "Urbanist\tLight",
+      "minFoilPointSize": 12,
+      "minPointSize": 8,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Urbanist - Light Italic",
+      "displayName": "Urbanist Light Italic",
+      "faceName": "Urbanist\tLight Italic",
+      "minFoilPointSize": 14,
+      "minPointSize": 10,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Urbanist - Medium",
+      "displayName": "Urbanist Medium",
+      "faceName": "Urbanist\tMedium",
+      "minFoilPointSize": 16,
+      "minPointSize": 10,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Urbanist - Medium Italic",
+      "displayName": "Urbanist Medium Italic",
+      "faceName": "Urbanist\tMedium Italic",
+      "minFoilPointSize": 16,
+      "minPointSize": 10,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Urbanist - Semibold Italic",
+      "displayName": "Urbanist SemiBold Italic",
+      "faceName": "Urbanist\tSemiBold Italic",
+      "minFoilPointSize": 16,
+      "minPointSize": 10,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Vast Shadow - Regular",
+      "displayName": "Vast Shadow",
+      "faceName": "Vast Shadow\tRegular",
+      "minFoilPointSize": null,
+      "minPointSize": 18,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "Vazirmatn - Regular",
+      "displayName": "Vazirmatn",
+      "faceName": "Vazirmatn\tRegular",
+      "minFoilPointSize": 14,
+      "minPointSize": 7,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Vintage Heirloom - Regular",
+      "displayName": "Vintage Heirloom",
+      "faceName": "Vintage Heirloom\tRegular",
+      "minFoilPointSize": 34,
+      "minPointSize": 22,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Vollkorn SC - Regular",
+      "displayName": "Vollkorn SC",
+      "faceName": "Vollkorn SC\tRegular",
+      "minFoilPointSize": 14,
+      "minPointSize": 8,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "All Caps"
+    },
+    {
+      "cssFontFamily": "Voltaire - Regular",
+      "displayName": "Voltaire",
+      "faceName": "Voltaire\tRegular",
+      "minFoilPointSize": 18,
+      "minPointSize": 8,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Sans Serif"
+    },
+    {
+      "cssFontFamily": "Wild Moon - Regular",
+      "displayName": "Wild Moon",
+      "faceName": "Wild Moon\tRegular",
+      "minFoilPointSize": 32,
+      "minPointSize": 18,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Wilde Rosa - Regular",
+      "displayName": "Wilde Rosa",
+      "faceName": "Wilde Rosa\tRegular",
+      "minFoilPointSize": 16,
+      "minPointSize": 12,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "WindSong - Regular",
+      "displayName": "WindSong",
+      "faceName": "WindSong\tRegular",
+      "minFoilPointSize": 20,
+      "minPointSize": 14,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Zen Loop - Regular",
+      "displayName": "Zen Loop",
+      "faceName": "Zen Loop\tRegular",
+      "minFoilPointSize": 34,
+      "minPointSize": 16,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "Zilla Slab - Bold",
+      "displayName": "Zilla Slab Bold",
+      "faceName": "Zilla Slab\tBold",
+      "minFoilPointSize": 18,
+      "minPointSize": 10,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Slab Serif"
+    },
+    {
+      "cssFontFamily": "Zilla Slab - Bold Italic",
+      "displayName": "Zilla Slab Bold Italic",
+      "faceName": "Zilla Slab\tBold Italic",
+      "minFoilPointSize": 18,
+      "minPointSize": 10,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Slab Serif"
+    },
+    {
+      "cssFontFamily": "Zilla Slab - Light",
+      "displayName": "Zilla Slab Light",
+      "faceName": "Zilla Slab\tLight",
+      "minFoilPointSize": 18,
+      "minPointSize": 10,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Slab Serif"
+    },
+    {
+      "cssFontFamily": "Zilla Slab - Medium",
+      "displayName": "Zilla Slab Medium",
+      "faceName": "Zilla Slab\tMedium",
+      "minFoilPointSize": 18,
+      "minPointSize": 10,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Slab Serif"
+    },
+    {
+      "cssFontFamily": "Zilla Slab - Medium Italic",
+      "displayName": "Zilla Slab Medium Italic",
+      "faceName": "Zilla Slab\tMedium Italic",
+      "minFoilPointSize": 18,
+      "minPointSize": 10,
+      "otFeature": "",
+      "source": "Open Source",
+      "type": "Slab Serif"
+    },
+    {
+      "cssFontFamily": "printed moments - Regular",
+      "displayName": "Printed Moments",
+      "faceName": "printed moments\tRegular",
+      "minFoilPointSize": 20,
+      "minPointSize": 14,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "The Secret Things - Regular",
+      "displayName": "The Secret Things",
+      "faceName": "the secret things\tRegular",
+      "minFoilPointSize": 24,
+      "minPointSize": 14,
+      "otFeature": "",
+      "source": "PeachCream",
+      "type": "Unique"
+    },
+    {
+      "cssFontFamily": "La Belle Aurore",
+      "displayName": "La Belle Aurore",
+      "faceName": "La Belle Aurore\tRegular",
+      "minFoilPointSize": 20,
+      "minPointSize": 14,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Zeyada",
+      "displayName": "Zeyada",
+      "faceName": "Zeyada\tRegular",
+      "minFoilPointSize": 26,
+      "minPointSize": 16,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Dawning of a New Day",
+      "displayName": "Dawning of a New Day",
+      "faceName": "Dawning of a New Day\tRegular",
+      "minFoilPointSize": 28,
+      "minPointSize": 18,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Script"
+    },
+    {
+      "cssFontFamily": "Cedarville Cursive",
+      "displayName": "Cedarville Cursive",
+      "faceName": "Cedarville Cursive\tRegular",
+      "minFoilPointSize": 28,
+      "minPointSize": 16,
+      "otFeature": "",
+      "source": "Open Source - Google",
+      "type": "Script"
+    }
+  ],
+  "fontSizes": [
+    5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 13, 14, 15,
+    16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 35, 40, 45, 50,
+    55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 110, 120, 130, 140, 150, 160, 170,
+    180, 190, 200, 210, 220, 230, 240, 250, 300, 350, 400, 450, 500
+  ]
+}

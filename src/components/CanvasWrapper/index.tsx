@@ -5,6 +5,8 @@ import React, { useEffect, useState } from 'react';
 import { Image, Layer, Rect, Stage } from 'react-konva';
 import useImage from 'use-image';
 
+import TransformerComponent from '@/components/CanvasWrapper/TransformerComponent';
+
 import { getScaledCoordinates } from '@/utils/getScaledCoordinates';
 
 import { PointCoordinates } from '@/types';
@@ -18,6 +20,7 @@ interface CanvasWrapperProps {
   documentInfo?: DesignStudioItem;
   activeView?: View;
   viewBlob?: Blob;
+  activeTextBox?: TextBox; //TODO we need active for each I think
   zoom: number | number[];
   handleClickFontItem: (val: TextBox) => void;
 }
@@ -26,6 +29,7 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
   viewBlob,
   activeView,
   documentInfo,
+  activeTextBox,
   zoom,
   handleClickFontItem,
 }) => {
@@ -90,10 +94,6 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
     };
   }, [viewBlob]);
 
-  useEffect(() => {
-    //Each time the Active view updates we need to update the click boxes
-  }, [activeView]);
-
   const handleHover = (enter = false) => {
     //Necessary to add custom styling like hover cursor over the figures
     if (stageRef.current) {
@@ -118,18 +118,48 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
 
     return (
       <Rect
+        key={textBox.name}
         x={minX}
         y={minY}
         width={width}
         height={height}
         fill='rgba(0, 0, 0, 0.3)'
         onClick={(e: KonvaEventObject<MouseEvent>) => {
-          console.log(e.target, textBox);
           handleClickFontItem(textBox);
         }}
         onMouseEnter={() => handleHover(true)}
         onMouseLeave={() => handleHover(false)}
       />
+    );
+  };
+
+  const createTransformRectFromPoints = (
+    originalCoordinates: PointCoordinates[],
+    textBox: TextBox
+  ) => {
+    if (originalCoordinates.length === 0) return null;
+    const scale = 0.3 + ((zoom as number) / 100) * 0.7;
+    const coordinates = getScaledCoordinates(originalCoordinates, scale);
+    const minX = Math.min(...coordinates.map((coord) => coord.x));
+    const minY = Math.min(...coordinates.map((coord) => coord.y));
+    const maxX = Math.max(...coordinates.map((coord) => coord.x));
+    const maxY = Math.max(...coordinates.map((coord) => coord.y));
+
+    const width = maxX - minX;
+    const height = maxY - minY;
+
+    return (
+      <>
+        <Rect
+          name='active-text-box'
+          x={minX}
+          y={minY}
+          width={width}
+          height={height}
+          fill='rgba(255, 255, 255, 0.3)'
+        />
+        <TransformerComponent selectedShapeName='active-text-box' />
+      </>
     );
   };
 
@@ -146,6 +176,19 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
         return createRectFromPoints(viewData.viewBounds, textbox);
       })
       .filter((x) => x);
+  };
+
+  const loadTransformer = () => {
+    const viewDataActiveTextBox = activeView?.viewData.find(
+      (doc) => doc.name === activeTextBox?.name
+    );
+    //TODO we might need to do this same logic for each of elements types
+    if (viewDataActiveTextBox && activeTextBox) {
+      return createTransformRectFromPoints(
+        viewDataActiveTextBox.viewBounds,
+        activeTextBox
+      );
+    }
   };
 
   const SceneImage: React.FC<{
@@ -175,7 +218,7 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
           height={imageHeight}
         >
           <Layer>{sceneImage && imageHeight ? sceneImage : null}</Layer>
-          <Layer>{loadTextBoxes()}</Layer>
+          <Layer>{!activeTextBox ? loadTextBoxes() : loadTransformer()}</Layer>
         </Stage>
       )}
     </Box>

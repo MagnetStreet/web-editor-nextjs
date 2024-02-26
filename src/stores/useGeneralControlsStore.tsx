@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-import TextBox from '@/types/TextBox';
+import { TextBox } from '@/types/TextBox';
 
 export interface GeneralControlsState {
   zoom: number | number[];
@@ -35,7 +35,16 @@ export const useGeneralControlsStore = create<GeneralControlsState>((set) => ({
   setZoom: (newVal: number | number[]) => set({ zoom: newVal }),
   setIsLoading: (val: boolean) => set({ isLoading: val }),
   setInitialLoading: (val: boolean) => set({ isInitialLoad: val }),
-  setIsolatedMode: (val: boolean) => set({ isIsolatedModeActive: val }),
+  setIsolatedMode: (val: boolean) => {
+    if (!val) {
+      //TODO Add any Cleanup here for active elements when leaving the isolated mode
+      set({
+        activeTextBox: undefined,
+        topFrameComponent: null,
+      });
+    }
+    set({ isIsolatedModeActive: val });
+  },
   setActiveTextBox: (val: TextBox, component?: React.ReactNode) =>
     set({ activeTextBox: val, topFrameComponent: component }),
 }));

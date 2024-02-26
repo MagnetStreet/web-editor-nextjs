@@ -8,9 +8,9 @@ import styles from './Editor.module.scss';
 
 import useScreenSize from '@/hooks/useScreenSize';
 
+import ZoomControl from '@/components/CanvasWrapper/ZoomControl';
 import { ChangesController } from '@/components/ChangesController/ChangesController';
 import LateralContextualMenu from '@/components/LateralContextualMenu';
-import ZoomControl from '@/components/shared/CanvasWrapper/ZoomControl';
 import Frame from '@/components/shared/Frame';
 import OrderSummaryList from '@/components/shared/OrderSummary/OrderSummaryList';
 import TextControllerWrapper from '@/components/TextController';
@@ -30,7 +30,7 @@ import DesignStudioItem from '@/types/DesignStudioItem';
 import ProductInformation from '@/types/ProductInformation';
 import { TextBox } from '@/types/TextBox';
 
-const Canvas = dynamic(() => import('@/components/shared/CanvasWrapper'), {
+const Canvas = dynamic(() => import('@/components/CanvasWrapper'), {
   ssr: false,
 });
 
@@ -53,6 +53,7 @@ const PageEditor: React.FC<EditorPageServerData> = ({
     isBottomFrameOpen,
     topFrameComponent,
     isIsolatedModeActive,
+    activeTextBox,
     setIsLoading,
     toggleBottomFrame,
     setZoom,
@@ -221,6 +222,7 @@ const PageEditor: React.FC<EditorPageServerData> = ({
           viewBlob={viewBlob}
           documentInfo={documentInfo}
           activeView={activeView}
+          activeTextBox={activeTextBox}
           handleClickFontItem={handleClickFontItem}
         />
       </Box>

@@ -7,8 +7,10 @@ import {
   useGeneralControlsStore,
 } from '@/stores/useGeneralControlsStore';
 
+import { TextBox } from '@/types/TextBox';
+
 const TextControllerWrapper: React.FC = () => {
-  const { activeTextBox, setIsolatedMode } =
+  const { activeTextBox, setIsolatedMode, setActiveTextBox } =
     useGeneralControlsStore<GeneralControlsState>((state) => state);
 
   const handleSaveClick = () => {
@@ -19,6 +21,9 @@ const TextControllerWrapper: React.FC = () => {
     //TODO Implement Back and Apply logic
     setIsolatedMode(false);
   };
+  const handleUpdate = (updated: TextBox) => {
+    setActiveTextBox(updated);
+  };
 
   return (
     <>
@@ -27,6 +32,7 @@ const TextControllerWrapper: React.FC = () => {
           activeTextBox={activeTextBox}
           handleSave={handleSaveClick}
           handleBack={handleBackClick}
+          handleUpdate={handleUpdate}
         />
       ) : null}
     </>
