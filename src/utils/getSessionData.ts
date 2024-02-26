@@ -1,5 +1,6 @@
 import { getViewListSceneValue } from '@/utils/getViewListSceneValue';
 
+import DSItemJSON from '@/types/DSItemJSON';
 import ProductInformation from '@/types/ProductInformation';
 import SessionData from '@/types/SessionData';
 import { VisitorInfo } from '@/types/VisitorInfo';
@@ -20,6 +21,10 @@ export const getSessionData = async (
     // Check if We have a active sessiojn on the vistorImprints
     if (visitorImprints && visitorImprints.currentSessionId) {
       sessionId = visitorImprints.currentSessionId;
+    }
+
+    if (!documentList || !documentList[0]) {
+      throw Error('DocumentList from productInfo  NOT FOUND');
     }
 
     // Get the TempalteIds

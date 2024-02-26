@@ -1,11 +1,4 @@
-import {
-  MenuItem,
-  SelectChangeEvent,
-  Stack,
-  styled,
-  Typography,
-  useTheme,
-} from '@mui/material';
+import { MenuItem, Stack, styled, Typography, useTheme } from '@mui/material';
 import * as React from 'react';
 
 interface InputCounterProps {
@@ -95,7 +88,7 @@ const InputCounter: React.FC<InputCounterProps> = ({
   handleDecrement,
 }) => {
   const theme = useTheme();
-  const handleChange = (event: SelectChangeEvent<number>): void => {
+  const handleChange = (event: any): void => {
     onChange(Number(event.target.value));
   };
   const onClickMinus = (): void => {

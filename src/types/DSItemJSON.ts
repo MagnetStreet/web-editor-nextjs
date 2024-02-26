@@ -1,4 +1,4 @@
-import { Attribute } from '@/types/Attribute';
+import Attribute from '@/types/Attribute';
 import ProductViewSet from '@/types/ProductViewSet';
 import SubState from '@/types/Substate';
 
