@@ -33,7 +33,13 @@ const TextController: React.FC<TextControllerProps> = ({
         <TextColor activeTextBox={activeTextBox} />
         <TextFormat activeTextBox={activeTextBox} />
       </Stack>
-      <Stack direction='row' gap='16px'>
+      <Stack
+        direction='row'
+        gap='16px'
+        sx={{
+          margin: '16px 0',
+        }}
+      >
         <Button color='primary' variant='outlined' onClick={handleBack}>
           Cancel
         </Button>

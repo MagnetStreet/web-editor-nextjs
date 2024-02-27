@@ -27,8 +27,8 @@ const StyledButton = styled('button')(
   border-color: #5471A8;
   background: white;
   color: #5471A8;
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;

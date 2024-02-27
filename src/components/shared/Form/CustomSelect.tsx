@@ -1,3 +1,4 @@
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {
   FormControl,
   InputLabel,
@@ -17,11 +18,24 @@ interface SelectProps {
 
 export default function CustomSelect(props: SelectProps) {
   const { label, value, onChange, options } = props;
-
   return (
     <FormControl fullWidth>
       {label && <InputLabel>{label}</InputLabel>}
-      <MuiSelect value={value} onChange={onChange} label={label}>
+      <MuiSelect
+        value={value}
+        onChange={onChange}
+        label={label}
+        IconComponent={ExpandMoreIcon}
+        sx={{
+          height: '40px',
+          borderRadius: 0, // Overwrite the border radius
+        }}
+        MenuProps={{
+          style: {
+            maxHeight: 300,
+          },
+        }}
+      >
         {options.map((option) => (
           <MenuItem key={option.value} value={option.value}>
             {option.label}
