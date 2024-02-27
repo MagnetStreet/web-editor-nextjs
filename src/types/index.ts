@@ -50,6 +50,11 @@ export interface OrderItem {
   value: number;
 }
 
+export interface SelectOption {
+  value: number;
+  label: string;
+}
+
 export interface Notification {
   icon: string;
   body: React.ReactNode;

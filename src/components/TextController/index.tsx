@@ -10,7 +10,7 @@ import {
 import { TextBox } from '@/types/TextBox';
 
 const TextControllerWrapper: React.FC = () => {
-  const { activeTextBox, setIsolatedMode, setActiveTextBox } =
+  const { activeTextBox, setIsolatedMode, updateActiveTextBox } =
     useGeneralControlsStore<GeneralControlsState>((state) => state);
 
   const handleSaveClick = () => {
@@ -22,7 +22,7 @@ const TextControllerWrapper: React.FC = () => {
     setIsolatedMode(false);
   };
   const handleUpdate = (updated: TextBox) => {
-    setActiveTextBox(updated);
+    updateActiveTextBox(updated);
   };
 
   return (

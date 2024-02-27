@@ -23,14 +23,24 @@ const TextController: React.FC<TextControllerProps> = ({
   console.log('activeTextBox', activeTextBox);
 
   return (
-    <Box>
+    <Box
+      sx={{
+        padding: '16px',
+      }}
+    >
       <Stack>
         <TextSize activeTextBox={activeTextBox} handleUpdate={handleUpdate} />
         <TextColor activeTextBox={activeTextBox} />
         <TextFormat activeTextBox={activeTextBox} />
       </Stack>
-      <Button onClick={handleBack}> Cancel</Button>
-      <Button onClick={handleSave}> Apply Changes</Button>
+      <Stack direction='row' gap='16px'>
+        <Button color='primary' variant='outlined' onClick={handleBack}>
+          Cancel
+        </Button>
+        <Button color='primary' variant='contained' onClick={handleSave}>
+          Apply Changes
+        </Button>
+      </Stack>
     </Box>
   );
 };

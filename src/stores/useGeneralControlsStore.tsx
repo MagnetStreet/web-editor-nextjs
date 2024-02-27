@@ -19,6 +19,7 @@ export interface GeneralControlsState {
   setInitialLoading: (val: boolean) => void;
   setIsolatedMode: (val: boolean) => void;
   setActiveTextBox: (val: TextBox, component?: React.ReactNode) => void;
+  updateActiveTextBox: (val: TextBox) => void;
   // Other properties and functions in your state For handling general navigations or controls
 }
 
@@ -45,6 +46,7 @@ export const useGeneralControlsStore = create<GeneralControlsState>((set) => ({
     }
     set({ isIsolatedModeActive: val });
   },
+  updateActiveTextBox: (val: TextBox) => set({ activeTextBox: val }),
   setActiveTextBox: (val: TextBox, component?: React.ReactNode) =>
     set({ activeTextBox: val, topFrameComponent: component }),
 }));

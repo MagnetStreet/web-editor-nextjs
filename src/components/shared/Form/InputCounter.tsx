@@ -1,9 +1,13 @@
-import { MenuItem, Stack, styled, Typography, useTheme } from '@mui/material';
+import { Stack, styled, Typography, useTheme } from '@mui/material';
 import * as React from 'react';
+
+import CustomSelect from '@/components/shared/Form/CustomSelect';
+
+import { SelectOption } from '@/types';
 
 interface InputCounterProps {
   value: number;
-  options: number[];
+  options: SelectOption[];
   helpText?: string;
   onChange: (newVal: number) => void;
   //These two are overwrittes for simple one step increseases
@@ -14,14 +18,15 @@ interface InputCounterProps {
 const StyledButton = styled('button')(
   ({ theme }) => `
   font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 0.875rem;
+  font-size: 34px;
   box-sizing: border-box;
   line-height: 1.5;
   border: 1px solid;
   border-radius: 999px;
-  border-color: ${grey[200]};
-  background: ${grey[50]};
-  color: ${grey[900]};
+  border-radius: 8px 0px 0px 8px;
+  border-color: #5471A8;
+  background: white;
+  color: #5471A8;
   width: 32px;
   height: 32px;
   display: flex;
@@ -34,9 +39,9 @@ const StyledButton = styled('button')(
 
   &:hover {
     cursor: pointer;
-    background: ${blue[500]};
-    border-color: ${blue[400]};
-    color: ${grey[50]};
+    background: #5471A8;
+    border-color: #E6EEFE;
+    color: white;
   }
 
   &:focus-visible {
@@ -45,39 +50,10 @@ const StyledButton = styled('button')(
 
   &.increment {
     order: 1;
+    border-radius: 0 8px 8px 0;
   }
 `
 );
-
-const StyledSelect = styled('select')(
-  ({ theme }) => `
-  font-family: 'IBM Plex Sans', sans-serif;
-`
-);
-
-const blue = {
-  100: '#daecff',
-  200: '#b6daff',
-  300: '#66b2ff',
-  400: '#3399ff',
-  500: '#007fff',
-  600: '#0072e5',
-  700: '#0059B2',
-  800: '#004c99',
-};
-
-const grey = {
-  50: '#F3F6F9',
-  100: '#E5EAF2',
-  200: '#DAE2ED',
-  300: '#C7D0DD',
-  400: '#B0B8C4',
-  500: '#9DA8B7',
-  600: '#6B7A90',
-  700: '#434D5B',
-  800: '#303740',
-  900: '#1C2025',
-};
 
 const InputCounter: React.FC<InputCounterProps> = ({
   value,
@@ -89,9 +65,9 @@ const InputCounter: React.FC<InputCounterProps> = ({
 }) => {
   const theme = useTheme();
   const handleChange = (event: any): void => {
-    onChange(Number(event.target.value));
+    onChange(event.target.value);
   };
-  const onClickMinus = (): void => {
+  const onClickMinus = (event: any): void => {
     if (handleDecrement) {
       handleDecrement();
     } else {
@@ -107,28 +83,21 @@ const InputCounter: React.FC<InputCounterProps> = ({
   };
 
   return (
-    <Stack direction='column'>
+    <Stack direction='column' sx={{ width: '100%' }}>
       <Stack direction='row'>
         <StyledButton theme={theme} onClick={onClickMinus}>
           -
         </StyledButton>
-        <StyledSelect
-          theme={theme}
-          id='input-counter'
-          value={value}
+        <CustomSelect
+          value={value.toString()}
           onChange={handleChange}
-        >
-          {options.map((size: number) => {
-            return (
-              <MenuItem key={`font-size-${size}`} value={size}>
-                {size}
-              </MenuItem>
-            );
-          })}
-        </StyledSelect>
-        <StyledButton onClick={onClickPlus}>+</StyledButton>
+          options={options}
+        />
+        <StyledButton className='increment' onClick={onClickPlus}>
+          +
+        </StyledButton>
       </Stack>
-      <Typography>{helpText}</Typography>
+      <Typography variant='subtitle2'>{helpText}</Typography>
     </Stack>
   );
 };
