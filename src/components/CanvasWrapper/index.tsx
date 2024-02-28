@@ -8,8 +8,9 @@ import useImage from 'use-image';
 import TransformerComponent from '@/components/CanvasWrapper/TransformerComponent';
 
 import { getScaledCoordinates } from '@/utils/getScaledCoordinates';
+import { getStylePositionsHelper } from '@/utils/getStylePositionsHelper';
 
-import { PointCoordinates } from '@/types';
+import { Coordinates, PointCoordinates } from '@/types';
 import DesignStudioItem from '@/types/DesignStudioItem';
 import { TextBox } from '@/types/TextBox';
 import View from '@/types/View';
@@ -19,19 +20,23 @@ const maxZoom = 100;
 interface CanvasWrapperProps {
   documentInfo?: DesignStudioItem;
   activeView?: View;
+  position?: string;
   viewBlob?: Blob;
   isIsolatedMode: boolean;
+  coordinates?: Coordinates;
   activeTextBox?: TextBox; //TODO we need active for each I think
   zoom: number | number[];
   handleClickFontItem: (val: TextBox) => void;
 }
 
 const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
+  position,
   viewBlob,
   activeView,
   documentInfo,
   activeTextBox,
   isIsolatedMode,
+  coordinates,
   zoom,
   handleClickFontItem,
 }) => {
@@ -208,24 +213,21 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
     const [image] = useImage(imageUrl || '');
     return <Image image={image} width={imageWidth} height={imageHeight} />;
   };
+  const containerStyle = {
+    ...getStylePositionsHelper(position, coordinates),
+    zIndex: 0,
+    height: `${imageHeight}px`,
+    transform: 'translate(-50%, -50%)',
+  };
 
   return (
-    <Box
-      sx={{
-        position: 'absolute',
-        top: '50%',
-        zIndex: 0,
-        left: '50%',
-        height: `${imageHeight}px`,
-        transform: 'translate(-50%, -50%)',
-      }}
-    >
+    <Box sx={containerStyle}>
       {isIsolatedMode && (
         <Paper
           sx={{
             //TODO add proper styling
             position: 'absolute',
-            top: '25%',
+            top: '%',
             zIndex: 99,
             left: '70%',
             height: `fit-content`,

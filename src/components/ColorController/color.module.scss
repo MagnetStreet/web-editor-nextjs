@@ -1,0 +1,18 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.ColorList {
+  padding: 16px;
+  &__header {
+    padding: 0 0 16px;
+  }
+}
+
+.ColorRow {
+  padding: 16px 0;
+  width: 450px;
+  border-top: 1px solid $gray3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

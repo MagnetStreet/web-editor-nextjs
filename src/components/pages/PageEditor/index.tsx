@@ -64,6 +64,7 @@ const PageEditor: React.FC<EditorPageServerData> = ({
     documentInfo,
     activeView,
     viewBlob,
+    activeLayoutName,
     setDocumentInfo,
     setActiveView,
     setViewBlob,
@@ -112,8 +113,8 @@ const PageEditor: React.FC<EditorPageServerData> = ({
   };
 
   useEffect(() => {
-    console.log('visitorInfo', visitorInfo);
-    console.log('productInfo', productInfo);
+    //console.log('visitorInfo', visitorInfo);
+    //console.log('productInfo', productInfo);
     if (visitorInfo && productInfo && !isTest) {
       const fetchData = async () => {
         setIsLoading(true);
@@ -187,7 +188,7 @@ const PageEditor: React.FC<EditorPageServerData> = ({
             />
             <Frame
               position='absolute'
-              visible={isIsolatedModeActive && !!topFrameComponent}
+              visible={!!topFrameComponent}
               coordinates={{
                 top: 12,
                 left: 16,
@@ -218,6 +219,7 @@ const PageEditor: React.FC<EditorPageServerData> = ({
           </>
         )}
         <Canvas
+          position='absolute'
           zoom={zoom}
           viewBlob={viewBlob}
           documentInfo={documentInfo}
@@ -225,6 +227,10 @@ const PageEditor: React.FC<EditorPageServerData> = ({
           activeTextBox={activeTextBox}
           isIsolatedMode={isIsolatedModeActive}
           handleClickFontItem={handleClickFontItem}
+          coordinates={{
+            top: '50%',
+            left: '70%',
+          }}
         />
       </Box>
     </Stack>

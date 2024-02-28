@@ -5,12 +5,13 @@ import * as React from 'react';
 import styles from './LateralContextualMenu.module.scss';
 
 import { IconObj } from '@/types';
+import { CONTEXTUAL_MENU_OPTION } from '@/types/enum';
 
 interface LateralContextualMenuProps {
   items: Array<IconObj>;
-  activeLayoutName: string;
+  activeLayoutName: CONTEXTUAL_MENU_OPTION;
   isIsolatedModeActive: boolean;
-  setActiveLayoutName: (val: string) => void;
+  setActiveLayoutName: (val: CONTEXTUAL_MENU_OPTION) => void;
 }
 
 const LateralContextualMenu: React.FC<LateralContextualMenuProps> = ({
@@ -32,7 +33,9 @@ const LateralContextualMenu: React.FC<LateralContextualMenuProps> = ({
             className={`${styles.iconContainer} ${
               activeLayoutName === item.name ? styles.active : ''
             }`}
-            onClick={() => setActiveLayoutName(item.name)}
+            onClick={() =>
+              setActiveLayoutName(item.name as CONTEXTUAL_MENU_OPTION)
+            }
           >
             {item.icon}
             <Typography variant='subtitle2'>{item.name}</Typography>

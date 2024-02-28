@@ -18,8 +18,8 @@ const StyledDiv = styled('div')(
 `
 );
 
-const FormSection: React.FC<SectionProps> = ({ children }) => {
+const Section: React.FC<SectionProps> = ({ children }) => {
   return <StyledDiv>{children}</StyledDiv>;
 };
 
-export default FormSection;
+export default Section;

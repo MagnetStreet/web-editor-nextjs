@@ -1,4 +1,4 @@
-export default interface ColorObject {
+export default interface SwatchColor {
   yellowValue: number;
   origMagentaValue: number;
   blackValue: number;
