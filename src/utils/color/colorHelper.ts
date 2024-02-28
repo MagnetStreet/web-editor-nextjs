@@ -6,7 +6,7 @@ import {
 import {
   cmykToRgbLUTEncoded,
   rgbToCmykLUTEncoded,
-} from '@/constants/encodedColorTables';
+} from '@/constants/encodedColorTables.json';
 
 import { DSColor } from '@/types/ColorDSTypes';
 import { CMYK, HSV, RGB } from '@/types/ColorFormat';
