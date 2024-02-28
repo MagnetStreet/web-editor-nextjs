@@ -3,15 +3,13 @@ import {
   standardColors,
   transparentColor,
 } from '@/constants/colors-default';
-import {
-  cmykToRgbLUTEncoded,
-  rgbToCmykLUTEncoded,
-} from '@/constants/encodedColorTables.json';
+import encodedColorTables from '@/constants/encodedColorTables.json';
 
 import { DSColor } from '@/types/ColorDSTypes';
 import { CMYK, HSV, RGB } from '@/types/ColorFormat';
 import SwatchColor from '@/types/SwatchColor';
 
+const { cmykToRgbLUTEncoded, rgbToCmykLUTEncoded } = encodedColorTables;
 const msColors = {
   name: 'All Colors',
   colors: [
@@ -244,7 +242,7 @@ export function convertRgbToCmyk(r: number, g: number, b: number) {
   return cmyk;
 }
 
-export function base64Decode(data: string) {
+function base64Decode(data: string) {
   const b64 =
     'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
   let o1,
