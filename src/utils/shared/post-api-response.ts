@@ -5,12 +5,14 @@ export const postApiResponse = async <T>({
   apiEndpoint,
   requestData,
   revalidate = IS_PROD ? 3600 : 120, // cache data in seconds
+  headers,
 }: {
   apiEndpoint: string;
   requestData?: BodyInit;
-  headers?: Headers;
+  method?: 'POST' | 'GET' | 'PUT' | 'DELETE';
   revalidate?: number;
-}): Promise<T | null> => {
+  headers?: HeadersInit;
+}) => {
   try {
     const response = await fetch(apiEndpoint, {
       method: 'POST',
