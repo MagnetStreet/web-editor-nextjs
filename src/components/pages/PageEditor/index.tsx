@@ -223,6 +223,7 @@ const PageEditor: React.FC<EditorPageServerData> = ({
           documentInfo={documentInfo}
           activeView={activeView}
           activeTextBox={activeTextBox}
+          isIsolatedMode={isIsolatedModeActive}
           handleClickFontItem={handleClickFontItem}
         />
       </Box>

@@ -20,6 +20,10 @@ import {
   BottomDrawerState,
   useBottomDrawerStore,
 } from '@/stores/useBottomDrawerStore';
+import {
+  GeneralControlsState,
+  useGeneralControlsStore,
+} from '@/stores/useGeneralControlsStore';
 import useNavigationStore, {
   NavigationState,
 } from '@/stores/useNavigationStore';
@@ -30,6 +34,8 @@ const Navigation: React.FC = () => {
   const [mobileTotal, setMobileTotal] = useState<number>(0);
   const { isBottomDrawerOpen, setBottomDrawerComponent, toggleBottomDrawer } =
     useBottomDrawerStore<BottomDrawerState>((state) => state);
+  const { isIsolatedModeActive } =
+    useGeneralControlsStore<GeneralControlsState>((state) => state);
   const {
     steps,
     activeStep,
@@ -189,7 +195,13 @@ const Navigation: React.FC = () => {
   return (
     <Box>
       {isDesktop ? (
-        <Stack className={styles.navigation__desktop}>
+        <Stack
+          className={`${styles.navigation__desktop} ${
+            isIsolatedModeActive
+              ? styles.navigation__desktop__isolated_mode
+              : ''
+          }`}
+        >
           {renderBackBtn()}
           <Stack direction='row' className={styles.navigation__steps}>
             {steps.map((step, index) => {

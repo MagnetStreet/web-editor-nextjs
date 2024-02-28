@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Paper } from '@mui/material';
 import Konva from 'konva';
 import { KonvaEventObject } from 'konva/lib/Node';
 import React, { useEffect, useState } from 'react';
@@ -20,6 +20,7 @@ interface CanvasWrapperProps {
   documentInfo?: DesignStudioItem;
   activeView?: View;
   viewBlob?: Blob;
+  isIsolatedMode: boolean;
   activeTextBox?: TextBox; //TODO we need active for each I think
   zoom: number | number[];
   handleClickFontItem: (val: TextBox) => void;
@@ -30,6 +31,7 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
   activeView,
   documentInfo,
   activeTextBox,
+  isIsolatedMode,
   zoom,
   handleClickFontItem,
 }) => {
@@ -93,6 +95,13 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
       }
     };
   }, [viewBlob]);
+
+  useEffect(() => {
+    // const quill = new Quill('#editor', {
+    //   theme: 'snow',
+    // });
+    // console.log('quill', quill);
+  }, [isIsolatedMode]);
 
   const handleHover = (enter = false) => {
     //Necessary to add custom styling like hover cursor over the figures
@@ -211,6 +220,22 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
         transform: 'translate(-50%, -50%)',
       }}
     >
+      {isIsolatedMode && (
+        <Paper
+          sx={{
+            //TODO add proper styling
+            position: 'absolute',
+            top: '25%',
+            zIndex: 99,
+            left: '70%',
+            height: `fit-content`,
+            width: `fit-content`,
+            transform: 'translate(-50%, -50%)',
+          }}
+        >
+          {/* <div id='editor'> HEY LISTEN TODO HOW DOES THIS WORK</div> */}
+        </Paper>
+      )}
       {activeView && imageUrl && (
         <Stage
           ref={stageRef}

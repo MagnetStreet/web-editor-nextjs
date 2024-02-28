@@ -60,6 +60,14 @@
     flex-direction: row;
     justify-content: space-between;
     padding: 16px 32px;
+    height: 75px;
+    transition: height 0.3s, padding 0.3s;
+    &__isolated_mode {
+      height: 0;
+      padding: 0;
+      overflow: hidden;
+      transition: height 0.3s, padding 0.3s;
+    }
   }
   &__buttons {
     width: 100%;
