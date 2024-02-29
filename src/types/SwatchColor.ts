@@ -19,5 +19,5 @@ export default interface SwatchColor {
   place: number;
   greenValue: number;
   origBlackValue: number;
-  spotValue: string;
+  spotValue?: string;
 }

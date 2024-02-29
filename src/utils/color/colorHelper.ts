@@ -19,10 +19,22 @@ const msColors = {
   ] as DSColor[],
 };
 const msStandardColors = {
-  name: 'All Colors',
+  name: 'Standard Colors',
   colors: [...standardColors.swatches] as DSColor[],
 };
-export function getSimplifiedSwatchColors(color: SwatchColor) {
+
+export function getSimplifiedSwatchColors(color?: SwatchColor) {
+  if (!color) {
+    return {
+      b: 0,
+      r: 0,
+      g: 0,
+      m: 0,
+      y: 0,
+      c: 0,
+      k: 0,
+    };
+  }
   return {
     b: Math.round(color.origBlueValue),
     r: Math.round(color.origRedValue),
@@ -94,6 +106,16 @@ export function getDisplayNameForColor(
       'CMYK (' + c + ', ' + m + ', ' + y + ', ' + k + ')';
   }
   return colorDisplayDescription;
+}
+
+export function rgbToHex(r: number, g: number, b: number): string {
+  // Convert each component to hexadecimal and pad with zeros if necessary
+  const hexR = r.toString(16).padStart(2, '0');
+  const hexG = g.toString(16).padStart(2, '0');
+  const hexB = b.toString(16).padStart(2, '0');
+
+  // Concatenate the hexadecimal values together with '#' prefix
+  return `#${hexR}${hexG}${hexB}`;
 }
 
 function getMSColorByBackgroundRGB(rgbString: string) {

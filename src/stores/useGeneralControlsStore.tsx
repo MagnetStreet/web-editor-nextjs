@@ -22,7 +22,10 @@ export interface GeneralControlsState {
   setIsolatedMode: (val: boolean) => void;
   setTopFrameComponent: (component: React.ReactNode) => void;
   setActiveTextBox: (val: TextBox, component?: React.ReactNode) => void;
-  setActiveColorSwatch: (val: SwatchColor, component?: React.ReactNode) => void;
+  setActiveColorSwatch: (
+    val?: SwatchColor,
+    component?: React.ReactNode
+  ) => void;
   updateActiveTextBox: (val: TextBox) => void;
   // Other properties and functions in your state For handling general navigations or controls
 }
@@ -55,6 +58,6 @@ export const useGeneralControlsStore = create<GeneralControlsState>((set) => ({
   updateActiveTextBox: (val: TextBox) => set({ activeTextBox: val }),
   setActiveTextBox: (val: TextBox, component?: React.ReactNode) =>
     set({ activeTextBox: val, topFrameComponent: component }),
-  setActiveColorSwatch: (val: SwatchColor, component?: React.ReactNode) =>
+  setActiveColorSwatch: (val?: SwatchColor, component?: React.ReactNode) =>
     set({ activeSwatchColor: val, topFrameComponent: component }),
 }));

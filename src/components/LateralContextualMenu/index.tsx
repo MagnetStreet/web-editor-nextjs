@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import ColorListSelector from '@/components/ColorController/ColorsListSelector';
+import SwatchListSelector from '@/components/ColorController/SwatchListSelector';
 import LateralContextualMenu from '@/components/LateralContextualMenu/LateralContextualMenu';
 
 import {
@@ -56,7 +56,7 @@ const LateralContextualMenuWrapper = () => {
     setActiveLayoutName(name);
     switch (name) {
       case CONTEXTUAL_MENU_OPTION.COLOR:
-        setTopFrameComponent(<ColorListSelector />);
+        setTopFrameComponent(<SwatchListSelector />);
         break;
       case CONTEXTUAL_MENU_OPTION.TEXT:
         setTopFrameComponent(null);

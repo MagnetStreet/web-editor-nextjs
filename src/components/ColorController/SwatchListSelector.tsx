@@ -4,19 +4,26 @@ import { useEffect, useState } from 'react';
 
 import styles from './color.module.scss';
 
+import ColorDetails from '@/components/ColorController/ColorDetails';
 import ColorRow from '@/components/ColorController/ColorRow';
 
 import {
   DesignStudioState,
   useDesignStudioStore,
 } from '@/stores/useDesignStudioStore';
+import {
+  GeneralControlsState,
+  useGeneralControlsStore,
+} from '@/stores/useGeneralControlsStore';
 
 import SwatchColor from '@/types/SwatchColor';
 
-const ColorListSelector: React.FC = () => {
+const SwatchListSelector: React.FC = () => {
   const { documentInfo } = useDesignStudioStore<DesignStudioState>(
     (state) => state
   );
+  const { setActiveColorSwatch } =
+    useGeneralControlsStore<GeneralControlsState>((state) => state);
   const [swatches, setSwatches] = useState<SwatchColor[]>();
 
   useEffect(() => {
@@ -24,6 +31,11 @@ const ColorListSelector: React.FC = () => {
       setSwatches([...documentInfo.swatches]);
     }
   }, [documentInfo]);
+
+  const handleColorBoxSelected = (color: SwatchColor) => {
+    console.log('hey there');
+    setActiveColorSwatch(color, <ColorDetails />);
+  };
 
   return (
     <Stack className={styles.ColorList}>
@@ -35,9 +47,7 @@ const ColorListSelector: React.FC = () => {
           <ColorRow
             key={swatch.id}
             color={swatch}
-            onClick={function (): void {
-              throw new Error('Function not implemented.');
-            }}
+            onClickHandler={handleColorBoxSelected}
             onHover={function (): void {
               throw new Error('Function not implemented.');
             }}
@@ -47,4 +57,4 @@ const ColorListSelector: React.FC = () => {
   );
 };
 
-export default ColorListSelector;
+export default SwatchListSelector;
