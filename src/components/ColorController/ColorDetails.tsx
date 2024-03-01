@@ -3,6 +3,7 @@ import {
   AccordionDetails,
   AccordionSummary,
   Box,
+  Button,
   Divider,
   Stack,
   Typography,
@@ -12,6 +13,7 @@ import { ChangeEvent, useEffect, useMemo, useState } from 'react';
 
 import ColorCircle from '@/components/ColorController/ColorCircle';
 import ColorList from '@/components/ColorController/ColorList';
+import CustomColorPicker from '@/components/ColorController/CustomColorPicker';
 import SwatchListSelector from '@/components/ColorController/SwatchListSelector';
 import { CustomIcon } from '@/components/shared/CustomIcon';
 import SearchBar from '@/components/shared/Form/SearchBar';
@@ -31,10 +33,12 @@ const ColorDetails: React.FC = () => {
   const [msFilteredColors, setFilteredColors] = useState<DSColor[]>([
     ...standardColors.swatches,
   ]);
-  const { activeSwatchColor, setTopFrameComponent, setActiveColorSwatch } =
+  const [msCustomColors, setCustomColors] = useState<DSColor[]>([]);
+
+  const { activeSwatchColor, setActiveColorSwatch } =
     useGeneralControlsStore<GeneralControlsState>((state) => state);
   const swatchName = activeSwatchColor ? activeSwatchColor.swatchName : '';
-  const { b, r, g, m, y, c, k } = useMemo(
+  const { m, y, c, k } = useMemo(
     () => getSimplifiedSwatchColors(activeSwatchColor),
     [activeSwatchColor]
   );
@@ -67,6 +71,9 @@ const ColorDetails: React.FC = () => {
   const handleBackClick = () => {
     //Reset to Color List and clear up
     setActiveColorSwatch(undefined, <SwatchListSelector />);
+  };
+  const handleAddCustomColorClick = () => {
+    setActiveColorSwatch(activeSwatchColor, <CustomColorPicker />);
   };
 
   return (
@@ -135,7 +142,7 @@ const ColorDetails: React.FC = () => {
           <Typography>File Colors</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <ColorList colors={msFilteredColors} />
+          <ColorList colors={msCustomColors} />
         </AccordionDetails>
       </Accordion>
       <Accordion>
@@ -150,6 +157,34 @@ const ColorDetails: React.FC = () => {
         </AccordionSummary>
         <AccordionDetails>
           <ColorList colors={msFilteredColors} />
+        </AccordionDetails>
+      </Accordion>
+      <Accordion>
+        <AccordionSummary
+          expandIcon={
+            <CustomIcon iconClass='fa-chevron-down' fontSizeOverWrite='16px' />
+          }
+          aria-controls='color-panel-content-3'
+          id='color-panel-header-3'
+        >
+          <Typography>Custom Colors</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <ColorList colors={msCustomColors} />
+          <Button
+            variant='outlined'
+            onClick={() => {
+              handleAddCustomColorClick();
+            }}
+            endIcon={
+              <CustomIcon
+                iconClass='fa-circle-plus-sharp-light'
+                fontSizeOverWrite='12px'
+              />
+            }
+          >
+            ADD
+          </Button>
         </AccordionDetails>
       </Accordion>
     </Stack>
