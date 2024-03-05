@@ -278,28 +278,28 @@ const CustomColorPicker: FC = () => {
         <ColorSlider
           title='Cyan'
           value={c2}
-          tumbColor='#0A9FE4'
+          tumbcolor='#0A9FE4'
           style={getCyanSliderBGStyle(m2, y2, k2)}
           onChange={(val: number) => sliderUpdate('C', val)}
         />
         <ColorSlider
           title='Magenta'
           value={m2}
-          tumbColor='#E51480'
+          tumbcolor='#E51480'
           style={getMagentaSliderBGStyle(c2, y2, k2)}
           onChange={(val: number) => sliderUpdate('M', val)}
         />
         <ColorSlider
           title='Yellow'
           value={y2}
-          tumbColor='#FFED12'
+          tumbcolor='#FFED12'
           tumbfontcolor='#000'
           style={getYellowSliderBGStyle(c2, m2, k2)}
           onChange={(val: number) => sliderUpdate('Y', val)}
         />
         <ColorSlider
           title='Black'
-          tumbColor='#1D1D0D'
+          tumbcolor='#1D1D0D'
           value={k2}
           style={getBlackSliderBGStyle(c2, m2, y2)}
           onChange={(val: number) => sliderUpdate('K', val)}
