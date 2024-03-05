@@ -5,6 +5,8 @@ interface ColorSliderProps {
   title: string;
   value: number;
   style: string;
+  tumbColor?: string;
+  tumbFontColor?: string;
   onChange: (value: number) => void;
 }
 
@@ -12,6 +14,8 @@ const ColorSlider: React.FC<ColorSliderProps> = ({
   title,
   value,
   style,
+  tumbColor = '#CCC',
+  tumbFontColor = '#fff',
   onChange,
 }) => {
   const handleChange = (event: Event, newValue: number | number[]) => {
@@ -37,19 +41,29 @@ const ColorSlider: React.FC<ColorSliderProps> = ({
       }}
     >
       <div>{title}</div>
-      <Stack direction='row' gap='16px'>
+      <Stack direction='row' gap='16px' alignItems='center'>
         <GradientSlider
           max={100}
           min={0}
           value={value}
-          customColor={style}
+          gradientStyle={style}
+          tumbColor={tumbColor}
+          tumbFontColor={tumbFontColor}
           onChange={handleChange}
           valueLabelDisplay='auto'
         />
         <TextField
           value={value}
+          type='number'
           onChange={handleInputChange}
-          disabled
+          inputProps={{
+            sx: {
+              padding: '2px 0',
+              textAlign: 'center',
+              borderRadius: '4px',
+              border: '1px solid #707070',
+            },
+          }}
           sx={{ maxWidth: '50px' }}
         />
       </Stack>
@@ -77,16 +91,19 @@ const parseBackgroundString = (
 };
 
 const GradientSlider = styled(Slider)<{
-  customColor: string;
-}>(({ customColor }) => ({
-  height: 14,
+  gradientStyle: string;
+  tumbColor: string;
+  tumbFontColor: string;
+}>(({ gradientStyle, tumbColor, tumbFontColor }) => ({
+  height: 17,
   '& .MuiSlider-track': {
     border: 'none',
     width: '0 !important',
   },
   '& .MuiSlider-rail': {
     opacity: '100% !important',
-    ...parseBackgroundString(customColor),
+    borderRadius: '3px',
+    ...parseBackgroundString(gradientStyle),
   },
   '& .MuiSlider-thumb': {
     height: 24,
@@ -108,7 +125,8 @@ const GradientSlider = styled(Slider)<{
     width: 32,
     height: 32,
     borderRadius: '50% 50% 50% 0',
-    backgroundColor: '#52af77',
+    color: tumbFontColor,
+    backgroundColor: tumbColor,
     transformOrigin: 'bottom left',
     transform: 'translate(50%, -100%) rotate(-45deg) scale(0)',
     '&::before': { display: 'none' },

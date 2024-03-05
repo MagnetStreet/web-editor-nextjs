@@ -214,15 +214,41 @@ const CustomColorPicker: FC = () => {
         <Typography color='principal'>Custom Color</Typography>
         <CustomIcon iconClass='' fontSizeOverWrite='18px' />
       </Stack>
+      <Stack
+        direction='row'
+        gap='9px'
+        sx={{
+          borderRadius: '6px',
+          border: '1px solid #BDB5B5',
+          background: '#F3F2F2',
+          padding: '8px 8px 11px',
+        }}
+      >
+        <CustomIcon
+          iconClass='fa-circle-exclamation'
+          color='danger'
+          fontSizeOverWrite='16px'
+        />
+        <Typography fontSize='12px'>
+          *Color may vary upon printing depending on your screen configuration
+        </Typography>
+      </Stack>
       <Stack gap='8px'>
         <Typography>Color Options</Typography>
         {activeSwatchColor && customColor && (
-          <Stack direction='row' gap='5px'>
+          <Stack
+            direction='row'
+            justifyContent='flex-start'
+            alignItems='center'
+          >
             <Box
               id='old'
               sx={{
                 height: '40px',
-                width: '80px',
+                maxWidth: '90px',
+                width: '90px',
+                borderRadius: '4px 0 0 4px',
+                borderRight: `1px solid rgb(${r2}, ${g2}, ${b2})`,
                 backgroundColor: `rgb(${r}, ${g}, ${b})`,
               }}
             ></Box>
@@ -230,11 +256,20 @@ const CustomColorPicker: FC = () => {
               id='new'
               sx={{
                 height: '40px',
-                width: '80px',
+                maxWidth: '90px',
+                width: '90px',
+                borderRadius: '0 4px 4px 0',
                 backgroundColor: `rgb(${r2}, ${g2}, ${b2})`,
               }}
             ></Box>
-            New
+            <Typography
+              color='#70777F'
+              sx={{
+                paddingLeft: '10px',
+              }}
+            >
+              New
+            </Typography>
           </Stack>
         )}
       </Stack>
@@ -243,23 +278,28 @@ const CustomColorPicker: FC = () => {
         <ColorSlider
           title='Cyan'
           value={c2}
+          tumbColor='#0A9FE4'
           style={getCyanSliderBGStyle(m2, y2, k2)}
           onChange={(val: number) => sliderUpdate('C', val)}
         />
         <ColorSlider
           title='Magenta'
           value={m2}
+          tumbColor='#E51480'
           style={getMagentaSliderBGStyle(c2, y2, k2)}
           onChange={(val: number) => sliderUpdate('M', val)}
         />
         <ColorSlider
           title='Yellow'
           value={y2}
+          tumbColor='#FFED12'
+          tumbFontColor='#000'
           style={getYellowSliderBGStyle(c2, m2, k2)}
           onChange={(val: number) => sliderUpdate('Y', val)}
         />
         <ColorSlider
           title='Black'
+          tumbColor='#1D1D0D'
           value={k2}
           style={getBlackSliderBGStyle(c2, m2, y2)}
           onChange={(val: number) => sliderUpdate('K', val)}

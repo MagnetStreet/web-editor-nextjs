@@ -28,6 +28,7 @@ import {
 } from '@/stores/useGeneralControlsStore';
 
 import { standardColors } from '@/constants/colors-default';
+import transformToColorDSColor from '@/transformers/SwatchColorToDSColor';
 import { getSimplifiedSwatchColors, rgbToHex } from '@/utils/color/colorHelper';
 
 import { DSColor } from '@/types/ColorDSTypes';
@@ -37,12 +38,12 @@ const ColorDetails: React.FC = () => {
   const [msFilteredColors, setFilteredColors] = useState<DSColor[]>([
     ...standardColors.swatches,
   ]);
+  const [fileColors, setFileColors] = useState<DSColor[]>([]);
 
   const { activeSwatchColor, setActiveColorSwatch } =
     useGeneralControlsStore<GeneralControlsState>((state) => state);
-  const { customColors } = useDesignStudioStore<DesignStudioState>(
-    (state) => state
-  );
+  const { customColors, documentInfo } =
+    useDesignStudioStore<DesignStudioState>((state) => state);
   const swatchName = activeSwatchColor ? activeSwatchColor.swatchName : '';
   const { m, y, c, k } = useMemo(
     () => getSimplifiedSwatchColors(activeSwatchColor),
@@ -52,6 +53,16 @@ const ColorDetails: React.FC = () => {
   const onSearchUpdate = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchText(e.target.value);
   };
+
+  useEffect(() => {
+    if (documentInfo?.swatches) {
+      const originalFileColors: DSColor[] = documentInfo?.swatches.map(
+        (swatchColor) => transformToColorDSColor(swatchColor)
+      );
+      setFileColors(originalFileColors);
+    }
+  }, [documentInfo]);
+
   useEffect(() => {
     setFilteredColors(
       standardColors.swatches.filter((color) => searchByColorOrHex(color))
@@ -137,20 +148,8 @@ const ColorDetails: React.FC = () => {
         value={searchText}
         onChange={onSearchUpdate}
       />
-      <Accordion>
-        <AccordionSummary
-          expandIcon={
-            <CustomIcon iconClass='fa-chevron-down' fontSizeOverWrite='16px' />
-          }
-          aria-controls='color-panel-content-1'
-          id='color-panel-header-1'
-        >
-          <Typography>File Colors</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <ColorList colors={[]} />
-        </AccordionDetails>
-      </Accordion>
+      <Typography>File Colors</Typography>
+      <ColorList colors={fileColors} />
       <Accordion>
         <AccordionSummary
           expandIcon={
@@ -198,18 +197,6 @@ const ColorDetails: React.FC = () => {
           </Stack>
         </AccordionDetails>
       </Accordion>
-      <Stack direction='row' justifyContent='space-between' gap='17px'>
-        <Button
-          variant='outlined'
-          sx={{ width: '50%' }}
-          onClick={handleBackClick}
-        >
-          Cancel
-        </Button>
-        <Button variant='contained' sx={{ width: '50%' }}>
-          Apply
-        </Button>
-      </Stack>
     </Stack>
   );
 };

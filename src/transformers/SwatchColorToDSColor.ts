@@ -17,6 +17,6 @@ export default function transformToColorDSColor(swatch: SwatchColor): DSColor {
     spot: swatch.spotValue,
     foilColor: swatch.spotValue,
     gradientColors: '',
-    availableInDS: false, // TODO If its custom then is not on DS?
+    availableInDS: false,
   };
 }
