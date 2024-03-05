@@ -127,6 +127,13 @@ const customTheme = createTheme(theme, {
         boxShadow: 'none',
       },
     },
+    MuiAccordion: {
+      styleOverrides: {
+        root: {
+          boxShadow: 'none',
+        },
+      },
+    },
     MuiButton: {
       styleOverrides: {
         root: {
