@@ -6,6 +6,7 @@ import {
   isRGB,
 } from './colorHelper';
 
+import { CMYK } from '@/types/ColorClasses';
 import { CMYK, HSV, LAB, RGB } from '@/types/ColorFormat';
 
 const ColorConverter = {

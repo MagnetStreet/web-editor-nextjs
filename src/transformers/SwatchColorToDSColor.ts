@@ -1,7 +1,17 @@
+import { getClosestMSColorsUsingCMYK } from '@/utils/color/colorHelper';
+
 import { DSColor } from '@/types/ColorDSTypes';
 import SwatchColor from '@/types/SwatchColor';
 
 export default function transformToColorDSColor(swatch: SwatchColor): DSColor {
+  const closestColor = getClosestMSColorsUsingCMYK(
+    swatch.origCyanValue,
+    swatch.origMagentaValue,
+    swatch.origYellowValue,
+    swatch.origBlackValue,
+    true
+  );
+
   return {
     name: swatch.swatchName,
     type: swatch.colorSpace,
@@ -12,7 +22,7 @@ export default function transformToColorDSColor(swatch: SwatchColor): DSColor {
       swatch.origBlackValue,
     ],
     rgb: [swatch.origRedValue, swatch.origGreenValue, swatch.origBlueValue],
-    family: '', //TODO how we can get the family of a custom color?
+    family: closestColor ? closestColor.family : '',
     category: 'custom',
     spot: swatch.spotValue,
     foilColor: swatch.spotValue,

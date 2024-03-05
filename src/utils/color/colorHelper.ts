@@ -5,7 +5,9 @@ import {
   transparentColor,
 } from '@/constants/colors-default';
 import rgbToCmykLUTEncodedData from '@/constants/rgbToCmykLUTEncoded.json';
+import ColorConverter from '@/utils/color/ColorConverter';
 
+import { CMYK as CMYK_CLASS } from '@/types/ColorClasses';
 import { DSColor } from '@/types/ColorDSTypes';
 import { CMYK, HSV, RGB } from '@/types/ColorFormat';
 import SwatchColor from '@/types/SwatchColor';
@@ -267,6 +269,46 @@ export function convertRgbToCmyk(r: number, g: number, b: number) {
   return cmyk;
 }
 
+export function getClosestMSColorsUsingCMYK(
+  c_value: number,
+  m_value: number,
+  y_value: number,
+  k_value: number,
+  standardColorsOnly: boolean
+) {
+  const customCMYK = new CMYK_CLASS(c_value, m_value, y_value, k_value);
+  const customRGB = ColorConverter._CMYKtoRGB(customCMYK);
+  return getClosestMSColorsUsingRGB(
+    customRGB.r,
+    customRGB.g,
+    customRGB.b,
+    standardColorsOnly
+  );
+}
+
+export function getClosestMSColorsUsingRGB(
+  r_value: number,
+  g_value: number,
+  b_value: number,
+  standardColorsOnly: boolean
+) {
+  const closestColors: { color: DSColor; distanceToCustom: number }[] = [];
+  if (!standardColorsOnly) {
+    return null;
+  }
+  for (const color of msStandardColors.colors) {
+    const distanceToCustom =
+      Math.abs(color.rgb[0] - r_value) +
+      Math.abs(color.rgb[1] - g_value) +
+      Math.abs(color.rgb[2] - b_value);
+    closestColors.push({ color, distanceToCustom });
+  }
+
+  closestColors.sort((a, b) => a.distanceToCustom - b.distanceToCustom);
+  const closestColor = closestColors[0]?.color; // Get the first color from the sorted array
+  return closestColor || null; // Return the closest color or null if no color is found
+}
+
 function base64Decode(data: string) {
   const b64 =
     'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
@@ -314,4 +356,7 @@ function base64Decode(data: string) {
   dec = tmp_arr.join('');
 
   return dec;
+}
+function CMYKtoRGB(customCMYK: CMYK) {
+  throw new Error('Function not implemented.');
 }
