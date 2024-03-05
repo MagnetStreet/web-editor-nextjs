@@ -35,6 +35,8 @@ import { DSColor } from '@/types/ColorDSTypes';
 
 const ColorDetails: React.FC = () => {
   const [searchText, setSearchText] = useState<string>('');
+  const [openStandardColorAcc, setOpenStandardColorAcc] =
+    useState<boolean>(false);
   const [msFilteredColors, setFilteredColors] = useState<DSColor[]>([
     ...standardColors.swatches,
   ]);
@@ -150,7 +152,10 @@ const ColorDetails: React.FC = () => {
       />
       <Typography>File Colors</Typography>
       <ColorList colors={fileColors} />
-      <Accordion>
+      <Accordion
+        expanded={searchText !== '' || openStandardColorAcc}
+        onClick={() => setOpenStandardColorAcc(!openStandardColorAcc)}
+      >
         <AccordionSummary
           expandIcon={
             <CustomIcon iconClass='fa-chevron-down' fontSizeOverWrite='16px' />
