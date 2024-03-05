@@ -14,7 +14,7 @@ export default function transformToColorSwatch(
     origGreenValue: ds.rgb[1],
     origRedValue: ds.rgb[0],
     cyanValue: ds.cmyk[0],
-    colorSpace: 'CMYK', //TODO to be defined
+    colorSpace: 'CMYK',
     foilable: ds.category === 'foil',
     magentaValue: ds.cmyk[1],
     origBlueValue: ds.rgb[2],

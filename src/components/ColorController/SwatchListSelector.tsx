@@ -33,7 +33,6 @@ const SwatchListSelector: React.FC = () => {
   }, [documentInfo]);
 
   const handleColorBoxSelected = (color: SwatchColor) => {
-    console.log('hey there');
     setActiveColorSwatch(color, <ColorDetails />);
   };
 

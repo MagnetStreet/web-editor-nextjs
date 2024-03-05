@@ -1,4 +1,4 @@
-import { Box, Divider, Stack, Typography } from '@mui/material';
+import { Box, Button, Divider, Stack, Typography } from '@mui/material';
 import * as React from 'react';
 import { FC, useEffect, useMemo, useState } from 'react';
 
@@ -7,10 +7,15 @@ import ColorSlider from '@/components/ColorController/ColorSlider';
 import { CustomIcon } from '@/components/shared/CustomIcon';
 
 import {
+  DesignStudioState,
+  useDesignStudioStore,
+} from '@/stores/useDesignStudioStore';
+import {
   GeneralControlsState,
   useGeneralControlsStore,
 } from '@/stores/useGeneralControlsStore';
 
+import transformToColorDSColor from '@/transformers/SwatchColorToDSColor';
 import ColorConverter from '@/utils/color/ColorConverter';
 import { getSimplifiedSwatchColors } from '@/utils/color/colorHelper';
 
@@ -20,6 +25,9 @@ import SwatchColor from '@/types/SwatchColor';
 const CustomColorPicker: FC = () => {
   const { activeSwatchColor, setActiveColorSwatch } =
     useGeneralControlsStore<GeneralControlsState>((state) => state);
+  const { addCustomColor } = useDesignStudioStore<DesignStudioState>(
+    (state) => state
+  );
 
   const [customColor, setCustomColor] = useState<SwatchColor>();
 
@@ -84,7 +92,13 @@ const CustomColorPicker: FC = () => {
 
   const handleBackClick = () => {
     //Go back to Select Color details Prev select color
-    setActiveColorSwatch(undefined, <ColorDetails />);
+    setActiveColorSwatch(activeSwatchColor, <ColorDetails />);
+  };
+  const addCustomColorClick = () => {
+    if (customColor) {
+      setActiveColorSwatch(customColor, <ColorDetails />);
+      addCustomColor(transformToColorDSColor(customColor));
+    }
   };
 
   const getCyanSliderBGStyle = function (
@@ -250,6 +264,22 @@ const CustomColorPicker: FC = () => {
           style={getBlackSliderBGStyle(c2, m2, y2)}
           onChange={(val: number) => sliderUpdate('K', val)}
         />
+      </Stack>
+      <Stack direction='row' justifyContent='space-between' gap='17px'>
+        <Button
+          variant='outlined'
+          sx={{ width: '50%' }}
+          onClick={handleBackClick}
+        >
+          Cancel
+        </Button>
+        <Button
+          variant='contained'
+          sx={{ width: '50%' }}
+          onClick={addCustomColorClick}
+        >
+          Apply
+        </Button>
       </Stack>
     </Stack>
   );

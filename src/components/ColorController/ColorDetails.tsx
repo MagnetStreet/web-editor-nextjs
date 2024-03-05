@@ -19,6 +19,10 @@ import { CustomIcon } from '@/components/shared/CustomIcon';
 import SearchBar from '@/components/shared/Form/SearchBar';
 
 import {
+  DesignStudioState,
+  useDesignStudioStore,
+} from '@/stores/useDesignStudioStore';
+import {
   GeneralControlsState,
   useGeneralControlsStore,
 } from '@/stores/useGeneralControlsStore';
@@ -33,10 +37,12 @@ const ColorDetails: React.FC = () => {
   const [msFilteredColors, setFilteredColors] = useState<DSColor[]>([
     ...standardColors.swatches,
   ]);
-  const [msCustomColors, setCustomColors] = useState<DSColor[]>([]);
 
   const { activeSwatchColor, setActiveColorSwatch } =
     useGeneralControlsStore<GeneralControlsState>((state) => state);
+  const { customColors } = useDesignStudioStore<DesignStudioState>(
+    (state) => state
+  );
   const swatchName = activeSwatchColor ? activeSwatchColor.swatchName : '';
   const { m, y, c, k } = useMemo(
     () => getSimplifiedSwatchColors(activeSwatchColor),
@@ -142,7 +148,7 @@ const ColorDetails: React.FC = () => {
           <Typography>File Colors</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <ColorList colors={msCustomColors} />
+          <ColorList colors={[]} />
         </AccordionDetails>
       </Accordion>
       <Accordion>
@@ -159,7 +165,7 @@ const ColorDetails: React.FC = () => {
           <ColorList colors={msFilteredColors} />
         </AccordionDetails>
       </Accordion>
-      <Accordion>
+      <Accordion defaultExpanded>
         <AccordionSummary
           expandIcon={
             <CustomIcon iconClass='fa-chevron-down' fontSizeOverWrite='16px' />
@@ -170,23 +176,40 @@ const ColorDetails: React.FC = () => {
           <Typography>Custom Colors</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <ColorList colors={msCustomColors} />
-          <Button
-            variant='outlined'
-            onClick={() => {
-              handleAddCustomColorClick();
-            }}
-            endIcon={
-              <CustomIcon
-                iconClass='fa-circle-plus-sharp-light'
-                fontSizeOverWrite='12px'
-              />
-            }
-          >
-            ADD
-          </Button>
+          <Stack direction='column' gap='15px'>
+            <ColorList colors={customColors} />
+            <Button
+              variant='outlined'
+              sx={{
+                width: '80px',
+              }}
+              onClick={() => {
+                handleAddCustomColorClick();
+              }}
+              endIcon={
+                <CustomIcon
+                  iconClass='fa-circle-plus-sharp-light'
+                  fontSizeOverWrite='12px'
+                />
+              }
+            >
+              ADD
+            </Button>
+          </Stack>
         </AccordionDetails>
       </Accordion>
+      <Stack direction='row' justifyContent='space-between' gap='17px'>
+        <Button
+          variant='outlined'
+          sx={{ width: '50%' }}
+          onClick={handleBackClick}
+        >
+          Cancel
+        </Button>
+        <Button variant='contained' sx={{ width: '50%' }}>
+          Apply
+        </Button>
+      </Stack>
     </Stack>
   );
 };
