@@ -22,7 +22,8 @@ const CustomColorPicker: FC = () => {
     useGeneralControlsStore<GeneralControlsState>((state) => state);
 
   const [customColor, setCustomColor] = useState<SwatchColor>();
-  const { r, g, b, m, y, c, k } = useMemo(
+
+  const { r, g, b } = useMemo(
     () => getSimplifiedSwatchColors(activeSwatchColor),
     [activeSwatchColor]
   );
@@ -35,7 +36,46 @@ const CustomColorPicker: FC = () => {
     y: y2,
     c: c2,
     k: k2,
-  } = useMemo(() => getSimplifiedSwatchColors(customColor), [customColor]);
+  } = useMemo(() => {
+    return getSimplifiedSwatchColors(customColor);
+  }, [customColor]);
+
+  const sliderUpdate = (color: string, val: number) => {
+    if (!customColor) {
+      return;
+    }
+    const updatedCustomColor = { ...customColor };
+    switch (color) {
+      case 'C':
+        updatedCustomColor.origCyanValue = val;
+        break;
+      case 'M':
+        updatedCustomColor.origMagentaValue = val;
+        break;
+      case 'Y':
+        updatedCustomColor.origYellowValue = val;
+        break;
+      case 'K':
+        updatedCustomColor.origBlackValue = val;
+        break;
+      default:
+        // Default case if color doesn't match any specific case
+        // Although this shouldn't happen
+        console.log('Unknown color:', color);
+    }
+    //Complete update the other properties
+    const newCMYK = new CMYK(
+      updatedCustomColor.origCyanValue,
+      updatedCustomColor.origMagentaValue,
+      updatedCustomColor.origYellowValue,
+      updatedCustomColor.origBlackValue
+    );
+    const updatedRGB = ColorConverter._CMYKtoRGB(newCMYK);
+    updatedCustomColor.origRedValue = updatedRGB.r;
+    updatedCustomColor.origBlueValue = updatedRGB.b;
+    updatedCustomColor.origGreenValue = updatedRGB.g;
+    setCustomColor(updatedCustomColor);
+  };
 
   useEffect(() => {
     //Make a copy of the custom Color to be modified
@@ -45,30 +85,6 @@ const CustomColorPicker: FC = () => {
   const handleBackClick = () => {
     //Go back to Select Color details Prev select color
     setActiveColorSwatch(undefined, <ColorDetails />);
-  };
-
-  const sliderUpdate = (color: string, val: number) => {
-    if (!customColor) {
-      return;
-    }
-    switch (color) {
-      case 'C':
-        customColor.origCyanValue = val;
-        break;
-      case 'M':
-        customColor.origMagentaValue = val;
-        break;
-      case 'Y':
-        customColor.origYellowValue = val;
-        break;
-      case 'K':
-        customColor.origBlackValue = val;
-        break;
-      default:
-        // Default case if color doesn't match any specific case
-        console.log('Unknown color:', color);
-    }
-    setCustomColor(customColor);
   };
 
   const getCyanSliderBGStyle = function (
@@ -157,9 +173,6 @@ const CustomColorPicker: FC = () => {
     gradientStyle =
       gradientStyle +
       'background: linear-gradient(to right, START_COLOR 0%,END_COLOR 100%);'; /* W3C */
-    gradientStyle =
-      gradientStyle +
-      "filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='START_HEX', endColorstr='END_HEX',GradientType=1 );"; /* IE6-9 */
 
     gradientStyle = gradientStyle.replace(/START_COLOR/g, startRGB);
     gradientStyle = gradientStyle.replace(/END_COLOR/g, endRGB);

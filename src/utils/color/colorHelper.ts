@@ -1,15 +1,18 @@
+import cmykToRgbLUTEncodedData from '@/constants/cmykToRgbLUT.json';
 import {
   foilColors,
   standardColors,
   transparentColor,
 } from '@/constants/colors-default';
-import encodedColorTables from '@/constants/encodedColorTables.json';
+import rgbToCmykLUTEncodedData from '@/constants/rgbToCmykLUTEncoded.json';
 
 import { DSColor } from '@/types/ColorDSTypes';
 import { CMYK, HSV, RGB } from '@/types/ColorFormat';
 import SwatchColor from '@/types/SwatchColor';
 
-const { cmykToRgbLUTEncoded, rgbToCmykLUTEncoded } = encodedColorTables;
+const cmykToRgbLUTEncoded: string = cmykToRgbLUTEncodedData.cmykToRgbLUTEncoded;
+const rgbToCmykLUTEncoded: string = rgbToCmykLUTEncodedData.rgbToCmykLUTEncoded;
+
 const msColors = {
   name: 'All Colors',
   colors: [

@@ -1,4 +1,4 @@
-import { Slider, Stack, TextField } from '@mui/material';
+import { Slider, Stack, styled, TextField } from '@mui/material';
 import React from 'react';
 
 interface ColorSliderProps {
@@ -15,9 +15,7 @@ const ColorSlider: React.FC<ColorSliderProps> = ({
   onChange,
 }) => {
   const handleChange = (event: Event, newValue: number | number[]) => {
-    if (typeof newValue === 'number') {
-      onChange(newValue);
-    }
+    onChange(newValue as number);
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,7 +27,7 @@ const ColorSlider: React.FC<ColorSliderProps> = ({
     }
     onChange(newValue);
   };
-  console.log('style', style);
+  //console.log('style', title, style);
 
   return (
     <Stack
@@ -40,10 +38,11 @@ const ColorSlider: React.FC<ColorSliderProps> = ({
     >
       <div>{title}</div>
       <Stack direction='row' gap='16px'>
-        <Slider
+        <GradientSlider
           max={100}
           min={0}
           value={value}
+          customColor={style}
           onChange={handleChange}
           valueLabelDisplay='auto'
         />
@@ -57,5 +56,69 @@ const ColorSlider: React.FC<ColorSliderProps> = ({
     </Stack>
   );
 };
+
+// Function to parse the background string and return it as an object
+const parseBackgroundString = (
+  backgroundString: string
+): {
+  [key: string]: string;
+} => {
+  const styleObject: {
+    [key: string]: string;
+  } = {};
+  const backgroundProperties: string[] = backgroundString.split(';');
+  backgroundProperties.forEach((property: string) => {
+    const [key, value] = property.split(':');
+    if (key && value) {
+      styleObject[key.trim()] = value.trim();
+    }
+  });
+  return styleObject;
+};
+
+const GradientSlider = styled(Slider)<{
+  customColor: string;
+}>(({ customColor }) => ({
+  height: 14,
+  '& .MuiSlider-track': {
+    border: 'none',
+    width: '0 !important',
+  },
+  '& .MuiSlider-rail': {
+    opacity: '100% !important',
+    ...parseBackgroundString(customColor),
+  },
+  '& .MuiSlider-thumb': {
+    height: 24,
+    width: 24,
+    backgroundColor: '#fff',
+    border: '2px solid currentColor',
+    '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
+      boxShadow: 'inherit',
+    },
+    '&::before': {
+      display: 'none',
+    },
+  },
+  '& .MuiSlider-valueLabel': {
+    lineHeight: 1.2,
+    fontSize: 12,
+    background: 'unset',
+    padding: 0,
+    width: 32,
+    height: 32,
+    borderRadius: '50% 50% 50% 0',
+    backgroundColor: '#52af77',
+    transformOrigin: 'bottom left',
+    transform: 'translate(50%, -100%) rotate(-45deg) scale(0)',
+    '&::before': { display: 'none' },
+    '&.MuiSlider-valueLabelOpen': {
+      transform: 'translate(50%, -100%) rotate(-45deg) scale(1)',
+    },
+    '& > *': {
+      transform: 'rotate(45deg)',
+    },
+  },
+}));
 
 export default ColorSlider;
