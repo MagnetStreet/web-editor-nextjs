@@ -97,7 +97,7 @@ const CustomColorPicker: FC = () => {
   const addCustomColorClick = () => {
     if (customColor) {
       setActiveColorSwatch(customColor, <ColorDetails />);
-      addCustomColor(transformToColorDSColor(customColor));
+      addCustomColor(transformToColorDSColor(customColor, custom));
     }
   };
 
@@ -293,7 +293,7 @@ const CustomColorPicker: FC = () => {
           title='Yellow'
           value={y2}
           tumbColor='#FFED12'
-          tumbFontColor='#000'
+          tumbfontcolor='#000'
           style={getYellowSliderBGStyle(c2, m2, k2)}
           onChange={(val: number) => sliderUpdate('Y', val)}
         />

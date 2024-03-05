@@ -3,7 +3,10 @@ import { getClosestMSColorsUsingCMYK } from '@/utils/color/colorHelper';
 import { DSColor } from '@/types/ColorDSTypes';
 import SwatchColor from '@/types/SwatchColor';
 
-export default function transformToColorDSColor(swatch: SwatchColor): DSColor {
+export default function transformToColorDSColor(
+  swatch: SwatchColor,
+  custom: boolean
+): DSColor {
   const closestColor = getClosestMSColorsUsingCMYK(
     swatch.origCyanValue,
     swatch.origMagentaValue,
@@ -13,7 +16,9 @@ export default function transformToColorDSColor(swatch: SwatchColor): DSColor {
   );
 
   return {
-    name: swatch.swatchName,
+    name: custom
+      ? `Custome-${closestColor?.family}-${closestColor?.name}`
+      : swatch.swatchName,
     type: swatch.colorSpace,
     cmyk: [
       swatch.origCyanValue,
@@ -23,7 +28,7 @@ export default function transformToColorDSColor(swatch: SwatchColor): DSColor {
     ],
     rgb: [swatch.origRedValue, swatch.origGreenValue, swatch.origBlueValue],
     family: closestColor ? closestColor.family : '',
-    category: 'custom',
+    category: closestColor ? closestColor.category : '',
     spot: swatch.spotValue,
     foilColor: swatch.spotValue,
     gradientColors: '',

@@ -5,8 +5,8 @@ interface ColorSliderProps {
   title: string;
   value: number;
   style: string;
-  tumbColor?: string;
-  tumbFontColor?: string;
+  tumbcolor?: string;
+  tumbfontcolor?: string;
   onChange: (value: number) => void;
 }
 
@@ -14,8 +14,8 @@ const ColorSlider: React.FC<ColorSliderProps> = ({
   title,
   value,
   style,
-  tumbColor = '#CCC',
-  tumbFontColor = '#fff',
+  tumbcolor = '#CCC',
+  tumbfontcolor = '#fff',
   onChange,
 }) => {
   const handleChange = (event: Event, newValue: number | number[]) => {
@@ -46,9 +46,9 @@ const ColorSlider: React.FC<ColorSliderProps> = ({
           max={100}
           min={0}
           value={value}
-          gradientStyle={style}
-          tumbColor={tumbColor}
-          tumbFontColor={tumbFontColor}
+          gradientstyle={style}
+          tumbcolor={tumbcolor}
+          tumbfontcolor={tumbfontcolor}
           onChange={handleChange}
           valueLabelDisplay='auto'
         />
@@ -91,10 +91,10 @@ const parseBackgroundString = (
 };
 
 const GradientSlider = styled(Slider)<{
-  gradientStyle: string;
-  tumbColor: string;
-  tumbFontColor: string;
-}>(({ gradientStyle, tumbColor, tumbFontColor }) => ({
+  gradientstyle: string;
+  tumbcolor: string;
+  tumbfontcolor: string;
+}>(({ gradientstyle, tumbcolor, tumbfontcolor }) => ({
   height: 17,
   '& .MuiSlider-track': {
     border: 'none',
@@ -103,7 +103,7 @@ const GradientSlider = styled(Slider)<{
   '& .MuiSlider-rail': {
     opacity: '100% !important',
     borderRadius: '3px',
-    ...parseBackgroundString(gradientStyle),
+    ...parseBackgroundString(gradientstyle),
   },
   '& .MuiSlider-thumb': {
     height: 24,
@@ -125,8 +125,8 @@ const GradientSlider = styled(Slider)<{
     width: 32,
     height: 32,
     borderRadius: '50% 50% 50% 0',
-    color: tumbFontColor,
-    backgroundColor: tumbColor,
+    color: tumbfontcolor,
+    backgroundColor: tumbcolor,
     transformOrigin: 'bottom left',
     transform: 'translate(50%, -100%) rotate(-45deg) scale(0)',
     '&::before': { display: 'none' },
