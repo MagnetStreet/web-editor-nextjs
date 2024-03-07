@@ -22,7 +22,7 @@ const SwatchListSelector: React.FC = () => {
   const { documentInfo } = useDesignStudioStore<DesignStudioState>(
     (state) => state
   );
-  const { setActiveColorSwatch } =
+  const { setIsolatedMode, setActiveColorSwatch } =
     useGeneralControlsStore<GeneralControlsState>((state) => state);
   const [swatches, setSwatches] = useState<SwatchColor[]>();
 
@@ -33,6 +33,7 @@ const SwatchListSelector: React.FC = () => {
   }, [documentInfo]);
 
   const handleColorBoxSelected = (color: SwatchColor) => {
+    setIsolatedMode(true);
     setActiveColorSwatch(color, <ColorDetails />);
   };
 

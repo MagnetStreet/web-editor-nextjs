@@ -42,7 +42,7 @@ const ColorDetails: React.FC = () => {
   ]);
   const [fileColors, setFileColors] = useState<DSColor[]>([]);
 
-  const { activeSwatchColor, setActiveColorSwatch } =
+  const { activeSwatchColor, setIsolatedMode, setActiveColorSwatch } =
     useGeneralControlsStore<GeneralControlsState>((state) => state);
   const { customColors, documentInfo } =
     useDesignStudioStore<DesignStudioState>((state) => state);
@@ -89,6 +89,7 @@ const ColorDetails: React.FC = () => {
 
   const handleBackClick = () => {
     //Reset to Color List and clear up
+    setIsolatedMode(false);
     setActiveColorSwatch(undefined, <SwatchListSelector />);
   };
   const handleAddCustomColorClick = () => {
