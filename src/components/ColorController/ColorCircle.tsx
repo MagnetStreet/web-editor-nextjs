@@ -1,12 +1,11 @@
 import { styled } from '@mui/material';
-import { MouseEvent } from 'react';
 import * as React from 'react';
 
 import SwatchColor from '@/types/SwatchColor';
 
 interface ColorCircleProps {
   color: SwatchColor;
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onSelected?: (color: SwatchColor) => void;
 }
 
 const StyledButton = styled('button')(
@@ -28,13 +27,13 @@ const StyledButton = styled('button')(
 const ColorCircle: React.FC<ColorCircleProps> = ({
   color,
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  onClick = (e: React.MouseEvent<HTMLButtonElement>) => {},
+  onSelected = (color: SwatchColor) => {},
 }) => {
   const { redValue, blueValue, greenValue } = color;
   return (
     <StyledButton
       id={`${color.swatchName}`}
-      onClick={onClick}
+      onClick={() => onSelected(color)}
       sx={{
         backgroundColor: `rgb(${redValue}, ${greenValue}, ${blueValue})`,
       }}

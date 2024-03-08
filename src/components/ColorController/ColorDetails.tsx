@@ -30,8 +30,11 @@ import {
 import { standardColors } from '@/constants/colors-default';
 import transformToColorDSColor from '@/transformers/SwatchColorToDSColor';
 import { getSimplifiedSwatchColors, rgbToHex } from '@/utils/color/colorHelper';
+import { getSessionData } from '@/utils/getSessionData';
+import deepCopy from '@/utils/shared/deepCopy';
 
 import { DSColor } from '@/types/ColorDSTypes';
+import SwatchColor from '@/types/SwatchColor';
 
 const ColorDetails: React.FC = () => {
   const [searchText, setSearchText] = useState<string>('');
@@ -42,10 +45,30 @@ const ColorDetails: React.FC = () => {
   ]);
   const [fileColors, setFileColors] = useState<DSColor[]>([]);
 
-  const { activeSwatchColor, setIsolatedMode, setActiveColorSwatch } =
-    useGeneralControlsStore<GeneralControlsState>((state) => state);
-  const { customColors, documentInfo } =
-    useDesignStudioStore<DesignStudioState>((state) => state);
+  const {
+    activeSwatchColor,
+    setIsLoading,
+    setIsolatedMode,
+    setActiveColorSwatch,
+  } = useGeneralControlsStore<GeneralControlsState>((state) => state);
+
+  const {
+    visitorInfo,
+    productInfo,
+    documentInfo,
+    customColors,
+    sessionId,
+    documentId,
+    templateId,
+    setProductInfo,
+    setVisitorInfo,
+    setDocumentId,
+    setDocumentInfo,
+    setSessionId,
+    setTemplateId,
+    setActiveView,
+    setViewBlob,
+  } = useDesignStudioStore<DesignStudioState>((state) => state);
   const swatchName = activeSwatchColor ? activeSwatchColor.swatchName : '';
   const { m, y, c, k } = useMemo(
     () => getSimplifiedSwatchColors(activeSwatchColor),
@@ -87,11 +110,89 @@ const ColorDetails: React.FC = () => {
     return nameMatch || familyMatch || hexValue.includes(searchText);
   };
 
+  //TODO Maybe Add a reusable function here
+  const fetchData = async () => {
+    if (!productInfo || !visitorInfo) {
+      throw Error('productInfo not set');
+    }
+    try {
+      const { viewBlob, documentInfo, documentId, sessionId, templateId } =
+        await getSessionData(visitorInfo, productInfo);
+      if (documentInfo) {
+        setProductInfo(productInfo);
+        setVisitorInfo(visitorInfo);
+        setDocumentId(documentId);
+        setSessionId(sessionId);
+        setTemplateId(templateId);
+        setDocumentInfo(documentInfo);
+        setActiveView(documentInfo?.views[0]);
+      }
+      if (viewBlob instanceof Blob) {
+        setViewBlob(viewBlob);
+      }
+    } catch (error) {
+      console.log('error!!!:', error);
+    }
+  };
+
   const handleBackClick = () => {
     //Reset to Color List and clear up
     setIsolatedMode(false);
     setActiveColorSwatch(undefined, <SwatchListSelector />);
   };
+  //TODO find a reusable way of doing this since we will have this is several places
+  const handleSaveAction = async (color: SwatchColor) => {
+    try {
+      setIsLoading(true);
+      //Update the Color in the document
+      console.log('color', color);
+      console.log('documentInfo', documentInfo);
+      if (!activeSwatchColor || !documentInfo) {
+        throw Error('Missing activeSwatchColor or DocumentInfo on the state');
+      }
+      const newColor = {
+        ...color,
+        swatchName: activeSwatchColor.swatchName,
+      };
+      const newDocumentInfo = deepCopy(documentInfo);
+      const index = newDocumentInfo.swatches.findIndex(
+        (x) => x.swatchName === activeSwatchColor.swatchName
+      );
+
+      if (!index) {
+        throw Error(
+          'Missing activeSwatchColor and selected color name missmatch'
+        );
+      }
+      newDocumentInfo.swatches[index] = newColor;
+
+      console.log('newDocumentInfo', newDocumentInfo);
+
+      //Try save the document
+      const updateResponse = await fetch(`/api/updateDocument`, {
+        method: 'POST',
+        body: JSON.stringify({
+          sessionId,
+          documentId,
+          templateId,
+          viewList: newDocumentInfo.views.map((x) => x.sceneName),
+          newDocumentInfo,
+        }),
+      });
+      console.log('updateResponse', updateResponse);
+      //Refecth all req data
+      fetchData();
+    } catch (error) {
+      //Show Error waring component
+      console.log('error!!!:', error);
+    } finally {
+      //Go to a clean state
+      setIsLoading(false);
+      setIsolatedMode(false);
+      setActiveColorSwatch(undefined, <SwatchListSelector />);
+    }
+  };
+
   const handleAddCustomColorClick = () => {
     setActiveColorSwatch(activeSwatchColor, <CustomColorPicker />);
   };
@@ -152,7 +253,7 @@ const ColorDetails: React.FC = () => {
         onChange={onSearchUpdate}
       />
       <Typography>File Colors</Typography>
-      <ColorList colors={fileColors} />
+      <ColorList colors={fileColors} handleSaveAction={handleSaveAction} />
       <Accordion
         expanded={searchText !== '' || openStandardColorAcc}
         onClick={() => setOpenStandardColorAcc(!openStandardColorAcc)}
@@ -167,7 +268,10 @@ const ColorDetails: React.FC = () => {
           <Typography>Standard Colors</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <ColorList colors={msFilteredColors} />
+          <ColorList
+            colors={msFilteredColors}
+            handleSaveAction={handleSaveAction}
+          />
         </AccordionDetails>
       </Accordion>
       <Accordion defaultExpanded>

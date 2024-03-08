@@ -11,9 +11,10 @@ import SwatchColor from '@/types/SwatchColor';
 
 interface ColorListProps {
   colors: DSColor[];
+  handleSaveAction: () => void;
 }
 
-const ColorList: React.FC<ColorListProps> = ({ colors }) => {
+const ColorList: React.FC<ColorListProps> = ({ colors, handleSaveAction }) => {
   const [colorList, setColorList] = useState<SwatchColor[]>([]);
 
   useEffect(() => {
@@ -27,7 +28,11 @@ const ColorList: React.FC<ColorListProps> = ({ colors }) => {
       {colorList &&
         colorList.map((color) => {
           return (
-            <ColorCircle key={`color-list-${color.swatchName}`} color={color} />
+            <ColorCircle
+              key={`color-list-${color.swatchName}`}
+              color={color}
+              onSelected={handleSaveAction}
+            />
           );
         })}
     </Stack>

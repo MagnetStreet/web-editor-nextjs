@@ -1,46 +1,37 @@
 import { IS_PROD } from '@/constants';
 import { consoleLog } from '@/utils/shared/console-log';
 
-export const postApiResponse = async <T>({
+export const postApiFormData = async <T>({
   apiEndpoint,
-  requestData,
+  formData,
   revalidate = IS_PROD ? 3600 : 120, // cache data in seconds
   headers,
 }: {
   apiEndpoint: string;
-  requestData?: BodyInit;
-  method?: 'POST' | 'GET' | 'PUT' | 'DELETE';
+  formData: FormData;
   revalidate?: number;
   headers?: HeadersInit;
 }) => {
   try {
     const response = await fetch(apiEndpoint, {
       method: 'POST',
-      body: requestData,
+      body: formData,
       headers,
-      credentials: 'include',
       next: {
         revalidate,
       },
     });
+    consoleLog('🚀 headers', headers);
 
     if (!response.ok) {
-      consoleLog('🚀 Debug getApiResponse requestData:', requestData);
-
       throw new Error(
         `${response.status}/${response.statusText} - ${apiEndpoint}`
       );
     }
 
-    // Check if the response is an image
-    const contentType = response.headers.get('Content-Type');
-    if (contentType && contentType.startsWith('image')) {
-      return (await response.blob()) as unknown as T; // Cast to T, assuming T is compatible with Blob
-    }
-
     return (await response.json()) as T;
   } catch (error) {
-    consoleLog('postApiResponse error:', error);
+    consoleLog('postApiFormData error:', error);
   }
 
   return null;

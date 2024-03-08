@@ -85,11 +85,18 @@ export const getSessionData = async (
 
     const viewBlob = await viewResponse.blob();
     return {
+      sessionId,
+      documentId,
+      templateId,
       viewBlob,
       documentInfo,
     };
   } catch (error) {
     console.log('getSessionData Error:', error);
-    return {};
+    return {
+      documentId: '',
+      sessionId: '',
+      templateId: '',
+    };
   }
 };

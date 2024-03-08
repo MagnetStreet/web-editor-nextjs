@@ -64,8 +64,12 @@ const PageEditor: React.FC<EditorPageServerData> = ({
     documentInfo,
     activeView,
     viewBlob,
-    activeLayoutName,
+    setProductInfo,
+    setVisitorInfo,
+    setDocumentId,
     setDocumentInfo,
+    setSessionId,
+    setTemplateId,
     setActiveView,
     setViewBlob,
   } = useDesignStudioStore<DesignStudioState>((state) => state);
@@ -113,19 +117,20 @@ const PageEditor: React.FC<EditorPageServerData> = ({
   };
 
   useEffect(() => {
-    //console.log('visitorInfo', visitorInfo);
-    //console.log('productInfo', productInfo);
     if (visitorInfo && productInfo && !isTest) {
       const fetchData = async () => {
         setIsLoading(true);
         try {
-          const { viewBlob, documentInfo } = await getSessionData(
-            visitorInfo,
-            productInfo
-          );
+          const { viewBlob, documentInfo, documentId, sessionId, templateId } =
+            await getSessionData(visitorInfo, productInfo);
           console.log('documentInfo', documentInfo);
           console.log('viewBlob', viewBlob);
           if (documentInfo) {
+            setProductInfo(productInfo);
+            setVisitorInfo(visitorInfo);
+            setDocumentId(documentId);
+            setSessionId(sessionId);
+            setTemplateId(templateId);
             setDocumentInfo(documentInfo);
             setActiveView(documentInfo?.views[0]);
           }
