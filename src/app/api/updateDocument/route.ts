@@ -25,7 +25,10 @@ export async function POST(req: Request) {
 
     const templateIdFirst = templateId.split(',')[0];
     const saveChanges = reqData.saveChanges || false;
-
+    consoleLog(
+      'Calling ',
+      `${API_BASE_URL}/ids/updateDocument?sessionId=${sessionId}&documentId=${documentId}&viewList=${viewList}&templateId=${templateIdFirst}&saveChanges=${saveChanges}&exportPageRange=ALL&exportOverprintMasks=true`
+    );
     const sessionInfoResponse = await fetch(
       `${API_BASE_URL}/ids/updateDocument?sessionId=${sessionId}&documentId=${documentId}&viewList=${viewList}&templateId=${templateIdFirst}&saveChanges=${saveChanges}&exportPageRange=ALL&exportOverprintMasks=true`,
       {

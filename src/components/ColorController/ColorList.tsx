@@ -11,7 +11,7 @@ import SwatchColor from '@/types/SwatchColor';
 
 interface ColorListProps {
   colors: DSColor[];
-  handleSaveAction: () => void;
+  handleSaveAction: (color: SwatchColor) => void;
 }
 
 const ColorList: React.FC<ColorListProps> = ({ colors, handleSaveAction }) => {

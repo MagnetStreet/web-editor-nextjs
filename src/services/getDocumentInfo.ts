@@ -1,27 +1,20 @@
 import { getViewListSceneValue } from '@/utils/getViewListSceneValue';
 
+import DocumentInfoAndViewResponse from '@/types/DocumentInfoAndViewResponse';
 import DSItemJSON from '@/types/DSItemJSON';
 import ProductInformation from '@/types/ProductInformation';
-import SessionData from '@/types/SessionData';
-import { VisitorInfo } from '@/types/VisitorInfo';
+import SessionInfomation from '@/types/SessionInfomation';
 
-export const getSessionData = async (
-  visitorInfo: VisitorInfo,
-  productInfo: ProductInformation
-): Promise<SessionData> => {
+export const getDocumentInfoAndView = async (
+  productInfo: ProductInformation,
+  sessionInformation: SessionInfomation
+): Promise<DocumentInfoAndViewResponse> => {
   try {
-    const { visitorImprints } = visitorInfo;
     const { documentList } = productInfo;
+    const { description } = sessionInformation;
     const headers = {
       'Content-Type': 'application/json',
     };
-    let documentId = 'NEW-DOCUMENT-FROM-TEMPLATE';
-    let sessionId = 'NEW-SESSION';
-
-    // Check if We have a active sessiojn on the vistorImprints
-    if (visitorImprints && visitorImprints.currentSessionId) {
-      sessionId = visitorImprints.currentSessionId;
-    }
 
     if (!documentList || !documentList[0]) {
       throw Error('DocumentList from productInfo  NOT FOUND');
@@ -44,17 +37,9 @@ export const getSessionData = async (
       ''
     );
 
-    const sessionInfoResponse = await fetch(`/api/setUpSession/`, {
-      method: 'POST',
-      headers,
-      body: JSON.stringify({ sessionId, templateId, documentId }),
-    });
-
-    const { sessionInfo } = await sessionInfoResponse.json();
-    const sessionDescription = sessionInfo.description;
-    const SessionObj = sessionDescription.split(':');
-    sessionId = SessionObj[0]; // update The sessionID
-    documentId = SessionObj[1].split(',')[0]; // update The first documentID
+    const SessionObj = description.split(':');
+    const sessionId = SessionObj[0]; // update The sessionID
+    const documentId = SessionObj[1].split(',')[0]; // update The first documentID
     const viewListString = getViewListSceneValue(documentList);
 
     const getDocumentResponse = await fetch(`/api/getDocument/`, {
@@ -69,26 +54,10 @@ export const getSessionData = async (
     });
 
     const { documentInfo } = await getDocumentResponse.json();
-    const viewName = documentInfo?.views[0]?.sceneName;
-
-    const viewResponse = await fetch(`/api/getView/`, {
-      method: 'POST',
-      headers,
-      body: JSON.stringify({
-        sessionId,
-        documentId,
-        templateId,
-        viewName,
-        templateIdFirst,
-      }),
-    });
-
-    const viewBlob = await viewResponse.blob();
     return {
       sessionId,
       documentId,
       templateId,
-      viewBlob,
       documentInfo,
     };
   } catch (error) {

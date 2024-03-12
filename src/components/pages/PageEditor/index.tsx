@@ -24,7 +24,9 @@ import {
   useGeneralControlsStore,
 } from '@/stores/useGeneralControlsStore';
 
-import { getSessionData } from '@/utils/getSessionData';
+import { getDocumentInfoAndView } from '@/services/getDocumentInfo';
+import { getDocumentView } from '@/services/getDocumentView';
+import { setUpSessionData } from '@/services/setUpSessionData';
 
 import DesignStudioItem from '@/types/DesignStudioItem';
 import ProductInformation from '@/types/ProductInformation';
@@ -67,6 +69,7 @@ const PageEditor: React.FC<EditorPageServerData> = ({
     setProductInfo,
     setVisitorInfo,
     setDocumentId,
+    setSessionInfo,
     setDocumentInfo,
     setSessionId,
     setTemplateId,
@@ -121,8 +124,19 @@ const PageEditor: React.FC<EditorPageServerData> = ({
       const fetchData = async () => {
         setIsLoading(true);
         try {
-          const { viewBlob, documentInfo, documentId, sessionId, templateId } =
-            await getSessionData(visitorInfo, productInfo);
+          const sessionSetUpResponse = await setUpSessionData(
+            visitorInfo,
+            productInfo
+          );
+          setSessionInfo(sessionSetUpResponse);
+          console.log('sessionSetUpResponse', sessionSetUpResponse);
+          const { documentInfo, documentId, sessionId, templateId } =
+            await getDocumentInfoAndView(productInfo, sessionSetUpResponse);
+          const { viewBlob } = await getDocumentView(
+            sessionSetUpResponse,
+            documentInfo,
+            productInfo
+          );
           console.log('documentInfo', documentInfo);
           console.log('viewBlob', viewBlob);
           if (documentInfo) {

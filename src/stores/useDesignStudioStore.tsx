@@ -4,6 +4,7 @@ import { DSColor } from '@/types/ColorDSTypes';
 import DesignStudioItem from '@/types/DesignStudioItem';
 import { CONTEXTUAL_MENU_OPTION } from '@/types/enum';
 import ProductInformation from '@/types/ProductInformation';
+import SessionInfomation from '@/types/SessionInfomation';
 import View from '@/types/View';
 
 export interface DesignStudioState {
@@ -14,6 +15,7 @@ export interface DesignStudioState {
   activeView?: View;
   viewBlob?: Blob;
   visitorInfo?: any;
+  sessionInformation?: SessionInfomation;
   productInfo?: ProductInformation;
   customColors: DSColor[];
   activeLayoutName: CONTEXTUAL_MENU_OPTION;
@@ -24,6 +26,7 @@ export interface DesignStudioState {
   setActiveView: (val: View) => void;
   setViewBlob: (val: Blob) => void;
   setProductInfo: (val: ProductInformation) => void;
+  setSessionInfo: (val: SessionInfomation) => void;
   setVisitorInfo: (val: any) => void;
   setActiveLayoutName: (newLayoutName: CONTEXTUAL_MENU_OPTION) => void;
   addCustomColor: (val: DSColor) => void;
@@ -44,6 +47,7 @@ export const useDesignStudioStore = create<DesignStudioState>((set) => ({
   setDocumentInfo: (val: DesignStudioItem) => set({ documentInfo: val }),
   setActiveView: (val: View) => set({ activeView: val }),
   setViewBlob: (val: Blob) => set({ viewBlob: val }),
+  setSessionInfo: (val: SessionInfomation) => set({ sessionInformation: val }),
   setActiveLayoutName: (newLayoutName: CONTEXTUAL_MENU_OPTION) =>
     set({ activeLayoutName: newLayoutName }),
   addCustomColor: (newColor: DSColor) =>

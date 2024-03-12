@@ -28,10 +28,9 @@ import {
 } from '@/stores/useGeneralControlsStore';
 
 import { standardColors } from '@/constants/colors-default';
+import updateDocumentColorService from '@/services/updateDocumentColorService';
 import transformToColorDSColor from '@/transformers/SwatchColorToDSColor';
 import { getSimplifiedSwatchColors, rgbToHex } from '@/utils/color/colorHelper';
-import { getSessionData } from '@/utils/getSessionData';
-import deepCopy from '@/utils/shared/deepCopy';
 
 import { DSColor } from '@/types/ColorDSTypes';
 import SwatchColor from '@/types/SwatchColor';
@@ -53,19 +52,14 @@ const ColorDetails: React.FC = () => {
   } = useGeneralControlsStore<GeneralControlsState>((state) => state);
 
   const {
-    visitorInfo,
     productInfo,
     documentInfo,
     customColors,
     sessionId,
     documentId,
     templateId,
-    setProductInfo,
-    setVisitorInfo,
-    setDocumentId,
+    sessionInformation,
     setDocumentInfo,
-    setSessionId,
-    setTemplateId,
     setActiveView,
     setViewBlob,
   } = useDesignStudioStore<DesignStudioState>((state) => state);
@@ -82,7 +76,7 @@ const ColorDetails: React.FC = () => {
   useEffect(() => {
     if (documentInfo?.swatches) {
       const originalFileColors: DSColor[] = documentInfo?.swatches.map(
-        (swatchColor) => transformToColorDSColor(swatchColor)
+        (swatchColor) => transformToColorDSColor(swatchColor, false, true)
       );
       setFileColors(originalFileColors);
     }
@@ -110,83 +104,38 @@ const ColorDetails: React.FC = () => {
     return nameMatch || familyMatch || hexValue.includes(searchText);
   };
 
-  //TODO Maybe Add a reusable function here
-  const fetchData = async () => {
-    if (!productInfo || !visitorInfo) {
-      throw Error('productInfo not set');
-    }
-    try {
-      const { viewBlob, documentInfo, documentId, sessionId, templateId } =
-        await getSessionData(visitorInfo, productInfo);
-      if (documentInfo) {
-        setProductInfo(productInfo);
-        setVisitorInfo(visitorInfo);
-        setDocumentId(documentId);
-        setSessionId(sessionId);
-        setTemplateId(templateId);
-        setDocumentInfo(documentInfo);
-        setActiveView(documentInfo?.views[0]);
-      }
-      if (viewBlob instanceof Blob) {
-        setViewBlob(viewBlob);
-      }
-    } catch (error) {
-      console.log('error!!!:', error);
-    }
-  };
-
   const handleBackClick = () => {
     //Reset to Color List and clear up
     setIsolatedMode(false);
     setActiveColorSwatch(undefined, <SwatchListSelector />);
   };
-  //TODO find a reusable way of doing this since we will have this is several places
+
   const handleSaveAction = async (color: SwatchColor) => {
     try {
       setIsLoading(true);
-      //Update the Color in the document
-      console.log('color', color);
-      console.log('documentInfo', documentInfo);
-      if (!activeSwatchColor || !documentInfo) {
-        throw Error('Missing activeSwatchColor or DocumentInfo on the state');
-      }
-      const newColor = {
-        ...color,
-        swatchName: activeSwatchColor.swatchName,
-      };
-      const newDocumentInfo = deepCopy(documentInfo);
-      const index = newDocumentInfo.swatches.findIndex(
-        (x) => x.swatchName === activeSwatchColor.swatchName
-      );
-
-      if (!index) {
-        throw Error(
-          'Missing activeSwatchColor and selected color name missmatch'
-        );
-      }
-      newDocumentInfo.swatches[index] = newColor;
-
-      console.log('newDocumentInfo', newDocumentInfo);
-
-      //Try save the document
-      const updateResponse = await fetch(`/api/updateDocument`, {
-        method: 'POST',
-        body: JSON.stringify({
+      const { updatedDocumentInfo, viewBlob, error } =
+        await updateDocumentColorService(
+          color,
           sessionId,
           documentId,
           templateId,
-          viewList: newDocumentInfo.views.map((x) => x.sceneName),
-          newDocumentInfo,
-        }),
-      });
-      console.log('updateResponse', updateResponse);
-      //Refecth all req data
-      fetchData();
+          productInfo,
+          sessionInformation,
+          activeSwatchColor,
+          documentInfo
+        );
+      //Update the global state
+      if (viewBlob instanceof Blob && updatedDocumentInfo && !error) {
+        setViewBlob(viewBlob);
+        setDocumentInfo(updatedDocumentInfo);
+        setActiveView(updatedDocumentInfo?.views[0]);
+      } else {
+        throw Error('Error Saving the Color');
+      }
     } catch (error) {
-      //Show Error waring component
-      console.log('error!!!:', error);
+      console.log(error);
+      //TODO add nototification services here
     } finally {
-      //Go to a clean state
       setIsLoading(false);
       setIsolatedMode(false);
       setActiveColorSwatch(undefined, <SwatchListSelector />);

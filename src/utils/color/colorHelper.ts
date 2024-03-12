@@ -41,13 +41,13 @@ export function getSimplifiedSwatchColors(color?: SwatchColor) {
     };
   }
   return {
-    b: Math.round(color.origBlueValue),
-    r: Math.round(color.origRedValue),
-    g: Math.round(color.origGreenValue),
-    m: Math.round(color.origMagentaValue),
-    y: Math.round(color.origYellowValue),
-    c: Math.round(color.origCyanValue),
-    k: Math.round(color.origBlackValue),
+    b: Math.round(color.blueValue),
+    r: Math.round(color.redValue),
+    g: Math.round(color.greenValue),
+    m: Math.round(color.magentaValue),
+    y: Math.round(color.yellowValue),
+    c: Math.round(color.cyanValue),
+    k: Math.round(color.blackValue),
   };
 }
 

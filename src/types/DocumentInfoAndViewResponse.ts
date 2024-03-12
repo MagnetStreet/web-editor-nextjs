@@ -1,9 +1,8 @@
 import DocumentInformation from '@/types/DesignStudioItem';
 
-export default interface SessionData {
+export default interface DocumentInfoAndViewResponse {
   documentId: string;
   sessionId: string;
   templateId: string;
-  viewBlob?: Blob;
   documentInfo?: DocumentInformation;
 }

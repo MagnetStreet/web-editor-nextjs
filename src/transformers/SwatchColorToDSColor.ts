@@ -5,13 +5,32 @@ import SwatchColor from '@/types/SwatchColor';
 
 export default function transformToColorDSColor(
   swatch: SwatchColor,
-  custom: boolean
+  custom = false,
+  useOriginalValues = false
 ): DSColor {
+  const CMYKvalues: number[] = useOriginalValues
+    ? [
+        swatch.origCyanValue,
+        swatch.origMagentaValue,
+        swatch.origYellowValue,
+        swatch.origBlackValue,
+      ]
+    : [
+        swatch.cyanValue,
+        swatch.magentaValue,
+        swatch.yellowValue,
+        swatch.blackValue,
+      ];
+
+  const RGBvalues: number[] = useOriginalValues
+    ? [swatch.origRedValue, swatch.origGreenValue, swatch.origBlueValue]
+    : [swatch.redValue, swatch.greenValue, swatch.blueValue];
+
   const closestColor = getClosestMSColorsUsingCMYK(
-    swatch.origCyanValue,
-    swatch.origMagentaValue,
-    swatch.origYellowValue,
-    swatch.origBlackValue,
+    CMYKvalues[0],
+    CMYKvalues[1],
+    CMYKvalues[2],
+    CMYKvalues[3],
     true
   );
 
@@ -20,13 +39,8 @@ export default function transformToColorDSColor(
       ? `Custome-${closestColor?.family}-${closestColor?.name}`
       : swatch.swatchName,
     type: swatch.colorSpace,
-    cmyk: [
-      swatch.origCyanValue,
-      swatch.origMagentaValue,
-      swatch.origYellowValue,
-      swatch.origBlackValue,
-    ],
-    rgb: [swatch.origRedValue, swatch.origGreenValue, swatch.origBlueValue],
+    cmyk: [...CMYKvalues],
+    rgb: [...RGBvalues],
     family: closestColor ? closestColor.family : '',
     category: closestColor ? closestColor.category : '',
     spot: swatch.spotValue,

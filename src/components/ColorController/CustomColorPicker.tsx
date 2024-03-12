@@ -4,6 +4,7 @@ import { FC, useEffect, useMemo, useState } from 'react';
 
 import ColorDetails from '@/components/ColorController/ColorDetails';
 import ColorSlider from '@/components/ColorController/ColorSlider';
+import SwatchListSelector from '@/components/ColorController/SwatchListSelector';
 import { CustomIcon } from '@/components/shared/CustomIcon';
 
 import {
@@ -15,6 +16,7 @@ import {
   useGeneralControlsStore,
 } from '@/stores/useGeneralControlsStore';
 
+import updateDocumentColorService from '@/services/updateDocumentColorService';
 import transformToColorDSColor from '@/transformers/SwatchColorToDSColor';
 import ColorConverter from '@/utils/color/ColorConverter';
 import { getSimplifiedSwatchColors } from '@/utils/color/colorHelper';
@@ -23,14 +25,27 @@ import { CMYK } from '@/types/ColorClasses';
 import SwatchColor from '@/types/SwatchColor';
 
 const CustomColorPicker: FC = () => {
-  const { activeSwatchColor, setActiveColorSwatch } =
-    useGeneralControlsStore<GeneralControlsState>((state) => state);
-  const { addCustomColor } = useDesignStudioStore<DesignStudioState>(
-    (state) => state
-  );
+  const {
+    activeSwatchColor,
+    setIsLoading,
+    setIsolatedMode,
+    setActiveColorSwatch,
+  } = useGeneralControlsStore<GeneralControlsState>((state) => state);
+
+  const {
+    productInfo,
+    documentInfo,
+    sessionId,
+    documentId,
+    templateId,
+    sessionInformation,
+    addCustomColor,
+    setDocumentInfo,
+    setActiveView,
+    setViewBlob,
+  } = useDesignStudioStore<DesignStudioState>((state) => state);
 
   const [customColor, setCustomColor] = useState<SwatchColor>();
-
   const { r, g, b } = useMemo(
     () => getSimplifiedSwatchColors(activeSwatchColor),
     [activeSwatchColor]
@@ -55,16 +70,16 @@ const CustomColorPicker: FC = () => {
     const updatedCustomColor = { ...customColor };
     switch (color) {
       case 'C':
-        updatedCustomColor.origCyanValue = val;
+        updatedCustomColor.cyanValue = val;
         break;
       case 'M':
-        updatedCustomColor.origMagentaValue = val;
+        updatedCustomColor.magentaValue = val;
         break;
       case 'Y':
-        updatedCustomColor.origYellowValue = val;
+        updatedCustomColor.yellowValue = val;
         break;
       case 'K':
-        updatedCustomColor.origBlackValue = val;
+        updatedCustomColor.blackValue = val;
         break;
       default:
         // Default case if color doesn't match any specific case
@@ -73,15 +88,15 @@ const CustomColorPicker: FC = () => {
     }
     //Complete update the other properties
     const newCMYK = new CMYK(
-      updatedCustomColor.origCyanValue,
-      updatedCustomColor.origMagentaValue,
-      updatedCustomColor.origYellowValue,
-      updatedCustomColor.origBlackValue
+      updatedCustomColor.cyanValue,
+      updatedCustomColor.magentaValue,
+      updatedCustomColor.yellowValue,
+      updatedCustomColor.blackValue
     );
     const updatedRGB = ColorConverter._CMYKtoRGB(newCMYK);
-    updatedCustomColor.origRedValue = updatedRGB.r;
-    updatedCustomColor.origBlueValue = updatedRGB.b;
-    updatedCustomColor.origGreenValue = updatedRGB.g;
+    updatedCustomColor.redValue = updatedRGB.r;
+    updatedCustomColor.blueValue = updatedRGB.b;
+    updatedCustomColor.greenValue = updatedRGB.g;
     setCustomColor(updatedCustomColor);
   };
 
@@ -94,10 +109,45 @@ const CustomColorPicker: FC = () => {
     //Go back to Select Color details Prev select color
     setActiveColorSwatch(activeSwatchColor, <ColorDetails />);
   };
-  const addCustomColorClick = () => {
-    if (customColor) {
-      setActiveColorSwatch(customColor, <ColorDetails />);
-      addCustomColor(transformToColorDSColor(customColor, custom));
+
+  const handleSaveAction = async () => {
+    try {
+      if (!customColor) {
+        throw Error('Custom color not set');
+      }
+
+      setIsLoading(true);
+      // Update the server state
+      const { updatedDocumentInfo, viewBlob, error } =
+        await updateDocumentColorService(
+          customColor,
+          sessionId,
+          documentId,
+          templateId,
+          productInfo,
+          sessionInformation,
+          activeSwatchColor,
+          documentInfo
+        );
+
+      //Update the global state and render the updated view
+      if (viewBlob instanceof Blob && updatedDocumentInfo && !error) {
+        setViewBlob(viewBlob);
+        setDocumentInfo(updatedDocumentInfo);
+        setActiveView(updatedDocumentInfo?.views[0]);
+      } else {
+        throw Error('Error Saving the Color');
+      }
+    } catch (error) {
+      //TODO add nototification services here
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+      if (customColor) {
+        setIsolatedMode(false);
+        setActiveColorSwatch(undefined, <SwatchListSelector />);
+        addCustomColor(transformToColorDSColor(customColor, true));
+      }
     }
   };
 
@@ -316,7 +366,7 @@ const CustomColorPicker: FC = () => {
         <Button
           variant='contained'
           sx={{ width: '50%' }}
-          onClick={addCustomColorClick}
+          onClick={handleSaveAction}
         >
           Apply
         </Button>
