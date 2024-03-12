@@ -48,9 +48,6 @@ const SwatchListSelector: React.FC = () => {
             key={swatch.id}
             color={swatch}
             onClickHandler={handleColorBoxSelected}
-            onHover={function (): void {
-              throw new Error('Function not implemented.');
-            }}
           />
         ))}
     </Stack>

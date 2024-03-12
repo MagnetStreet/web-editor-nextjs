@@ -13,14 +13,9 @@ import SwatchColor from '@/types/SwatchColor';
 interface ColorRowProps {
   color: SwatchColor;
   onClickHandler: (color: SwatchColor) => void;
-  onHover: () => void;
 }
 
-const ColorRow: React.FC<ColorRowProps> = ({
-  color,
-  onClickHandler,
-  onHover,
-}) => {
+const ColorRow: React.FC<ColorRowProps> = ({ color, onClickHandler }) => {
   const { swatchName } = color;
   const colorName = useColorName(color);
 
@@ -34,20 +29,14 @@ const ColorRow: React.FC<ColorRowProps> = ({
         </Stack>
       </Stack>
       <Stack direction='row' gap='24px'>
-        <CustomIcon
+        {/* <CustomIcon
           iconClass='fa-comment-light'
           fontSizeOverWrite='18px'
           onClick={() => {
             //TODO Add implementation
           }}
-        />
-        <CustomIcon
-          iconClass='fa-pen-light'
-          fontSizeOverWrite='18px'
-          onClick={() => {
-            //TODO Add implementation
-          }}
-        />
+        /> */}
+        <CustomIcon iconClass='fa-pen-light' fontSizeOverWrite='18px' />
       </Stack>
     </ListItem>
   );

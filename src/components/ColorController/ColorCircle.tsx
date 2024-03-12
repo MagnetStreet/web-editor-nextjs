@@ -17,6 +17,7 @@ const StyledButton = styled('button')(
   color: #5471A8;
   width: 40px;
   height: 40px;
+  cursor: pointer;
   &:hover {
     border: '1px solid #000',
     padding: '2px'

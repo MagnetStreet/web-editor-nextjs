@@ -235,7 +235,10 @@ const ColorDetails: React.FC = () => {
         </AccordionSummary>
         <AccordionDetails>
           <Stack direction='column' gap='15px'>
-            <ColorList colors={customColors} />
+            <ColorList
+              colors={customColors}
+              handleSaveAction={handleSaveAction}
+            />
             <Button
               variant='outlined'
               sx={{
