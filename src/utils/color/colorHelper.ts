@@ -369,12 +369,18 @@ export function extractSwatchColorsFromTextBoxes(
       content.textStyleRanges.forEach((textStyleRange) => {
         const swatchColor: SwatchColor = transformTextBoxColorToSwatchColor(
           textStyleRange,
-          textBox.name
+          content.clearContents
         );
         const colorKey = `${swatchColor.cyanValue}-${swatchColor.magentaValue}-${swatchColor.yellowValue}-${swatchColor.blackValue}`;
         // Concatenating CMYK values to create a unique key for the map
         if (!swatchColorsMap.has(colorKey)) {
-          swatchColorsMap.set(colorKey, swatchColor); // If the color is not in the map, add it
+          // If the color is not in the map, add it
+          swatchColorsMap.set(colorKey, swatchColor);
+        } else {
+          // If the color is already in the map, update the existing SwatchColor object
+          const existingSwatchColor = swatchColorsMap.get(colorKey)!;
+          existingSwatchColor.swatchName += `\\ ${content.clearContents}`; // Append clearContents to swatchName
+          swatchColorsMap.set(colorKey, existingSwatchColor);
         }
       });
     });

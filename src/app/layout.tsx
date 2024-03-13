@@ -6,6 +6,7 @@ import * as React from 'react';
 import { useEffect } from 'react';
 
 import '@/fonts/font-awesome/style.scss';
+import '@/styles/util.scss';
 
 import useScreenSize from '@/hooks/useScreenSize';
 
