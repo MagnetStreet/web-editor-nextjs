@@ -12,6 +12,7 @@ import { getStylePositionsHelper } from '@/utils/getStylePositionsHelper';
 
 import { Coordinates, PointCoordinates } from '@/types';
 import DesignStudioItem from '@/types/DesignStudioItem';
+import { CONTEXTUAL_MENU_OPTION } from '@/types/enum';
 import { TextBox } from '@/types/TextBox';
 import View from '@/types/View';
 const minZoom = 0;
@@ -24,6 +25,7 @@ interface CanvasWrapperProps {
   viewBlob?: Blob;
   isIsolatedMode: boolean;
   coordinates?: Coordinates;
+  activeLayoutName?: CONTEXTUAL_MENU_OPTION;
   activeTextBox?: TextBox; //TODO we need active for each I think
   zoom: number | number[];
   handleClickFontItem: (val: TextBox) => void;
@@ -38,6 +40,7 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
   isIsolatedMode,
   coordinates,
   zoom,
+  activeLayoutName,
   handleClickFontItem,
 }) => {
   const stageRef = React.createRef<Konva.Stage>(); //I can get the attributes from the attrs{x,y, width, height} useRef
@@ -90,10 +93,7 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
 
     if (viewBlob instanceof Blob) {
       createUrl();
-    } else {
-      console.error('Invalid image blob:', viewBlob);
     }
-
     return () => {
       if (imageUrl) {
         URL.revokeObjectURL(imageUrl);
@@ -219,23 +219,21 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
     height: `${imageHeight}px`,
     transform: 'translate(-50%, -50%)',
   };
+  const paperStyle = {
+    position: 'absolute',
+    top: '%',
+    zIndex: 99,
+    left: '70%',
+    height: `fit-content`,
+    width: `fit-content`,
+    transform: 'translate(-50%, -50%)',
+  };
 
   return (
     <Box sx={containerStyle}>
       {isIsolatedMode && (
-        <Paper
-          sx={{
-            //TODO add proper styling
-            position: 'absolute',
-            top: '%',
-            zIndex: 99,
-            left: '70%',
-            height: `fit-content`,
-            width: `fit-content`,
-            transform: 'translate(-50%, -50%)',
-          }}
-        >
-          {/* <div id='editor'> HEY LISTEN TODO HOW DOES THIS WORK</div> */}
+        <Paper sx={{ ...paperStyle }}>
+          {/* <div id='editor'> HEY LISTEN TODO HOW DOES the insert of the WISIGW work</div> */}
         </Paper>
       )}
       {activeView && imageUrl && (
@@ -245,7 +243,11 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
           height={imageHeight}
         >
           <Layer>{sceneImage && imageHeight ? sceneImage : null}</Layer>
-          <Layer>{!activeTextBox ? loadTextBoxes() : loadTransformer()}</Layer>
+          <Layer>
+            {!activeTextBox && activeLayoutName === CONTEXTUAL_MENU_OPTION.TEXT
+              ? loadTextBoxes()
+              : loadTransformer()}
+          </Layer>
         </Stage>
       )}
     </Box>

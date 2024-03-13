@@ -20,4 +20,5 @@ export default interface SwatchColor {
   greenValue: number;
   origBlackValue: number;
   spotValue?: string;
+  createdFromTextBox?: boolean;
 }

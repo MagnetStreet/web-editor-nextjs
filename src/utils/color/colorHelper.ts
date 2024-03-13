@@ -5,12 +5,14 @@ import {
   transparentColor,
 } from '@/constants/colors-default';
 import rgbToCmykLUTEncodedData from '@/constants/rgbToCmykLUTEncoded.json';
+import transformTextBoxColorToSwatchColor from '@/transformers/transformTextBoxColorToSwatchColor';
 import ColorConverter from '@/utils/color/ColorConverter';
 
 import { CMYK as CMYK_CLASS } from '@/types/ColorClasses';
 import { DSColor } from '@/types/ColorDSTypes';
 import { CMYK, HSV, RGB } from '@/types/ColorFormat';
 import SwatchColor from '@/types/SwatchColor';
+import { TextBox } from '@/types/TextBox';
 
 const cmykToRgbLUTEncoded: string = cmykToRgbLUTEncodedData.cmykToRgbLUTEncoded;
 const rgbToCmykLUTEncoded: string = rgbToCmykLUTEncodedData.rgbToCmykLUTEncoded;
@@ -357,6 +359,25 @@ function base64Decode(data: string) {
 
   return dec;
 }
-function CMYKtoRGB(customCMYK: CMYK) {
-  throw new Error('Function not implemented.');
+
+export function extractSwatchColorsFromTextBoxes(
+  textBoxes: TextBox[]
+): SwatchColor[] {
+  const swatchColorsMap: Map<string, SwatchColor> = new Map(); // Using a map to remove duplicates
+  textBoxes.forEach((textBox) => {
+    textBox.contentFormatted.forEach((content) => {
+      content.textStyleRanges.forEach((textStyleRange) => {
+        const swatchColor: SwatchColor = transformTextBoxColorToSwatchColor(
+          textStyleRange,
+          textBox.name
+        );
+        const colorKey = `${swatchColor.cyanValue}-${swatchColor.magentaValue}-${swatchColor.yellowValue}-${swatchColor.blackValue}`;
+        // Concatenating CMYK values to create a unique key for the map
+        if (!swatchColorsMap.has(colorKey)) {
+          swatchColorsMap.set(colorKey, swatchColor); // If the color is not in the map, add it
+        }
+      });
+    });
+  });
+  return Array.from(swatchColorsMap.values());
 }

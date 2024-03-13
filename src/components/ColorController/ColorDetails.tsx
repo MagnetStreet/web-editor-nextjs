@@ -2,6 +2,7 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
+  AlertColor,
   Box,
   Button,
   Divider,
@@ -26,6 +27,10 @@ import {
   GeneralControlsState,
   useGeneralControlsStore,
 } from '@/stores/useGeneralControlsStore';
+import {
+  useNotificationsState,
+  useNotificationStore,
+} from '@/stores/useNotificationStore';
 
 import { standardColors } from '@/constants/colors-default';
 import updateDocumentColorService from '@/services/updateDocumentColorService';
@@ -63,6 +68,9 @@ const ColorDetails: React.FC = () => {
     setActiveView,
     setViewBlob,
   } = useDesignStudioStore<DesignStudioState>((state) => state);
+  const { addNotification } = useNotificationStore<useNotificationsState>(
+    (state) => state
+  );
   const swatchName = activeSwatchColor ? activeSwatchColor.swatchName : '';
   const { m, y, c, k } = useMemo(
     () => getSimplifiedSwatchColors(activeSwatchColor),
@@ -124,6 +132,7 @@ const ColorDetails: React.FC = () => {
           activeSwatchColor,
           documentInfo
         );
+
       //Update the global state
       if (viewBlob instanceof Blob && updatedDocumentInfo && !error) {
         setViewBlob(viewBlob);
@@ -134,7 +143,15 @@ const ColorDetails: React.FC = () => {
       }
     } catch (error) {
       console.log(error);
-      //TODO add nototification services here
+      addNotification({
+        icon: 'fa-bell-light',
+        severity: 'error' as AlertColor,
+        body: (
+          <Stack direction='row' gap='20px'>
+            <Typography>Error Saving Color</Typography>
+          </Stack>
+        ),
+      });
     } finally {
       setIsLoading(false);
       setIsolatedMode(false);

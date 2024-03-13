@@ -16,6 +16,8 @@ import {
   useGeneralControlsStore,
 } from '@/stores/useGeneralControlsStore';
 
+import { extractSwatchColorsFromTextBoxes } from '@/utils/color/colorHelper';
+
 import SwatchColor from '@/types/SwatchColor';
 
 const SwatchListSelector: React.FC = () => {
@@ -27,9 +29,17 @@ const SwatchListSelector: React.FC = () => {
   const [swatches, setSwatches] = useState<SwatchColor[]>();
 
   useEffect(() => {
+    const swatches = [];
     if (documentInfo && documentInfo.swatches) {
-      setSwatches([...documentInfo.swatches]);
+      swatches.push(...documentInfo.swatches);
     }
+    if (documentInfo && documentInfo.textBoxes) {
+      const textBoxColors = extractSwatchColorsFromTextBoxes(
+        documentInfo.textBoxes
+      );
+      swatches.push(...textBoxColors);
+    }
+    setSwatches([...swatches]);
   }, [documentInfo]);
 
   const handleColorBoxSelected = (color: SwatchColor) => {

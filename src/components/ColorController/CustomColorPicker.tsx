@@ -1,4 +1,11 @@
-import { Box, Button, Divider, Stack, Typography } from '@mui/material';
+import {
+  AlertColor,
+  Box,
+  Button,
+  Divider,
+  Stack,
+  Typography,
+} from '@mui/material';
 import * as React from 'react';
 import { FC, useEffect, useMemo, useState } from 'react';
 
@@ -15,6 +22,10 @@ import {
   GeneralControlsState,
   useGeneralControlsStore,
 } from '@/stores/useGeneralControlsStore';
+import {
+  useNotificationsState,
+  useNotificationStore,
+} from '@/stores/useNotificationStore';
 
 import updateDocumentColorService from '@/services/updateDocumentColorService';
 import transformToColorDSColor from '@/transformers/SwatchColorToDSColor';
@@ -44,7 +55,9 @@ const CustomColorPicker: FC = () => {
     setActiveView,
     setViewBlob,
   } = useDesignStudioStore<DesignStudioState>((state) => state);
-
+  const { addNotification } = useNotificationStore<useNotificationsState>(
+    (state) => state
+  );
   const [customColor, setCustomColor] = useState<SwatchColor>();
   const { r, g, b } = useMemo(
     () => getSimplifiedSwatchColors(activeSwatchColor),
@@ -139,8 +152,16 @@ const CustomColorPicker: FC = () => {
         throw Error('Error Saving the Color');
       }
     } catch (error) {
-      //TODO add nototification services here
       console.log(error);
+      addNotification({
+        icon: 'fa-bell-light',
+        severity: 'error' as AlertColor,
+        body: (
+          <Stack direction='row' gap='20px'>
+            <Typography>Error Saving Color</Typography>
+          </Stack>
+        ),
+      });
     } finally {
       setIsLoading(false);
       if (customColor) {

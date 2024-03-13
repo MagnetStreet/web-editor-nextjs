@@ -38,7 +38,7 @@ const Canvas = dynamic(() => import('@/components/CanvasWrapper'), {
 
 export interface EditorPageServerData {
   productInfo?: ProductInformation;
-  visitorInfo?: any; //TODO FIX
+  visitorInfo?: any;
   isTest?: boolean; //TODO remove
   documentInformationMock?: DesignStudioItem;
 }
@@ -66,6 +66,7 @@ const PageEditor: React.FC<EditorPageServerData> = ({
     documentInfo,
     activeView,
     viewBlob,
+    activeLayoutName,
     setProductInfo,
     setVisitorInfo,
     setDocumentId,
@@ -76,42 +77,6 @@ const PageEditor: React.FC<EditorPageServerData> = ({
     setActiveView,
     setViewBlob,
   } = useDesignStudioStore<DesignStudioState>((state) => state);
-
-  // //TODO delete this is just to test the notifications
-  // const { addNotification } = useNotificationStore<useNotificationsState>(
-  //   (state) => state
-  // );
-
-  // const notificationSample = () => {
-  //   return (
-  //     <Button
-  //       onClick={() => {
-  //         addNotification({
-  //           icon: 'fa-bell-light',
-  //           severity: 'warning' as AlertColor,
-  //           body: (
-  //             <Stack direction='row' gap='20px'>
-  //               <Typography>
-  //                 You have added <b>Raised Foils</b> to your order
-  //               </Typography>
-  //               <Typography
-  //                 color={theme.palette.primary.main}
-  //                 onClick={() => {
-  //                   //TODO add missing implementation
-  //                 }}
-  //               >
-  //                 view summary
-  //               </Typography>
-  //             </Stack>
-  //           ),
-  //         });
-  //       }}
-  //     >
-  //       Show notification
-  //     </Button>
-  //   );
-  // };
-  // // TODO end
 
   const handleClickFontItem = (textbox: TextBox) => {
     console.log('Clicked element of type Text', textbox);
@@ -129,7 +94,7 @@ const PageEditor: React.FC<EditorPageServerData> = ({
             productInfo
           );
           setSessionInfo(sessionSetUpResponse);
-          console.log('sessionSetUpResponse', sessionSetUpResponse);
+
           const { documentInfo, documentId, sessionId, templateId } =
             await getDocumentInfoAndView(productInfo, sessionSetUpResponse);
           const { viewBlob } = await getDocumentView(
@@ -245,6 +210,7 @@ const PageEditor: React.FC<EditorPageServerData> = ({
           activeView={activeView}
           activeTextBox={activeTextBox}
           isIsolatedMode={isIsolatedModeActive}
+          activeLayoutName={activeLayoutName}
           handleClickFontItem={handleClickFontItem}
           coordinates={{
             top: '50%',

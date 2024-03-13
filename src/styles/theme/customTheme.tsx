@@ -25,6 +25,7 @@ const vars = {
     grayLight: '#EFEFEF',
     warning: `#FDF2E9`,
     warningYellow: '#E07A1F',
+    error: `#ef5350`,
   },
 };
 
@@ -42,6 +43,10 @@ const theme = createTheme({
     warning: {
       main: vars.colors.warning,
       dark: vars.colors.warningYellow,
+    },
+    error: {
+      main: vars.colors.error,
+      dark: vars.colors.white,
     },
     grey: {
       100: '#EFEFEF',

@@ -1,5 +1,6 @@
-import { Alert, Box, Fade, useTheme } from '@mui/material';
+import { Alert, Box, Fade, Theme, useTheme } from '@mui/material';
 import * as React from 'react';
+import { useEffect } from 'react';
 
 import { CustomIcon } from '@/components/shared/CustomIcon';
 
@@ -8,13 +9,19 @@ import {
   useNotificationStore,
 } from '@/stores/useNotificationStore';
 
-import { Notification } from '@/types';
+import { AlertColor, Notification } from '@/types';
 
 const Notifications: React.FC = () => {
   const theme = useTheme();
+  const [key, setKey] = React.useState(0); // Key to force a re-render
+
   const { activeNotifications } = useNotificationStore<useNotificationsState>(
     (state) => state
   );
+
+  useEffect(() => {
+    setKey((prevKey) => prevKey + 1);
+  }, [activeNotifications.length]);
 
   return (
     <Box
@@ -25,10 +32,15 @@ const Notifications: React.FC = () => {
         left: '10px',
         right: '10px',
       }}
+      key={key} // Use the key to trigger a re-render
     >
       {activeNotifications.map((notification: Notification, index: number) => {
+        const { color, textColor } = switchSeverity(
+          notification.severity,
+          theme
+        );
         return (
-          <Fade in={true} key={`notifiation-${index}`}>
+          <Fade in={true} key={`notification-${index}`}>
             <Alert
               icon={
                 <CustomIcon
@@ -39,7 +51,7 @@ const Notifications: React.FC = () => {
                   sx={{
                     width: '20px',
                     borderRadius: '100px',
-                    backgroundColor: theme.palette.warning.dark,
+                    backgroundColor: { textColor },
                   }}
                 />
               }
@@ -47,8 +59,9 @@ const Notifications: React.FC = () => {
               sx={{
                 padding: '0 16px',
                 borderRadius: '22px',
-                border: `1px solid ${theme.palette.warning.dark}`,
-                background: theme.palette.warning.main,
+                border: `1px solid ${textColor}`,
+                background: color,
+                color: textColor,
               }}
             >
               {notification.body}
@@ -59,5 +72,31 @@ const Notifications: React.FC = () => {
     </Box>
   );
 };
+
+function switchSeverity(severity: AlertColor | undefined, theme: Theme) {
+  switch (severity) {
+    case 'success':
+      return {
+        color: theme.palette.success.main,
+        textColor: theme.palette.success.dark,
+      };
+    case 'info':
+      return {
+        color: theme.palette.info.main,
+        textColor: theme.palette.info.dark,
+      };
+    case 'warning':
+      return {
+        color: theme.palette.warning.main,
+        textColor: theme.palette.warning.dark,
+      };
+    case 'error':
+    default:
+      return {
+        color: theme.palette.error.main,
+        textColor: theme.palette.error.dark,
+      };
+  }
+}
 
 export default Notifications;

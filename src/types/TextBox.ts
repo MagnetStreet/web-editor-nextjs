@@ -1,6 +1,5 @@
 export interface TextStyleRange {
   otf: string;
-  fillColorY: number;
   leading: string;
   rawContents: string;
   fillSpotValue: string;
@@ -13,9 +12,10 @@ export interface TextStyleRange {
   capitalization: string;
   fillColorK: number;
   contents: string;
-  fillColorM: number;
-  fillColorB: number;
   fillColorC: number;
+  fillColorM: number;
+  fillColorY: number;
+  fillColorB: number;
   font: string;
   fillColorG: number;
 }

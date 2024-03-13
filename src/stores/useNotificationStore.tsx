@@ -1,5 +1,6 @@
-import { Notification } from '@/types';
 import { create } from 'zustand';
+
+import { Notification } from '@/types';
 
 export interface useNotificationsState {
   activeNotifications: Notification[];
@@ -16,7 +17,6 @@ export const useNotificationStore = create<useNotificationsState>((set) => ({
       }));
     }, 5000); // Adjust the time as needed
 
-    // Update the timerId in the state
     set((state) => ({
       activeNotifications: [
         ...state.activeNotifications,

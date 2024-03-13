@@ -5,6 +5,7 @@ import DesignStudioItem from '@/types/DesignStudioItem';
 import ProductInformation from '@/types/ProductInformation';
 import SessionInfomation from '@/types/SessionInfomation';
 import SwatchColor from '@/types/SwatchColor';
+import { TextStyleRange } from '@/types/TextBox';
 
 const updateDocumentColorService = async (
   newColor: SwatchColor,
@@ -37,28 +38,68 @@ const updateDocumentColorService = async (
       throw Error('SessionInformation not set');
     }
 
-    // Create the new Property
-    const newColorSwatch = {
-      ...selectedColor,
-      redValue: newColor.redValue,
-      magentaValue: newColor.magentaValue,
-      greenValue: newColor.greenValue,
-      cyanValue: newColor.cyanValue,
-      blueValue: newColor.blueValue,
-      blackValue: newColor.blackValue,
-      yellowValue: newColor.yellowValue,
-      modified: true,
-    };
     const newDocumentInfo = deepCopy(stateDocumentInfo);
-    const index = newDocumentInfo.swatches.findIndex(
-      (x) => x.swatchName === selectedColor.swatchName
-    );
 
-    if (index === -1) {
-      throw Error('Name missmatch looking for swatch name');
+    // Two Options here: Color or Text Color
+    if (selectedColor.createdFromTextBox) {
+      //Textbox path
+      const compareSwatchColor = (
+        textStyleRange: TextStyleRange,
+        swatchColor: SwatchColor
+      ): boolean => {
+        return (
+          textStyleRange.fillColorC === swatchColor.origCyanValue &&
+          textStyleRange.fillColorM === swatchColor.origMagentaValue &&
+          textStyleRange.fillColorY === swatchColor.origYellowValue &&
+          textStyleRange.fillColorB === swatchColor.origBlackValue &&
+          textStyleRange.fillColorR === swatchColor.origRedValue &&
+          textStyleRange.fillColorG === swatchColor.origGreenValue
+        );
+      };
+      // Update the document Properties
+      newDocumentInfo.textBoxes.forEach((textBox) => {
+        let modified = false;
+        textBox.contentFormatted.forEach((content) => {
+          content.textStyleRanges.forEach((textStyleRange) => {
+            if (compareSwatchColor(textStyleRange, selectedColor)) {
+              textStyleRange.fillColorC = newColor.cyanValue;
+              textStyleRange.fillColorM = newColor.magentaValue;
+              textStyleRange.fillColorY = newColor.yellowValue;
+              textStyleRange.fillColorK = newColor.blackValue;
+              textStyleRange.fillColorR = newColor.redValue;
+              textStyleRange.fillColorG = newColor.greenValue;
+              textStyleRange.fillColorB = newColor.blackValue;
+              modified = true;
+            }
+          });
+        });
+        if (modified) {
+          textBox.modified = true;
+        }
+      });
+    } else {
+      //Color swatch path
+      const index = newDocumentInfo.swatches.findIndex(
+        (x) => x.swatchName === selectedColor.swatchName
+      );
+      if (index === -1) {
+        throw Error('Name missmatch looking for swatch name');
+      }
+      // Create the new Swatch Property
+      const newColorSwatch = {
+        ...selectedColor,
+        redValue: newColor.redValue,
+        blueValue: newColor.blueValue,
+        greenValue: newColor.greenValue,
+        cyanValue: newColor.cyanValue,
+        magentaValue: newColor.magentaValue,
+        blackValue: newColor.blackValue,
+        yellowValue: newColor.yellowValue,
+        modified: true,
+      };
+      // Update the document Properties
+      newDocumentInfo.swatches[index] = newColorSwatch;
     }
-    // Update the document Properties
-    newDocumentInfo.swatches[index] = newColorSwatch;
 
     //Make the Service Call to update
     await fetch(`/api/updateDocument`, {
@@ -89,7 +130,7 @@ const updateDocumentColorService = async (
       throw Error('Fetch updated view failed');
     }
   } catch (error) {
-    console.log('Save Action Error:', error);
+    console.log('Save Action', error);
     return {
       error,
     };
