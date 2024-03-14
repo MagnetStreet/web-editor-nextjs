@@ -1,8 +1,14 @@
 import { useEffect } from 'react';
 
+import useScreenSize from '@/hooks/useScreenSize';
+
 import SwatchListSelector from '@/components/ColorController/SwatchListSelector';
 import LateralContextualMenu from '@/components/LateralContextualMenu/LateralContextualMenu';
 
+import {
+  BottomDrawerState,
+  useBottomDrawerStore,
+} from '@/stores/useBottomDrawerStore';
 import {
   DesignStudioState,
   useDesignStudioStore,
@@ -16,11 +22,13 @@ import { IconObj } from '@/types';
 import { CONTEXTUAL_MENU_OPTION } from '@/types/enum';
 
 const LateralContextualMenuWrapper = () => {
+  const { isDesktop } = useScreenSize();
   const { activeLayoutName, setActiveLayoutName } =
     useDesignStudioStore<DesignStudioState>((state) => state);
   const { isIsolatedModeActive, setTopFrameComponent } =
     useGeneralControlsStore<GeneralControlsState>((state) => state);
-
+  const { setBottomDrawerComponent, toggleBottomDrawer, setBottomDrawerTitle } =
+    useBottomDrawerStore<BottomDrawerState>((state) => state);
   const items: Array<IconObj> = [
     {
       name: CONTEXTUAL_MENU_OPTION.LAYOUT,
@@ -52,11 +60,23 @@ const LateralContextualMenuWrapper = () => {
     handleChange(activeLayoutName);
   }, []);
 
+  useEffect(() => {
+    if (!isDesktop) {
+      toggleBottomDrawer(false);
+    }
+  }, [isDesktop]);
+
   const handleChange = (name: CONTEXTUAL_MENU_OPTION) => {
     setActiveLayoutName(name);
     switch (name) {
       case CONTEXTUAL_MENU_OPTION.COLOR:
-        setTopFrameComponent(<SwatchListSelector />);
+        if (!isDesktop) {
+          setBottomDrawerTitle('Color Options');
+          setBottomDrawerComponent(<SwatchListSelector />);
+          toggleBottomDrawer(true);
+        } else {
+          setTopFrameComponent(<SwatchListSelector />);
+        }
         break;
       case CONTEXTUAL_MENU_OPTION.TEXT:
         setTopFrameComponent(null);
@@ -64,10 +84,6 @@ const LateralContextualMenuWrapper = () => {
       default:
         setTopFrameComponent(null);
     }
-
-    // TODO maybe add a react component set up when changing the setActiveLayoutName
-    // TODO add on Items a React componet to be set
-    // TODO Only if the components on the list are not rendered until set on the top component
   };
 
   return (

@@ -12,6 +12,8 @@ import {
 import * as React from 'react';
 import { ChangeEvent, useEffect, useMemo, useState } from 'react';
 
+import useScreenSize from '@/hooks/useScreenSize';
+
 import ColorCircle from '@/components/ColorController/ColorCircle';
 import ColorList from '@/components/ColorController/ColorList';
 import CustomColorPicker from '@/components/ColorController/CustomColorPicker';
@@ -19,6 +21,10 @@ import SwatchListSelector from '@/components/ColorController/SwatchListSelector'
 import { CustomIcon } from '@/components/shared/CustomIcon';
 import SearchBar from '@/components/shared/Form/SearchBar';
 
+import {
+  BottomDrawerState,
+  useBottomDrawerStore,
+} from '@/stores/useBottomDrawerStore';
 import {
   DesignStudioState,
   useDesignStudioStore,
@@ -41,6 +47,7 @@ import { DSColor } from '@/types/ColorDSTypes';
 import SwatchColor from '@/types/SwatchColor';
 
 const ColorDetails: React.FC = () => {
+  const { isDesktop } = useScreenSize();
   const [searchText, setSearchText] = useState<string>('');
   const [openStandardColorAcc, setOpenStandardColorAcc] =
     useState<boolean>(false);
@@ -71,6 +78,8 @@ const ColorDetails: React.FC = () => {
   const { addNotification } = useNotificationStore<useNotificationsState>(
     (state) => state
   );
+  const { setBottomDrawerComponent, toggleBottomDrawer } =
+    useBottomDrawerStore<BottomDrawerState>((state) => state);
   const swatchName = activeSwatchColor ? activeSwatchColor.swatchName : '';
   const { m, y, c, k } = useMemo(
     () => getSimplifiedSwatchColors(activeSwatchColor),
@@ -115,7 +124,12 @@ const ColorDetails: React.FC = () => {
   const handleBackClick = () => {
     //Reset to Color List and clear up
     setIsolatedMode(false);
-    setActiveColorSwatch(undefined, <SwatchListSelector />);
+    toggleBottomDrawer(false);
+    setBottomDrawerComponent(undefined);
+    setActiveColorSwatch(
+      undefined,
+      isDesktop ? <SwatchListSelector /> : undefined
+    );
   };
 
   const handleSaveAction = async (color: SwatchColor) => {
@@ -154,13 +168,24 @@ const ColorDetails: React.FC = () => {
       });
     } finally {
       setIsLoading(false);
-      setIsolatedMode(false);
-      setActiveColorSwatch(undefined, <SwatchListSelector />);
+      if (isDesktop) {
+        setIsolatedMode(false);
+        setActiveColorSwatch(undefined, <SwatchListSelector />);
+      } else {
+        toggleBottomDrawer(false);
+        setBottomDrawerComponent(undefined);
+        setActiveColorSwatch(undefined, undefined);
+      }
     }
   };
 
   const handleAddCustomColorClick = () => {
-    setActiveColorSwatch(activeSwatchColor, <CustomColorPicker />);
+    if (isDesktop) {
+      setActiveColorSwatch(activeSwatchColor, <CustomColorPicker />);
+    } else {
+      setBottomDrawerComponent(<CustomColorPicker />);
+      setActiveColorSwatch(activeSwatchColor, undefined);
+    }
   };
 
   return (
@@ -168,7 +193,7 @@ const ColorDetails: React.FC = () => {
       gap='16px'
       sx={{
         padding: '16px',
-        width: '400px',
+        width: isDesktop ? '400px' : 'auto',
       }}
     >
       <Stack direction='row' justifyContent='space-between'>
@@ -177,11 +202,10 @@ const ColorDetails: React.FC = () => {
           fontSizeOverWrite='18px'
           onClick={handleBackClick}
         />
-        <Typography color='principal'>Color Options</Typography>
+        {isDesktop && <Typography color='principal'>Color Options</Typography>}
         <CustomIcon iconClass='' fontSizeOverWrite='18px' />
       </Stack>
       <Stack gap='8px'>
-        <Typography>Color Options</Typography>
         {activeSwatchColor && (
           <Stack direction='row' justifyContent='space-between'>
             <Stack direction='row' gap='16px'>

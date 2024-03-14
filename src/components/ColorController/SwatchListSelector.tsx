@@ -4,9 +4,15 @@ import { useEffect, useState } from 'react';
 
 import styles from './color.module.scss';
 
+import useScreenSize from '@/hooks/useScreenSize';
+
 import ColorDetails from '@/components/ColorController/ColorDetails';
 import ColorRow from '@/components/ColorController/ColorRow';
 
+import {
+  BottomDrawerState,
+  useBottomDrawerStore,
+} from '@/stores/useBottomDrawerStore';
 import {
   DesignStudioState,
   useDesignStudioStore,
@@ -21,9 +27,12 @@ import { extractSwatchColorsFromTextBoxes } from '@/utils/color/colorHelper';
 import SwatchColor from '@/types/SwatchColor';
 
 const SwatchListSelector: React.FC = () => {
+  const { isDesktop } = useScreenSize();
   const { documentInfo } = useDesignStudioStore<DesignStudioState>(
     (state) => state
   );
+  const { setBottomDrawerComponent, toggleBottomDrawer } =
+    useBottomDrawerStore<BottomDrawerState>((state) => state);
   const { setIsolatedMode, setActiveColorSwatch } =
     useGeneralControlsStore<GeneralControlsState>((state) => state);
   const [swatches, setSwatches] = useState<SwatchColor[]>();
@@ -43,15 +52,23 @@ const SwatchListSelector: React.FC = () => {
   }, [documentInfo]);
 
   const handleColorBoxSelected = (color: SwatchColor) => {
-    setIsolatedMode(true);
-    setActiveColorSwatch(color, <ColorDetails />);
+    if (!isDesktop) {
+      setBottomDrawerComponent(<ColorDetails />);
+      setActiveColorSwatch(color, <ColorDetails />);
+      toggleBottomDrawer(true);
+    } else {
+      setIsolatedMode(true);
+      setActiveColorSwatch(color, <ColorDetails />);
+    }
   };
 
   return (
     <Stack className={styles.ColorList}>
-      <Typography className={styles.ColorList__header}>
-        Current Colors
-      </Typography>
+      {isDesktop && (
+        <Typography className={styles.ColorList__header}>
+          Current Colors
+        </Typography>
+      )}
       {swatches &&
         swatches.map((swatch) => (
           <ColorRow

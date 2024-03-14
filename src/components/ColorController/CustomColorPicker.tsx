@@ -9,11 +9,17 @@ import {
 import * as React from 'react';
 import { FC, useEffect, useMemo, useState } from 'react';
 
+import useScreenSize from '@/hooks/useScreenSize';
+
 import ColorDetails from '@/components/ColorController/ColorDetails';
 import ColorSlider from '@/components/ColorController/ColorSlider';
 import SwatchListSelector from '@/components/ColorController/SwatchListSelector';
 import { CustomIcon } from '@/components/shared/CustomIcon';
 
+import {
+  BottomDrawerState,
+  useBottomDrawerStore,
+} from '@/stores/useBottomDrawerStore';
 import {
   DesignStudioState,
   useDesignStudioStore,
@@ -36,6 +42,7 @@ import { CMYK } from '@/types/ColorClasses';
 import SwatchColor from '@/types/SwatchColor';
 
 const CustomColorPicker: FC = () => {
+  const { isDesktop } = useScreenSize();
   const {
     activeSwatchColor,
     setIsLoading,
@@ -55,6 +62,9 @@ const CustomColorPicker: FC = () => {
     setActiveView,
     setViewBlob,
   } = useDesignStudioStore<DesignStudioState>((state) => state);
+
+  const { setBottomDrawerComponent, toggleBottomDrawer } =
+    useBottomDrawerStore<BottomDrawerState>((state) => state);
   const { addNotification } = useNotificationStore<useNotificationsState>(
     (state) => state
   );
@@ -130,6 +140,8 @@ const CustomColorPicker: FC = () => {
       }
 
       setIsLoading(true);
+      toggleBottomDrawer(false);
+      setActiveColorSwatch(undefined, undefined);
       // Update the server state
       const { updatedDocumentInfo, viewBlob, error } =
         await updateDocumentColorService(
@@ -165,9 +177,15 @@ const CustomColorPicker: FC = () => {
     } finally {
       setIsLoading(false);
       if (customColor) {
-        setIsolatedMode(false);
-        setActiveColorSwatch(undefined, <SwatchListSelector />);
-        addCustomColor(transformToColorDSColor(customColor, true));
+        if (isDesktop) {
+          setIsolatedMode(false);
+          setActiveColorSwatch(undefined, <SwatchListSelector />);
+          addCustomColor(transformToColorDSColor(customColor, true));
+        } else {
+          toggleBottomDrawer(false);
+          setBottomDrawerComponent(undefined);
+          setActiveColorSwatch(undefined, undefined);
+        }
       }
     }
   };
@@ -273,7 +291,7 @@ const CustomColorPicker: FC = () => {
       gap='16px'
       sx={{
         padding: '16px',
-        width: '400px',
+        width: isDesktop ? '400px' : 'auto',
       }}
     >
       <Stack direction='row' justifyContent='space-between'>
@@ -305,7 +323,6 @@ const CustomColorPicker: FC = () => {
         </Typography>
       </Stack>
       <Stack gap='8px'>
-        <Typography>Color Options</Typography>
         {activeSwatchColor && customColor && (
           <Stack
             direction='row'

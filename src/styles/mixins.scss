@@ -19,6 +19,13 @@
   }
 }
 
+/* Px to Rem
+-------------------------*/
+@function toRem($value) {
+  $remValue: ($value / 16) + rem;
+  @return $remValue;
+}
+
 /* Text overflow
 -------------------------*/
 @mixin text-truncate {

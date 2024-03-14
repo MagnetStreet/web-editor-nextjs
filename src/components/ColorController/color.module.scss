@@ -4,13 +4,16 @@
 .ColorList {
   padding: 16px;
   &__header {
-    padding: 0 0 16px;
+    padding: 0 0 toRem(16);
   }
 }
 
 .ColorRow {
-  padding: 16px 0;
-  width: 450px;
+  padding: toRem(16) 0;
+  width: auto;
+  @include large {
+    width: toRem(450);
+  }
   cursor: pointer;
   border-top: 1px solid $gray3;
   display: flex;

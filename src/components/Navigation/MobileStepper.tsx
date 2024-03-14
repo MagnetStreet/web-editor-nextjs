@@ -32,7 +32,7 @@ const MobileStepper: React.FC<MobileStepperProps> = ({
 
   const renderSubSteps = (label: string, isDone: boolean) => {
     return (
-      <Stack className={styles.navigation__mobile__subStep}>
+      <Stack key={label} className={styles.navigation__mobile__subStep}>
         <Box
           className={`
           ${styles.navigation__mobile__icon}
