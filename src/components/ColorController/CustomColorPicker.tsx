@@ -300,7 +300,7 @@ const CustomColorPicker: FC = () => {
           fontSizeOverWrite='18px'
           onClick={handleBackClick}
         />
-        <Typography color='principal'>Custom Color</Typography>
+        {isDesktop && <Typography color='principal'>Custom Color</Typography>}
         <CustomIcon iconClass='' fontSizeOverWrite='18px' />
       </Stack>
       <Stack

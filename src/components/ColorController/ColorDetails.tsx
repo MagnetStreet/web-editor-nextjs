@@ -3,7 +3,6 @@ import {
   AccordionDetails,
   AccordionSummary,
   AlertColor,
-  Box,
   Button,
   Divider,
   Stack,
@@ -16,6 +15,7 @@ import useScreenSize from '@/hooks/useScreenSize';
 
 import ColorCircle from '@/components/ColorController/ColorCircle';
 import ColorList from '@/components/ColorController/ColorList';
+import ColorName from '@/components/ColorController/ColorName';
 import CustomColorPicker from '@/components/ColorController/CustomColorPicker';
 import SwatchListSelector from '@/components/ColorController/SwatchListSelector';
 import { CustomIcon } from '@/components/shared/CustomIcon';
@@ -80,7 +80,6 @@ const ColorDetails: React.FC = () => {
   );
   const { setBottomDrawerComponent, toggleBottomDrawer } =
     useBottomDrawerStore<BottomDrawerState>((state) => state);
-  const swatchName = activeSwatchColor ? activeSwatchColor.swatchName : '';
   const { m, y, c, k } = useMemo(
     () => getSimplifiedSwatchColors(activeSwatchColor),
     [activeSwatchColor]
@@ -210,10 +209,7 @@ const ColorDetails: React.FC = () => {
           <Stack direction='row' justifyContent='space-between'>
             <Stack direction='row' gap='16px'>
               <ColorCircle color={activeSwatchColor} />
-              <Box>
-                <Typography>{swatchName}</Typography>
-                <Typography>Color Name</Typography>
-              </Box>
+              <ColorName color={activeSwatchColor} />
             </Stack>
             <Stack direction='row' gap='8px'>
               <Stack gap='8px'>
