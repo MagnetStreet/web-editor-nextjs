@@ -1,4 +1,4 @@
-import { Stack } from '@mui/material';
+import { Button, Stack } from '@mui/material';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 
@@ -15,6 +15,7 @@ interface ColorListProps {
 }
 
 const ColorList: React.FC<ColorListProps> = ({ colors, handleSaveAction }) => {
+  const [showAll, setShowAll] = useState(false);
   const [colorList, setColorList] = useState<SwatchColor[]>([]);
 
   useEffect(() => {
@@ -24,18 +25,31 @@ const ColorList: React.FC<ColorListProps> = ({ colors, handleSaveAction }) => {
   }, [colors]);
 
   return (
-    <Stack gap='8px' direction='row' flexWrap='wrap'>
-      {colorList &&
-        colorList.map((color) => {
-          return (
-            <ColorCircle
-              key={`color-list-${color.swatchName}`}
-              color={color}
-              onSelected={handleSaveAction}
-            />
-          );
-        })}
-    </Stack>
+    <>
+      <Stack id='color-list' gap='8px' direction='row' flexWrap='wrap'>
+        {colorList &&
+          colorList.slice(0, showAll ? colorList.length : 14).map((color) => {
+            return (
+              <ColorCircle
+                key={`color-list-${color.swatchName}`}
+                color={color}
+                onSelected={handleSaveAction}
+              />
+            );
+          })}
+      </Stack>
+      {!showAll && colorList.length > 14 && (
+        <Button
+          onClick={(e) => {
+            e.stopPropagation();
+            setShowAll(true);
+          }}
+          variant='text'
+        >
+          Show more
+        </Button>
+      )}
+    </>
   );
 };
 

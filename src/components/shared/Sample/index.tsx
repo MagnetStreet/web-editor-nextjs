@@ -6,7 +6,8 @@ interface SampleProps {
 }
 
 const Sample: React.FC<SampleProps> = ({ children }) => {
-  return <Box>{children}</Box>;
+  //TODO ALWAYS ADD Id to the new componet
+  return <Box id='name-of-component'>{children}</Box>;
 };
 
 export default Sample;

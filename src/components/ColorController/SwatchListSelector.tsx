@@ -63,7 +63,7 @@ const SwatchListSelector: React.FC = () => {
   };
 
   return (
-    <Stack className={styles.ColorList}>
+    <Stack id='swatch-list-selector' className={styles.ColorList}>
       {isDesktop && (
         <Typography className={styles.ColorList__header}>
           Current Colors

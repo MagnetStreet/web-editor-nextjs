@@ -35,6 +35,7 @@ const ColorSlider: React.FC<ColorSliderProps> = ({
 
   return (
     <Stack
+      id='color-slider'
       direction='column'
       sx={{
         width: '100%',

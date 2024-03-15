@@ -26,6 +26,10 @@
   @return $remValue;
 }
 
+@mixin toRem($property, $value) {
+  #{$property}: ($value / 16) + rem;
+}
+
 /* Text overflow
 -------------------------*/
 @mixin text-truncate {

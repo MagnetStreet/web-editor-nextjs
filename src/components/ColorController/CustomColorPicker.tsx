@@ -83,6 +83,10 @@ const CustomColorPicker: FC = () => {
     c: c2,
     k: k2,
   } = useMemo(() => {
+    console.log(
+      'getSimplifiedSwatchColors',
+      getSimplifiedSwatchColors(customColor)
+    );
     return getSimplifiedSwatchColors(customColor);
   }, [customColor]);
 
@@ -140,8 +144,6 @@ const CustomColorPicker: FC = () => {
       }
 
       setIsLoading(true);
-      toggleBottomDrawer(false);
-      setActiveColorSwatch(undefined, undefined);
       // Update the server state
       const { updatedDocumentInfo, viewBlob, error } =
         await updateDocumentColorService(
@@ -288,6 +290,7 @@ const CustomColorPicker: FC = () => {
 
   return (
     <Stack
+      id='custom-color-picker'
       gap='16px'
       sx={{
         padding: '16px',

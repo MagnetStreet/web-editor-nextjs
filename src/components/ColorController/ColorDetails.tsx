@@ -50,7 +50,7 @@ const ColorDetails: React.FC = () => {
   const { isDesktop } = useScreenSize();
   const [searchText, setSearchText] = useState<string>('');
   const [openStandardColorAcc, setOpenStandardColorAcc] =
-    useState<boolean>(false);
+    useState<boolean>(true);
   const [msFilteredColors, setFilteredColors] = useState<DSColor[]>([
     ...standardColors.swatches,
   ]);
@@ -179,6 +179,7 @@ const ColorDetails: React.FC = () => {
   };
 
   const handleAddCustomColorClick = () => {
+    console.log('activeSwatchColor', activeSwatchColor);
     if (isDesktop) {
       setActiveColorSwatch(activeSwatchColor, <CustomColorPicker />);
     } else {
@@ -189,6 +190,7 @@ const ColorDetails: React.FC = () => {
 
   return (
     <Stack
+      id='color-details'
       gap='16px'
       sx={{
         padding: '16px',

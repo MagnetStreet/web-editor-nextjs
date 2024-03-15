@@ -12,15 +12,16 @@ const StyledButton = styled('button')(
   ({ theme }) => `
   border-radius: 999px;
   box-shadow: none;
-  border: none;
   background: white;
   color: #5471A8;
   width: 40px;
   height: 40px;
   cursor: pointer;
+  border: 1px solid #CCCDCD;
   &:hover {
-    border: '1px solid #000',
-    padding: '2px'
+    width: 39px;
+    height: 39px;
+    border: 2px solid #CCCDCD;
   }
 `
 );
@@ -33,7 +34,7 @@ const ColorCircle: React.FC<ColorCircleProps> = ({
   const { redValue, blueValue, greenValue } = color;
   return (
     <StyledButton
-      id={`${color.swatchName}`}
+      id={`color-circle ${color.swatchName}`}
       onClick={() => onSelected(color)}
       sx={{
         backgroundColor: `rgb(${redValue}, ${greenValue}, ${blueValue})`,

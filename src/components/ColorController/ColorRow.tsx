@@ -16,7 +16,11 @@ interface ColorRowProps {
 
 const ColorRow: React.FC<ColorRowProps> = ({ color, onClickHandler }) => {
   return (
-    <ListItem className={styles.ColorRow} onClick={() => onClickHandler(color)}>
+    <ListItem
+      id='color-row'
+      className={styles.ColorRow}
+      onClick={() => onClickHandler(color)}
+    >
       <Stack direction='row' gap='8px'>
         <ColorCircle color={color} />
         <ColorName color={color} />

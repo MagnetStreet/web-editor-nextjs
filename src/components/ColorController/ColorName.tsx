@@ -13,7 +13,7 @@ const ColorName: React.FC<ColorNameProps> = ({ color }) => {
   const colorName = useColorName(color);
   const { createdFromTextBox, swatchName } = color;
   return (
-    <Stack>
+    <Stack id='color-name'>
       <Typography>{createdFromTextBox ? 'Text' : swatchName}</Typography>
       <Typography>{colorName}</Typography>
       {createdFromTextBox &&

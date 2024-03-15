@@ -22,6 +22,7 @@ const LateralContextualMenu: React.FC<LateralContextualMenuProps> = ({
 }) => {
   return (
     <Box
+      id='lateral-contextual-menu'
       className={`${styles.sideIconMenu} ${
         isIsolatedModeActive ? styles.sideIconMenu__isActive : ''
       }`}
