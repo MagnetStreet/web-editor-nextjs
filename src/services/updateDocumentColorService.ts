@@ -51,8 +51,9 @@ const updateDocumentColorService = async (
           textStyleRange.fillColorC === swatchColor.origCyanValue &&
           textStyleRange.fillColorM === swatchColor.origMagentaValue &&
           textStyleRange.fillColorY === swatchColor.origYellowValue &&
-          textStyleRange.fillColorB === swatchColor.origBlackValue &&
+          textStyleRange.fillColorK === swatchColor.origBlackValue &&
           textStyleRange.fillColorR === swatchColor.origRedValue &&
+          textStyleRange.fillColorB === swatchColor.origBlueValue &&
           textStyleRange.fillColorG === swatchColor.origGreenValue
         );
       };
