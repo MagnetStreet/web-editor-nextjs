@@ -83,10 +83,6 @@ const CustomColorPicker: FC = () => {
     c: c2,
     k: k2,
   } = useMemo(() => {
-    console.log(
-      'getSimplifiedSwatchColors',
-      getSimplifiedSwatchColors(customColor)
-    );
     return getSimplifiedSwatchColors(customColor);
   }, [customColor]);
 
@@ -134,6 +130,7 @@ const CustomColorPicker: FC = () => {
 
   const handleBackClick = () => {
     //Go back to Select Color details Prev select color
+    setBottomDrawerComponent(<ColorDetails />);
     setActiveColorSwatch(activeSwatchColor, <ColorDetails />);
   };
 

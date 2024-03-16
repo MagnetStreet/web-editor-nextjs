@@ -68,7 +68,7 @@ const updateDocumentColorService = async (
               textStyleRange.fillColorK = newColor.blackValue;
               textStyleRange.fillColorR = newColor.redValue;
               textStyleRange.fillColorG = newColor.greenValue;
-              textStyleRange.fillColorB = newColor.blackValue;
+              textStyleRange.fillColorB = newColor.blueValue;
               modified = true;
             }
           });
