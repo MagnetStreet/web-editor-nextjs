@@ -213,21 +213,21 @@ const ColorDetails: React.FC = () => {
               <ColorCircle color={activeSwatchColor} />
               <ColorName color={activeSwatchColor} />
             </Stack>
-            <Stack direction='row' gap='8px'>
-              <Stack gap='8px'>
-                <Typography>C</Typography>
+            <Stack direction='row' gap='12px'>
+              <Stack gap='4px'>
+                <Typography color='#70777F'>C</Typography>
                 <Typography>{c}</Typography>
               </Stack>
-              <Stack gap='8px'>
-                <Typography>M</Typography>
+              <Stack gap='4px'>
+                <Typography color='#70777F'>M</Typography>
                 <Typography>{m}</Typography>
               </Stack>
-              <Stack gap='8px'>
-                <Typography>Y</Typography>
+              <Stack gap='4px'>
+                <Typography color='#70777F'>Y</Typography>
                 <Typography>{y}</Typography>
               </Stack>
-              <Stack gap='8px'>
-                <Typography>K</Typography>
+              <Stack gap='4px'>
+                <Typography color='#70777F'>K</Typography>
                 <Typography>{k}</Typography>
               </Stack>
             </Stack>

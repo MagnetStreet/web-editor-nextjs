@@ -1,7 +1,16 @@
-import { Slider, Stack, Typography, useTheme } from '@mui/material';
+import {
+  Button,
+  Divider,
+  Slider,
+  Stack,
+  Typography,
+  useTheme,
+} from '@mui/material';
 import * as React from 'react';
 
 import useDebounce from '@/hooks/useDebounce';
+
+import { CustomIcon } from '@/components/shared/CustomIcon';
 
 import { getStylePositionsHelper } from '@/utils/getStylePositionsHelper';
 
@@ -12,6 +21,7 @@ interface ZoomControlProps {
   position?: string;
   coordinates?: Coordinates;
   setZoom: (val: number) => void;
+  fitImage: () => void;
 }
 
 const ZoomControl: React.FC<ZoomControlProps> = ({
@@ -19,6 +29,7 @@ const ZoomControl: React.FC<ZoomControlProps> = ({
   position = 'relative',
   coordinates,
   setZoom,
+  fitImage,
 }) => {
   const theme = useTheme();
   const [localZoom, setLocalZoom] = React.useState(zoom);
@@ -31,6 +42,11 @@ const ZoomControl: React.FC<ZoomControlProps> = ({
     color: theme.palette.primary.main,
     backgroundColor: theme.palette.secondary.main,
     ...getStylePositionsHelper(position, coordinates),
+  };
+  const buttonStyle = {
+    marginRight: '-12px !important',
+    minWidth: '20px',
+    padding: 0,
   };
 
   const handleZoomChange = (
@@ -58,6 +74,24 @@ const ZoomControl: React.FC<ZoomControlProps> = ({
         onChange={handleZoomChange}
       />
       <Typography>Zoom</Typography>
+      <Divider
+        sx={{
+          height: '1px',
+          width: '100%',
+        }}
+      />
+      <Button
+        onClick={() => {
+          fitImage();
+        }}
+        sx={buttonStyle}
+        startIcon={
+          <CustomIcon
+            iconClass='fa-arrows-maximize-light'
+            fontSizeOverWrite='25px'
+          />
+        }
+      ></Button>
     </Stack>
   );
 };

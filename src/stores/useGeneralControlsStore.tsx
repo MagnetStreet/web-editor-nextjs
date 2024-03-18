@@ -4,6 +4,7 @@ import SwatchColor from '@/types/SwatchColor';
 import { TextBox } from '@/types/TextBox';
 
 export interface GeneralControlsState {
+  resetCount: number;
   zoom: number | number[];
   isNextStepEnable: boolean;
   isBottomFrameOpen: boolean;
@@ -14,6 +15,7 @@ export interface GeneralControlsState {
   topFrameComponent?: React.ReactNode;
   activeTextBox?: TextBox;
   activeSwatchColor?: SwatchColor;
+  fitImage: () => void;
   setZoom: (val: number | number[]) => void;
   setNextStepEnable: (val: boolean) => void;
   toggleBottomFrame: (val: boolean) => void;
@@ -32,6 +34,7 @@ export interface GeneralControlsState {
 
 export const useGeneralControlsStore = create<GeneralControlsState>((set) => ({
   zoom: 50,
+  resetCount: 0,
   isNextStepEnable: false,
   isBottomFrameOpen: false,
   isInitialModalOpen: true,
@@ -41,6 +44,7 @@ export const useGeneralControlsStore = create<GeneralControlsState>((set) => ({
   toggleBottomFrame: (val: boolean) => set({ isBottomFrameOpen: val }),
   setNextStepEnable: (val: boolean) => set({ isNextStepEnable: val }),
   setZoom: (newVal: number | number[]) => set({ zoom: newVal }),
+  fitImage: () => set((state) => ({ resetCount: state.resetCount + 1 })),
   setIsLoading: (val: boolean) => set({ isLoading: val }),
   setInitialLoading: (val: boolean) => set({ isInitialLoad: val }),
   setTopFrameComponent: (component: React.ReactNode) =>

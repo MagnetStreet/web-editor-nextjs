@@ -2,7 +2,7 @@
 
 import { Box, Stack } from '@mui/material';
 import dynamic from 'next/dynamic';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 import styles from './Editor.module.scss';
 
@@ -49,9 +49,11 @@ const PageEditor: React.FC<EditorPageServerData> = ({
   isTest = false,
   documentInformationMock,
 }) => {
+  const editorRef = useRef();
   const { isDesktop } = useScreenSize();
   const {
     zoom,
+    resetCount,
     isBottomFrameOpen,
     topFrameComponent,
     isIsolatedModeActive,
@@ -59,6 +61,7 @@ const PageEditor: React.FC<EditorPageServerData> = ({
     setIsLoading,
     toggleBottomFrame,
     setZoom,
+    fitImage,
     setActiveTextBox,
     setIsolatedMode,
   } = useGeneralControlsStore<GeneralControlsState>((state) => state);
@@ -122,7 +125,6 @@ const PageEditor: React.FC<EditorPageServerData> = ({
           setIsLoading(false);
         }
       };
-      console.log('RENDERING SERVER DATA');
       fetchData();
     } else {
       //TODO This will get remove after testing is done
@@ -146,7 +148,10 @@ const PageEditor: React.FC<EditorPageServerData> = ({
   return (
     <Stack direction='row' position='relative'>
       <LateralContextualMenu />
-      <Box className={`${styles.editor} ${styles.editor__isolated_active}`}>
+      <Box
+        ref={editorRef}
+        className={`${styles.editor} ${styles.editor__isolated_active}`}
+      >
         {/*
           TODO delete this is just to test the notifications 
            {notificationSample()} 
@@ -165,6 +170,7 @@ const PageEditor: React.FC<EditorPageServerData> = ({
               position='absolute'
               zoom={zoom as number}
               setZoom={setZoom}
+              fitImage={fitImage}
               coordinates={{
                 top: '45%',
                 right: '1%',
@@ -203,8 +209,10 @@ const PageEditor: React.FC<EditorPageServerData> = ({
           </>
         )}
         <Canvas
+          editorRef={editorRef}
           position='absolute'
           zoom={zoom}
+          resetCount={resetCount}
           viewBlob={viewBlob}
           documentInfo={documentInfo}
           activeView={activeView}
@@ -214,7 +222,7 @@ const PageEditor: React.FC<EditorPageServerData> = ({
           handleClickFontItem={handleClickFontItem}
           coordinates={{
             top: '50%',
-            left: '70%',
+            left: '50%',
           }}
         />
       </Box>
