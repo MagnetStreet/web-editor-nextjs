@@ -54,7 +54,10 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
   const [sceneImage, setSceneImage] = useState<JSX.Element | null>(null);
   const [imageHeight, setImageHeight] = useState(100);
   const [imageWidth, setImageWidth] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [boxes, setBoxes] = useState<any>(null);
 
+  // Handles the updates of the Blod prop
   useEffect(() => {
     const createUrl = async () => {
       try {
@@ -77,6 +80,7 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
     };
   }, [viewBlob]);
 
+  // Handles the updates of the zoom
   useEffect(() => {
     if (!activeView) return;
 
@@ -105,8 +109,9 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
         y: offsetY,
       });
     }
-  }, [activeView, imageHeight, imageUrl, zoom, resetCount]);
+  }, [activeView, imageHeight, zoom, resetCount]);
 
+  // Handles the updates on the Image Url
   useEffect(() => {
     const createSceneImage = () => {
       const imageComponent = <SceneImage />;
@@ -115,6 +120,18 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
     createSceneImage();
   }, [imageUrl, imageHeight, imageWidth]);
 
+  // Handles the updates on textboxes after zoom or dragging
+  useEffect(() => {
+    if (!isDragging) {
+      const res =
+        !activeTextBox && activeLayoutName === CONTEXTUAL_MENU_OPTION.TEXT
+          ? loadTextBoxes()
+          : loadTransformer();
+      setBoxes(res);
+    }
+  }, [isDragging, imageHeight, activeTextBox, activeLayoutName, resetCount]);
+
+  //TODO handles the isolated mode
   useEffect(() => {
     // const quill = new Quill('#editor', {
     //   theme: 'snow',
@@ -129,6 +146,7 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
     }
   };
 
+  //Textboxes functions
   const createRectFromPoints = (
     originalCoordinates: PointCoordinates[],
     textBox: TextBox
@@ -227,10 +245,16 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
     }
   };
 
-  const SceneImage: React.FC = () => {
-    const [image] = useImage(imageUrl || '');
-    return <Image image={image} width={imageWidth} height={imageHeight} />;
+  // Image functions
+  const updateDragStart = () => {
+    if (!isDragging) {
+      setBoxes(null);
+    }
+    setIsDragging(!isDragging);
   };
+
+  // Styling
+
   const containerStyle = {
     ...getStylePositionsHelper(position, coordinates),
     zIndex: 0,
@@ -246,25 +270,10 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
     width: `fit-content`,
     transform: 'translate(-50%, -50%)',
   };
-  const [isDragging, setIsDragging] = useState(false);
-  const [boxes, setBoxes] = useState<any>(null);
-
-  const updateDragStart = () => {
-    if (!isDragging) {
-      setBoxes(null);
-    }
-    setIsDragging(!isDragging);
+  const SceneImage: React.FC = () => {
+    const [image] = useImage(imageUrl || '');
+    return <Image image={image} width={imageWidth} height={imageHeight} />;
   };
-
-  useEffect(() => {
-    if (!isDragging) {
-      const res =
-        !activeTextBox && activeLayoutName === CONTEXTUAL_MENU_OPTION.TEXT
-          ? loadTextBoxes()
-          : loadTransformer();
-      setBoxes(res);
-    }
-  }, [isDragging, activeTextBox, activeLayoutName]);
 
   return (
     <>
