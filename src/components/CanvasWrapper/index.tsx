@@ -49,6 +49,7 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
 }) => {
   const stageRef = createRef<Konva.Stage>(); //I can get the attributes from the attrs{x,y, width, height} useRef
   const imageLayerRef = createRef<Konva.Layer>();
+  const textBoxesLayerRef = createRef<Konva.Layer>();
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [sceneImage, setSceneImage] = useState<JSX.Element | null>(null);
   const [imageHeight, setImageHeight] = useState(100);
@@ -99,6 +100,10 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
         x: offsetX,
         y: offsetY,
       });
+      textBoxesLayerRef.current?.setAttrs({
+        x: offsetX,
+        y: offsetY,
+      });
     }
   }, [activeView, imageHeight, imageUrl, zoom, resetCount]);
 
@@ -139,11 +144,15 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
     const width = maxX - minX;
     const height = maxY - minY;
 
+    // Adjust coordinates based on imageRef offset
+    const offsetX = imageLayerRef.current?.x() || 0;
+    const offsetY = imageLayerRef.current?.y() || 0;
+
     return (
       <Rect
         key={textBox.name}
-        x={minX}
-        y={minY}
+        x={minX + offsetX}
+        y={minY + offsetY}
         width={width}
         height={height}
         fill='rgba(0, 0, 0, 0.3)'
@@ -171,12 +180,16 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
     const width = maxX - minX;
     const height = maxY - minY;
 
+    // Adjust coordinates based on imageRef offset
+    const offsetX = imageLayerRef.current?.x() || 0;
+    const offsetY = imageLayerRef.current?.y() || 0;
+
     return (
       <>
         <Rect
           name='active-text-box'
-          x={minX}
-          y={minY}
+          x={minX + offsetX}
+          y={minY + offsetY}
           width={width}
           height={height}
           fill='rgba(255, 255, 255, 0.3)'
@@ -233,6 +246,26 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
     width: `fit-content`,
     transform: 'translate(-50%, -50%)',
   };
+  const [isDragging, setIsDragging] = useState(false);
+  const [boxes, setBoxes] = useState<any>(null);
+
+  const updateDragStart = () => {
+    if (!isDragging) {
+      setBoxes(null);
+    }
+    setIsDragging(!isDragging);
+  };
+
+  useEffect(() => {
+    if (!isDragging) {
+      const res =
+        !activeTextBox && activeLayoutName === CONTEXTUAL_MENU_OPTION.TEXT
+          ? loadTextBoxes()
+          : loadTransformer();
+      setBoxes(res);
+    }
+  }, [isDragging, activeTextBox, activeLayoutName]);
+
   return (
     <>
       {editorRef && editorRef.current && (
@@ -248,15 +281,15 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
               width={editorRef?.current.clientWidth}
               height={editorRef?.current.clientHeight}
             >
-              <Layer ref={imageLayerRef} draggable>
+              <Layer
+                ref={imageLayerRef}
+                draggable
+                onDragStart={updateDragStart}
+                onDragEnd={updateDragStart}
+              >
                 {sceneImage && imageHeight ? sceneImage : null}
               </Layer>
-              <Layer>
-                {!activeTextBox &&
-                activeLayoutName === CONTEXTUAL_MENU_OPTION.TEXT
-                  ? loadTextBoxes()
-                  : loadTransformer()}
-              </Layer>
+              <Layer>{boxes}</Layer>
             </Stage>
           )}
         </Box>
