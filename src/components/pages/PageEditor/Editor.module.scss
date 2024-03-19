@@ -1,10 +1,11 @@
 @import '@/styles/variables';
 @import '@/styles/mixins';
+@import '@/styles/_colorVariables.module';
 
 .editor {
   position: relative;
   min-height: calc(100vh - 150px); // screen size minus controls elements
-  background-color: $grayLight;
+  background-color: $brandcolor-gray-light;
   overflow: scroll;
   display: inline-block;
   width: 100%;

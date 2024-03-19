@@ -1,0 +1,511 @@
+// TODO this is a "Copy of _colorVariables.scss on the old project"
+/*
+  Any Variable exported here must be exported on the index.module.scss as well to be usable on Js as well
+*/
+
+$brandcolor-navy: #072441;
+$brandcolor-dusty: #5471a8;
+$brandcolor-bright-blue: #618de6;
+$brandcolor-blush: #fee5d8;
+$brandcolor-cream: #f8e8d7;
+$brandcolor-light-cream: #fcf7f2;
+$brandcolor-cool-white: #fef7fa;
+$brandcolor-white: #ffffff;
+
+//New Colors introduced by the figmna designs of the New Editor
+$brandcolor-ice: #e6eefe;
+$brandcolor-yellow: #e07a1f;
+$brandcolor-light-grey: #cccccc;
+$brandcolor-secondary-grey: #e5eefe;
+$brandcolor-darker-grey: #9e9e9e;
+$brandcolor-gray-light: #efefef;
+
+//Truly Engaging Color Palette Setup
+$te-navy: #072441;
+$te-navy-100: #072441;
+$te-navy-t10: #203a54;
+$te-navy-t50: #8392a0;
+$te-navy-t70: #b5bdc6;
+$te-navy-t90: #e6e9ec;
+$te-navy-s40: #06203b;
+$te-navy-s50: #041221;
+$te-navy-s70: #020b14;
+$te-navy-s90: #010407;
+$te-navy-palette: (
+  '100': $te-navy,
+  't10': $te-navy-t10,
+  't50': $te-navy-t50,
+  't70': $te-navy-t70,
+  't90': $te-navy-t90,
+  's40': $te-navy-s40,
+  's50': $te-navy-s50,
+  's70': $te-navy-s70,
+  's90': $te-navy-s90,
+);
+
+$te-dusty-blue: #5471a8;
+$te-dusty-blue-100: #5471a8;
+$te-dusty-blue-t10: #657fb1;
+$te-dusty-blue-t50: #a9b8d3;
+$te-dusty-blue-t70: #ccd4e5;
+$te-dusty-blue-t90: #eef1f6;
+$te-dusty-blue-s40: #324465;
+$te-dusty-blue-s50: #2a3954;
+$te-dusty-blue-s70: #192232;
+$te-dusty-blue-s90: #080b11;
+$te-dusty-blue-palette: (
+  '100': $te-dusty-blue,
+  't10': $te-dusty-blue-t10,
+  't50': $te-dusty-blue-t50,
+  't70': $te-dusty-blue-t70,
+  't90': $te-dusty-blue-t90,
+  's40': $te-dusty-blue-s40,
+  's50': $te-dusty-blue-s50,
+  's70': $te-dusty-blue-s70,
+  's90': $te-dusty-blue-s90,
+);
+
+$te-white: #ffffff;
+$te-white-100: #ffffff;
+$te-white-s10: #e6e6e6;
+$te-white-s25: #dedede;
+$te-white-s50: #808080;
+$te-white-s90: #191919;
+$te-white-palette: (
+  '100': $te-white,
+  's10': $te-white-s10,
+  's50': $te-white-s50,
+  's90': $te-white-s90,
+);
+
+$te-black: #010407;
+
+$te-bright-blue: #618de6;
+$te-bright-blue-100: #618de6;
+$te-bright-blue-t70: #d0ddf7;
+$te-bright-blue-t90: #eff4fc;
+$te-bright-blue-s10: #577fcf;
+$te-bright-blue-s70: #1d2a45;
+$te-bright-blue-palette: (
+  '100': $te-bright-blue,
+  't70': $te-bright-blue-t70,
+  't90': $te-bright-blue-t90,
+  's10': $te-bright-blue-s10,
+  's70': $te-bright-blue-s70,
+);
+
+$te-blush: #fee5d8;
+$te-blush-100: #fee5d8;
+$te-blush-t70: #fff7f3;
+$te-blush-t90: #fffcfb;
+$te-blush-s10: #e5cec2;
+$te-blush-palette: (
+  '100': $te-blush,
+  't70': $te-blush-t70,
+  't90': $te-blush-t90,
+  's10': $te-blush-s10,
+);
+
+$te-cream: #f8e8d7;
+//$te-cream-s70: shade($te-cream, 70%);
+$te-cream-100: #f8e8d7;
+$te-cream-t70: #fdf8f3;
+$te-cream-t90: #fefdfb;
+$te-cream-s70: #4a4641;
+$te-cream-palette: (
+  '100': $te-cream,
+  't70': $te-cream-t70,
+  't90': $te-cream-t90,
+  's70': $te-cream-s70,
+);
+
+$te-light-cream: $brandcolor-light-cream;
+$te-light-cream-100: $brandcolor-light-cream;
+$te-light-cream-t70: #fefdfb;
+$te-light-cream-s10: #e3dfda;
+$te-light-cream-s70: #7e8c79;
+$te-light-cream-palette: (
+  '100': $te-light-cream,
+  't70': $te-light-cream-t70,
+  's10': $te-light-cream-s10,
+  's70': $te-light-cream-s70,
+);
+
+$te-cool-white: #fef8fa;
+$te-cool-white-100: #fef8fa;
+$te-cool-white-t70: #fffdfd;
+$te-cool-white-s10: #e5dee1;
+$te-cool-white-s50: #4c4a4b;
+$te-cool-white-palette: (
+  '100': $te-cool-white,
+  't70': $te-cool-white-t70,
+  's10': $te-cool-white-s10,
+  's50': $te-cool-white-s50,
+);
+
+$te-lightest-grey: #f3f3f3;
+$te-lighter-grey: #e8e8e8;
+$te-light-grey: #cccdcd;
+$te-grey: #70777f;
+$te-medium-grey: #36414d;
+$te-dark-grey: #1a1d20;
+$te-grey-palette: (
+  'light-grey': $te-light-grey,
+  'grey': $te-grey,
+  'medium-grey': $te-medium-grey,
+  'dark-grey': $te-dark-grey,
+);
+
+$te-info: #2496ff;
+$te-info-100: #2496ff;
+$te-info-t10: #3aa0ff;
+$te-info-t50: #91cbff;
+$te-info-t90: #e9f4ff;
+$te-info-900: #1177d5;
+$te-info-palette: (
+  '100': $te-info,
+  't10': $te-info-t10,
+  't50': $te-info-t50,
+  't90': $te-info-t90,
+  '900': $te-info-900,
+);
+
+$te-success: #1d891d;
+$te-success-100: #1d891d;
+$te-success-t10: #349534;
+$te-success-t50: #8ec48e;
+$te-success-s90: #e8f3e8;
+$te-success-900: #0e4c0e;
+$te-success-palette: (
+  '100': $te-success,
+  't10': $te-success-t10,
+  't50': $te-success-t50,
+  's90': $te-success-s90,
+  '900': $te-success-900,
+);
+
+$te-warning: #ffeb3b;
+$te-warning-100: #ffeb3b;
+$te-warning-t10: #ffea38;
+$te-warning-t50: #fff390;
+$te-warning-s90: #fffde9;
+$te-warning-900: #e09a1f;
+
+$te-warning-palette: (
+  '100': $te-warning,
+  't10': $te-warning-t10,
+  't50': $te-warning-t50,
+  's90': $te-warning-s90,
+  '900': $te-warning-900,
+);
+
+$te-error: #eb1414;
+$te-error-100: #eb1414;
+$te-error-t10: #ed2c2c;
+$te-error-t50: #f58989;
+$te-error-s90: #fde7e7;
+$te-error-900: #bf0000;
+$te-error-palette: (
+  '100': $te-error,
+  't10': $te-error-t10,
+  't50': $te-error-t50,
+  's90': $te-error-s90,
+  '900': $te-error-900,
+);
+
+$color-gray: #c5c4bd;
+$color-weddings: rgb(135, 165, 174);
+$color-magnetstreet: rgba(22, 71, 115, 0.9);
+$color-business: rgba(229, 121, 25, 1);
+$color-schools: rgba(80, 160, 108, 1);
+$color-lifemoments: $color-weddings;
+$color-msBlue: $brandcolor-navy;
+$color-msGreen: #93a445;
+$text-color: $brandcolor-navy;
+$link-color: $brandcolor-dusty;
+$nav-color: $brandcolor-navy;
+$color-footer: $brandcolor-dusty;
+$color-standard: $text-color;
+$standardColor: $text-color;
+
+$ds_interfaceBackgroundColor: #f6f7f7;
+$ds_interfaceBorderColor: #e2e4e4;
+
+$color-errorRedTrans: rgba(229, 4, 5, 0.8);
+$color-errorRed: rgba(229, 4, 5, 1);
+$color-errorYellowTrans: rgba(246, 231, 17, 0.8);
+$color-errorYellow: rgba(246, 231, 17, 1);
+$color-errorBlueTrans: rgba(97, 134, 192, 0.8);
+$color-errorBlue: rgba(97, 134, 192, 1);
+
+$cobalt: rgb(17, 59, 137);
+
+$creamRose: rgb(253, 228, 229);
+$teaberry: rgb(252, 218, 213);
+$carnation: rgb(249, 188, 196);
+$blush: rgb(221, 158, 168);
+$dustyRose: rgb(234, 138, 151);
+$flamingo: rgb(243, 137, 184);
+$azalea: rgb(238, 77, 155);
+$raspberry: rgb(206, 29, 83);
+
+$wine: rgb(181, 21, 76);
+$burgundy: rgb(139, 0, 61);
+$scarlet: rgb(225, 25, 49);
+$classicRed: rgb(176, 26, 37);
+$strawberry: rgb(173, 12, 37);
+$orangeRed: rgb(200, 56, 30);
+$pumpkin: rgb(209, 86, 29);
+$orange: rgb(237, 104, 15);
+
+$tangerine: rgb(243, 140, 0);
+$carrot: rgb(251, 172, 59);
+$sunset: rgb(215, 147, 90);
+$coral: rgb(246, 143, 125);
+$peach: rgb(253, 207, 179);
+$palePeach: rgb(255, 238, 206);
+$butter: rgb(253, 245, 196);
+$sunbeam: rgb(255, 243, 108);
+
+$marigold: rgb(255, 214, 92);
+$classicYellow: rgb(255, 238, 0);
+$chartreuse: rgb(199, 212, 0);
+$kiwi: rgb(110, 190, 68);
+$lime: rgb(168, 209, 102);
+$celery: rgb(183, 218, 152);
+$mint: rgb(222, 236, 216);
+$celadon: rgb(186, 224, 205);
+
+$tropic: rgb(137, 203, 151);
+$rainforest: rgb(0, 180, 119);
+$grass: rgb(10, 152, 70);
+$hunter: rgb(7, 84, 29);
+$olive: rgb(96, 114, 57);
+$sage: rgb(188, 196, 168);
+$ice: rgb(223, 239, 250);
+$sky: rgb(185, 224, 247);
+
+$lightBlue: rgb(91, 196, 240);
+$dusk: rgb(134, 183, 212);
+$rain: rgb(140, 191, 201);
+$periwinkle: rgb(146, 160, 202);
+$shale: rgb(144, 157, 181);
+$turquoise: rgb(113, 204, 212);
+$teal: rgb(0, 152, 155);
+$ocean: rgb(0, 138, 183);
+
+$monaco: rgb(64, 136, 167);
+$peacock: rgb(0, 128, 145);
+$cornflower: rgb(0, 159, 227);
+$mediumBlue: rgb(0, 123, 191);
+$classicBlue: rgb(34, 74, 140);
+$grecian: rgb(55, 52, 129);
+$royal: rgb(0, 89, 150);
+$navy: rgb(0, 55, 95);
+
+$lavender: rgb(218, 202, 227);
+$orchid: rgb(212, 174, 210);
+$lilac: rgb(191, 160, 203);
+$violet: rgb(191, 101, 168);
+$mulberry: rgb(149, 83, 127);
+$plumeria: rgb(142, 74, 147);
+$plum: rgb(103, 45, 137);
+$sangria: rgb(123, 21, 82);
+
+$eggplant: rgb(100, 48, 85);
+$ivory: rgb(249, 247, 232);
+$champagne: rgb(238, 226, 205);
+$gold: rgb(221, 192, 135);
+$bronze: rgb(153, 102, 47);
+$chocolate: rgb(82, 43, 13);
+$sugar: rgb(212, 203, 192);
+$ashwood: rgb(168, 151, 135);
+
+$latte: rgb(135, 109, 88);
+$slate: rgb(95, 85, 81);
+$winterWhite: rgb(233, 234, 234);
+$silver: rgb(220, 221, 221);
+$classicGray: rgb(154, 156, 156);
+$charcoal: rgb(118, 120, 120);
+$black: rgb(28, 27, 26);
+$white: rgb(255, 255, 255);
+
+//--------------------------NEW COLORS------------------------------\\
+$black: rgb(28, 27, 26);
+$steel: rgb(71, 72, 71);
+$charcoal: rgb(118, 120, 120);
+$gray: rgb(150, 152, 152);
+$platinum: rgb(191, 192, 193);
+$matteSilver: rgb(212, 213, 213);
+$winterWhite: rgb(233, 234, 234);
+$white: rgb(255, 255, 255);
+$javaBean: rgb(109, 74, 57);
+$latte: rgb(127, 104, 82);
+$ashwood: rgb(172, 155, 137);
+$greige: rgb(216, 205, 193);
+$berryRose: rgb(194, 106, 98);
+$cashmere: rgb(203, 139, 113);
+$spunSugar: rgb(246, 215, 200);
+$lace: rgb(254, 243, 243);
+$merlot: rgb(104, 44, 38);
+$crabApple: rgb(139, 50, 56);
+$darkRose: rgb(184, 83, 58);
+$terracotta: rgb(202, 117, 81);
+$mauveTaupe: rgb(144, 82, 99);
+$ashRose: rgb(191, 143, 138);
+$pinotNoir: rgb(223, 174, 178);
+$softBlush: rgb(248, 221, 219);
+$sangria: rgb(123, 21, 82);
+$boysenberry: rgb(155, 68, 114);
+$sweetAzalea: rgb(200, 128, 170);
+$warmOrchid: rgb(225, 193, 214);
+$grapeJuice: rgb(102, 50, 81);
+$mulberry: rgb(157, 96, 133);
+$irisMauve: rgb(204, 160, 175);
+$orchidIce: rgb(237, 227, 233);
+$plum: rgb(99, 45, 126);
+$amethyst: rgb(168, 127, 182);
+$sugaredPlum: rgb(205, 173, 209);
+$lavender: rgb(223, 206, 229);
+$coolIndigo: rgb(37, 50, 132);
+$frostyGrape: rgb(98, 105, 167);
+$purpleAsh: rgb(150, 159, 181);
+$lilacMist: rgb(207, 212, 229);
+$navy: rgb(0, 55, 95);
+$azure: rgb(90, 154, 210);
+$blueLagoon: rgb(151, 189, 229);
+$icyBlue: rgb(207, 231, 249);
+$denim: rgb(0, 82, 142);
+$lakeshore: rgb(65, 133, 164);
+$antiqueBlue: rgb(149, 172, 186);
+$blueFog: rgb(225, 233, 242);
+$stoneBlue: rgb(57, 88, 109);
+$blueSpruce: rgb(78, 136, 138);
+$glacier: rgb(151, 183, 185);
+$rainyDay: rgb(215, 228, 231);
+$tealWaters: rgb(0, 110, 128);
+$jewelBlue: rgb(18, 164, 181);
+$turquoise: rgb(124, 202, 209);
+$sereneSky: rgb(208, 233, 238);
+$emeraldSea: rgb(6, 98, 94);
+$malachite: rgb(0, 132, 123);
+$seaGlass: rgb(86, 181, 175);
+$waterfall: rgb(185, 219, 208);
+$cactus: rgb(95, 115, 92);
+$greenWillow: rgb(143, 155, 134);
+$antiqueSage: rgb(202, 214, 209);
+$silverySage: rgb(227, 234, 231);
+$parakeet: rgb(0, 150, 85);
+$warmMint: rgb(116, 193, 146);
+$celadon: rgb(193, 224, 205);
+$mint: rgb(229, 239, 219);
+$evergreen: rgb(17, 80, 42);
+$cloverGreen: rgb(75, 113, 53);
+$greenPear: rgb(152, 189, 115);
+$pistachio: rgb(207, 223, 190);
+$ivyGreen: rgb(90, 98, 71);
+$lilyPad: rgb(147, 155, 114);
+$seaMist: rgb(192, 198, 168);
+$icyMoss: rgb(234, 235, 226);
+$butterPecan: rgb(183, 130, 46);
+$matteGold: rgb(223, 195, 135);
+$champagne: rgb(242, 229, 207);
+$ivory: rgb(252, 249, 237);
+$honey: rgb(236, 186, 66);
+$pineapple: rgb(255, 213, 0);
+$blonde: rgb(255, 237, 158);
+$lemonade: rgb(255, 248, 220);
+$matteCopper: rgb(170, 103, 48);
+$ginger: rgb(206, 141, 86);
+$hazelnut: rgb(226, 187, 154);
+$parchment: rgb(243, 223, 208);
+$pumpkin: rgb(205, 80, 14);
+$papaya: rgb(239, 135, 50);
+$peach: rgb(253, 210, 179);
+$coconut: rgb(252, 239, 231);
+$chestnut: rgb(159, 43, 27);
+$nutmeg: rgb(162, 81, 58);
+$coral: rgb(244, 144, 123);
+$lightSalmon: rgb(250, 200, 191);
+$rubyRed: rgb(169, 20, 31);
+$punch: rgb(220, 79, 98);
+$babyPink: rgb(247, 178, 184);
+$pinkDivinity: rgb(252, 225, 230);
+$berryPink: rgb(192, 48, 72);
+$watermelon: rgb(240, 113, 138);
+$pinkGlass: rgb(244, 206, 207);
+$lightChiffon: rgb(254, 241, 243);
+
+//__________________________FOIL COLOR BACKGROUND______________________\\
+
+$hi-dpi: min-resolution 1.5dppx;
+$normal-dpi: min-resolution 1dppx;
+
+@mixin foil-background($color, $size, $override: null) {
+  background: url('/assets/foil/swatch-foil-#{$color}-#{$size}_1x.png') center
+    no-repeat $override;
+  background-size: 100% $override;
+  @include breakpoint($hi-dpi) {
+    background: url('/assets/foil/swatch-foil-#{$color}-#{$size}_2x.png') center
+      no-repeat $override;
+    background-size: 100% $override;
+  }
+}
+
+// $goldfoil:linear-gradient(300deg, rgb(229, 201, 119) 25%, rgb(255, 240, 163) 50%, rgb(229, 201, 119) 75%);
+// $silverfoil:linear-gradient(300deg, rgb(199, 200, 202) 25%, rgb(247, 243, 240) 50%, rgb(199, 200, 202) 75%);
+// $rosegoldfoil:linear-gradient(300deg, rgb(249, 166, 118) 25%, rgb(251, 198, 168) 50%, rgb(249, 166, 118) 75%);
+// $copperfoil:linear-gradient(300deg, rgb(231, 158, 65) 25%, rgb(255, 207, 100) 50%, rgb(231, 158, 65) 75%);
+// $redfoil:linear-gradient(300deg, rgb(188, 78, 33) 25%, rgb(249, 125, 74) 50%, rgb(188, 78, 33) 75%);
+// $bluefoil:linear-gradient(300deg, rgb(44, 81, 140) 25%, rgb(62, 117, 204) 50%, rgb(44, 81, 140) 75%);
+//
+//
+// $goldfoilsmall:radial-gradient(18px at 15px 12px, rgb(253, 239, 166) 8%, rgb(229, 201, 119) 53%, rgb(160, 141, 84) 92%);
+// $silverfoilsmall:radial-gradient(18px at 15px 12px, rgb(247, 243, 240) 8%, rgb(199, 200, 202) 53%, rgb(158, 158, 158) 92%);
+// $rosegoldfoilsmall:radial-gradient(18px at 15px 12px, rgb(251, 198, 168) 8%, rgb(249, 166, 118) 53%, rgb(183, 122, 87) 92%);
+// $copperfoilsmall:radial-gradient(18px at 15px 12px, rgb(255, 207, 100) 8%, rgb(231, 158, 65) 53%, rgb(177, 121, 50) 92%);
+// $redfoilsmall:radial-gradient(18px at 15px 12px, rgb(249, 125, 74) 8%, rgb(188, 78, 33) 53%, rgb(150, 62, 26) 92%);
+// $bluefoilsmall:radial-gradient(18px at 15px 12px, rgb(62, 117, 204) 8%, rgb(44, 81, 140) 53%, rgb(31, 57, 99) 92%);
+//
+// $goldfoil:radial-gradient(30px at 25px 20px, rgb(253, 239, 166) 8%, rgb(229, 201, 119) 53%, rgb(160, 141, 84) 92%);
+// $silverfoil:radial-gradient(30px at 25px 20px, rgb(247, 243, 240) 8%, rgb(199, 200, 202) 53%, rgb(158, 158, 158) 92%);
+// $rosegoldfoil:radial-gradient(30px at 25px 20px, rgb(251, 198, 168) 8%, rgb(249, 166, 118) 53%, rgb(183, 122, 87) 92%);
+// $copperfoil:radial-gradient(30px at 25px 20px, rgb(255, 207, 100) 8%, rgb(231, 158, 65) 53%, rgb(177, 121, 50) 92%);
+// $redfoil:radial-gradient(30px at 25px 20px, rgb(249, 125, 74) 8%, rgb(188, 78, 33) 53%, rgb(150, 62, 26) 92%);
+// $bluefoil:radial-gradient(30px at 25px 20px, rgb(62, 117, 204) 8%, rgb(44, 81, 140) 53%, rgb(31, 57, 99) 92%);
+//
+// $goldfoillarge:radial-gradient(35px at 30px 25px, rgb(253, 239, 166) 8%, rgb(229, 201, 119) 53%, rgb(160, 141, 84) 92%);
+// $silverfoillarge:radial-gradient(35px at 30px 25px, rgb(247, 243, 240) 8%, rgb(199, 200, 202) 53%, rgb(158, 158, 158) 92%);
+// $rosegoldfoillarge:radial-gradient(35px at 30px 25px, rgb(251, 198, 168) 8%, rgb(249, 166, 118) 53%, rgb(183, 122, 87) 92%);
+// $copperfoillarge:radial-gradient(35px at 30px 25px, rgb(255, 207, 100) 8%, rgb(231, 158, 65) 53%, rgb(177, 121, 50) 92%);
+// $redfoillarge:radial-gradient(35px at 30px 25px, rgb(249, 125, 74) 8%, rgb(188, 78, 33) 53%, rgb(150, 62, 26) 92%);
+// $bluefoillarge:radial-gradient(35px at 30px 25px, rgb(62, 117, 204) 8%, rgb(44, 81, 140) 53%, rgb(31, 57, 99) 92%);
+//
+// linear-gradient(135deg, rgba(70,70,70,1) 0%, rgba(235,235,235,1) 30%, rgba(150,150,150,1) 55%, rgba(255,255,255,1) 71%, rgba(0,0,0,1) 100%)
+// box-shadow: inset 1px 2px 1px 0px rgba(0,0,0,0.35), inset -1px -2px 0px 0px rgba(255,255,255,0.45);
+// linear-gradient(110deg, rgba(255, 255, 255, 0) 20%, rgba(0, 0, 0, .25) 30%, rgba(255, 255, 255, 0.65) 47%, rgba(255, 255, 255, 0.15) 50%, rgba(0, 0, 0, 0.25) 80%, rgba(255, 255, 255, 0) 100%)
+// linear-gradient(110deg, rgba(0, 0, 0, .25) 20%, rgba(255, 255, 255, 0.5) 35%, rgba(255, 255, 255, 0.15) 58%, rgba(0, 0, 0, 0.25) 85%)
+
+:export {
+  brandColorNavy: $brandcolor-navy;
+  brandColorDusty: $brandcolor-dusty;
+  brandColorBrightBlue: $brandcolor-bright-blue;
+  brandColorWhite: $brandcolor-white;
+  brandColorBlush: $brandcolor-blush;
+  brandColorCream: $brandcolor-cream;
+  brandColorLightCream: $brandcolor-light-cream;
+  brandColorCoolWhite: $brandcolor-cool-white;
+  brandColorWhite: $brandcolor-white;
+
+  brandColorIce: $brandcolor-ice;
+  brandColorYellow: $brandcolor-yellow;
+  brandColorLightGrey: $brandcolor-light-grey;
+  brandcolorGrayLight: $brandcolor-gray-light;
+
+  teBlack: $te-black;
+  teInfo: $te-info;
+  teLightGrey: $te-light-grey;
+  teGrey: $te-grey;
+  teError: $te-error;
+  teWarning: $te-warning;
+}

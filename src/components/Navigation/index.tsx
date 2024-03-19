@@ -193,7 +193,7 @@ const Navigation: React.FC = () => {
   };
 
   return (
-    <Box>
+    <>
       {isDesktop ? (
         <Stack
           className={`${styles.navigation__desktop} ${
@@ -244,7 +244,7 @@ const Navigation: React.FC = () => {
           </Box>
         </Stack>
       )}
-    </Box>
+    </>
   );
 };
 

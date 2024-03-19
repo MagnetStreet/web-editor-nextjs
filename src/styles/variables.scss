@@ -1,23 +1,4 @@
-/* font sizes*/
-
-$primaryLight: #2496ff;
-$secondaryBlue: #618de6;
-$primary-color: #5471a8;
-$primary-navy: #072441;
-$highligh-background: #ccd4e5;
-$highligh-background2: #e6eefe;
-$alert-color: #e07a1f;
-$sucess-color: #1d891d;
-$white: #ffffff;
-$black: #000;
-$primaryBlack: #010407;
-$gray1: #cccccc;
-$gray2: #d9d9d9;
-$gray3: #cccdcd;
-$gray4: #e5eefe;
-$gray5: #9e9e9e;
-$grayDark: #70777f;
-$grayLight: #efefef;
+@import '@/styles/_colorVariables.module';
 
 /* Desktop sizes */
 $size-sm: 12px;

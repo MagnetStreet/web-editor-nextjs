@@ -15,11 +15,11 @@
     width: toRem(450);
   }
   cursor: pointer;
-  border-top: 1px solid $gray3;
+  border-top: 1px solid $te-light-grey;
   display: flex;
   align-items: center;
   justify-content: space-between;
   &:hover {
-    background-color: $gray4;
+    background-color: $brandcolor-secondary-grey;
   }
 }

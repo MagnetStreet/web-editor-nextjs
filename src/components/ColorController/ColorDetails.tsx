@@ -20,7 +20,7 @@ import CustomColorPicker from '@/components/ColorController/CustomColorPicker';
 import SwatchListSelector from '@/components/ColorController/SwatchListSelector';
 import { CustomIcon } from '@/components/shared/CustomIcon';
 import SearchBar from '@/components/shared/Form/SearchBar';
-
+import sassVars from '@/styles/_colorVariables.module.scss';
 import {
   BottomDrawerState,
   useBottomDrawerStore,
@@ -179,7 +179,6 @@ const ColorDetails: React.FC = () => {
   };
 
   const handleAddCustomColorClick = () => {
-    console.log('activeSwatchColor', activeSwatchColor);
     if (isDesktop) {
       setActiveColorSwatch(activeSwatchColor, <CustomColorPicker />);
     } else {
@@ -215,19 +214,19 @@ const ColorDetails: React.FC = () => {
             </Stack>
             <Stack direction='row' gap='12px'>
               <Stack gap='4px'>
-                <Typography color='#70777F'>C</Typography>
+                <Typography color={sassVars.teGrey}>C</Typography>
                 <Typography>{c}</Typography>
               </Stack>
               <Stack gap='4px'>
-                <Typography color='#70777F'>M</Typography>
+                <Typography color={sassVars.teGrey}>M</Typography>
                 <Typography>{m}</Typography>
               </Stack>
               <Stack gap='4px'>
-                <Typography color='#70777F'>Y</Typography>
+                <Typography color={sassVars.teGrey}>Y</Typography>
                 <Typography>{y}</Typography>
               </Stack>
               <Stack gap='4px'>
-                <Typography color='#70777F'>K</Typography>
+                <Typography color={sassVars.teGrey}>K</Typography>
                 <Typography>{k}</Typography>
               </Stack>
             </Stack>

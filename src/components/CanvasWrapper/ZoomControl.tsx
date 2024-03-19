@@ -11,7 +11,7 @@ import * as React from 'react';
 import useDebounce from '@/hooks/useDebounce';
 
 import { CustomIcon } from '@/components/shared/CustomIcon';
-
+import sassVars from '@/styles/_colorVariables.module.scss';
 import { getStylePositionsHelper } from '@/utils/getStylePositionsHelper';
 
 import { Coordinates } from '@/types';
@@ -39,8 +39,8 @@ const ZoomControl: React.FC<ZoomControlProps> = ({
     borderRadius: '8px',
     padding: { xs: '12px 4px', md: '12px 8px' },
     alignItems: 'center',
-    color: theme.palette.primary.main,
-    backgroundColor: theme.palette.secondary.main,
+    color: sassVars.brandColorDusty,
+    backgroundColor: sassVars.brandColorWhite,
     ...getStylePositionsHelper(position, coordinates),
   };
   const buttonStyle = {

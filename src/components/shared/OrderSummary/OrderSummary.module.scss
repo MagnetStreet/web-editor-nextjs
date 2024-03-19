@@ -24,10 +24,10 @@
   padding: 0;
   min-height: 20px;
   min-width: 0;
-  color: $primary-color;
+  color: $brandcolor-dusty;
   &__isOpen {
-    background-color: $highligh-background;
-    border: 1px solid var(--Primary-Navy, $primary-navy);
+    background-color: $te-dusty-blue-t70;
+    border: 1px solid $brandcolor-navy;
   }
 }
 
@@ -74,7 +74,7 @@
     flex-direction: row;
     justify-content: space-between;
     padding: 16px;
-    border-bottom: 1px solid var(--System-Greys-Light-Grey, #cccdcd);
+    border-bottom: 1px solid var(--System-Greys-Light-Grey, $te-light-grey);
     @include large {
       padding: 16px 0;
     }

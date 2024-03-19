@@ -2,6 +2,7 @@ import { styled } from '@mui/material';
 import * as React from 'react';
 
 import SwatchColor from '@/types/SwatchColor';
+import sassVars from '@/styles/_colorVariables.module.scss';
 import toRem from '@/utils/shared/toRem';
 
 interface ColorCircleProps {
@@ -18,11 +19,11 @@ const StyledButton = styled('button')(
   width: ${toRem('40px')};
   height: ${toRem('40px')};
   cursor: pointer;
-  border: 1px solid #CCCDCD;
+  border: 1px solid ${sassVars.teLightGrey};
   &:hover {
     width: ${toRem('39px')};
     height: ${toRem('39px')};
-    border: 2px solid #CCCDCD;
+    border: 2px solid ${sassVars.teLightGrey};
   }
   &.Mui-disabled{
     //just for test

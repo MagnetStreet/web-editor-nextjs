@@ -1,4 +1,5 @@
 import { createTheme } from '@mui/material/styles';
+import sassVars from '@/styles/_colorVariables.module.scss';
 
 const vars = {
   size: {
@@ -7,56 +8,36 @@ const vars = {
     lg: '20px',
     xl: '24px',
   },
-  colors: {
-    primaryLight: '#2496FF',
-    primaryColor: '#5471A8',
-    highlighBackground: '#ccd4e5',
-    highlighBackground2: '#E6EEFE',
-    secondaryLight: '#618DE6',
-    white: '#fff',
-    black: '#000',
-    primaryBlack: '#010407',
-    gray1: '#CCCCCC',
-    gray2: '#D9D9D9',
-    gray3: '#CCCDCD',
-    gray4: '#E5EEFE',
-    gray5: '#9E9E9E',
-    grayDark: '#70777F',
-    grayLight: '#EFEFEF',
-    warning: `#FDF2E9`,
-    warningYellow: '#E07A1F',
-    error: `#ef5350`,
-  },
 };
 
 const theme = createTheme({
   palette: {
     primary: {
-      light: vars.colors.primaryLight,
-      main: vars.colors.primaryColor,
-      contrastText: vars.colors.white,
+      light: sassVars.teInfo,
+      main: sassVars.brandColorDusty,
+      contrastText: sassVars.brandColorWhite,
     },
     secondary: {
-      light: vars.colors.secondaryLight,
-      main: vars.colors.white,
+      light: sassVars.brandColorBrightBlue,
+      main: sassVars.brandColorWhite,
     },
     warning: {
-      main: vars.colors.warning,
-      dark: vars.colors.warningYellow,
+      main: sassVars.teWarning,
+      dark: sassVars.brandColorYellow,
     },
     error: {
-      main: vars.colors.error,
-      dark: vars.colors.white,
+      main: sassVars.teError,
+      dark: sassVars.brandColorWhite,
     },
     grey: {
-      100: '#EFEFEF',
-      200: '#CCCCCC',
-      300: '#CCCDCD',
-      400: '#70777F',
+      100: sassVars.brandcolorGrayLight,
+      200: sassVars.brandColorLightGrey,
+      300: sassVars.teLightGrey,
+      400: sassVars.teGrey,
     },
     common: {
-      white: vars.colors.white,
-      black: vars.colors.black,
+      white: sassVars.brandColorWhite,
+      black: sassVars.teBlack,
     },
   },
 });
@@ -160,10 +141,10 @@ const customTheme = createTheme(theme, {
         root: {
           height: '6px',
           borderRadius: '100px',
-          backgroundColor: vars.colors.highlighBackground2,
+          backgroundColor: sassVars.brandColorIce,
         },
         bar: {
-          backgroundColor: vars.colors.secondaryLight,
+          backgroundColor: sassVars.brandColorBrightBlue,
         },
       },
     },

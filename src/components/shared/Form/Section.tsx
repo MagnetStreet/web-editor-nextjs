@@ -1,4 +1,5 @@
 import { styled } from '@mui/material';
+import sassVars from '@/styles/_colorVariables.module.scss';
 import * as React from 'react';
 
 interface SectionProps {
@@ -13,8 +14,8 @@ const StyledDiv = styled('div')(
   display: flex;
   justify-content: center;
   align-items: center;
-  border-top: 1px solid #CCCCCC;
-  border-bottom: 1px solid #CCCCCC;
+  border-top: 1px solid ${sassVars.brandColorLightGrey};
+  border-bottom: 1px solid ${sassVars.brandColorLightGrey};
 `
 );
 

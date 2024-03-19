@@ -1,6 +1,6 @@
 import { Stack, styled, Typography, useTheme } from '@mui/material';
 import * as React from 'react';
-
+import sassVars from '@/styles/_colorVariables.module.scss';
 import CustomSelect from '@/components/shared/Form/CustomSelect';
 
 import { SelectOption } from '@/types';
@@ -24,9 +24,9 @@ const StyledButton = styled('button')(
   border: 1px solid;
   border-radius: 999px;
   border-radius: 8px 0px 0px 8px;
-  border-color: #5471A8;
+  border-color: ${sassVars.brandColorDusty};
   background: white;
-  color: #5471A8;
+  color: ${sassVars.brandColorDusty};
   width: 40px;
   height: 40px;
   display: flex;
@@ -39,9 +39,9 @@ const StyledButton = styled('button')(
 
   &:hover {
     cursor: pointer;
-    background: #5471A8;
-    border-color: #E6EEFE;
-    color: white;
+    background: ${sassVars.brandColorDusty};
+    border-color: ${sassVars.BrandColorIce};
+    color: ${sassVars.brandColorWhite};
   }
 
   &:focus-visible {

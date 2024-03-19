@@ -8,11 +8,11 @@
 
 .notificationContainer {
   @include flex-center;
-  color: $white;
+  color: $brandcolor-white;
   height: 20px;
   width: 20px;
   border-radius: 100%;
-  background-color: $alert-color;
+  background-color: $brandcolor-yellow;
   position: absolute;
   top: 11px;
   right: 0px;
@@ -29,7 +29,7 @@
   box-shadow: none !important;
   border-radius: 0 !important;
   @include large {
-    border: 1px solid $gray1;
+    border: 1px solid $brandcolor-light-grey;
   }
 }
 
@@ -39,7 +39,7 @@
   width: 100%;
   @include large {
     border-radius: 0px 8px 8px 0px;
-    border: 1px solid #cccdcd;
+    border: 1px solid $te-light-grey;
     background: #fff;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   }
@@ -54,14 +54,14 @@
       min-width: 26;
     }
     &:hover {
-      color: $primary-color;
+      color: $brandcolor-dusty;
     }
     &__highlight {
       padding: 16px;
-      color: $white;
-      background-color: $primary-color;
+      color: $brandcolor-white;
+      background-color: $brandcolor-dusty;
       &:hover {
-        color: $white;
+        color: $brandcolor-white;
       }
     }
   }
@@ -76,7 +76,7 @@
   }
   &__icon_exit_arrow {
     position: absolute;
-    background-color: $primary-color;
+    background-color: $brandcolor-dusty;
     top: -11px;
     left: 0px;
     padding: 5px 0;

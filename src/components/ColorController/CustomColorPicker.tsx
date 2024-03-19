@@ -15,7 +15,7 @@ import ColorDetails from '@/components/ColorController/ColorDetails';
 import ColorSlider from '@/components/ColorController/ColorSlider';
 import SwatchListSelector from '@/components/ColorController/SwatchListSelector';
 import { CustomIcon } from '@/components/shared/CustomIcon';
-
+import sassVars from '@/styles/_colorVariables.module.scss';
 import {
   BottomDrawerState,
   useBottomDrawerStore,
@@ -381,7 +381,7 @@ const CustomColorPicker: FC = () => {
           title='Yellow'
           value={y2}
           tumbcolor='#FFED12'
-          tumbfontcolor='#000'
+          tumbfontcolor={`${sassVars.teBlack}`}
           style={getYellowSliderBGStyle(c2, m2, k2)}
           onChange={(val: number) => sliderUpdate('Y', val)}
         />

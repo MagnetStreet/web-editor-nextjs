@@ -32,14 +32,14 @@
       width: 26px;
       height: 26px;
       border-radius: 100%;
-      background-color: $gray5;
+      background-color: $brandcolor-darker-grey;
       &.is_done {
-        background-color: $secondaryBlue;
+        background-color: $brandcolor-bright-blue;
       }
       &__small {
         width: 20px;
         height: 20px;
-        background-color: $gray3;
+        background-color: $te-light-grey;
       }
     }
     &__subStep {
@@ -48,7 +48,7 @@
       align-items: center;
       gap: 9px;
       padding: 10px 0;
-      border-bottom: 1px solid $gray3;
+      border-bottom: 1px solid $te-light-grey;
       &:last-child {
         border-bottom: none;
       }
@@ -62,11 +62,13 @@
     padding: 16px 32px;
     height: 75px;
     transition: height 0.3s, padding 0.3s;
+    border-bottom: 1px solid $te-light-grey;
     &__isolated_mode {
       height: 0;
       padding: 0;
       overflow: hidden;
       transition: height 0.3s, padding 0.3s;
+      border-bottom: none;
     }
   }
   &__buttons {
@@ -108,7 +110,7 @@
     &__bar {
       height: 6px;
       border-radius: 100px;
-      background: #e6eefe;
+      background: $brandcolor-ice;
     }
   }
 }
