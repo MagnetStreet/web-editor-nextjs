@@ -6,7 +6,7 @@ interface DeviceType {
   isDesktop: boolean;
 }
 
-const useScreenSize = () => {
+const useScreenSize = (callback?: (e: UIEvent) => void) => {
   const [deviceType, setDeviceType] = useState<DeviceType>({
     isMobile: false,
     isTablet: false,
@@ -26,8 +26,14 @@ const useScreenSize = () => {
   useEffect(() => {
     determineDeviceType();
 
-    const handleResize = () => {
+    const handleResize = (e: UIEvent) => {
       determineDeviceType();
+      setDeviceType((prevDeviceType) => ({
+        ...prevDeviceType,
+      }));
+      if (callback) {
+        callback(e);
+      }
     };
 
     window.addEventListener('resize', handleResize);

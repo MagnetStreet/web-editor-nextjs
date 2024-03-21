@@ -15,6 +15,7 @@ import DesignStudioItem from '@/types/DesignStudioItem';
 import { CONTEXTUAL_MENU_OPTION } from '@/types/enum';
 import { TextBox } from '@/types/TextBox';
 import View from '@/types/View';
+
 const minZoom = 0;
 const maxZoom = 100;
 
@@ -30,6 +31,8 @@ interface CanvasWrapperProps {
   activeTextBox?: TextBox; //TODO we need active for each I think
   zoom: number | number[];
   resetCount: number;
+  fitImage: () => void;
+  setZoom: (val: number | number[]) => void;
   handleClickFontItem: (val: TextBox) => void;
 }
 
@@ -45,6 +48,8 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
   zoom,
   resetCount,
   activeLayoutName,
+  fitImage,
+  setZoom,
   handleClickFontItem,
 }) => {
   const stageRef = createRef<Konva.Stage>(); //I can get the attributes from the attrs{x,y, width, height} useRef
@@ -56,6 +61,41 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
   const [imageWidth, setImageWidth] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [boxes, setBoxes] = useState<any>(null);
+
+  const handleResize = () => {
+    if (!activeView) return;
+    // Code to execute on screen resize
+    if (imageWidth >= window.innerWidth) {
+      const paddingPercentage = 0.9; // 80% padding
+      const fitWidth = window.innerWidth * paddingPercentage;
+      let adjustedZoom = Number(zoom); //current zoom level;
+      let scaledImageWidth = imageWidth;
+
+      while (adjustedZoom > 0 && scaledImageWidth >= fitWidth) {
+        adjustedZoom = adjustedZoom - 1;
+        const scale = (adjustedZoom - minZoom) / (maxZoom - minZoom);
+        // Calculate the new dimensions using the adjusted zoom level
+        const newDynamicHeight = 0.3 + scale * 0.7; // Scale between 0.3 and 1.0
+        const scaledImageHeight =
+          newDynamicHeight * activeView?.sceneCanvasHeight;
+
+        scaledImageWidth = (imageWidth / imageHeight) * scaledImageHeight;
+      }
+      // Update the zoom state with the new zoom level
+      setZoom(adjustedZoom);
+    }
+    fitImage();
+  };
+  useEffect(() => {
+    // Call handleResize immediately and attach it to the resize event
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    // Remove the event listener when the component unmounts or when the screen size changes
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [window.innerWidth, window.innerHeight]);
 
   // Handles the updates of the Blod prop
   useEffect(() => {
@@ -83,7 +123,7 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
   // Handles the updates of the zoom
   useEffect(() => {
     if (!activeView) return;
-
+    console.log('RECALCULATING...', zoom);
     const adjustedZoom = Math.max(minZoom, Math.min(maxZoom, Number(zoom)));
     const scale = (adjustedZoom - minZoom) / (maxZoom - minZoom);
 
@@ -118,7 +158,14 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
       setSceneImage(imageComponent);
     };
     createSceneImage();
+    handleResize();
   }, [imageUrl, imageHeight, imageWidth]);
+
+  useEffect(() => {
+    if (imageUrl) {
+      handleResize();
+    }
+  }, [imageUrl]);
 
   // Handles the updates on textboxes after zoom or dragging
   useEffect(() => {
@@ -305,8 +352,16 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
           {activeView && imageUrl && (
             <Stage
               ref={stageRef}
-              width={editorRef?.current.clientWidth}
-              height={editorRef?.current.clientHeight}
+              width={
+                window.innerWidth < editorRef?.current.clientWidth
+                  ? window.innerWidth
+                  : editorRef?.current.clientWidth
+              }
+              height={
+                window.innerHeight < editorRef?.current.clientHeight
+                  ? window.innerHeight
+                  : editorRef?.current.clientHeight
+              }
             >
               <Layer
                 ref={imageLayerRef}

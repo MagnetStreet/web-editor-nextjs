@@ -15,6 +15,7 @@ import sassVars from '@/styles/_colorVariables.module.scss';
 import { getStylePositionsHelper } from '@/utils/getStylePositionsHelper';
 
 import { Coordinates } from '@/types';
+import { useEffect } from 'react';
 
 interface ZoomControlProps {
   zoom: number;
@@ -57,6 +58,10 @@ const ZoomControl: React.FC<ZoomControlProps> = ({
     setLocalZoom(value as number);
     debouncedSetZoom(value as number); // Call the debounced function
   };
+
+  useEffect(() => {
+    setZoom(zoom);
+  }, [zoom]);
 
   return (
     <Stack spacing='12px' direction='column' sx={containerStyle}>
