@@ -7,15 +7,25 @@ import SwatchColor from '@/types/SwatchColor';
 
 interface ColorNameProps {
   color: SwatchColor;
+  hideCMYKName?: boolean;
 }
 
-const ColorName: React.FC<ColorNameProps> = ({ color }) => {
+const ColorName: React.FC<ColorNameProps> = ({
+  color,
+  hideCMYKName = false,
+}) => {
   const colorName = useColorName(color);
   const { createdFromTextBox, swatchName } = color;
   return (
     <Stack id='color-name' gap='4px'>
       <Typography>{createdFromTextBox ? 'Text' : swatchName}</Typography>
-      <Typography>{colorName}</Typography>
+      <Typography>
+        {!hideCMYKName
+          ? colorName
+          : colorName.includes('CMYK')
+          ? ''
+          : colorName}
+      </Typography>
       {createdFromTextBox &&
         swatchName
           .split('\\')

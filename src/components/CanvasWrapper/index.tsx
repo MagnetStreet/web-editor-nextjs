@@ -123,7 +123,6 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
   // Handles the updates of the zoom
   useEffect(() => {
     if (!activeView) return;
-    console.log('RECALCULATING...', zoom);
     const adjustedZoom = Math.max(minZoom, Math.min(maxZoom, Number(zoom)));
     const scale = (adjustedZoom - minZoom) / (maxZoom - minZoom);
 

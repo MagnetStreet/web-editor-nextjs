@@ -17,16 +17,13 @@ import MobileStepper from '@/components/Navigation/MobileStepper';
 import { CustomIcon } from '@/components/shared/CustomIcon';
 
 import {
-  BottomDrawerState,
-  useBottomDrawerStore,
-} from '@/stores/useBottomDrawerStore';
-import {
   GeneralControlsState,
   useGeneralControlsStore,
-} from '@/stores/useGeneralControlsStore';
-import useNavigationStore, {
+  BottomDrawerState,
+  useBottomDrawerStore,
+  useNavigationStore,
   NavigationState,
-} from '@/stores/useNavigationStore';
+} from '@/stores';
 
 const Navigation: React.FC = () => {
   const theme = useTheme();

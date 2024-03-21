@@ -8,8 +8,8 @@ import {
   useNotificationsState,
   useNotificationStore,
 } from '@/stores/useNotificationStore';
-
-import { AlertColor, Notification } from '@/types';
+import { AlertColor } from '@mui/material';
+import { Notification } from '@/types';
 
 const Notifications: React.FC = () => {
   const theme = useTheme();

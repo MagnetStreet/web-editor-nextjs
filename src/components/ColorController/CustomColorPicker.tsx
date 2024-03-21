@@ -17,21 +17,15 @@ import SwatchListSelector from '@/components/ColorController/SwatchListSelector'
 import { CustomIcon } from '@/components/shared/CustomIcon';
 import sassVars from '@/styles/_colorVariables.module.scss';
 import {
-  BottomDrawerState,
-  useBottomDrawerStore,
-} from '@/stores/useBottomDrawerStore';
-import {
-  DesignStudioState,
-  useDesignStudioStore,
-} from '@/stores/useDesignStudioStore';
-import {
-  GeneralControlsState,
-  useGeneralControlsStore,
-} from '@/stores/useGeneralControlsStore';
-import {
   useNotificationsState,
   useNotificationStore,
-} from '@/stores/useNotificationStore';
+  GeneralControlsState,
+  useGeneralControlsStore,
+  DesignStudioState,
+  useDesignStudioStore,
+  BottomDrawerState,
+  useBottomDrawerStore,
+} from '@/stores';
 
 import updateDocumentColorService from '@/services/updateDocumentColorService';
 import transformToColorDSColor from '@/transformers/SwatchColorToDSColor';

@@ -12,7 +12,7 @@ export interface NavigationState {
   handleBackStepClick?: () => void;
 }
 
-const useNavigationStore = create<NavigationState>((set) => ({
+export const useNavigationStore = create<NavigationState>((set) => ({
   activeStep: 0,
   activeSubStep: 0,
   steps: [
@@ -85,5 +85,3 @@ const useNavigationStore = create<NavigationState>((set) => ({
     });
   },
 }));
-
-export default useNavigationStore;

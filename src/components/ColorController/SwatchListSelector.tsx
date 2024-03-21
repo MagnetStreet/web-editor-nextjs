@@ -10,17 +10,13 @@ import ColorDetails from '@/components/ColorController/ColorDetails';
 import ColorRow from '@/components/ColorController/ColorRow';
 
 import {
-  BottomDrawerState,
-  useBottomDrawerStore,
-} from '@/stores/useBottomDrawerStore';
-import {
-  DesignStudioState,
-  useDesignStudioStore,
-} from '@/stores/useDesignStudioStore';
-import {
   GeneralControlsState,
   useGeneralControlsStore,
-} from '@/stores/useGeneralControlsStore';
+  DesignStudioState,
+  useDesignStudioStore,
+  BottomDrawerState,
+  useBottomDrawerStore,
+} from '@/stores';
 
 import { extractSwatchColorsFromTextBoxes } from '@/utils/color/colorHelper';
 

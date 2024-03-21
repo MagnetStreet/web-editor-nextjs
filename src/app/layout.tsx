@@ -18,13 +18,11 @@ import LoadingLogo from '@/components/shared/LoadingLogo';
 import Notifications from '@/components/shared/Notifications';
 
 import {
-  BottomDrawerState,
-  useBottomDrawerStore,
-} from '@/stores/useBottomDrawerStore';
-import {
   GeneralControlsState,
   useGeneralControlsStore,
-} from '@/stores/useGeneralControlsStore';
+  BottomDrawerState,
+  useBottomDrawerStore,
+} from '@/stores';
 
 import customTheme from '@/styles/theme/customTheme';
 

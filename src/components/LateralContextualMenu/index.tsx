@@ -6,17 +6,13 @@ import SwatchListSelector from '@/components/ColorController/SwatchListSelector'
 import LateralContextualMenu from '@/components/LateralContextualMenu/LateralContextualMenu';
 
 import {
-  BottomDrawerState,
-  useBottomDrawerStore,
-} from '@/stores/useBottomDrawerStore';
-import {
-  DesignStudioState,
-  useDesignStudioStore,
-} from '@/stores/useDesignStudioStore';
-import {
   GeneralControlsState,
   useGeneralControlsStore,
-} from '@/stores/useGeneralControlsStore';
+  BottomDrawerState,
+  useBottomDrawerStore,
+  DesignStudioState,
+  useDesignStudioStore,
+} from '@/stores';
 
 import { IconObj } from '@/types';
 import { CONTEXTUAL_MENU_OPTION } from '@/types/enum';

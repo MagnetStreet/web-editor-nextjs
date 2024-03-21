@@ -16,13 +16,11 @@ import OrderSummaryList from '@/components/shared/OrderSummary/OrderSummaryList'
 import TextControllerWrapper from '@/components/TextController';
 
 import {
-  DesignStudioState,
-  useDesignStudioStore,
-} from '@/stores/useDesignStudioStore';
-import {
   GeneralControlsState,
   useGeneralControlsStore,
-} from '@/stores/useGeneralControlsStore';
+  DesignStudioState,
+  useDesignStudioStore,
+} from '@/stores';
 
 import { getDocumentInfoAndView } from '@/services/getDocumentInfo';
 import { getDocumentView } from '@/services/getDocumentView';

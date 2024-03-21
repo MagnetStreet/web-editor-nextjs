@@ -21,23 +21,19 @@ import SwatchListSelector from '@/components/ColorController/SwatchListSelector'
 import { CustomIcon } from '@/components/shared/CustomIcon';
 import SearchBar from '@/components/shared/Form/SearchBar';
 import sassVars from '@/styles/_colorVariables.module.scss';
-import {
-  BottomDrawerState,
-  useBottomDrawerStore,
-} from '@/stores/useBottomDrawerStore';
-import {
-  DesignStudioState,
-  useDesignStudioStore,
-} from '@/stores/useDesignStudioStore';
-import {
-  GeneralControlsState,
-  useGeneralControlsStore,
-} from '@/stores/useGeneralControlsStore';
+
 import {
   useNotificationsState,
   useNotificationStore,
-} from '@/stores/useNotificationStore';
+  GeneralControlsState,
+  useGeneralControlsStore,
+  DesignStudioState,
+  useDesignStudioStore,
+  BottomDrawerState,
+  useBottomDrawerStore,
+} from '@/stores';
 
+import toRem from '@/utils/shared/toRem';
 import { standardColors } from '@/constants/colors-default';
 import updateDocumentColorService from '@/services/updateDocumentColorService';
 import transformToColorDSColor from '@/transformers/SwatchColorToDSColor';
@@ -193,7 +189,8 @@ const ColorDetails: React.FC = () => {
       gap='16px'
       sx={{
         padding: '16px',
-        width: isDesktop ? '400px' : 'auto',
+        width: isDesktop ? '25vw' : 'auto',
+        maxWidth: toRem(450),
       }}
     >
       <Stack direction='row' justifyContent='space-between'>
@@ -210,7 +207,7 @@ const ColorDetails: React.FC = () => {
           <Stack direction='row' justifyContent='space-between'>
             <Stack direction='row' gap='16px'>
               <ColorCircle color={activeSwatchColor} />
-              <ColorName color={activeSwatchColor} />
+              <ColorName color={activeSwatchColor} hideCMYKName />
             </Stack>
             <Stack direction='row' gap='12px'>
               <Stack gap='4px'>

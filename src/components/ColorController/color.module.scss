@@ -12,7 +12,8 @@
   padding: toRem(16) 0;
   width: auto;
   @include large {
-    width: toRem(450);
+    width: 25vw;
+    max-width: toRem(450);
   }
   cursor: pointer;
   border-top: 1px solid $te-light-grey;
