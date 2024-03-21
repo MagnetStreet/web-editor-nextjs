@@ -1,15 +1,6 @@
 import { createTheme } from '@mui/material/styles';
 import sassVars from '@/styles/_colorVariables.module.scss';
 
-const vars = {
-  size: {
-    sm: '12px',
-    md: '16px',
-    lg: '20px',
-    xl: '24px',
-  },
-};
-
 const theme = createTheme({
   palette: {
     primary: {

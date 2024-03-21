@@ -1,0 +1,33 @@
+$layout-a-max-width: 469px;
+$layout-b-min-width: 470px;
+$layout-b-max-width: 529px;
+$layout-c-min-width: 530px;
+$layout-c-max-width: 699px;
+$layout-d-min-width: 700px;
+$layout-d-max-width: 1023px;
+$layout-e-min-width: 1024px;
+$layout-e-max-width: 1219px;
+$layout-f-min-width: 1220px;
+$layout-f-max-width: 1409px;
+$layout-g-min-width: 1410px;
+
+$layout-wide-max: 1400px;
+$layout-wide: 1200px;
+$layout-wide-min: 1024px;
+$layout-primary: 960px;
+$layout-primary-min: 800px;
+$layout-tablet-min: 768px;
+$layout-secondary: 700px;
+$layout-secondary-min: 600px;
+$layout-mobile-max: 500px;
+$layout-mobile: 400px;
+
+/* Define your breakpoints */
+// $break-point-size-xs: 0px;
+// $break-point-size-sm: 640px;
+// $break-point-size-md: 980px;
+// $break-point-size-lg: 1024px;
+// $break-point-size-xl: 1200px;
+
+$dpi-min2x: min-resolution 1.5dppx;
+$dpi-std: max-resolution 143dpi;

@@ -25,9 +25,6 @@ const StyledButton = styled('button')(
     height: ${toRem('39px')};
     border: 2px solid ${sassVars.teLightGrey};
   }
-  &.Mui-disabled{
-    //just for test
-  }
 `
 );
 

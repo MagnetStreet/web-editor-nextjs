@@ -177,6 +177,7 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
         onClick={(e: KonvaEventObject<MouseEvent>) => {
           handleClickFontItem(textBox);
         }}
+        //onDragStart={updateDragStartTexbox}
         onMouseEnter={() => handleHover(true)}
         onMouseLeave={() => handleHover(false)}
       />
@@ -245,6 +246,23 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
     }
   };
 
+  const updateDragTexbox = (
+    e: KonvaEventObject<DragEvent>,
+    dragEvent: string
+  ) => {
+    // Manually trigger drag event on the parent image layer
+    // We need this for "passdown" the drag event to the image in the back
+    const imageLayer = imageLayerRef.current;
+    if (imageLayer) {
+      if ('dragend' === dragEvent) {
+        imageLayer.startDrag();
+      } else {
+        imageLayer.stopDrag();
+      }
+      imageLayer.fire(dragEvent, e);
+    }
+  };
+
   // Image functions
   const updateDragStart = () => {
     if (!isDragging) {
@@ -298,7 +316,13 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
               >
                 {sceneImage && imageHeight ? sceneImage : null}
               </Layer>
-              <Layer>{boxes}</Layer>
+              <Layer
+                draggable
+                onDragStart={(e) => updateDragTexbox(e, 'dragstart')}
+                onDragEnd={(e) => updateDragTexbox(e, 'dragend')}
+              >
+                {boxes}
+              </Layer>
             </Stage>
           )}
         </Box>
