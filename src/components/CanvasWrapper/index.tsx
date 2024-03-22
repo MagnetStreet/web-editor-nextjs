@@ -5,6 +5,9 @@ import React, { createRef, RefObject, useEffect, useState } from 'react';
 import { Image, Layer, Rect, Stage } from 'react-konva';
 import useImage from 'use-image';
 
+import useDebounce from '@/hooks/useDebounce';
+import useScreenSize from '@/hooks/useScreenSize';
+
 import TransformerComponent from '@/components/CanvasWrapper/TransformerComponent';
 
 import { getScaledCoordinates } from '@/utils/getScaledCoordinates';
@@ -52,15 +55,23 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
   setZoom,
   handleClickFontItem,
 }) => {
+  const { isDesktop } = useScreenSize();
   const stageRef = createRef<Konva.Stage>(); //I can get the attributes from the attrs{x,y, width, height} useRef
   const imageLayerRef = createRef<Konva.Layer>();
   const textBoxesLayerRef = createRef<Konva.Layer>();
+  // Image State
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [sceneImage, setSceneImage] = useState<JSX.Element | null>(null);
   const [imageHeight, setImageHeight] = useState(100);
   const [imageWidth, setImageWidth] = useState(0);
+  // Textboxes state
   const [isDragging, setIsDragging] = useState(false);
   const [boxes, setBoxes] = useState<any>(null);
+  // Pitch Zoom state
+  const [lastCenter, setLastCenter] = useState<{ x: number; y: number } | null>(
+    null
+  );
+  const [lastDist, setLastDist] = useState<number>(0);
 
   const handleResize = () => {
     if (!activeView) return;
@@ -70,7 +81,6 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
       const fitWidth = window.innerWidth * paddingPercentage;
       let adjustedZoom = Number(zoom); //current zoom level;
       let scaledImageWidth = imageWidth;
-
       while (adjustedZoom > 0 && scaledImageWidth >= fitWidth) {
         adjustedZoom = adjustedZoom - 1;
         const scale = (adjustedZoom - minZoom) / (maxZoom - minZoom);
@@ -78,7 +88,6 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
         const newDynamicHeight = 0.3 + scale * 0.7; // Scale between 0.3 and 1.0
         const scaledImageHeight =
           newDynamicHeight * activeView?.sceneCanvasHeight;
-
         scaledImageWidth = (imageWidth / imageHeight) * scaledImageHeight;
       }
       // Update the zoom state with the new zoom level
@@ -86,14 +95,16 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
     }
     fitImage();
   };
+
+  //Handles resize and recentering
+  const debounceHandleResize = useDebounce(handleResize, 100);
   useEffect(() => {
     // Call handleResize immediately and attach it to the resize event
-    handleResize();
-    window.addEventListener('resize', handleResize);
-
+    debounceHandleResize();
+    window.addEventListener('resize', debounceHandleResize);
     // Remove the event listener when the component unmounts or when the screen size changes
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', debounceHandleResize);
     };
   }, [window.innerWidth, window.innerHeight]);
 
@@ -120,10 +131,13 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
     };
   }, [viewBlob]);
 
-  // Handles the updates of the zoom
+  // Handles the updates of the zoom Controller
   useEffect(() => {
     if (!activeView) return;
-    const adjustedZoom = Math.max(minZoom, Math.min(maxZoom, Number(zoom)));
+    console.log('is this triggering too much');
+    const adjustedZoom = isDesktop
+      ? Math.max(minZoom, Math.min(maxZoom, Number(zoom)))
+      : Number(zoom);
     const scale = (adjustedZoom - minZoom) / (maxZoom - minZoom);
 
     // Calculate dynamic height based on the zoom percentage
@@ -185,14 +199,86 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
     // console.log('quill', quill);
   }, [isIsolatedMode]);
 
+  //Necessary to add custom styling like hover cursor over the figures
   const handleHover = (enter = false) => {
-    //Necessary to add custom styling like hover cursor over the figures
     if (stageRef.current) {
       stageRef.current.container().style.cursor = enter ? 'pointer' : 'default';
     }
   };
 
-  //Textboxes functions
+  // Touch Move function
+  const handleTouchMove = (e: Konva.KonvaEventObject<TouchEvent>) => {
+    e.evt.preventDefault();
+
+    const touch1 = e.evt.touches[0];
+    const touch2 = e.evt.touches[1];
+
+    if (touch1 && touch2) {
+      imageLayerRef.current?.stopDrag();
+
+      const p1 = {
+        x: touch1.clientX,
+        y: touch1.clientY,
+      };
+      const p2 = {
+        x: touch2.clientX,
+        y: touch2.clientY,
+      };
+
+      if (!lastCenter) {
+        setLastCenter(getCenter(p1, p2));
+        return;
+      }
+
+      const newCenter = getCenter(p1, p2);
+      const dist = getDistance(p1, p2);
+
+      if (!lastDist) {
+        setLastDist(dist);
+      }
+
+      const stage = imageLayerRef.current;
+      if (!lastDist || dist === 0) {
+        // Handle division by zero
+        return;
+      }
+
+      if (stage) {
+        const scale = stage.scaleX() * (dist / lastDist);
+        console.log('changing the scale', scale);
+
+        // Calculate the adjusted zoom level based on the scale
+        const adjustedZoom = (Number(zoom) / 100) * scale * 100;
+        setZoom(adjustedZoom);
+        //debouncedSetZoom(adjustedZoom);
+      }
+      setLastDist(dist);
+      setLastCenter(newCenter);
+    }
+  };
+  const handleTouchEnd = () => {
+    console.log('handleTouchEnd!!!!!!!');
+    setLastDist(0);
+    setLastCenter(null);
+  };
+  const getCenter = (
+    p1: { x: number; y: number },
+    p2: { x: number; y: number }
+  ) => {
+    return {
+      x: (p1.x + p2.x) / 2,
+      y: (p1.y + p2.y) / 2,
+    };
+  };
+
+  const getDistance = (
+    p1: { x: number; y: number },
+    p2: { x: number; y: number }
+  ) => {
+    return Math.sqrt((p2.x - p1.x) ** 2 + (p2.y - p1.y) ** 2);
+  };
+
+  //Textboxes Only functions
   const createRectFromPoints = (
     originalCoordinates: PointCoordinates[],
     textBox: TextBox
@@ -223,7 +309,6 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
         onClick={(e: KonvaEventObject<MouseEvent>) => {
           handleClickFontItem(textBox);
         }}
-        //onDragStart={updateDragStartTexbox}
         onMouseEnter={() => handleHover(true)}
         onMouseLeave={() => handleHover(false)}
       />
@@ -231,8 +316,7 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
   };
 
   const createTransformRectFromPoints = (
-    originalCoordinates: PointCoordinates[],
-    textBox: TextBox
+    originalCoordinates: PointCoordinates[]
   ) => {
     if (originalCoordinates.length === 0) return null;
     const scale = 0.3 + ((zoom as number) / 100) * 0.7;
@@ -285,10 +369,7 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
     );
     //TODO we might need to do this same logic for each of elements types
     if (viewDataActiveTextBox && activeTextBox) {
-      return createTransformRectFromPoints(
-        viewDataActiveTextBox.viewBounds,
-        activeTextBox
-      );
+      return createTransformRectFromPoints(viewDataActiveTextBox.viewBounds);
     }
   };
 
@@ -309,8 +390,9 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
     }
   };
 
-  // Image functions
+  // Image Only functions
   const updateDragStart = () => {
+    console.log('updateDragStart');
     if (!isDragging) {
       setBoxes(null);
     }
@@ -361,12 +443,17 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
                   ? window.innerHeight
                   : editorRef?.current.clientHeight
               }
+              // draggable
+              // onTouchMove={handleTouchMove}
+              // onTouchEnd={handleTouchEnd}
             >
               <Layer
                 ref={imageLayerRef}
                 draggable
                 onDragStart={updateDragStart}
                 onDragEnd={updateDragStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
               >
                 {sceneImage && imageHeight ? sceneImage : null}
               </Layer>
