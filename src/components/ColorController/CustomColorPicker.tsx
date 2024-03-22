@@ -318,61 +318,79 @@ const CustomColorPicker: FC = () => {
       </Stack>
       <Stack gap='8px'>
         {activeSwatchColor && customColor && (
-          <Stack
-            direction='row'
-            justifyContent='flex-start'
-            alignItems='center'
-          >
-            <Box
-              id='old'
-              sx={{
-                height: '40px',
-                maxWidth: '90px',
-                width: '90px',
-                borderRadius: '4px 0 0 4px',
-                borderRight: `1px solid rgb(${r2}, ${g2}, ${b2})`,
-                backgroundColor: `rgb(${r}, ${g}, ${b})`,
-              }}
-            ></Box>
-            <Box
-              id='new'
-              sx={{
-                height: '40px',
-                maxWidth: '90px',
-                width: '90px',
-                borderRadius: '0 4px 4px 0',
-                backgroundColor: `rgb(${r2}, ${g2}, ${b2})`,
-              }}
-            ></Box>
-            <Typography
-              color='#70777F'
-              sx={{
-                paddingLeft: '10px',
-              }}
+          <Stack direction='row' justifyContent='center' alignItems='center'>
+            <Stack
+              direction='column'
+              justifyContent='center'
+              alignItems='center'
             >
-              New
-            </Typography>
+              <Box
+                id='old'
+                sx={{
+                  height: '7rem',
+                  width: '7rem',
+                  transform: 'translate(1rem)',
+                  borderRadius: '100rem',
+                  // borderRadius: '1rem 0rem 0rem 1rem',
+                  borderRight: `1px solid rgb(${r2}, ${g2}, ${b2})`,
+                  backgroundColor: `rgb(${r}, ${g}, ${b})`,
+                }}
+              ></Box>
+              <Typography
+                color='#70777F'
+                sx={{
+                  transform: 'translate(1rem)',
+                }}
+              >
+                Current
+              </Typography>
+            </Stack>
+            <Stack
+              direction='column'
+              justifyContent='center'
+              alignItems='center'
+            >
+              <Box
+                id='new'
+                sx={{
+                  height: '7rem',
+                  width: '7rem',
+                  transform: 'translate(-1rem)',
+                  borderRadius: '100rem',
+                  // borderRadius: '0rem 1rem 1rem 0rem',
+                  backgroundColor: `rgb(${r2}, ${g2}, ${b2})`,
+                }}
+              ></Box>
+              <Typography
+                color='#70777F'
+                sx={{
+                  transform: 'translate(-1rem)',
+                }}
+              >
+                New
+              </Typography>
+            </Stack>
           </Stack>
         )}
       </Stack>
       <Divider />
       <Stack>
         <ColorSlider
-          title='Cyan'
+          title='C'
           value={c2}
           tumbcolor='#0A9FE4'
           style={getCyanSliderBGStyle(m2, y2, k2)}
           onChange={(val: number) => sliderUpdate('C', val)}
         />
         <ColorSlider
-          title='Magenta'
+          title='M'
           value={m2}
           tumbcolor='#E51480'
           style={getMagentaSliderBGStyle(c2, y2, k2)}
           onChange={(val: number) => sliderUpdate('M', val)}
         />
         <ColorSlider
-          title='Yellow'
+          title='Y'
           value={y2}
           tumbcolor='#FFED12'
           tumbfontcolor={`${sassVars.teBlack}`}
@@ -380,7 +398,7 @@ const CustomColorPicker: FC = () => {
           onChange={(val: number) => sliderUpdate('Y', val)}
         />
         <ColorSlider
-          title='Black'
+          title='K'
           tumbcolor='#1D1D0D'
           value={k2}
           style={getBlackSliderBGStyle(c2, m2, y2)}

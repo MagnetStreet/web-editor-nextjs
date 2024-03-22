@@ -11,6 +11,8 @@ import {
 import * as React from 'react';
 import { ChangeEvent, useEffect, useMemo, useState } from 'react';
 
+import sassVars from '@/styles/_colorVariables.module.scss';
+
 import useScreenSize from '@/hooks/useScreenSize';
 
 import ColorCircle from '@/components/ColorController/ColorCircle';
@@ -20,24 +22,23 @@ import CustomColorPicker from '@/components/ColorController/CustomColorPicker';
 import SwatchListSelector from '@/components/ColorController/SwatchListSelector';
 import { CustomIcon } from '@/components/shared/CustomIcon';
 import SearchBar from '@/components/shared/Form/SearchBar';
-import sassVars from '@/styles/_colorVariables.module.scss';
 
 import {
+  BottomDrawerState,
+  DesignStudioState,
+  GeneralControlsState,
+  useBottomDrawerStore,
+  useDesignStudioStore,
+  useGeneralControlsStore,
   useNotificationsState,
   useNotificationStore,
-  GeneralControlsState,
-  useGeneralControlsStore,
-  DesignStudioState,
-  useDesignStudioStore,
-  BottomDrawerState,
-  useBottomDrawerStore,
 } from '@/stores';
 
-import toRem from '@/utils/shared/toRem';
 import { standardColors } from '@/constants/colors-default';
 import updateDocumentColorService from '@/services/updateDocumentColorService';
 import transformToColorDSColor from '@/transformers/SwatchColorToDSColor';
 import { getSimplifiedSwatchColors, rgbToHex } from '@/utils/color/colorHelper';
+import toRem from '@/utils/shared/toRem';
 
 import { DSColor } from '@/types/ColorDSTypes';
 import SwatchColor from '@/types/SwatchColor';
@@ -47,6 +48,8 @@ const ColorDetails: React.FC = () => {
   const [searchText, setSearchText] = useState<string>('');
   const [openStandardColorAcc, setOpenStandardColorAcc] =
     useState<boolean>(true);
+  const [openDesignedColorAcc, setOpenDesignedColorAcc] =
+    useState<boolean>(false);
   const [msFilteredColors, setFilteredColors] = useState<DSColor[]>([
     ...standardColors.swatches,
   ]);
@@ -236,8 +239,8 @@ const ColorDetails: React.FC = () => {
         value={searchText}
         onChange={onSearchUpdate}
       />
-      <Typography>File Colors</Typography>
-      <ColorList colors={fileColors} handleSaveAction={handleSaveAction} />
+
+      {/* Standard Colors */}
       <Accordion
         expanded={searchText !== '' || openStandardColorAcc}
         onClick={() => setOpenStandardColorAcc(!openStandardColorAcc)}
@@ -258,7 +261,9 @@ const ColorDetails: React.FC = () => {
           />
         </AccordionDetails>
       </Accordion>
-      <Accordion defaultExpanded>
+
+      {/* Custom Colors */}
+      <Accordion>
         <AccordionSummary
           expandIcon={
             <CustomIcon iconClass='fa-chevron-down' fontSizeOverWrite='16px' />
@@ -276,9 +281,11 @@ const ColorDetails: React.FC = () => {
             />
             <Button
               variant='outlined'
-              sx={{
-                width: '80px',
-              }}
+              sx={
+                {
+                  // width: '80px',
+                }
+              }
               onClick={() => {
                 handleAddCustomColorClick();
               }}
@@ -289,9 +296,28 @@ const ColorDetails: React.FC = () => {
                 />
               }
             >
-              ADD
+              Create Custom Color
             </Button>
           </Stack>
+        </AccordionDetails>
+      </Accordion>
+
+      {/* "File"/"As-Designed"/"Original" Colors */}
+      <Accordion
+        expanded={searchText !== '' || openDesignedColorAcc}
+        onClick={() => setOpenDesignedColorAcc(!openDesignedColorAcc)}
+      >
+        <AccordionSummary
+          expandIcon={
+            <CustomIcon iconClass='fa-chevron-down' fontSizeOverWrite='16px' />
+          }
+          aria-controls='color-panel-content-3'
+          id='color-panel-header-3'
+        >
+          <Typography>Original Design Colors</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <ColorList colors={fileColors} handleSaveAction={handleSaveAction} />
         </AccordionDetails>
       </Accordion>
     </Stack>

@@ -1,4 +1,4 @@
-import { Slider, Stack, styled, TextField } from '@mui/material';
+import { Slider, Stack, styled, TextField, Typography } from '@mui/material';
 import React from 'react';
 
 interface ColorSliderProps {
@@ -41,8 +41,15 @@ const ColorSlider: React.FC<ColorSliderProps> = ({
         width: '100%',
       }}
     >
-      <div>{title}</div>
       <Stack direction='row' gap='16px' alignItems='center'>
+        <Typography
+          sx={{
+            width: '1.5rem',
+            textAlign: 'center',
+          }}
+        >
+          {title}
+        </Typography>
         <GradientSlider
           max={100}
           min={0}

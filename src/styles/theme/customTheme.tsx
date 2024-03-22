@@ -1,4 +1,5 @@
 import { createTheme } from '@mui/material/styles';
+
 import sassVars from '@/styles/_colorVariables.module.scss';
 
 const theme = createTheme({
@@ -108,6 +109,7 @@ const customTheme = createTheme(theme, {
       styleOverrides: {
         root: {
           boxShadow: 'none',
+          borderTop: `1px solid ${sassVars.teLightGrey}`,
         },
       },
     },
@@ -136,6 +138,16 @@ const customTheme = createTheme(theme, {
         },
         bar: {
           backgroundColor: sassVars.brandColorBrightBlue,
+        },
+      },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          '&&.Mui-expanded': {
+            margin: '0rem 0rem 0rem 0rem',
+            minHeight: 'inherit',
+          },
         },
       },
     },
