@@ -324,8 +324,8 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
       <>
         <Rect
           name='active-text-box'
-          x={offsetX}
-          y={offsetY}
+          x={minX + offsetX}
+          y={minY + offsetY}
           width={width}
           height={height}
           fill='rgba(255, 255, 255, 0.3)'
