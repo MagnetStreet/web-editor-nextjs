@@ -240,7 +240,6 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
     }
   };
   const handleTouchEnd = () => {
-    console.log('handleTouchEnd!!!!!!!');
     setLastDist(0);
     setLastCenter(null);
   };
@@ -375,7 +374,6 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
 
   // Image Only functions
   const updateDragStart = () => {
-    console.log('updateDragStart');
     if (!isDragging) {
       setBoxes(null);
     }
