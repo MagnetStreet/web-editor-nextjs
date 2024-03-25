@@ -18,7 +18,7 @@ const nextConfig = {
   sassOptions: {
     // Include your custom configurations here
     // For example, you can set the includePaths to define additional directories to look for Sass files
-    includePaths: ['src/styles'],
+    includePaths: ['src/styles', 'src/components'],
   },
 
   webpack(config) {
