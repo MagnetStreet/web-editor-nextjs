@@ -18,10 +18,10 @@ import LoadingLogo from '@/components/shared/LoadingLogo';
 import Notifications from '@/components/shared/Notifications';
 
 import {
-  GeneralControlsState,
-  useGeneralControlsStore,
   BottomDrawerState,
+  GeneralControlsState,
   useBottomDrawerStore,
+  useGeneralControlsStore,
 } from '@/stores';
 
 import customTheme from '@/styles/theme/customTheme';
@@ -54,6 +54,10 @@ export default function RootLayout({
 
   return (
     <html lang='en'>
+      <meta
+        name='viewport'
+        content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'
+      ></meta>
       <CssBaseline />
       <body>
         <ThemeProvider theme={customTheme}>

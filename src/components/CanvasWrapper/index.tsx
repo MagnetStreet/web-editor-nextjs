@@ -6,7 +6,6 @@ import { Image, Layer, Rect, Stage } from 'react-konva';
 import useImage from 'use-image';
 
 import useDebounce from '@/hooks/useDebounce';
-import useScreenSize from '@/hooks/useScreenSize';
 
 import TransformerComponent from '@/components/CanvasWrapper/TransformerComponent';
 
@@ -55,7 +54,6 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
   setZoom,
   handleClickFontItem,
 }) => {
-  const { isDesktop } = useScreenSize();
   const stageRef = createRef<Konva.Stage>(); //I can get the attributes from the attrs{x,y, width, height} useRef
   const imageLayerRef = createRef<Konva.Layer>();
   const textBoxesLayerRef = createRef<Konva.Layer>();
@@ -77,7 +75,7 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
     if (!activeView) return;
     // Code to execute on screen resize
     if (imageWidth >= window.innerWidth) {
-      const paddingPercentage = 0.9; // 80% padding
+      const paddingPercentage = 0.6; // 80% padding
       const fitWidth = window.innerWidth * paddingPercentage;
       let adjustedZoom = Number(zoom); //current zoom level;
       let scaledImageWidth = imageWidth;
@@ -134,14 +132,8 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
   // Handles the updates of the zoom Controller
   useEffect(() => {
     if (!activeView) return;
-    console.log('is this triggering too much');
-    const adjustedZoom = isDesktop
-      ? Math.max(minZoom, Math.min(maxZoom, Number(zoom)))
-      : Number(zoom);
-    const scale = (adjustedZoom - minZoom) / (maxZoom - minZoom);
-
     // Calculate dynamic height based on the zoom percentage
-    const newDynamicHeight = 0.3 + scale * 0.7; // Scale between 0.3 and 1.0
+    const newDynamicHeight = 0.5; // Scale between 0.3 and 1.0
     const scaledImageHeight = newDynamicHeight * activeView?.sceneCanvasHeight;
     setImageHeight(newDynamicHeight * activeView?.sceneCanvasHeight);
     // Calculate the image width based on the original aspect ratio and the scaled height
@@ -171,14 +163,7 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
       setSceneImage(imageComponent);
     };
     createSceneImage();
-    handleResize();
   }, [imageUrl, imageHeight, imageWidth]);
-
-  useEffect(() => {
-    if (imageUrl) {
-      handleResize();
-    }
-  }, [imageUrl]);
 
   // Handles the updates on textboxes after zoom or dragging
   useEffect(() => {
@@ -189,7 +174,7 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
           : loadTransformer();
       setBoxes(res);
     }
-  }, [isDragging, imageHeight, activeTextBox, activeLayoutName, resetCount]);
+  }, [isDragging, imageHeight, zoom, activeTextBox, activeLayoutName]);
 
   //TODO handles the isolated mode
   useEffect(() => {
@@ -245,8 +230,6 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
 
       if (stage) {
         const scale = stage.scaleX() * (dist / lastDist);
-        console.log('changing the scale', scale);
-
         // Calculate the adjusted zoom level based on the scale
         const adjustedZoom = (Number(zoom) / 100) * scale * 100;
         setZoom(adjustedZoom);
@@ -286,10 +269,10 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
     if (originalCoordinates.length === 0) return null;
     const scale = 0.3 + ((zoom as number) / 100) * 0.7;
     const coordinates = getScaledCoordinates(originalCoordinates, scale);
-    const minX = Math.min(...coordinates.map((coord) => coord.x));
-    const minY = Math.min(...coordinates.map((coord) => coord.y));
-    const maxX = Math.max(...coordinates.map((coord) => coord.x));
-    const maxY = Math.max(...coordinates.map((coord) => coord.y));
+    const minX = Math.min(...originalCoordinates.map((coord) => coord.x));
+    const minY = Math.min(...originalCoordinates.map((coord) => coord.y));
+    const maxX = Math.max(...originalCoordinates.map((coord) => coord.x));
+    const maxY = Math.max(...originalCoordinates.map((coord) => coord.y));
 
     const width = maxX - minX;
     const height = maxY - minY;
@@ -319,12 +302,12 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
     originalCoordinates: PointCoordinates[]
   ) => {
     if (originalCoordinates.length === 0) return null;
-    const scale = 0.3 + ((zoom as number) / 100) * 0.7;
+    //const scale = 0.3 + ((zoom as number) / 100) * 0.7;
     const coordinates = getScaledCoordinates(originalCoordinates, scale);
-    const minX = Math.min(...coordinates.map((coord) => coord.x));
-    const minY = Math.min(...coordinates.map((coord) => coord.y));
-    const maxX = Math.max(...coordinates.map((coord) => coord.x));
-    const maxY = Math.max(...coordinates.map((coord) => coord.y));
+    const minX = Math.min(...originalCoordinates.map((coord) => coord.x));
+    const minY = Math.min(...originalCoordinates.map((coord) => coord.y));
+    const maxX = Math.max(...originalCoordinates.map((coord) => coord.x));
+    const maxY = Math.max(...originalCoordinates.map((coord) => coord.y));
 
     const width = maxX - minX;
     const height = maxY - minY;
@@ -443,9 +426,10 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
                   ? window.innerHeight
                   : editorRef?.current.clientHeight
               }
-              // draggable
-              // onTouchMove={handleTouchMove}
-              // onTouchEnd={handleTouchEnd}
+              scaleX={0.3 + ((zoom as number) / 100) * (1.5 - 0.3)}
+              scaleY={0.3 + ((zoom as number) / 100) * (1.5 - 0.3)}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
             >
               <Layer
                 ref={imageLayerRef}
