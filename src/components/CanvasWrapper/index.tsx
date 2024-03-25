@@ -133,7 +133,7 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
   useEffect(() => {
     if (!activeView) return;
     // Calculate dynamic height based on the zoom percentage
-    const newDynamicHeight = 0.5; // Scale between 0.3 and 1.0
+    const newDynamicHeight = 0.5;
     const scaledImageHeight = newDynamicHeight * activeView?.sceneCanvasHeight;
     setImageHeight(newDynamicHeight * activeView?.sceneCanvasHeight);
     // Calculate the image width based on the original aspect ratio and the scaled height
@@ -174,7 +174,14 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
           : loadTransformer();
       setBoxes(res);
     }
-  }, [isDragging, imageHeight, zoom, activeTextBox, activeLayoutName]);
+  }, [
+    isDragging,
+    imageHeight,
+    zoom,
+    activeTextBox,
+    activeLayoutName,
+    resetCount,
+  ]);
 
   //TODO handles the isolated mode
   useEffect(() => {
@@ -266,12 +273,11 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
     textBox: TextBox
   ) => {
     if (originalCoordinates.length === 0) return null;
-    const scale = 0.3 + ((zoom as number) / 100) * 0.7;
-    const coordinates = getScaledCoordinates(originalCoordinates, scale);
-    const minX = Math.min(...originalCoordinates.map((coord) => coord.x));
-    const minY = Math.min(...originalCoordinates.map((coord) => coord.y));
-    const maxX = Math.max(...originalCoordinates.map((coord) => coord.x));
-    const maxY = Math.max(...originalCoordinates.map((coord) => coord.y));
+    const coordinates = getScaledCoordinates(originalCoordinates, 0.5);
+    const minX = Math.min(...coordinates.map((coord) => coord.x));
+    const minY = Math.min(...coordinates.map((coord) => coord.y));
+    const maxX = Math.max(...coordinates.map((coord) => coord.x));
+    const maxY = Math.max(...coordinates.map((coord) => coord.y));
 
     const width = maxX - minX;
     const height = maxY - minY;
@@ -301,12 +307,11 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
     originalCoordinates: PointCoordinates[]
   ) => {
     if (originalCoordinates.length === 0) return null;
-    //const scale = 0.3 + ((zoom as number) / 100) * 0.7;
-    const coordinates = getScaledCoordinates(originalCoordinates, scale);
-    const minX = Math.min(...originalCoordinates.map((coord) => coord.x));
-    const minY = Math.min(...originalCoordinates.map((coord) => coord.y));
-    const maxX = Math.max(...originalCoordinates.map((coord) => coord.x));
-    const maxY = Math.max(...originalCoordinates.map((coord) => coord.y));
+    const coordinates = getScaledCoordinates(originalCoordinates, 0.5);
+    const minX = Math.min(...coordinates.map((coord) => coord.x));
+    const minY = Math.min(...coordinates.map((coord) => coord.y));
+    const maxX = Math.max(...coordinates.map((coord) => coord.x));
+    const maxY = Math.max(...coordinates.map((coord) => coord.y));
 
     const width = maxX - minX;
     const height = maxY - minY;
@@ -319,8 +324,8 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
       <>
         <Rect
           name='active-text-box'
-          x={minX + offsetX}
-          y={minY + offsetY}
+          x={offsetX}
+          y={offsetY}
           width={width}
           height={height}
           fill='rgba(255, 255, 255, 0.3)'

@@ -2,12 +2,14 @@ import { Box, Stack } from '@mui/material';
 import * as React from 'react';
 import { FC } from 'react';
 
+import sassVars from '@/styles/_colorVariables.module.scss';
+
 import useScreenSize from '@/hooks/useScreenSize';
 
 import { CustomIcon } from '@/components/shared/CustomIcon';
 import HelpSection from '@/components/shared/HelpSection';
-import sassVars from '@/styles/_colorVariables.module.scss';
 
+import { GeneralControlsState, useGeneralControlsStore } from '@/stores';
 import {
   BottomDrawerState,
   useBottomDrawerStore,
@@ -28,6 +30,10 @@ export const ChangesController: FC<ChangesControllerProps> = ({
 }) => {
   const { toggleBottomDrawer, setBottomDrawerTitle, setBottomDrawerComponent } =
     useBottomDrawerStore<BottomDrawerState>((state) => state);
+
+  const { fitImage } = useGeneralControlsStore<GeneralControlsState>(
+    (state) => state
+  );
   const { isMobile, isTablet } = useScreenSize();
   const isSmallScreen = isMobile || isTablet;
   const iconSizes = { xs: '20px', sm: '20px', md: '24px', lg: '30px' };
@@ -65,7 +71,16 @@ export const ChangesController: FC<ChangesControllerProps> = ({
         />
       )}
       {isSmallScreen && (
-        <CustomIcon iconClass='fa-eye-light' textSizes={{ ...iconSizes }} />
+        <>
+          <CustomIcon iconClass='fa-eye-light' textSizes={{ ...iconSizes }} />
+          <CustomIcon
+            onClick={() => {
+              fitImage();
+            }}
+            iconClass='fa-arrows-maximize-light'
+            textSizes={{ ...iconSizes }}
+          />
+        </>
       )}
       <Box
         paddingY='6px'
