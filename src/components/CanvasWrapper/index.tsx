@@ -23,6 +23,7 @@ const maxZoom = 100;
 
 interface CanvasWrapperProps {
   editorRef?: RefObject<any>;
+  topFrameRef?: RefObject<any>;
   documentInfo?: DesignStudioItem;
   activeView?: View;
   position?: string;
@@ -33,6 +34,7 @@ interface CanvasWrapperProps {
   activeTextBox?: TextBox; //TODO we need active for each I think
   zoom: number | number[];
   resetCount: number;
+  isDesktop: boolean;
   fitImage: () => void;
   setZoom: (val: number | number[]) => void;
   handleClickFontItem: (val: TextBox) => void;
@@ -40,6 +42,7 @@ interface CanvasWrapperProps {
 
 const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
   editorRef,
+  topFrameRef,
   position,
   viewBlob,
   activeView,
@@ -48,6 +51,7 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
   isIsolatedMode,
   coordinates,
   zoom,
+  isDesktop,
   resetCount,
   activeLayoutName,
   fitImage,
@@ -133,17 +137,59 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
   useEffect(() => {
     if (!activeView) return;
     // Calculate dynamic height based on the zoom percentage
-    const newDynamicHeight = 0.5;
-    const scaledImageHeight = newDynamicHeight * activeView?.sceneCanvasHeight;
-    setImageHeight(newDynamicHeight * activeView?.sceneCanvasHeight);
-    // Calculate the image width based on the original aspect ratio and the scaled height
-    const aspectRatio =
-      activeView?.sceneCanvasWidth / activeView?.sceneCanvasHeight;
-    const scaledImageWidth = aspectRatio * imageHeight;
-    setImageWidth(scaledImageWidth);
-    // Calculate The new Offset to be centered
-    const offsetX = (editorRef?.current.clientWidth - scaledImageWidth) / 2;
-    const offsetY = (editorRef?.current.clientHeight - scaledImageHeight) / 2;
+    let width = 0;
+    let left = 0;
+    let scaledImageWidth = 0;
+    let scaledImageHeight = 0;
+    if (isDesktop) {
+      const newDynamicHeight = 0.5;
+      scaledImageHeight = newDynamicHeight * activeView?.sceneCanvasHeight;
+      setImageHeight(newDynamicHeight * activeView?.sceneCanvasHeight);
+      // Calculate the image width based on the original aspect ratio and the scaled height
+      const aspectRatio =
+        activeView?.sceneCanvasWidth / activeView?.sceneCanvasHeight;
+      const scaledImageWidth = aspectRatio * imageHeight;
+      setImageWidth(scaledImageWidth);
+    } else {
+      // It should be 90% of the width of the screen
+      // Calculate the width based on clientWidth 90%
+      const containerWidth = window.innerWidth * 0.9; // 90% of the window width
+      const containerHeight = activeView?.sceneCanvasHeight;
+      const aspectRatio =
+        activeView?.sceneCanvasWidth / activeView?.sceneCanvasHeight;
+
+      // Calculate the height based on aspect ratio and width
+      const newWidth = containerWidth;
+      const newHeight = newWidth / aspectRatio;
+
+      // Ensure that the new height is not greater than the container height
+      scaledImageHeight = Math.min(containerHeight, newHeight);
+      scaledImageWidth = scaledImageHeight * aspectRatio;
+
+      setImageHeight(scaledImageHeight);
+      setImageWidth(scaledImageWidth);
+    }
+
+    if (topFrameRef && topFrameRef.current) {
+      const { width: frameWidth, left: frameLeft } =
+        topFrameRef.current.getBoundingClientRect();
+      width = frameWidth;
+      left = frameLeft;
+    }
+    const topFramePosition = width + left;
+
+    let offsetX = 0;
+    let offsetY = 0;
+    //Added this to prevent the img going behind the TopFrame
+    if (topFramePosition >= offsetX && isDesktop) {
+      offsetX = topFramePosition;
+      offsetY = 15;
+    } else {
+      offsetX = (editorRef?.current.clientWidth - scaledImageWidth) / 2;
+      offsetY = (editorRef?.current.clientHeight - scaledImageHeight) / 2;
+      //offsetY = offsetY < 0 ? 0 : offsetY;
+    }
+
     if (imageLayerRef.current) {
       imageLayerRef.current.setAttrs({
         x: offsetX,
@@ -386,7 +432,6 @@ const CanvasWrapper: React.FC<CanvasWrapperProps> = ({
   };
 
   // Styling
-
   const containerStyle = {
     ...getStylePositionsHelper(position, coordinates),
     zIndex: 0,

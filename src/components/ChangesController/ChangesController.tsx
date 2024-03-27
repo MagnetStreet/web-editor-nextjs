@@ -160,12 +160,6 @@ export const ChangesController: FC<ChangesControllerProps> = ({
         }}
       />
       {isSmallScreen && (
-        <CustomIcon
-          iconClass='fa-arrows-rotate-light'
-          textSizes={{ ...iconSizes }}
-        />
-      )}
-      {isSmallScreen && (
         <>
           <CustomIcon iconClass='fa-eye-light' textSizes={{ ...iconSizes }} />
           <CustomIcon
@@ -183,7 +177,7 @@ export const ChangesController: FC<ChangesControllerProps> = ({
           borderTop: `1px solid ${sassVars.teLightGrey}`,
         }}
       >
-        {isSmallScreen ? (
+        {isSmallScreen && (
           <CustomIcon
             iconClass='fa-comment-light'
             textSizes={{ ...iconSizes }}
@@ -192,13 +186,6 @@ export const ChangesController: FC<ChangesControllerProps> = ({
               setBottomDrawerComponent(<HelpSection />);
               toggleBottomDrawer(true);
             }}
-          />
-        ) : (
-          <CustomIcon
-            iconClass='fa-arrows-rotate-light'
-            hideTextInMobile
-            text='Reset'
-            textSizes={{ ...iconSizes }}
           />
         )}
       </Box>

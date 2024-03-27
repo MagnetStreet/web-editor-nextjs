@@ -30,6 +30,7 @@ export interface DesignStudioState {
   redoDocumentInfo: () => void;
   setActiveView: (val: View) => void;
   setViewBlob: (val: Blob) => void;
+  setDocumentInfoFromHistory: (val: DesignStudioItem) => void;
   setProductInfo: (val: ProductInformation) => void;
   setSessionInfo: (val: SessionInfomation) => void;
   setVisitorInfo: (val: any) => void;

@@ -16,10 +16,10 @@ import OrderSummaryList from '@/components/shared/OrderSummary/OrderSummaryList'
 import TextControllerWrapper from '@/components/TextController';
 
 import {
-  GeneralControlsState,
-  useGeneralControlsStore,
   DesignStudioState,
+  GeneralControlsState,
   useDesignStudioStore,
+  useGeneralControlsStore,
 } from '@/stores';
 
 import { getDocumentInfoAndView } from '@/services/getDocumentInfo';
@@ -48,6 +48,7 @@ const PageEditor: React.FC<EditorPageServerData> = ({
   documentInformationMock,
 }) => {
   const editorRef = useRef();
+  const topFrameRef = useRef();
   const { isDesktop } = useScreenSize();
   const {
     zoom,
@@ -175,6 +176,7 @@ const PageEditor: React.FC<EditorPageServerData> = ({
               }}
             />
             <Frame
+              ref={topFrameRef}
               position='absolute'
               visible={!!topFrameComponent}
               coordinates={{
@@ -208,6 +210,7 @@ const PageEditor: React.FC<EditorPageServerData> = ({
         )}
         <Canvas
           editorRef={editorRef}
+          topFrameRef={topFrameRef}
           position='absolute'
           zoom={zoom}
           resetCount={resetCount}
@@ -216,6 +219,7 @@ const PageEditor: React.FC<EditorPageServerData> = ({
           activeView={activeView}
           fitImage={fitImage}
           setZoom={setZoom}
+          isDesktop={isDesktop}
           activeTextBox={activeTextBox}
           isIsolatedMode={isIsolatedModeActive}
           activeLayoutName={activeLayoutName}
